@@ -18,11 +18,18 @@
     font-size: 18px;
     font-weight: bolder;
     margin-bottom: 8px;
+    text-transform: uppercase;
 }
 .data-user p{
     font-size: 16px;
     margin: 2px 0;
 
+}
+.data-user input{
+    border: none;
+    font-size: 18px;
+    width:200px;
+    padding: 2%;
 }
 .number{
     color:#dac229;
