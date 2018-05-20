@@ -9,14 +9,20 @@ const styles = {
       height: 0,
       paddingTop: '56.25%', // 16:9
     },
-    actions: {
+    input: {
       display: 'flex',
     },
   };
 
 
+  let elInput;
 
-export const PostCard = ({handleText, text, image, file, addFile, addImage, handleSubmit}) => (
+  function clicki(){
+      elInput.click();
+  }
+
+
+export const PostCard = ({handleText, text, image, file, handleSubmit, link}) => (
     <form onSubmit={handleSubmit}>
         <Card>
             <CardHeader
@@ -43,13 +49,15 @@ export const PostCard = ({handleText, text, image, file, addFile, addImage, hand
                 image="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
             />:''}
             <CardActions>
-                <IconButton aria-label="Add to favorites" onCLick={addImage}>
+                <IconButton aria-label="Add to favorites" onClick={clicki}>
+                    <input ref={input=>elInput=input} type="file" hidden/>
                     <InsertPhoto />
                 </IconButton>
-                <IconButton aria-label="Add to favorites" onCLick={addFile}>
+                <IconButton aria-label="Add to favorites" onClick={clicki}>
+                    <input ref={input=>elInput=input} type="file" hidden accept=".pdf"/>
                     <PictureAsPdf />
                 </IconButton>
-                <IconButton aria-label="Add to favorites" onCLick={addFile}>
+                <IconButton aria-label="Add to favorites">
                     <InsertLink />
                 </IconButton>
             </CardActions>
