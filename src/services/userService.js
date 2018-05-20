@@ -1,4 +1,6 @@
-const baseUrl = 'http://localhost:3000/auth/';
+//const baseUrl = 'http://localhost:3000/auth/';
+const baseUrl = 'https://concamin.herokuapp.com/auth/';
+
 
 export function updateUser(user){
     const form = new FormData();
