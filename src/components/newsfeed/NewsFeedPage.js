@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { GridList, GridListTile } from '@material-ui/core';
 import { NewsFeedComponent } from './NewsFeedComponent';
 import {getPosts, addPost} from '../../services/postService';
+import {AdCard} from "../Advertising/AdCard";
 
 class NewsFeedPage extends Component {
 
@@ -94,7 +95,11 @@ class NewsFeedPage extends Component {
                 clearFile={this.clearFile}/>
         </GridListTile>
           <GridListTile cols={1} style={styles.gridTile}>
-            Componentes de Recomendaciones y publicidad
+            <AdCard/>
+              <AdCard/>
+              <AdCard/>
+
+
           </GridListTile>
       </GridList>
     )

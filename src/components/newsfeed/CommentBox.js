@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardHeader,CardContent,Divider,Avatar,IconButton,Typography,TextField} from '@material-ui/core/';
+import {Card, CardHeader,CardContent,Divider,Avatar,IconButton,Typography} from '@material-ui/core/';
 import {MoreHoriz} from '@material-ui/icons/';
 
 
@@ -15,12 +15,7 @@ const styles = {
     comentaritos:{
         backgroundColor:"#dddddd"
     },
-    micomentario:{
-        display:'flex',
-        alignItems:'center',
-        backgroundColor:"#dddddd",
-        padding: "16px 24px 16px"
-    },
+
     divisioncita:{
       color:'white',
         border:'solid 1px white',
@@ -29,10 +24,13 @@ const styles = {
 
 };
 
-export  const CommentBox = ({handelComment,})=>(
+
+export  const CommentBox = ({handleComment,elId})=>(
     <div>
-        <Card>
-            <CardContent style={styles.comentaritos}>
+
+        <Card >
+
+            <CardContent  style={styles.comentaritos}>
                 <CardHeader
                     avatar={
                         <Avatar arial-label={"Recipe"} style={styles.avatar}>
@@ -54,33 +52,11 @@ export  const CommentBox = ({handelComment,})=>(
                 </CardContent>
 
             </CardContent>
-            <Divider light={true}
+            <Divider
+                light={true}
                      style={styles.divisioncita}/>
 
-            <CardContent style={styles.comentaritos}>
-                <div style={styles.micomentario}>
-                    <Avatar arial-label={"Recipe"} style={styles.avatar}>
-                        B
-                    </Avatar>
-                    <div style={{marginLeft:"10px", backgroundColor:'white',width:'100%',borderRadius:'5px'}}>
-                        <TextField
-                            InputProps={{
-                                disableUnderline: true,
 
-                            }}
-                            onChange={handelComment}
-                            style={{padding:"0 10px"}}
-                            id="multiline-flexible"
-                            placeholder="Escribe tu humilde opinion!"
-                            fullWidth={true}
-                            multiline
-                            margin="normal"
-                        />
-                    </div>
-                </div>
-
-
-            </CardContent>
         </Card>
     </div>
 );

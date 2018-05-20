@@ -1,6 +1,9 @@
 import React from 'react';
-import {Card, CardHeader,CardMedia,CardContent,CardActions, Avatar,IconButton,Typography,Button,TextField} from '@material-ui/core/';
-import {MoreVert,Favorite,MoreHoriz} from '@material-ui/icons/';
+import {Card, CardHeader,CardMedia,CardContent, Avatar,IconButton,Typography,Badge,TextField, Button, CardActions} from '@material-ui/core/';
+import {MoreVert,Favorite} from '@material-ui/icons/';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import {CommentBox} from './CommentBox';
 
 const styles = {
@@ -16,11 +19,27 @@ const styles = {
     },
     cardpadre:{
         marginBottom:'2%'
+    },
+    micomentario:{
+        display:'flex',
+        alignItems:'center',
+        backgroundColor:"#dddddd",
+        padding: "16px 24px 16px"
+    },
+    comentaritos:{
+        backgroundColor:"#dddddd"
+    },
+    botoncito:{
+        position: "absolute",
+        right: "20px",
+        zIndex: 999,
     }
 };
+const actions=[];
 
 
-export const CardDisplay =  ({Iliked, image, body})=>(
+
+export const CardDisplay =  ({Iliked,handleComment, likes, image, body, date})=>(
 
         <Card style={styles.cardpadre}>
             <CardHeader
@@ -29,8 +48,8 @@ export const CardDisplay =  ({Iliked, image, body})=>(
                         B
                     </Avatar>
                 }
-                title={"Brenda Ortega"}
-                subheader={"mayo 19, 2018"}
+                title={'UserName'}
+                subheader={date}
                 action={
                     <IconButton>
                         <MoreVert/>
@@ -50,16 +69,59 @@ export const CardDisplay =  ({Iliked, image, body})=>(
                 style={styles.media}
                 image={image}
             />:''}
-            <CardActions>
-                <IconButton aria-label="Add to favorites" style={styles.buttonIcon} onClick={Iliked}>
-                    <Favorite />
-                </IconButton>
-                <Button arial-label={"Recipe"}>
-                    Comentarios
-                </Button>
-            </CardActions>
+           
 
-           <CommentBox/>
+            <div style={styles.botoncito}>
+                {<IconButton aria-label="Add to favorites" style={styles.buttonIcon} onClick={Iliked}>
+                    {likes >=1 ?
+                        <Badge badgeContent={likes} color="primary">
+                            <Favorite />
+                        </Badge>:
+
+                        <Favorite />
+                    }
+
+                </IconButton>}
+            </div>
+            <ExpansionPanel style={{margin:'0'}}>
+
+                    <ExpansionPanelSummary >
+                        <div style={styles.expansiones}>
+
+                            <Typography arial-label={"Recipe"}> Comentarios</Typography>
+                        </div>
+                    </ExpansionPanelSummary>
+
+                    <CommentBox handleComment={handleComment} />
+            </ExpansionPanel>
+
+
+            <CardContent style={styles.comentaritos}>
+                <div style={styles.micomentario}>
+                    <Avatar arial-label={"Recipe"} style={styles.avatar}>
+                        B
+                    </Avatar>
+                    <div style={{marginLeft:"10px", backgroundColor:'white',width:'100%',borderRadius:'5px'}}>
+                        <TextField
+                            InputProps={{
+                                disableUnderline: true,
+
+                            }}
+                            onChange={handleComment}
+                            style={{padding:"0 10px"}}
+                            id="multiline-flexible"
+                            placeholder="Escribe tu humilde opinion!"
+                            fullWidth={true}
+                            multiline
+                            margin="normal"
+                            name="commet"
+                        />
+                    </div>
+                </div>
+
+
+            </CardContent>
+
 
         </Card>
 );
