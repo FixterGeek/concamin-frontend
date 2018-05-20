@@ -29,7 +29,7 @@ function previewAvatar(input, preview){
     }
 }
 
-export const ProfileDisplay = ({ changeEditing,editing = false,profilePic, fullName, followers=[], institution, job}) => {
+export const ProfileDisplay = ({saveProfile, onChange, changeEditing,editing = false,profilePic, username, followers=[], institution, job}) => {
     return (
         <div className='padding-gral'>
             <Paper  elevation={4} style={{minHeight: "379px", paddingBottom:"10px"}}>
@@ -45,16 +45,16 @@ export const ProfileDisplay = ({ changeEditing,editing = false,profilePic, fullN
                             <CameraAlt style={{fontSize:"30px"}}/>
                         </IconButton>}
                         <img
-                            alt={fullName}
+                            alt={username}
                             src={profilePic || foto}
                             ref={div=>profileImage=div}
                             style={{width:'150px', height:'150px', border:"3px solid white", borderRadius:75}} 
                         />
                     </div>
                     <div className="data-user">
-                        {editing ? <input className="title " type="text" value={fullName}/> : 
+                        {editing ? <div><br/><input autoFocus name="username" onChange={onChange} className="title " type="text" value={username.toUpperCase()}/></div> : 
                        
-                        <h4 className="title">{fullName}</h4>}
+                        <h4 className="title">{username}</h4>}
 
                         <p>{job}</p>
                         {institution ? <p>en <strong>{institution.name} organizacion</strong></p> : null} 
@@ -65,7 +65,7 @@ export const ProfileDisplay = ({ changeEditing,editing = false,profilePic, fullN
                     <div>
                         {editing ?
                         <div>
-                        <Button variant="outlined" color="primary" style={{height:"50px", margin:"0 20px"}} >
+                        <Button onClick={()=>saveProfile(cover, profilePic)} variant="outlined" color="primary" style={{height:"50px", margin:"0 20px"}} >
                             Guardar
                         </Button>
                         <Button onClick={()=>{

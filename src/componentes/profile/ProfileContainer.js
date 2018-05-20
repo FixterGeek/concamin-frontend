@@ -12,6 +12,14 @@ class ProfileContainer extends Component {
     editing:false
   }
 
+  onChange = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const {user} = this.state;
+    user[field] = value;
+    this.setState({user});
+  };
+
   componentWillMount(){
     getLoggedUser()
     .then(user=>{
@@ -21,10 +29,15 @@ class ProfileContainer extends Component {
     .catch(e=>console.log(e))
   }
 
-  saveProfile = () => {
-    updateUser(this.state.user)
+  saveProfile = (cover, profilePic) => {
+    //const {user} = this.state;
+    const user = {};
+    user['username'] = this.state.user.username;
+    user['cover'] = cover.files[0];
+    user['profilePic'] = profilePic.files[0];
+    updateUser(user)
     .then(user=>{
-      this.setState({user});
+      this.setState({user, editing:false});
       toastr.success('Tu perfil se ha actualizado');
     })
     .catch(e=>console.log(e))
@@ -40,7 +53,7 @@ class ProfileContainer extends Component {
     const {user, editing} = this.state;
     return (
       <div>
-        <ProfileDisplay changeEditing={this.changeEditing} editing={editing} {...user} saveProfile={this.saveProfile} />
+        <ProfileDisplay onChange={this.onChange} changeEditing={this.changeEditing} editing={editing} {...user} saveProfile={this.saveProfile} />
       </div>
     );
   }
