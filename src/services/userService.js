@@ -1,6 +1,18 @@
 //const baseUrl = 'http://localhost:3000/auth/';
 const baseUrl = 'https://concamin.herokuapp.com/auth/';
 
+export function getPublicUser(id){
+    return fetch(baseUrl + 'users/' + id, {
+        credentials:'include'
+    })
+    .then(res=>{
+        if(!res.ok) return Promise.reject(res);
+        return res.json();
+    })
+    .then(user=>{
+        return user;
+    });
+}
 
 export function updateUser(user){
     const form = new FormData();

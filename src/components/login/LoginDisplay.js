@@ -23,7 +23,7 @@ export const LoginDisplay = ({onSubmit}) => {
                              <AccountCircle />
                          </Grid>
                          <Grid item>
-                             <TextField name="email" id="input-with-icon-grid" label="Email" />
+                             <TextField name="email" label="Email" />
                          </Grid>
                      </Grid>
                      <Grid container spacing={8} alignItems="flex-end">
@@ -31,7 +31,7 @@ export const LoginDisplay = ({onSubmit}) => {
                              <AccountCircle />
                          </Grid>
                          <Grid item>
-                             <TextField type="password" name="password" id="input-with-icon-grid" label="Password" />
+                             <TextField type="password" name="password" label="Password" />
                          </Grid>
                      </Grid>
                      <br/>

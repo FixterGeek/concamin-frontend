@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import CameraAlt from '@material-ui/icons/CameraAlt';
 import IconButton from '@material-ui/core/IconButton';
+import toastr from 'toastr';
 
 const foto = "https://scontent.fmex5-1.fna.fbcdn.net/v/t1.0-9/32893588_10216503871007215_7637282803905724416_n.jpg?_nc_cat=0&oh=7867ee410eda379ae94e4018ed4a42ba&oe=5B8F3876";
 let cover;
@@ -29,7 +30,7 @@ function previewAvatar(input, preview){
     }
 }
 
-export const ProfileDisplay = ({saveProfile, onChange, changeEditing,editing = false, profilePic, cover, username, followers=[], institution, job}) => {
+export const ProfileDisplay = ({follow, isPublic, saveProfile, onChange, changeEditing,editing = false, profilePic, cover, username, followers=[], institution, job}) => {
     return (
         <div className='padding-gral'>
             <Paper  elevation={4} style={{minHeight: "379px", paddingBottom:"10px"}}>
@@ -75,10 +76,20 @@ export const ProfileDisplay = ({saveProfile, onChange, changeEditing,editing = f
                         Cancelar
                         </Button>
                         </div> :
-                        <Button onClick={changeEditing} variant="outlined" color="primary" style={{height:"50px", margin:"0 20px"}} >
+                        
+                        <div>{isPublic || <Button onClick={changeEditing} variant="outlined" color="primary" style={{height:"50px", margin:"0 20px"}} >
                             Editar perfil
-                        </Button>
+                        </Button>}</div>
                      }
+
+                     {/* si es publico puedes seguir */}
+                     {isPublic && 
+                        <div>
+                        <Button onClick={()=>{toastr.warning('configurame')}} variant="outlined" color="primary" style={{height:"50px", margin:"0 20px"}} >
+                            {follow ? "Seguir":"Siguiendo"}
+                        </Button> 
+                        </div>
+                        }
                   
                     </div>
 
