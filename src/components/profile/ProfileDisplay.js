@@ -29,11 +29,11 @@ function previewAvatar(input, preview){
     }
 }
 
-export const ProfileDisplay = ({saveProfile, onChange, changeEditing,editing = false,profilePic, username, followers=[], institution, job}) => {
+export const ProfileDisplay = ({saveProfile, onChange, changeEditing,editing = false, profilePic, cover, username, followers=[], institution, job}) => {
     return (
         <div className='padding-gral'>
             <Paper  elevation={4} style={{minHeight: "379px", paddingBottom:"10px"}}>
-                <div ref={div=>coverImage=div} className='profile-img' style={{position:"relative"}}>
+                <div ref={div=>coverImage=div} className='profile-img' style={{position:"relative", backgroundImage:`url('${cover}')`}}>
                   {editing &&  <IconButton onClick={()=>cover.click()} aria-label="camera" style={{position:"absolute", top:"0", left:"10px", zIndex:"9999", color:"white"}}>
                         <CameraAlt style={{fontSize:"30px"}}/>
                     </IconButton>}

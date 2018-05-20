@@ -26,7 +26,10 @@ class ProfileContainer extends Component {
       this.setState({user});
       //toastr.success('Tu perfil se ha actualizado');
     })
-    .catch(e=>console.log(e))
+    .catch(e=>{
+      this.props.history.push('/login')
+      console.log(e)
+    })
   }
 
   saveProfile = (cover, profilePic) => {
@@ -41,7 +44,10 @@ class ProfileContainer extends Component {
       toastr.success('Tu perfil se ha actualizado');
     })
     .catch(e=>{
-      toastr.error(e);
+      toastr.error(e.statusText);
+      if(e.statusText === "Forbidden"){
+        this.props.history.push('/login')
+      }
       console.log(e)
     })
   };
