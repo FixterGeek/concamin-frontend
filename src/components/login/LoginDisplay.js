@@ -6,11 +6,12 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
-export const LoginDisplay = () => {
+export const LoginDisplay = ({onSubmit}) => {
 
 
     return (
         <div className='login'>
+        <form onSubmit={onSubmit}>
              <Paper style={{width:"300px", padding:"2%", heigth:"auto"}}>
                     <div className="circle_login">
 
@@ -22,7 +23,7 @@ export const LoginDisplay = () => {
                              <AccountCircle />
                          </Grid>
                          <Grid item>
-                             <TextField id="input-with-icon-grid" label="Email" />
+                             <TextField name="email" id="input-with-icon-grid" label="Email" />
                          </Grid>
                      </Grid>
                      <Grid container spacing={8} alignItems="flex-end">
@@ -30,17 +31,18 @@ export const LoginDisplay = () => {
                              <AccountCircle />
                          </Grid>
                          <Grid item>
-                             <TextField id="input-with-icon-grid" label="Password" />
+                             <TextField type="password" name="password" id="input-with-icon-grid" label="Password" />
                          </Grid>
                      </Grid>
                      <br/>
 
                  </div>
-                 <Button variant="raised" color="primary" >
+                 <Button type={"submit"} variant="raised" color="primary" >
                  Log In
                 </Button>
 
              </Paper>
+             </form>
         </div>
     )
 }

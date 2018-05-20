@@ -40,7 +40,10 @@ class ProfileContainer extends Component {
       this.setState({user, editing:false});
       toastr.success('Tu perfil se ha actualizado');
     })
-    .catch(e=>console.log(e))
+    .catch(e=>{
+      toastr.error(e);
+      console.log(e)
+    })
   };
 
   changeEditing = () => {

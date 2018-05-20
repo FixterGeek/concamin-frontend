@@ -31,7 +31,7 @@ class LoginPage extends Component{
     <input placeholder="password" name="password" type="text"/>
     <input type="submit"/>
   </form> */}
-  <LoginDisplay/>
+  <LoginDisplay onSubmit={this.doLoggin} />
 </div>
         );
     }

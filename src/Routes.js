@@ -1,8 +1,8 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import NewsFeedPage from './components/newsfeed/NewsFeedPage';
-import HomeContainer from './componentes/home/HomeContainer';
-import ProfileContainer from './componentes/profile/ProfileContainer';
+import HomeContainer from './components/home/HomeContainer';
+import ProfileContainer from './components/profile/ProfileContainer';
 import { PostCard } from './components/newsfeed/PostCard';
 import LoginPage from './components/login/LoginPage';
 
