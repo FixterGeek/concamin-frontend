@@ -1,5 +1,5 @@
-const baseUrl = 'http://localhost:3000/auth/';
-//const baseUrl = 'https://concamin.herokuapp.com/auth/';
+//const baseUrl = 'http://localhost:3000/auth/';
+const baseUrl = 'https://concamin.herokuapp.com/auth/';
 
 export function getPublicUser(id){
     return fetch(baseUrl + 'users/' + id, {
