@@ -36,3 +36,35 @@
     font-size: 24px;
 
 }
+
+.history{
+    width:400px;
+    flex-grow: 1;
+    font-family: "Proxima Nova";
+    margin: 30px 0;
+}
+.history h5{
+    color:#808080;
+    font-size: 18px;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+}
+.degree{
+    display: flex;
+    flex-wrap: wrap;
+    color:#818181;
+    align-items: center;
+    margin: 10px 0;
+}
+.degree .name{
+    margin: 3px 0;
+
+}
+.degree .date{
+    margin: 3px 0;
+    font-size: 12px;
+}
+.box_job{
+    width:200px;
+    flex-grow: 1;
+}

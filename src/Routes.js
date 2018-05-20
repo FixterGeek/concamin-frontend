@@ -11,6 +11,7 @@ const Routes =()=>(
         <Route path="/profile" component={ProfileContainer} />
         <Route path="/login" component={LoginDisplay}/>
         <Route exact path="/" component={PostCard}/>
+
     </Switch>
 );
 

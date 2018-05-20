@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import CameraAlt from '@material-ui/icons/CameraAlt';
 import IconButton from '@material-ui/core/IconButton';
+import {HistoryDisplay} from './HistoryDisplay';
 
 const foto = "https://scontent.fmex5-1.fna.fbcdn.net/v/t1.0-9/32893588_10216503871007215_7637282803905724416_n.jpg?_nc_cat=0&oh=7867ee410eda379ae94e4018ed4a42ba&oe=5B8F3876";
 let cover;
@@ -85,6 +86,7 @@ export const ProfileDisplay = ({ changeEditing,editing = false,profilePic, fullN
                 </div>
 
             </Paper>
+            <HistoryDisplay />
 
             <input onChange={()=>preview(cover, coverImage)} ref={input=>cover=input}  name="cover" type="file" hidden/>
             <input onChange={()=>previewAvatar(profilePic, profileImage)} ref={input=>profilePic=input} name="profilePic" type="file" hidden/>
