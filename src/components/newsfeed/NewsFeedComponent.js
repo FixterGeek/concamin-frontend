@@ -4,12 +4,10 @@ import { CardDisplay } from './CardDisplay';
 
 
 
-export const NewsFeedComponent = ({posts, handleSubmit, handleChange}) => (
+export const NewsFeedComponent = ({posts, handleSubmit, handleChange,newsFeed,handleComment}) => (
     <div style={styles.container}> 
         <PostCard handleSubmit={handleSubmit} handleChange={handleChange}/>
-        <CardDisplay/>
-        <CardDisplay/>
-        <CardDisplay/>
+        <CardDisplay newsFeed={newsFeed} handleComment={handleComment} />
     </div>
 );
 
