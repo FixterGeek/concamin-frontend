@@ -36,6 +36,7 @@ const styles = {
   }
 
 
+
 export const PostCard = ({handleText, text, image, file, handleSubmit, link, handleChange}) => (
     
     <form onSubmit={handleSubmit}>

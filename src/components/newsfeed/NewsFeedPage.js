@@ -17,7 +17,7 @@ class NewsFeedPage extends Component {
         let {newPost} = this.state;
         let field = e.target.name;
         if(e.target.type==="file")newPost[field] = e.target.files[0]
-        newPost[field] = e.target.value
+        else newPost[field] = e.target.value
         this.setState({newPost})
         console.log(newPost)
     }
