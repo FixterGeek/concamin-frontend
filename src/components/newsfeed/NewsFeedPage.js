@@ -4,15 +4,33 @@ import { NewsFeedComponent } from './NewsFeedComponent';
 
 class NewsFeedPage extends Component {
 
+    state={
+        newPost:{}
+    }
+
+    handleSubmit=(e)=>{
+        e.preventDefault()
+        console.log(this.state.newPost)
+        
+    }
+    handleChange=(e)=>{
+        let {newPost} = this.state;
+        let field = e.target.name;
+        if(e.target.type==="file")newPost[field] = e.target.files[0]
+        newPost[field] = e.target.value
+        this.setState({newPost})
+        console.log(newPost)
+    }
+
 
 
   render() {
     return (
       <GridList cellHeight={'auto'} cols={3}>
-        <GridListTile cols={2} style={styles.gridList}>
-            <NewsFeedComponent/>
+        <GridListTile cols={2} style={styles.gridTile}>
+            <NewsFeedComponent handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
         </GridListTile>
-          <GridListTile cols={1} style={styles.gridList}>
+          <GridListTile cols={1} style={styles.gridTile}>
             Componentes de Recomendaciones y publicidad
           </GridListTile>
       </GridList>
@@ -21,8 +39,8 @@ class NewsFeedPage extends Component {
 }
 
 const styles = {
-    gridList:{
-        padding:'2% 3%'
+    gridTile:{
+        padding:'2%'
     }
 }
 
