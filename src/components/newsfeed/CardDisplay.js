@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardHeader,CardMedia,CardContent, Avatar,IconButton,Typography,Badge,TextField} from '@material-ui/core/';
+import {Card, CardHeader,CardMedia,CardContent, Avatar,IconButton,Typography,Badge,TextField, Button, CardActions} from '@material-ui/core/';
 import {MoreVert,Favorite} from '@material-ui/icons/';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -37,18 +37,19 @@ const styles = {
 };
 const actions=[];
 
-export const CardDisplay =  ({Iliked,newsFeed,handleComment})=>(
 
-    newsFeed.map( news=>
-        <Card id={news.id} style={styles.cardpadre}>
+
+export const CardDisplay =  ({Iliked,handleComment, likes, image, body, date})=>(
+
+        <Card style={styles.cardpadre}>
             <CardHeader
                 avatar={
                     <Avatar arial-label={"Recipe"} style={styles.avatar}>
                         B
                     </Avatar>
                 }
-                title={news.nomb}
-                subheader={news.fechita}
+                title={'UserName'}
+                subheader={date}
                 action={
                     <IconButton>
                         <MoreVert/>
@@ -59,21 +60,21 @@ export const CardDisplay =  ({Iliked,newsFeed,handleComment})=>(
 
             <CardContent>
                 <Typography component="p">
-                    {news.textito}
+                    {body}
                 </Typography>
             </CardContent>
 
 
-            {news.imagencita ? <CardMedia
+            {image?<CardMedia
                 style={styles.media}
-                image={news.imagencita}
-            />: ""}
-
+                image={image}
+            />:''}
+           
 
             <div style={styles.botoncito}>
                 {<IconButton aria-label="Add to favorites" style={styles.buttonIcon} onClick={Iliked}>
-                    {news.likes >=1 ?
-                        <Badge badgeContent={news.likes} color="primary">
+                    {likes >=1 ?
+                        <Badge badgeContent={likes} color="primary">
                             <Favorite />
                         </Badge>:
 
@@ -87,7 +88,7 @@ export const CardDisplay =  ({Iliked,newsFeed,handleComment})=>(
                     <ExpansionPanelSummary >
                         <div style={styles.expansiones}>
 
-                            <Typography> Comentarios</Typography>
+                            <Typography arial-label={"Recipe"}> Comentarios</Typography>
                         </div>
                     </ExpansionPanelSummary>
 
@@ -122,5 +123,5 @@ export const CardDisplay =  ({Iliked,newsFeed,handleComment})=>(
             </CardContent>
 
 
-        </Card>)
+        </Card>
 );
