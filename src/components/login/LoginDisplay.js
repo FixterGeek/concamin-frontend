@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
-export const LoginDisplay = ({onSubmit}) => {
+export const LoginDisplay = ({onSubmit, changeToSignup}) => {
 
 
     return (
@@ -41,6 +41,7 @@ export const LoginDisplay = ({onSubmit}) => {
                  Log In
                 </Button>
 
+                <p>¿Aún no tienes cuenta? registrate <a href="#!" onClick={changeToSignup}>aquí</a></p>
              </Paper>
              </form>
         </div>

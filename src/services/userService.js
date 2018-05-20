@@ -1,5 +1,5 @@
-//const baseUrl = 'http://localhost:3000/auth/';
-const baseUrl = 'https://concamin.herokuapp.com/auth/';
+const baseUrl = 'http://localhost:3000/auth/';
+//const baseUrl = 'https://concamin.herokuapp.com/auth/';
 
 export function getPublicUser(id){
     return fetch(baseUrl + 'users/' + id, {
@@ -56,6 +56,26 @@ export function login(auth){
         credentials:'include'
     })
     .then(res=>{
+        if(!res.ok) return Promise.reject(res);
+        return res.json();
+    })
+    .then(user=>{
+        console.log(user);
+        return user;
+    });
+}
+
+export function signup(user){
+    return fetch(baseUrl + 'signup',{
+        method:'post',
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(user),
+        credentials:'include'
+    })
+    .then(res=>{
+        console.log(res)
         if(!res.ok) return Promise.reject(res);
         return res.json();
     })
