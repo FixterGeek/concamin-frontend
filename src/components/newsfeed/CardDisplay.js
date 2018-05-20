@@ -1,7 +1,7 @@
 import React from 'react';
-import {Card, CardHeader,CardMedia,CardContent,CardActions, Avatar,IconButton,Typography,Button} from '@material-ui/core/';
+import {Card, CardHeader,CardMedia,CardContent,CardActions, Avatar,IconButton,Typography,Button,TextField} from '@material-ui/core/';
 import {MoreVert,Favorite,MoreHoriz} from '@material-ui/icons/';
-
+import {CommentBox} from './CommentBox';
 
 const styles = {
     media: {
@@ -14,13 +14,15 @@ const styles = {
     avatar: {
         backgroundColor:'red',
     },
-
+    cardpadre:{
+        marginBottom:'2%'
+    }
 };
 
 
-export const CardDisplay =  ({})=>(
-    <div>
-        <Card>
+export const CardDisplay =  ({Iliked})=>(
+
+        <Card style={styles.cardpadre}>
             <CardHeader
                 avatar={
                     <Avatar arial-label={"Recipe"} style={styles.avatar}>
@@ -49,31 +51,15 @@ export const CardDisplay =  ({})=>(
                 image="https://lan.leagueoflegends.com/sites/default/files/styles/scale_xlarge/public/upload/winter_wonder_orianna_splash_1920.jpg?itok=AkN3g4GH"
             />
             <CardActions>
-                <Button aria-label="Add to favorites" style={styles.buttonIcon}>
+                <IconButton aria-label="Add to favorites" style={styles.buttonIcon} onClick={Iliked}>
                     <Favorite />
-                    Like
-                </Button>
+                </IconButton>
                 <Button arial-label={"Recipe"}>
                     Comentarios
                 </Button>
             </CardActions>
 
-            <CardContent>
-                <CardHeader
-                    avatar={
-                        <Avatar arial-label={"Recipe"} style={styles.avatar}>
-                            H
-                        </Avatar>
-                    }
-                    title={"Hector Bliss"}
-                    subheader={"mayo 19, 2018"}
-                    action={
-                        <IconButton>
-                            <MoreHoriz/>
-                        </IconButton>
-                    }
-                />
-            </CardContent>
+           <CommentBox/>
+
         </Card>
-    </div>
 );
