@@ -1,5 +1,11 @@
+@font-face {
+  font-family: "Proxima Nova";
+  src: url('./assets/Nova.otf');
+}
 .App {
   text-align: center;
+  font-family: "Proxima Nova";
+
 }
 
 .App-logo {
@@ -20,6 +26,15 @@
 
 .App-intro {
   font-size: large;
+}
+.background-app{
+  background-color: #eaebec;
+}
+.padding-gral{
+  padding:20px;
+}
+.title{
+  color: #252729;
 }
 
 @keyframes App-logo-spin {
