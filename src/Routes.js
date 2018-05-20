@@ -11,8 +11,9 @@ const Routes =()=>(
         <Route path="/newsfeed" component={NewsFeedPage}/>
         {/*<Route exact path="/" component={HomeContainer} />*/}
         <Route path="/profile" component={ProfileContainer} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/" component={PostCard}/>
+
+        <Route path="/login" component={LoginPage}/>
+        <Route exact path="/" component={PostCard}/>
 
     </Switch>
 );

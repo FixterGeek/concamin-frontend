@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {login} from '../../services/userService';
 import toastr from 'toastr';
+import {LoginDisplay} from './LoginDisplay';
 
 
 class LoginPage extends Component{
@@ -25,11 +26,12 @@ class LoginPage extends Component{
     render(){
         return(
 <div>
-  <form onSubmit={this.doLoggin} action="">
+  {/* <form onSubmit={this.doLoggin} action="">
     <input placeholder="email" name="email" type="text"/>
     <input placeholder="password" name="password" type="text"/>
     <input type="submit"/>
-  </form>
+  </form> */}
+  <LoginDisplay/>
 </div>
         );
     }
