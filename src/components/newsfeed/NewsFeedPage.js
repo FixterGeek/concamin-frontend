@@ -96,7 +96,9 @@ class NewsFeedPage extends Component {
     onCollapse=(e)=>{
         console.log("Vemos que hace",e)
     }
-
+    ejemplo=()=>{
+        console.log("Si funciona")
+    }
 
 
   render() {
@@ -113,9 +115,9 @@ class NewsFeedPage extends Component {
             />
         </GridListTile>
           <GridListTile cols={1} style={styles.gridTile}>
-            <AdCard/>
-              <AdCard/>
-              <AdCard/>
+
+              <AdCard ejemplo={this.ejemplo}/>
+              
 
 
           </GridListTile>
