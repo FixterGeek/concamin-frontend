@@ -14,9 +14,9 @@ export const NewsFeedComponent = ({posts, handleSubmit, handleChange, photoPrevi
             {...newPost} 
             linkFields={linkFields}
             handleLink={handleLink}/>
-        <CardDisplay/>
-        <CardDisplay/>
-        <CardDisplay/>
+        {posts.map((post, key)=>(
+            <CardDisplay {...post}/>
+        ))}
     </div>
 );
 

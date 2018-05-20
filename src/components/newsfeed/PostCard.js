@@ -47,7 +47,7 @@ const styles = {
   }
 
 
-export const PostCard = ({file, image, text,links, handleSubmit, handleChange, photoPreview, previewFile, clearFile, handleLink, linkFields}) => (
+export const PostCard = ({file, image, body,links, handleSubmit, handleChange, photoPreview, previewFile, clearFile, handleLink, linkFields}) => (
     
     <form onSubmit={handleSubmit}>
         <Card style={styles.card}>
@@ -56,8 +56,8 @@ export const PostCard = ({file, image, text,links, handleSubmit, handleChange, p
                     InputProps={{
                         disableUnderline: true,
                     }}
-                    value={text}
-                    name="text"
+                    value={body}
+                    name="body"
                     onChange={handleChange}
                     id="multiline-flexible"
                     label="Qué estás pensando bro?"
@@ -92,7 +92,7 @@ export const PostCard = ({file, image, text,links, handleSubmit, handleChange, p
             
             <CardContent>
             <Typography> Agrega Links</Typography>
-                {links.map((link, key)=>(
+                {/*links.map((link, key)=>(
                     <TextField
                     key={key}
                     style={styles.linkField}
@@ -101,7 +101,7 @@ export const PostCard = ({file, image, text,links, handleSubmit, handleChange, p
                     id="multiline-flexible"
                     margin="normal"
                     />
-                ))}
+                ))*/}
             </CardContent>
         
             

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { GridList, GridListTile } from '@material-ui/core';
 import { NewsFeedComponent } from './NewsFeedComponent';
+import {getPosts, addPost} from '../../services/postService';
 
 class NewsFeedPage extends Component {
 
@@ -10,11 +11,29 @@ class NewsFeedPage extends Component {
         },
         photoPreview:'',
         linkFields:[],
+        posts:[],
+    }
+
+    componentWillMount(){
+        getPosts()
+            .then(r=>{
+               this.setState({posts:r})
+               console.log(r)
+            }).catch(e=>{
+                console.log(e)
+            })
     }
 
     handleSubmit=(e)=>{
         e.preventDefault()
         console.log(this.state.newPost)
+        addPost(this.state.newPost)
+            .then(r=>{
+                console.log(r)
+            }).catch(e=>{
+                console.log(e)
+            })
+
         
     }
     handleChange=(e)=>{
@@ -52,7 +71,7 @@ class NewsFeedPage extends Component {
    
     handleLink=()=>{
         let {newPost} = this.state
-        let count = newPost.links.length
+       // let count = newPost.links.length
         newPost.links.push('')
        this.setState({newPost})
     }
@@ -60,11 +79,12 @@ class NewsFeedPage extends Component {
 
 
   render() {
-    let {photoPreview, newPost, linkFields} = this.state;
+    let {photoPreview, newPost, linkFields, posts} = this.state;
     return (
       <GridList cellHeight={'auto'} cols={3}>
         <GridListTile cols={2} style={styles.gridTile}>
             <NewsFeedComponent 
+                posts={posts}
                 handleSubmit={this.handleSubmit} 
                 handleChange={this.handleChange} 
                 photoPreview={photoPreview} 
