@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {login, signup} from '../../services/userService';
+import {login, signup, getLoggedUser} from '../../services/userService';
 import toastr from 'toastr';
 import {LoginDisplay} from './LoginDisplay';
 import {SignupDisplay} from './SignupDisplay';
@@ -10,6 +10,16 @@ class LoginPage extends Component{
   state = {
     signup:false,
     error:null
+  }
+
+  componentWillMount(){
+    getLoggedUser()
+    .then(r=>{
+      this.props.history.push('/profile')
+    })
+    .catch(e=>{
+      
+    })
   }
 
     doLoggin = (e) => {
@@ -24,7 +34,7 @@ class LoginPage extends Component{
         this.props.history.push('/profile')
       })
       .catch(e=>{
-        toastr.error(e)
+        toastr.error("Hay un problema con tu usuario o contraseña " + e.statusText)
         console.log(e)
       })
     };

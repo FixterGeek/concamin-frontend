@@ -31,7 +31,7 @@ function previewAvatar(input, preview){
     }
 }
 
-export const ProfileDisplay = ({follow, isPublic, saveProfile, onChange, changeEditing,editing = false, profilePic, cover=foto, username, followers=[], institution, job}) => {
+export const ProfileDisplay = ({cancel, follow, isPublic, saveProfile, onChange, changeEditing,editing = false, profilePic, cover=foto, username, followers=[], institution, job}) => {
     return (
         <div className='padding-gral'>
             <Paper  elevation={4} style={{minHeight: "379px", paddingBottom:"10px"}}>
@@ -72,7 +72,8 @@ export const ProfileDisplay = ({follow, isPublic, saveProfile, onChange, changeE
                         </Button>
                         <Button onClick={()=>{
                             changeEditing();
-                            window.location.reload();
+                            cancel();
+                            //window.location.reload();
                         }} variant="outlined" color="primary" style={{height:"50px", margin:"0 20px"}} >
                         Cancelar
                         </Button>

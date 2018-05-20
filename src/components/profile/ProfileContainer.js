@@ -58,11 +58,15 @@ class ProfileContainer extends Component {
     })
   }
 
+  cancel = () =>{
+    window.location.reload();
+  }
+
   render() {
     const {user, editing} = this.state;
     return (
       <div>
-        <ProfileDisplay onChange={this.onChange} changeEditing={this.changeEditing} editing={editing} {...user} saveProfile={this.saveProfile} />
+        <ProfileDisplay cancel={this.cancel} onChange={this.onChange} changeEditing={this.changeEditing} editing={editing} {...user} saveProfile={this.saveProfile} />
       </div>
     );
   }
