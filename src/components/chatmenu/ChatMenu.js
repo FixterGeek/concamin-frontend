@@ -84,24 +84,42 @@ class Chat extends Component {
         visible: true,
         close: true,
         expanded: true,
-        data: []
+        data: [],
+        messageInput: '',
+        userSelected: null,
     }
 
-    onAdd = () => {
+    onAddChat = () => {
         this.setState({
-            close: !this.state.close,
-            expanded: true,
+            close: !this.state,
+            expanded: true
         })
-
     }
 
     //CHAT ADD
-
+    handleInput = (e) => {
+        // let inputName = e.target.name;
+        // let inputValue = e.target.value;
+        // let state = this.state;
+        // state[inputName] = inputValue;
+        // console.log(state)
+        let { messageInput } = this.state
+        messageInput = e.target.value
+        this.setState({ messageInput })
+        console.log(messageInput)
+    }
     onChangeHandler = (e) => {
         this.setState({
             input: e.target.value,
             data: []
         })
+    }
+
+    onClickChat = (a) => {
+        this.setState({
+            userSelected: a.name,
+        })
+        console.log(this.state.userSelected)
     }
     onChange = (a) => {
         this.setState({
@@ -120,8 +138,7 @@ class Chat extends Component {
 
     onClose = () => {
         this.setState({
-            close: true,
-            expanded: true
+            close: !this.state.close,
         })
     }
     //END CHAT ADD
@@ -147,9 +164,9 @@ class Chat extends Component {
                             </div>
                             <div style={{ width: '100%', backgroundColor: 'dimgray', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                 <Input style={{ height: 50, flexGrow: 2, paddingLeft: 10 }}
-                                    placeholder="Placeholder"
+                                    placeholder="Buscar conversación.."
                                 />
-                                <Button style={{ marginRight: 5 }} variant="fab" mini color="secondary" aria-label="Create" onClick={this.onAdd}>
+                                <Button style={{ marginRight: 5 }} variant="fab" mini color="secondary" aria-label="Create" onClick={this.onAddChat}>
                                     <Create />
                                 </Button>
                             </div>
@@ -167,6 +184,9 @@ class Chat extends Component {
                     visible={this.state.visible}
                     hidden={this.state.close}
                     expanded={this.state.expanded}
+                    userSelected={this.state.userSelected}
+                    handleInput={this.handleInput}
+                    onClickChat={this.onClickChat}
                 />
             </div>
         )
