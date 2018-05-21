@@ -30,6 +30,7 @@
 .background-app{
   background-color: #eaebec;
   width: 100%;
+  min-height: 100vh;
 }
 .padding-gral{
   padding:20px;
@@ -43,6 +44,7 @@
   padding-left: 240px;
 }
 @import "./components/mainmenu/mainmenu.css";
+@import "./components/loader/loader.css";
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

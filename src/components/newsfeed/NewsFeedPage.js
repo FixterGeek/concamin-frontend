@@ -3,11 +3,13 @@ import { GridList, GridListTile } from '@material-ui/core';
 import { NewsFeedComponent } from './NewsFeedComponent';
 import {getPosts, addPost} from '../../services/postService';
 import {AdCard} from "../Advertising/AdCard";
+import { MainLoader } from '../loader/MainLoader';
 
 
 class NewsFeedPage extends Component {
 
     state={
+        loading:true,
         newPost:{
             links:[],
             body:"",
@@ -101,7 +103,7 @@ class NewsFeedPage extends Component {
 
 
   render() {
-    let {photoPreview, newPost, addLink, posts} = this.state;
+    let {photoPreview, newPost, addLink, posts, loading} = this.state;
     return (
 
             <GridList cellHeight={'auto'} cols={3}>
