@@ -1,14 +1,13 @@
 import React,{Component} from 'react'
-import {AppBar,Toolbar,Typography,IconButton,Menu,MenuItem,TextField, InputAdornment,List,ListItem,ListItemText} from '@material-ui/core/'
-import {AccountCircle,NotificationsNone,KeyboardArrowDown, Search} from '@material-ui/icons/'
-
+import {AppBar,Toolbar,Typography,IconButton,Menu,MenuItem} from '@material-ui/core/';
+import {AccountCircle,NotificationsNone,KeyboardArrowDown} from '@material-ui/icons/';
+import {Link} from 'react-router-dom';
+import SearchInput from './SearchInput';
 
  class  Navbar extends Component {
     state={
         open:false,
-        input:"",
-        openSearch:null,
-        hidden:true
+
     }
 
     openMenu=()=>{
@@ -16,97 +15,68 @@ import {AccountCircle,NotificationsNone,KeyboardArrowDown, Search} from '@materi
         open= !open;
         this.setState({open})
     }
-    onChange=(e)=>{
-        let {openSearch} = this.state;
-        openSearch=true;
-        this.setState({input:e.target.value, openSearch, hidden:false})
-    }
-    Coloca=(a)=>{
-        this.setState({input:a.label,hidden:true})
 
-    }
 
     render(){
-        const listita = [
-            { label: 'Afghanistan' },
-            { label: 'Aland Islands' },
-            { label: 'Albania' },
-            { label: 'Algeria' },
 
-        ];
-        let textInput=this.state.input;
-        let list = listita
-            .filter(a => textInput.toLowerCase()===''|| a.label.toLowerCase().includes(textInput.toLowerCase()))
-            .map((a, index)=> <ListItem key={index}>
-                <ListItemText primary={a.label} onClick={()=>this.Coloca(a)}/>
-            </ListItem>)
-        console.log("Lista",listita)
+
         return(
-            <div>
-            <AppBar position="static" color="white" >
-                <Toolbar >
-                    <div style={{ flex:1}}>
-                        <TextField
-                            InputProps={{
-                                disableUnderline: true,
-                                startAdornment:(
-                                    <InputAdornment position={"start"}>
-                                        <Search style={{color:'#ccc'}}/>
-                                    </InputAdornment>
-                                )
+            <div style={{marginLeft:'240px'}}>
+                <AppBar position="static" color="default"  >
+                    <Toolbar >
+                        <div style={{ flex:1}}>
+                            <SearchInput/>
 
-                            }}
-                            onChange={this.onChange}
-                            placeholder="Escribe tu humilde opinion!"
-                            fullWidth={true}
-                            margin="normal"
-                            name="seatchPerson"
-                            style={{marginRight:"10px"}}
-                            value ={this.state.input}
-                        />
-
-                    </div>
+                        </div>
 
 
 
-                    <div style={{display:'flex', justifyContent:'center', alignItems:'center', marginLeft:10}}>
-                        <Typography variant="title" color="inherit">
-                            BrendiJS
-                        </Typography>
+                        <div style={{display:'flex', justifyContent:'center', alignItems:'center', marginLeft:10}}>
+                            <Typography variant="title" color="inherit">
+                                BrendiJS
+                            </Typography>
 
-                        <IconButton>
-                            <NotificationsNone/>
-                        </IconButton>
-                        <IconButton >
-                            <AccountCircle/>
-                        </IconButton>
-                        <IconButton onClick={this.openMenu}>
-                            <KeyboardArrowDown/>
-                        </IconButton>
+                            <IconButton>
+                                <NotificationsNone/>
+                            </IconButton>
+                            <IconButton >
+                                <AccountCircle/>
+                            </IconButton>
+                            <IconButton onClick={this.openMenu}>
+                                <KeyboardArrowDown/>
+                            </IconButton>
+                            <Menu
+                                open={this.state.open}
 
-                    </div>
+                                anchorOrigin={{
+                                    vertical:'top',
+                                    horizontal:'right'
+                                }}
+                                transformOrigin={{
+                                    vertical:'top',
+                                    horizontal:'right'
+                                }}
+                            >
+                                <MenuItem onClick={this.openMenu}>
+                                    <Link style={{color:'black',textDecoration:'none'}} to={"/profile"}>Perfil </Link>
+                                </MenuItem>
+                                <MenuItem onClick={this.openMenu}>
+                                    <Link style={{color:'black',textDecoration:'none'}} to={"#"}>Cerrar sesion </Link>
+                                </MenuItem>
+                            </Menu>
+
+                        </div>
 
 
-                </Toolbar>
+                    </Toolbar>
 
-            </AppBar>
-                <List hidden={this.state.hidden || this.state.input ===''} style={{position:'absolute',zIndex:999,backgroundColor:"white",width:"80%"}} >
-                    {list && list.length > 0?
-                    list:
-                    "No encontrado"
-                    }
-                </List>
+                </AppBar>
             </div>
+
+
         );
     }
 }
 
-const styles={
-    nav:{
-        display:"flex",
-        justifyContent:'flex-end',
-        alignItems:'flex-end'
-    }
-}
 
 export default Navbar;
