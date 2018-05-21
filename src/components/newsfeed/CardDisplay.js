@@ -47,8 +47,8 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date}
         <Card style={styles.cardpadre}>
             <CardHeader
                 avatar={
-                    <Avatar arial-label={"Recipe"} style={styles.avatar}>
-                        B
+                    <Avatar arial-label={"Recipe"} style={styles.avatar} src={user.profilePic || null} >
+                        {user.profilePic ? null : user.username.charAt(0)}
                     </Avatar>
                 }
                 title={user.username}
