@@ -23,11 +23,13 @@ const styles = {
     micomentario:{
         display:'flex',
         alignItems:'center',
-        backgroundColor:"#dddddd",
+        backgroundColor:"rgb(242,243,245)",
         padding: "16px 24px 16px"
     },
     comentaritos:{
-        backgroundColor:"#dddddd"
+        backgroundColor:"rgb(242,243,245)",
+        paddingBottom:"0px",
+        paddingTop:"0px"
     },
     botoncito:{
         position: "absolute",
@@ -39,7 +41,7 @@ const actions=[];
 
 
 
-export const CardDisplay =  ({Iliked,handleComment, likes, image, body, date})=>(
+export const CardDisplay =  ({Ilove,handleComment, love, image, body, date})=>(
 
         <Card style={styles.cardpadre}>
             <CardHeader
@@ -72,9 +74,9 @@ export const CardDisplay =  ({Iliked,handleComment, likes, image, body, date})=>
            
 
             <div style={styles.botoncito}>
-                {<IconButton aria-label="Add to favorites" style={styles.buttonIcon} onClick={Iliked}>
-                    {likes >=1 ?
-                        <Badge badgeContent={likes} color="primary">
+                {<IconButton aria-label="Add to favorites" style={styles.buttonIcon} onClick={Ilove}>
+                    {love >=1 ?
+                        <Badge badgeContent={love} color="primary">
                             <Favorite />
                         </Badge>:
 
@@ -83,7 +85,7 @@ export const CardDisplay =  ({Iliked,handleComment, likes, image, body, date})=>
 
                 </IconButton>}
             </div>
-            <ExpansionPanel style={{margin:'0'}}>
+            <ExpansionPanel style={{margin:'0',boxShadow:"none" }}>
 
                     <ExpansionPanelSummary >
                         <div style={styles.expansiones}>
