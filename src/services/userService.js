@@ -61,6 +61,7 @@ export function login(auth){
     })
     .then(user=>{
         console.log(user);
+        localStorage.setItem('user', JSON.stringify(user))
         return user;
     });
 }
@@ -84,3 +85,7 @@ export function signup(user){
         return user;
     });
 }
+
+
+
+

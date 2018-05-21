@@ -44,11 +44,11 @@ export const CardDisplay =  ({Iliked,handleComment,user, likes, image, body, dat
         <Card style={styles.cardpadre}>
             <CardHeader
                 avatar={
-                    <Avatar arial-label={"Recipe"} style={styles.avatar}>
-                        B
+                    <Avatar arial-label={"Recipe"} style={styles.avatar} src={user.profilePic || null} >
+                        {user.profilePic ? null : user.username.charAt(0)}
                     </Avatar>
                 }
-                title={user}
+                title={user.username}
                 subheader={date}
                 action={
                     <IconButton>
