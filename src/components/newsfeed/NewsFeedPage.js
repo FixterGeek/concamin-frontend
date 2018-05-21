@@ -4,6 +4,7 @@ import { NewsFeedComponent } from './NewsFeedComponent';
 import {getPosts, addPost} from '../../services/postService';
 import {AdCard} from "../Advertising/AdCard";
 
+
 class NewsFeedPage extends Component {
 
     state={
@@ -21,7 +22,7 @@ class NewsFeedPage extends Component {
     componentWillMount(){
         getPosts()
             .then(r=>{
-               this.setState({posts:r})
+               //this.setState({posts:r})
                console.log(r)
             }).catch(e=>{
                 console.log(e)
@@ -102,28 +103,31 @@ class NewsFeedPage extends Component {
   render() {
     let {photoPreview, newPost, addLink, posts} = this.state;
     return (
-      <GridList cellHeight={'auto'} cols={3}>
-        <GridListTile cols={2} style={styles.gridTile}>
-            <NewsFeedComponent 
-                posts={posts}
-                handleSubmit={this.handleSubmit} 
-                handleChange={this.handleChange} 
-                photoPreview={photoPreview} 
-                newPost={newPost}    
-                handleLink={this.handleLink}   
-                addLink={addLink}      
-                addLinks={this.addLinks}   
-                clearLink={this.clearLink} 
-                clearFile={this.clearFile}/>
-        </GridListTile>
-          <GridListTile cols={1} style={styles.gridTile}>
 
-              <AdCard ejemplo={this.ejemplo}/>
-              
+            <GridList cellHeight={'auto'} cols={3}>
+                <GridListTile cols={2} style={styles.gridTile}>
+                    <NewsFeedComponent
+                        posts={posts}
+                        handleSubmit={this.handleSubmit}
+                        handleChange={this.handleChange}
+                        photoPreview={photoPreview}
+                        newPost={newPost}
+                        handleLink={this.handleLink}
+                        addLink={addLink}
+                        addLinks={this.addLinks}
+                        clearLink={this.clearLink}
+                        clearFile={this.clearFile}/>
+                </GridListTile>
+                <GridListTile cols={1} style={styles.gridTile}>
+
+                    <AdCard ejemplo={this.ejemplo}/>
 
 
-          </GridListTile>
-      </GridList>
+
+                </GridListTile>
+            </GridList>
+
+
     )
   }
 }
