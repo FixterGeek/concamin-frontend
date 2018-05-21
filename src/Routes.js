@@ -6,6 +6,7 @@ import ProfileContainer from './components/profile/ProfileContainer';
 import { PostCard } from './components/newsfeed/PostCard';
 import LoginPage from './components/login/LoginPage';
 import PublicProfile from './components/profile/PublicProfile';
+import Navbar from "./components/Navbar/Navbar";
 
 const Routes =()=>(
     <Switch>
@@ -14,6 +15,8 @@ const Routes =()=>(
         <Route path="/profile" component={ProfileContainer} />
         <Route path="/login" component={LoginPage}/>
         <Route path="/users/:id" component={PublicProfile} />
+        <Route path="/navbar" component={Navbar}/>
+
 
     </Switch>
 );
