@@ -1,6 +1,6 @@
 import React from 'react';
-import {TextField, Card, CardHeader, Avatar, CardContent, Typography, CardMedia, CardActions, IconButton, Button, Paper, List, ListItem, ListItemText, ListItemIcon} from '@material-ui/core/'
-import {InsertPhoto, PictureAsPdf, InsertLink, Clear} from '@material-ui/icons/';
+import {TextField, Card, CardHeader, Avatar,Input, CardContent,InputAdornment, Collapse, Typography, CardMedia, CardActions, IconButton, Button, Paper, List, ListItem, ListItemText, ListItemIcon} from '@material-ui/core/'
+import {InsertPhoto, PictureAsPdf, InsertLink, Clear, AddCircle} from '@material-ui/icons/';
 
 
 
@@ -30,6 +30,13 @@ const styles = {
     },
     linkField:{
         padding:'1% 2%',
+    },
+    cardpadding:{
+        paddingBottom:'0',
+    },
+    cardpadding2:{
+        paddingTop:'0',
+        paddingBottom:'0',
     }
     
   };
@@ -47,11 +54,12 @@ const styles = {
   }
 
 
-export const PostCard = ({file, image, body,links, handleSubmit, handleChange, photoPreview, previewFile, clearFile, handleLink, linkFields}) => (
+export const PostCard = ({link, file, image, body,links, handleSubmit, handleChange, photoPreview, previewFile, clearFile, handleLink, addLink, addLinks, clearLink}) => (
     
     <form onSubmit={handleSubmit}>
         <Card style={styles.card}>
             <CardHeader
+                style={styles.cardpadding}
                 title={<TextField
                     InputProps={{
                         disableUnderline: true,
@@ -76,7 +84,7 @@ export const PostCard = ({file, image, body,links, handleSubmit, handleChange, p
                     <Clear />
                 </IconButton>
             </CardMedia>:file?
-            <CardContent>
+            <CardContent style={styles.cardpadding2}>
                 <ListItem>
                     <ListItemIcon>
                         <PictureAsPdf />
@@ -88,20 +96,40 @@ export const PostCard = ({file, image, body,links, handleSubmit, handleChange, p
                 </ListItem>
 
             </CardContent>:''}
-                
-            
-            <CardContent>
-            <Typography> Agrega Links</Typography>
-                {/*links.map((link, key)=>(
-                    <TextField
-                    key={key}
+
+            <Collapse in={addLink} timeout="auto" unmountOnExit>
+               <CardContent style={styles.cardpadding2}>
+               <Input
+                    fullWidth
+                    value={link}
                     style={styles.linkField}
-                    name={`links[${key}]`}
+                    name={"link"}
+                    label="Add a Link"
                     onChange={handleChange}
                     id="multiline-flexible"
-                    margin="normal"
-                    />
-                ))*/}
+                    margin="dense"
+                    endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="Toggle password visibility"
+                            onClick={addLinks}>
+                           <AddCircle/>
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                />
+               </CardContent>
+            </Collapse>
+        
+            <CardContent style={styles.cardpadding2}>
+            {links?links.map((link, key)=>(
+               <ListItem key={key}>
+                    <ListItemText inset primary={link} />
+                    <IconButton aria-label="Add to favorites" style={styles.icon} onClick={()=>clearLink(key)}>
+                        <Clear />
+                    </IconButton>
+               </ListItem>
+            )):''}
             </CardContent>
         
             

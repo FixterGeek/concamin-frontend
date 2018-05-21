@@ -3,7 +3,6 @@ import {Card, CardHeader,CardMedia,CardContent, Avatar,IconButton,Typography,Bad
 import {MoreVert,Favorite} from '@material-ui/icons/';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import {CommentBox} from './CommentBox';
 
 const styles = {
@@ -41,7 +40,9 @@ const actions=[];
 
 
 
-export const CardDisplay =  ({Ilove,handleComment, love, image, body, date})=>(
+
+export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date})=>(
+
 
         <Card style={styles.cardpadre}>
             <CardHeader
@@ -50,7 +51,7 @@ export const CardDisplay =  ({Ilove,handleComment, love, image, body, date})=>(
                         B
                     </Avatar>
                 }
-                title={'UserName'}
+                title={user}
                 subheader={date}
                 action={
                     <IconButton>

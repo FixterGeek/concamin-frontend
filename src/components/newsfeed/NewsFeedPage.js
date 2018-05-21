@@ -8,10 +8,13 @@ class NewsFeedPage extends Component {
 
     state={
         newPost:{
-            links:[]
+            links:[],
+            body:"",
+            image:"",
+            file:""
         },
         photoPreview:'',
-        linkFields:[],
+        addLink:false,
         posts:[],
     }
 
@@ -27,10 +30,15 @@ class NewsFeedPage extends Component {
 
     handleSubmit=(e)=>{
         e.preventDefault()
-        console.log(this.state.newPost)
+        //loaders missing
+        console.log(this.state.newPost)        
         addPost(this.state.newPost)
             .then(r=>{
-                console.log(r)
+                let {posts, newPost} = this.state;
+                posts.unshift(r)
+                newPost.body=""
+                this.clearFile()
+                this.setState({posts, newPost})
             }).catch(e=>{
                 console.log(e)
             })
@@ -47,7 +55,7 @@ class NewsFeedPage extends Component {
             console.log('preview de foto')
            }
         }
-        else {
+        else{
             newPost[field] = e.target.value
         }
         this.setState({newPost})
@@ -74,16 +82,25 @@ class NewsFeedPage extends Component {
     }
    
     handleLink=()=>{
-        let {newPost} = this.state
-       // let count = newPost.links.length
-        newPost.links.push('')
-       this.setState({newPost})
+       this.setState({addLink:!this.state.addLink})
+       console.log('lool')
+    }
+    addLinks=()=>{
+        let {newPost} = this.state;
+        newPost['links'].push(newPost.link)
+        newPost.link=""       
+        this.setState({newPost})
+    }
+    clearLink=(key)=>{
+        let {newPost} = this.state;
+        newPost.links.splice(key, 1)
+        this.setState({newPost})
     }
 
 
 
   render() {
-    let {photoPreview, newPost, linkFields, posts} = this.state;
+    let {photoPreview, newPost, addLink, posts} = this.state;
     return (
       <GridList cellHeight={'auto'} cols={3}>
         <GridListTile cols={2} style={styles.gridTile}>
@@ -94,7 +111,9 @@ class NewsFeedPage extends Component {
                 photoPreview={photoPreview} 
                 newPost={newPost}    
                 handleLink={this.handleLink}   
-                linkFields={linkFields}          
+                addLink={addLink}      
+                addLinks={this.addLinks}   
+                clearLink={this.clearLink} 
                 clearFile={this.clearFile}/>
         </GridListTile>
           <GridListTile cols={1} style={styles.gridTile}>
