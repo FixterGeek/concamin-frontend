@@ -12,9 +12,9 @@ import PublicProfile from './components/profile/PublicProfile';
 const Routes = () => (
     <Switch>
         <Route path="/chat" component={Chat} />
-        <Route path="/" component={PostCard} />
+        {/* <Route path="/" component={PostCard} /> */}
         <Route path="/newsfeed" component={NewsFeedPage} />
-        {/*<Route exact path="/" component={HomeContainer} />*/}
+        <Route exact path="/" component={HomeContainer} />
         <Route path="/profile" component={ProfileContainer} />
         <Route path="/login" component={LoginPage} />
         <Route path="/users/:id" component={PublicProfile} />
