@@ -39,7 +39,7 @@ const actions=[];
 
 
 
-export const CardDisplay =  ({Iliked,handleComment, likes, image, body, date})=>(
+export const CardDisplay =  ({Iliked,handleComment,user, likes, image, body, date})=>(
 
         <Card style={styles.cardpadre}>
             <CardHeader
@@ -48,7 +48,7 @@ export const CardDisplay =  ({Iliked,handleComment, likes, image, body, date})=>
                         B
                     </Avatar>
                 }
-                title={'UserName'}
+                title={user}
                 subheader={date}
                 action={
                     <IconButton>
