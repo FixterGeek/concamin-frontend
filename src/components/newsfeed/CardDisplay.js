@@ -51,7 +51,7 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date}
                         B
                     </Avatar>
                 }
-                title={user}
+                title={user.username}
                 subheader={date}
                 action={
                     <IconButton>
