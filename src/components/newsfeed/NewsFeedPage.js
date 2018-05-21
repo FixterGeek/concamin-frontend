@@ -22,7 +22,7 @@ class NewsFeedPage extends Component {
     componentWillMount(){
         getPosts()
             .then(r=>{
-               //this.setState({posts:r})
+               this.setState({posts:r})
                console.log(r)
             }).catch(e=>{
                 console.log(e)

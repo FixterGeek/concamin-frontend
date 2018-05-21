@@ -13,7 +13,7 @@ class MainMenu extends Component {
         <div className="drawer-container">
             <Divider/>
             <List>
-               <Link to="/" className="menu-links">
+               <Link to="/profile" className="menu-links">
                <ListItem button>
                     <ListItemIcon>
                         <Person />
