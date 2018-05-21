@@ -1,6 +1,6 @@
 import React from 'react';
-import {TextField, Card, CardHeader, Avatar, CardContent, Typography, CardMedia, CardActions, IconButton, Button} from '@material-ui/core/'
-import {InsertPhoto, PictureAsPdf, InsertLink} from '@material-ui/icons/';
+import {TextField, Card, CardHeader, Avatar,Input, CardContent,InputAdornment, Collapse, Typography, CardMedia, CardActions, IconButton, Button, Paper, List, ListItem, ListItemText, ListItemIcon} from '@material-ui/core/'
+import {InsertPhoto, PictureAsPdf, InsertLink, Clear, AddCircle} from '@material-ui/icons/';
 
 
 
@@ -8,6 +8,7 @@ const styles = {
     media: {
       height: 0,
       paddingTop: '56.25%', // 16:9
+      position:'relative'
     },
     card:{
         marginBottom:'2%'
@@ -18,15 +19,32 @@ const styles = {
     actions:{
         display:'flex',
         justifyContent:'space-between'
+    },
+    icon:{
+        position:'absolute',
+        top:0,
+        right:0
+    },
+    paper:{
+        position:'relative'
+    },
+    linkField:{
+        padding:'1% 2%',
+    },
+    cardpadding:{
+        paddingBottom:'0',
+    },
+    cardpadding2:{
+        paddingTop:'0',
+        paddingBottom:'0',
     }
     
   };
 
 
-  let elInput;
-
+  let profilePic;
   function clicki(){
-      elInput.click();
+    profilePic.click();
   }
 
   let elFile;
@@ -36,16 +54,19 @@ const styles = {
   }
 
 
-
-export const PostCard = ({handleText, text, image, file, handleSubmit, link, handleChange}) => (
+export const PostCard = ({link, file, image, body,links, handleSubmit, handleChange, photoPreview, previewFile, clearFile, handleLink, addLink, addLinks, clearLink}) => (
     
     <form onSubmit={handleSubmit}>
         <Card style={styles.card}>
             <CardHeader
+                style={styles.cardpadding}
                 title={<TextField
-                    name="text"
+                    InputProps={{
+                        disableUnderline: true,
+                    }}
+                    value={body}
+                    name="body"
                     onChange={handleChange}
-                    value={text}
                     id="multiline-flexible"
                     label="Qué estás pensando bro?"
                     fullWidth={true}
@@ -57,25 +78,72 @@ export const PostCard = ({handleText, text, image, file, handleSubmit, link, han
                         O
                  </Avatar>}/>
 
-            {image?<CardMedia
-                style={styles.media}
-                image="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-            />:''}
-            {file?<CardMedia
-                style={styles.media}
-                image="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-            />:''}
+            {photoPreview?
+            <CardMedia style={styles.media} image={photoPreview}>
+                <IconButton aria-label="Add to favorites" style={styles.icon} onClick={clearFile}>
+                    <Clear />
+                </IconButton>
+            </CardMedia>:file?
+            <CardContent style={styles.cardpadding2}>
+                <ListItem>
+                    <ListItemIcon>
+                        <PictureAsPdf />
+                    </ListItemIcon>
+                    <ListItemText inset primary={file.name} />
+                    <IconButton aria-label="Add to favorites" style={styles.icon} onClick={clearFile}>
+                        <Clear />
+                    </IconButton>
+                </ListItem>
+
+            </CardContent>:''}
+
+            <Collapse in={addLink} timeout="auto" unmountOnExit>
+               <CardContent style={styles.cardpadding2}>
+               <Input
+                    fullWidth
+                    value={link}
+                    style={styles.linkField}
+                    name={"link"}
+                    label="Add a Link"
+                    onChange={handleChange}
+                    id="multiline-flexible"
+                    margin="dense"
+                    endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="Toggle password visibility"
+                            onClick={addLinks}>
+                           <AddCircle/>
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                />
+               </CardContent>
+            </Collapse>
+        
+            <CardContent style={styles.cardpadding2}>
+            {links?links.map((link, key)=>(
+               <ListItem key={key}>
+                    <ListItemText inset primary={link} />
+                    <IconButton aria-label="Add to favorites" style={styles.icon} onClick={()=>clearLink(key)}>
+                        <Clear />
+                    </IconButton>
+               </ListItem>
+            )):''}
+            </CardContent>
+        
+            
             <CardActions style={styles.actions}>
                 <div>
-                    <IconButton aria-label="Add to favorites" onClick={clicki}>
-                        <input ref={input=>elInput=input} type="file" hidden onChange={handleChange} name="image"/>
+                    <IconButton aria-label="Add to favorites" onClick={clicki} color={photoPreview?"primary":"default"} disabled={file?true:false}>
+                        <input id='image' ref={input=>profilePic=input} type="file" hidden onChange={handleChange} name="image"/>
                         <InsertPhoto />
                     </IconButton>
-                    <IconButton aria-label="Add to favorites" onClick={clickFile}>
-                        <input ref={input=>elFile=input} type="file" hidden accept=".pdf" onChange={handleChange} name="file"/>
+                    <IconButton aria-label="Add to favorites" onClick={clickFile} color={file?"primary":"default"} disabled={photoPreview?true:false}>
+                        <input id="file" ref={input=>elFile=input} type="file" hidden accept=".pdf" onChange={handleChange} name="file"/>
                         <PictureAsPdf />
                     </IconButton>
-                    <IconButton aria-label="Add to favorites">
+                    <IconButton aria-label="Add to favorites" onClick={handleLink}> 
                         <InsertLink />
                     </IconButton>
                 </div>

@@ -10,6 +10,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Create from '@material-ui/icons/Create';
 import Button from '@material-ui/core/Button';
 import { ChatAdd } from './ChatAdd';
+import {getOrCreateChat} from '../../services/firebase';
+import {toastr} from 'toastr';
 
 const list = [{
     name: 'mefit',
@@ -68,7 +70,10 @@ class Chat extends Component {
 
         users: [{
             name: 'mefit',
-            fecha: '10/10/1900'
+            username:'mefit',
+            fecha: '10/10/1900',
+            _id:1,
+            email:'mefit@gmail.com'
         },
         {
             name: 'carro',
@@ -76,6 +81,9 @@ class Chat extends Component {
         },
         {
             name: 'Jose',
+            _id:2,
+            email:'jose@gmail.com',
+            username:'Jose',
             fecha: '8/06/2919'
         },
         ],
@@ -116,10 +124,21 @@ class Chat extends Component {
     }
 
     onClickChat = (a) => {
-        this.setState({
-            userSelected: a.name,
+        console.log(a)
+        const mySelf = JSON.parse(localStorage.getItem('user'));
+        getOrCreateChat( mySelf._id, a._id)
+        .then(chat=>{
+            console.log(chat);
+            this.setState({userSelected:a.name})
         })
-        console.log(this.state.userSelected)
+        .catch(e=>{
+            console.log(e);
+            toastr.error(e)
+        })
+        // this.setState({
+        //     userSelected: a.name,
+        // })
+        // console.log(this.state.userSelected)
     }
     onChange = (a) => {
         this.setState({
