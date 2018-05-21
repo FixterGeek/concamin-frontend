@@ -8,7 +8,10 @@ class NewsFeedPage extends Component {
 
     state={
         newPost:{
-            links:[]
+            links:[],
+            body:"",
+            image:"",
+            file:""
         },
         photoPreview:'',
         addLink:false,
@@ -28,12 +31,14 @@ class NewsFeedPage extends Component {
     handleSubmit=(e)=>{
         e.preventDefault()
         //loaders missing
-        console.log(this.state.newPost)
+        console.log(this.state.newPost)        
         addPost(this.state.newPost)
             .then(r=>{
-                let {posts} = this.state;
+                let {posts, newPost} = this.state;
                 posts.unshift(r)
-                this.setState({posts, newPost:{}})
+                newPost.body=""
+                this.clearFile()
+                this.setState({posts, newPost})
             }).catch(e=>{
                 console.log(e)
             })
@@ -83,7 +88,7 @@ class NewsFeedPage extends Component {
     addLinks=()=>{
         let {newPost} = this.state;
         newPost['links'].push(newPost.link)
-        newPost.link=""
+        newPost.link=""       
         this.setState({newPost})
     }
     clearLink=(key)=>{
