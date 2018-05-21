@@ -1,10 +1,26 @@
 import React, {Component} from 'react';
-import {login} from '../../services/userService';
+import {login, signup, getLoggedUser} from '../../services/userService';
 import toastr from 'toastr';
 import {LoginDisplay} from './LoginDisplay';
+import {SignupDisplay} from './SignupDisplay';
 
 
 class LoginPage extends Component{
+
+  state = {
+    signup:false,
+    error:null
+  }
+
+  componentWillMount(){
+    getLoggedUser()
+    .then(r=>{
+      this.props.history.push('/profile')
+    })
+    .catch(e=>{
+      
+    })
+  }
 
     doLoggin = (e) => {
       e.preventDefault();
@@ -18,12 +34,39 @@ class LoginPage extends Component{
         this.props.history.push('/profile')
       })
       .catch(e=>{
-        toastr.error(e)
+        toastr.error("Hay un problema con tu usuario o contraseña " + e.statusText)
         console.log(e)
       })
     };
 
+    registerUser = (e) => {
+      e.preventDefault();
+      if(e.target.password.value !== e.target.password2.value){
+        return this.setState({error:"Tu password no coincide"})
+      }else this.setState({error:null})
+      const newUser = {
+        username: e.target.username.value,
+        email: e.target.email.value,
+        password: e.target.password.value
+      }
+      signup(newUser)
+      .then(user=>{
+        console.log(user);
+        this.props.history.push('/profile')
+      })
+      .catch(e=>{
+        console.log(e);
+        toastr.error(e)
+      })
+    };
+
+    changeToSignup = () =>{
+      this.setState({signup:!this.state.signup})
+    };
+
     render(){
+      const {error} = this.state;
+      if(this.state.signup) return <SignupDisplay error={error} changeToSignup={this.changeToSignup} onSubmit={this.registerUser} />
         return(
 <div>
   {/* <form onSubmit={this.doLoggin} action="">
@@ -31,7 +74,7 @@ class LoginPage extends Component{
     <input placeholder="password" name="password" type="text"/>
     <input type="submit"/>
   </form> */}
-  <LoginDisplay onSubmit={this.doLoggin} />
+  <LoginDisplay changeToSignup={this.changeToSignup} onSubmit={this.doLoggin} />
 </div>
         );
     }
