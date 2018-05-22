@@ -76,28 +76,31 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
 
             {links.length <= 0 ?
                 "": links.map((link, key)=>(
-                    <List key={key} component="nav">
-                        <Link style={{ textDecoration: 'none'}} to={"/#"}>
+
+                        <list key={key} component="nav">
+                            <a href={"/#"} target="_blank" style={{ textDecoration: 'none'}} >
                             <ListItem button >
                                 <ListItemIcon>
                                     <InsertLink />
                                 </ListItemIcon>
                                 <ListItemText inset primary={link} />
                             </ListItem>
-                        </Link>
+                            </a>
+                        </list>
 
-                    </List>
+
                 ))}
 
             {file ?
                 <List>
+                    <a href={"/#"} target="_blank" style={{ textDecoration: 'none'}} >
                     <ListItem>
                         <ListItemIcon>
                             <PictureAsPdf />
                         </ListItemIcon>
                         <ListItemText inset primary={file.name} />
-
                     </ListItem>
+                    </a>
                 </List>:""}
 
 
