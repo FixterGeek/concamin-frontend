@@ -19,12 +19,9 @@ const Routes = () => (
         <Route path="/profile" component={ProfileContainer} />
         <Route path="/login" component={LoginPage} />
         <Route path="/users/:id" component={PublicProfile} />
-<<<<<<< HEAD
-=======
         <Route path="/navbar" component={Navbar}/>
 
 
->>>>>>> b0d9d16f78d3a023b7680e02448edcf8cb9c5e8f
     </Switch>
 );
 

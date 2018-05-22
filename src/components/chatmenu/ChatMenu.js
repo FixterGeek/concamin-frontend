@@ -225,6 +225,7 @@ class Chat extends Component {
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
                 <ChatAdd
+                    addMessage={this.addMessage}
                     {...this.state.activeChat}
                     listi={this.state.users}
                     textInput={this.state.input}

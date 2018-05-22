@@ -5,11 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^1.0.0",
     "@material-ui/icons": "^1.0.0",
-<<<<<<< HEAD
-    "firebase": "^4.11.0",
-=======
     "autosuggest-highlight": "^3.1.1",
->>>>>>> b0d9d16f78d3a023b7680e02448edcf8cb9c5e8f
     "react": "^16.3.2",
     "react-autosuggest": "^9.3.4",
     "react-dom": "^16.3.2",

@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button'
 import { Create, Close, ExpandMore } from '@material-ui/icons/';
 
 
-export const ChatAdd = ({ participants, messages=[], onClickChat, handleInput, userSelected, listi, textInput, onChange, close, onClose, onChangeHandler, pushButton, visible, expanded }) => {
+export const ChatAdd = ({ addMessage, participants, messages=[], onClickChat, handleInput, userSelected, listi, textInput, onChange, close, onClose, onChangeHandler, pushButton, visible, expanded }) => {
     console.log("desconstr", participants, messages)
 
     let list = listi
@@ -79,7 +79,7 @@ export const ChatAdd = ({ participants, messages=[], onClickChat, handleInput, u
                     width: '100%',
                 }}>
                     <div style={{ width: '100%', backgroundColor: 'dimgray' }}>
-                        <Input style={{ height: 50, flexGrow: 2, paddingLeft: 10, width: '100%' }}
+                        <Input onKeyPress={addMessage} style={{ height: 50, flexGrow: 2, paddingLeft: 10, width: '100%' }}
                             value={textInput}
                             onChange={onChangeHandler}
                         />
