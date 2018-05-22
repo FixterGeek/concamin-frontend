@@ -1,6 +1,6 @@
 import React from 'react'
 import {Card,CardMedia,CardContent,Typography,Button} from '@material-ui/core/';
-
+import {Link} from 'react-router-dom';
 
 const styles = {
     media: {
@@ -20,7 +20,7 @@ const styles = {
 };
 export const AdCard = ({ejemplo})=>(
     <div style={styles.content}>
-        <Button onClick={ejemplo}>
+        <Link style={{color:'black',textDecoration:'none',fontWeight:'bold'}} to={"#"}>
             <Card style={styles.cardPublicidad} >
                 <CardContent>
                     <Typography>
@@ -40,7 +40,7 @@ export const AdCard = ({ejemplo})=>(
                     </Typography>
                 </CardContent>
             </Card>
-        </Button>
+        </Link>
 
 
     </div>

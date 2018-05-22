@@ -3,10 +3,14 @@ import { GridList, GridListTile } from '@material-ui/core';
 import { NewsFeedComponent } from './NewsFeedComponent';
 import {getPosts, addPost} from '../../services/postService';
 import {AdCard} from "../Advertising/AdCard";
+import { MainLoader } from '../loader/MainLoader';
+
+
 
 class NewsFeedPage extends Component {
 
     state={
+        loading:true,
         newPost:{
             links:[],
             body:"",
@@ -19,10 +23,12 @@ class NewsFeedPage extends Component {
     }
 
     componentWillMount(){
+        this.setState({loading:true})
         getPosts()
             .then(r=>{
                this.setState({posts:r})
                console.log(r)
+               this.setState({loading:false})
             }).catch(e=>{
                 console.log(e)
             })
@@ -30,15 +36,16 @@ class NewsFeedPage extends Component {
 
     handleSubmit=(e)=>{
         e.preventDefault()
-        //loaders missing
-        console.log(this.state.newPost)        
+        this.setState({loading:true})    
         addPost(this.state.newPost)
             .then(r=>{
                 let {posts, newPost} = this.state;
                 posts.unshift(r)
                 newPost.body=""
+                newPost.links=[]
                 this.clearFile()
-                this.setState({posts, newPost})
+                this.setState({posts, newPost, loading:false})
+                
             }).catch(e=>{
                 console.log(e)
             })
@@ -100,30 +107,36 @@ class NewsFeedPage extends Component {
 
 
   render() {
-    let {photoPreview, newPost, addLink, posts} = this.state;
+    let {photoPreview, newPost, addLink, posts, loading} = this.state;
+   // if(loading) return(<MainLoader/>)
     return (
-      <GridList cellHeight={'auto'} cols={3}>
-        <GridListTile cols={2} style={styles.gridTile}>
-            <NewsFeedComponent 
-                posts={posts}
-                handleSubmit={this.handleSubmit} 
-                handleChange={this.handleChange} 
-                photoPreview={photoPreview} 
-                newPost={newPost}    
-                handleLink={this.handleLink}   
-                addLink={addLink}      
-                addLinks={this.addLinks}   
-                clearLink={this.clearLink} 
-                clearFile={this.clearFile}/>
-        </GridListTile>
-          <GridListTile cols={1} style={styles.gridTile}>
 
-              <AdCard ejemplo={this.ejemplo}/>
-              
+                <GridList cellHeight={'auto'} cols={3}>
+                    <GridListTile cols={2} style={styles.gridTile}>
+                        <NewsFeedComponent
+                            posts={posts}
+                            handleSubmit={this.handleSubmit}
+                            handleChange={this.handleChange}
+                            photoPreview={photoPreview}
+                            newPost={newPost}
+                            handleLink={this.handleLink}
+                            addLink={addLink}
+                            addLinks={this.addLinks}
+                            clearLink={this.clearLink}
+                            clearFile={this.clearFile}/>
+                    </GridListTile>
+                    <GridListTile cols={1} style={styles.gridTile}>
+
+                        <AdCard ejemplo={this.ejemplo}/>
 
 
-          </GridListTile>
-      </GridList>
+
+                    </GridListTile>
+                </GridList>
+
+
+
+
     )
   }
 }

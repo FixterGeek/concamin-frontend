@@ -13,7 +13,7 @@ const styles = {
         backgroundColor:'red',
     },
     comentaritos:{
-        backgroundColor:"#dddddd"
+        backgroundColor:"rgb(242,243,245)"
     },
 
     divisioncita:{
