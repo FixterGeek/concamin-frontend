@@ -22,10 +22,12 @@ class NewsFeedPage extends Component {
     }
 
     componentWillMount(){
+        this.setState({loading:true})
         getPosts()
             .then(r=>{
                this.setState({posts:r})
                console.log(r)
+               this.setState({loading:false})
             }).catch(e=>{
                 console.log(e)
             })
@@ -33,15 +35,16 @@ class NewsFeedPage extends Component {
 
     handleSubmit=(e)=>{
         e.preventDefault()
-        //loaders missing
-        console.log(this.state.newPost)        
+        this.setState({loading:true})    
         addPost(this.state.newPost)
             .then(r=>{
                 let {posts, newPost} = this.state;
                 posts.unshift(r)
                 newPost.body=""
+                newPost.links=[]
                 this.clearFile()
-                this.setState({posts, newPost})
+                this.setState({posts, newPost, loading:false})
+                
             }).catch(e=>{
                 console.log(e)
             })
@@ -104,6 +107,7 @@ class NewsFeedPage extends Component {
 
   render() {
     let {photoPreview, newPost, addLink, posts, loading} = this.state;
+   // if(loading) return(<MainLoader/>)
     return (
 
             <GridList cellHeight={'auto'} cols={3}>
