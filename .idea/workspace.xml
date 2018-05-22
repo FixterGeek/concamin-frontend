@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdbc3dd6-fabb-4e5e-a452-160b0c3a1ed0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/newsfeed/NewsFeedPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newsfeed/NewsFeedPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/Navbar.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Navbar.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Navbar.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Navbar/Navbar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="636">
-              <caret line="51" column="174" selection-start-line="51" selection-start-column="174" selection-end-line="51" selection-end-column="174" />
+            <state relative-caret-position="506">
+              <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -46,16 +46,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewsFeedPage.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NewsFeedPage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/newsfeed/NewsFeedPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
+            <state relative-caret-position="59">
               <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userService.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/services/userService.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -82,8 +87,8 @@
         <option value="$PROJECT_DIR$/src/Routes.js" />
         <option value="$PROJECT_DIR$/src/components/Navbar/SearchInput.js" />
         <option value="$PROJECT_DIR$/src/components/Navbar/navbarstyle.css" />
-        <option value="$PROJECT_DIR$/src/components/Navbar/Navbar.js" />
         <option value="$PROJECT_DIR$/src/components/newsfeed/NewsFeedPage.js" />
+        <option value="$PROJECT_DIR$/src/components/Navbar/Navbar.js" />
       </list>
     </option>
   </component>
@@ -154,6 +159,12 @@
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="newsfeed" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="concamin-frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="concamin-frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -192,12 +203,12 @@
       <option name="presentableId" value="Default" />
       <updated>1526778683113</updated>
       <workItem from="1526778684524" duration="22282000" />
-      <workItem from="1526829491107" duration="13465000" />
+      <workItem from="1526829491107" duration="13782000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35747000" />
+    <option name="totallyTimeSpent" value="36064000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -384,22 +395,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Navbar/Navbar.js">
+    <entry file="file://$PROJECT_DIR$/src/components/newsfeed/NewsFeedPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="51" column="174" selection-start-line="51" selection-start-column="174" selection-end-line="51" selection-end-column="174" />
+        <state relative-caret-position="59">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/newsfeed/NewsFeedPage.js">
+    <entry file="file://$PROJECT_DIR$/src/services/userService.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Navbar/Navbar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="506">
+          <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import {AppBar,Toolbar,Typography,IconButton,Menu,MenuItem, Avatar} from '@material-ui/core/';
-import {AccountCircle,NotificationsNone,KeyboardArrowDown} from '@material-ui/icons/';
+import {NotificationsNone,KeyboardArrowDown} from '@material-ui/icons/';
 import {Link} from 'react-router-dom';
 import SearchInput from './SearchInput';
 
@@ -37,14 +37,8 @@ import SearchInput from './SearchInput';
                             <SearchInput/>
 
                         </div>
-
-
-
+                        
                         <div style={{display:'flex', justifyContent:'center', alignItems:'center', marginLeft:10}}>
-                            <Typography variant="title" color="inherit">
-                                BrendiJS
-                            </Typography>
-
                             <IconButton>
                                 <NotificationsNone/>
                             </IconButton>
