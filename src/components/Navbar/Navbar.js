@@ -28,10 +28,11 @@ import SearchInput from './SearchInput';
 
         const { anchorEl } = this.state;
         const open = Boolean(anchorEl);
+        const user = localStorage.getItem("user")
 
         return(
             <div style={{marginLeft:'240px'}}>
-                <AppBar position="static" color="default"  >
+                <AppBar position="fixed" color="default"  >
                     <Toolbar >
                         <div style={{ flex:1}}>
                             <SearchInput/>
