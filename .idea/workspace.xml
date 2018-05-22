@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="cdbc3dd6-fabb-4e5e-a452-160b0c3a1ed0" name="Default" comment="">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/components/newsfeed/NewsFeedPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newsfeed/NewsFeedPage.js" afterDir="false" />
 =======
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+>>>>>>> a5854dbb79ba3e0414ff5c7804e206908cdb7624
       <change beforePath="$PROJECT_DIR$/src/components/newsfeed/CardDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newsfeed/CardDisplay.js" afterDir="false" />
 >>>>>>> 13958f846966a344cf9a585cf72466f0b90a2a65
     </list>
@@ -72,8 +75,8 @@
       <file leaf-file-name="CardDisplay.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/newsfeed/CardDisplay.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="618">
-              <caret line="100" column="26" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
+            <state relative-caret-position="648">
+              <caret line="102" column="24" selection-start-line="102" selection-start-column="24" selection-end-line="102" selection-end-column="24" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -259,10 +262,14 @@
   </component>
   <component name="TimeTrackingManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="35747000" />
 =======
     <option name="totallyTimeSpent" value="27701000" />
 >>>>>>> 13958f846966a344cf9a585cf72466f0b90a2a65
+=======
+    <option name="totallyTimeSpent" value="28074000" />
+>>>>>>> a5854dbb79ba3e0414ff5c7804e206908cdb7624
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -650,9 +657,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/newsfeed/CardDisplay.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="618">
           <caret line="100" column="26" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
 >>>>>>> 13958f846966a344cf9a585cf72466f0b90a2a65
+=======
+        <state relative-caret-position="648">
+          <caret line="102" column="24" selection-start-line="102" selection-start-column="24" selection-end-line="102" selection-end-column="24" />
+>>>>>>> a5854dbb79ba3e0414ff5c7804e206908cdb7624
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
