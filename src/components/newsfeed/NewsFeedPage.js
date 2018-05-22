@@ -3,6 +3,7 @@ import { GridList, GridListTile } from '@material-ui/core';
 import { NewsFeedComponent } from './NewsFeedComponent';
 import {getPosts, addPost} from '../../services/postService';
 import {AdCard} from "../Advertising/AdCard";
+import Navbar from "../Navbar/Navbar";
 
 
 class NewsFeedPage extends Component {
@@ -103,29 +104,32 @@ class NewsFeedPage extends Component {
   render() {
     let {photoPreview, newPost, addLink, posts} = this.state;
     return (
+            <div>
+                <Navbar/>
+                <GridList cellHeight={'auto'} cols={3}>
+                    <GridListTile cols={2} style={styles.gridTile}>
+                        <NewsFeedComponent
+                            posts={posts}
+                            handleSubmit={this.handleSubmit}
+                            handleChange={this.handleChange}
+                            photoPreview={photoPreview}
+                            newPost={newPost}
+                            handleLink={this.handleLink}
+                            addLink={addLink}
+                            addLinks={this.addLinks}
+                            clearLink={this.clearLink}
+                            clearFile={this.clearFile}/>
+                    </GridListTile>
+                    <GridListTile cols={1} style={styles.gridTile}>
 
-            <GridList cellHeight={'auto'} cols={3}>
-                <GridListTile cols={2} style={styles.gridTile}>
-                    <NewsFeedComponent
-                        posts={posts}
-                        handleSubmit={this.handleSubmit}
-                        handleChange={this.handleChange}
-                        photoPreview={photoPreview}
-                        newPost={newPost}
-                        handleLink={this.handleLink}
-                        addLink={addLink}
-                        addLinks={this.addLinks}
-                        clearLink={this.clearLink}
-                        clearFile={this.clearFile}/>
-                </GridListTile>
-                <GridListTile cols={1} style={styles.gridTile}>
-
-                    <AdCard ejemplo={this.ejemplo}/>
+                        <AdCard ejemplo={this.ejemplo}/>
 
 
 
-                </GridListTile>
-            </GridList>
+                    </GridListTile>
+                </GridList>
+            </div>
+
 
 
     )
