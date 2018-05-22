@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 
 //testing chat
-import {getOrCreateChat} from '../../services/firebase';
 
 class HomeContainer extends Component {
 
   //testing chats
-  componentWillMount(){
-    getOrCreateChat();
-  }
+
 
   render() {
     return (
@@ -20,4 +17,3 @@ class HomeContainer extends Component {
 }
 
 export default HomeContainer;
-;
