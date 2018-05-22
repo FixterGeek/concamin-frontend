@@ -158,14 +158,15 @@ class Chat extends Component {
             body:this.state.input
         };
         if(e.key == 'Enter'){
+            console.log('orale:', message)
             addMessage(message, activeChat._id)
             .then(chat=>{
                 //activeChat.messages.push(message);
-                this.setState({activeChat:chat});
+                this.setState({activeChat:chat, input:''});
             })
             .catch(e=>{
                 console.log(e);
-                toastr.error(e)
+                toastr.error("Inicia sesión : "  + e.statusText)
             });
           }
 
@@ -225,6 +226,7 @@ class Chat extends Component {
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
                 <ChatAdd
+                input={this.state.input}
                     addMessage={this.addMessage}
                     {...this.state.activeChat}
                     listi={this.state.users}
@@ -238,7 +240,7 @@ class Chat extends Component {
                     hidden={this.state.close}
                     expanded={this.state.expanded}
                     userSelected={this.state.userSelected}
-                    handleInput={this.handleInput}
+                    handleInput={this.onChangeHandler}
                     onClickChat={this.onClickChat}
                 />
             </div>

@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button'
 import { Create, Close, ExpandMore } from '@material-ui/icons/';
 
 
-export const ChatAdd = ({ addMessage, participants, messages=[], onClickChat, handleInput, userSelected, listi, textInput, onChange, close, onClose, onChangeHandler, pushButton, visible, expanded }) => {
+export const ChatAdd = ({ input, addMessage, participants, messages=[], onClickChat, handleInput, userSelected, listi, textInput, onChange, close, onClose, onChangeHandler, pushButton, visible, expanded }) => {
     console.log("desconstr", participants, messages)
 
     let list = listi
@@ -46,12 +46,12 @@ export const ChatAdd = ({ addMessage, participants, messages=[], onClickChat, ha
                         <section style={{ height: '60vh' }}>
                             <ul>
                                 {messages.map((m, index) => {
-                                    return <li key={index}>{m.user}: {m.message} </li>
+                                    return <li key={index}> {m.body} </li>
                                 })}
                             </ul>
                         </section>
                         <div style={{ width: '100%', backgroundColor: 'dimgray', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <Input style={{ height: 50, flexGrow: 2, paddingLeft: 10 }} name="messageInput" onChange={handleInput}
+                            <Input value={input} onKeyPress={addMessage} style={{ height: 50, flexGrow: 2, paddingLeft: 10 }} name="messageInput" onChange={handleInput}
                                 placeholder="Escribe un mensaje.."
                             />
                             <Button style={{ marginRight: 5 }} variant="fab" mini color="secondary" aria-label="Create" onClick={this.onAdd}>
@@ -79,7 +79,7 @@ export const ChatAdd = ({ addMessage, participants, messages=[], onClickChat, ha
                     width: '100%',
                 }}>
                     <div style={{ width: '100%', backgroundColor: 'dimgray' }}>
-                        <Input onKeyPress={addMessage} style={{ height: 50, flexGrow: 2, paddingLeft: 10, width: '100%' }}
+                        <Input  style={{ height: 50, flexGrow: 2, paddingLeft: 10, width: '100%' }}
                             value={textInput}
                             onChange={onChangeHandler}
                         />
