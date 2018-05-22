@@ -3,7 +3,7 @@ import { GridList, GridListTile } from '@material-ui/core';
 import { NewsFeedComponent } from './NewsFeedComponent';
 import {getPosts, addPost} from '../../services/postService';
 import {AdCard} from "../Advertising/AdCard";
-import Navbar from "../Navbar/Navbar";
+
 
 
 class NewsFeedPage extends Component {
@@ -104,8 +104,7 @@ class NewsFeedPage extends Component {
   render() {
     let {photoPreview, newPost, addLink, posts} = this.state;
     return (
-            <div>
-                <Navbar/>
+
                 <GridList cellHeight={'auto'} cols={3}>
                     <GridListTile cols={2} style={styles.gridTile}>
                         <NewsFeedComponent
@@ -128,7 +127,7 @@ class NewsFeedPage extends Component {
 
                     </GridListTile>
                 </GridList>
-            </div>
+
 
 
 
