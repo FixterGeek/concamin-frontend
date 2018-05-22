@@ -1,5 +1,5 @@
-//const baseUrl = 'https://concamin.herokuapp.com/chats/';
-const baseUrl = 'http://localhost:3000/chats/';
+const baseUrl = 'https://concamin.herokuapp.com/chats/';
+//const baseUrl = 'http://localhost:3000/chats/';
 
 export function addMessage(message, id){
     const m = JSON.stringify(message);
