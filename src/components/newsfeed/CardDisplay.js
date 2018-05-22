@@ -1,6 +1,8 @@
 import React from 'react';
-import {Card, CardHeader,CardMedia,CardContent,CardActions, Avatar,IconButton,Typography,Button,TextField} from '@material-ui/core/';
-import {MoreVert,Favorite,MoreHoriz} from '@material-ui/icons/';
+import {Card, CardHeader,CardMedia,CardContent, Avatar,IconButton,Typography,Badge,TextField, Button, CardActions} from '@material-ui/core/';
+import {MoreVert,Favorite} from '@material-ui/icons/';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import {CommentBox} from './CommentBox';
 
 const styles = {
@@ -16,21 +18,41 @@ const styles = {
     },
     cardpadre:{
         marginBottom:'2%'
+    },
+    micomentario:{
+        display:'flex',
+        alignItems:'center',
+        backgroundColor:"rgb(242,243,245)",
+        padding: "16px 24px 16px"
+    },
+    comentaritos:{
+        backgroundColor:"rgb(242,243,245)",
+        paddingBottom:"0px",
+        paddingTop:"0px"
+    },
+    botoncito:{
+        position: "absolute",
+        right: "20px",
+        zIndex: 999,
     }
 };
+const actions=[];
 
 
-export const CardDisplay =  ({Iliked})=>(
+
+
+export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date})=>(
+
 
         <Card style={styles.cardpadre}>
             <CardHeader
                 avatar={
-                    <Avatar arial-label={"Recipe"} style={styles.avatar}>
-                        B
+                    <Avatar arial-label={"Recipe"} style={styles.avatar} src={user.profilePic || null} >
+                        {user.profilePic ? null : user.username.charAt(0)}
                     </Avatar>
                 }
-                title={"Brenda Ortega"}
-                subheader={"mayo 19, 2018"}
+                title={user.username}
+                subheader={date}
                 action={
                     <IconButton>
                         <MoreVert/>
@@ -41,25 +63,68 @@ export const CardDisplay =  ({Iliked})=>(
 
             <CardContent>
                 <Typography component="p">
-                    Había una vez un hombre de Piltóver llamado Corin Reveck, que tenía una hija de nombre Orianna a la que quería más que a nada en el mundo. Pese a que Orianna poseía un talento increíble para el baile, se sentía fascinada por los campeones de League of Legends. Esa fascinación la impulsó a comenzar un entrenamiento para llegar a ser una campeona. Desgraciadamente, su ingenuidad la impulsó a tomar riesgos innecesarios que acabarían desembocando en una muerte trágica. El fallecimiento de Orianna destrozó a Corin, sumiéndolo en una profunda depresión que le llevó a obsesionarse con la tecmaturgia. Incapaz de soportar el vacío que su hija había dejado en su vida, decidió configurar un reemplazo; uno que pudiese hacer realidad el sueño de Oriana de unirse a League. Lo que creó fue una máquina de matar con un mecanismo de relojería, a la que Corin llamó como su hija. A sabiendas de que estaba destinada a convertirse en una campeona y, viendo cómo estaban cambiando los tiempos, creó La Bola para que actuase como su mascota y protectora. Como creación pseudosimbiótica que es, usa un tipo diferente de tecmaturgia que se centra más en la electricidad que de los mecanismos de relojería.
+                    {body}
                 </Typography>
             </CardContent>
 
 
-            <CardMedia
+            {image?<CardMedia
                 style={styles.media}
-                image="https://lan.leagueoflegends.com/sites/default/files/styles/scale_xlarge/public/upload/winter_wonder_orianna_splash_1920.jpg?itok=AkN3g4GH"
-            />
-            <CardActions>
-                <IconButton aria-label="Add to favorites" style={styles.buttonIcon} onClick={Iliked}>
-                    <Favorite />
-                </IconButton>
-                <Button arial-label={"Recipe"}>
-                    Comentarios
-                </Button>
-            </CardActions>
+                image={image}
+            />:''}
+           
 
-           <CommentBox/>
+            <div style={styles.botoncito}>
+                {<IconButton aria-label="Add to favorites" style={styles.buttonIcon} onClick={Ilove}>
+                    {love >=1 ?
+                        <Badge badgeContent={love} color="primary">
+                            <Favorite />
+                        </Badge>:
+
+                        <Favorite />
+                    }
+
+                </IconButton>}
+            </div>
+            <ExpansionPanel style={{margin:'0',boxShadow:"none" }}>
+
+                    <ExpansionPanelSummary >
+                        <div style={styles.expansiones}>
+
+                            <Typography arial-label={"Recipe"}> Comentarios</Typography>
+                        </div>
+                    </ExpansionPanelSummary>
+
+                    <CommentBox handleComment={handleComment} />
+            </ExpansionPanel>
+
+
+            <CardContent style={styles.comentaritos}>
+                <div style={styles.micomentario}>
+                    <Avatar arial-label={"Recipe"} style={styles.avatar}>
+                        B
+                    </Avatar>
+                    <div style={{marginLeft:"10px", backgroundColor:'white',width:'100%',borderRadius:'5px'}}>
+                        <TextField
+                            InputProps={{
+                                disableUnderline: true,
+
+                            }}
+                            onChange={handleComment}
+                            style={{padding:"0 10px"}}
+                            id="multiline-flexible"
+                            placeholder="Escribe tu humilde opinion!"
+                            fullWidth={true}
+                            multiline
+                            margin="normal"
+                            name="commet"
+                        />
+                    </div>
+                </div>
+
+
+            </CardContent>
+
 
         </Card>
 );

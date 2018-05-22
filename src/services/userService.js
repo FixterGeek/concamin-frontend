@@ -61,6 +61,31 @@ export function login(auth){
     })
     .then(user=>{
         console.log(user);
+        localStorage.setItem('user', JSON.stringify(user))
         return user;
     });
 }
+
+export function signup(user){
+    return fetch(baseUrl + 'signup',{
+        method:'post',
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(user),
+        credentials:'include'
+    })
+    .then(res=>{
+        console.log(res)
+        if(!res.ok) return Promise.reject(res);
+        return res.json();
+    })
+    .then(user=>{
+        console.log(user);
+        return user;
+    });
+}
+
+
+
+
