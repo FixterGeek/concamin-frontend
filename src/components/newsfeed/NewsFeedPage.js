@@ -6,6 +6,7 @@ import {AdCard} from "../Advertising/AdCard";
 import { MainLoader } from '../loader/MainLoader';
 
 
+
 class NewsFeedPage extends Component {
 
     state={
@@ -110,28 +111,30 @@ class NewsFeedPage extends Component {
    // if(loading) return(<MainLoader/>)
     return (
 
-            <GridList cellHeight={'auto'} cols={3}>
-                <GridListTile cols={2} style={styles.gridTile}>
-                    <NewsFeedComponent
-                        posts={posts}
-                        handleSubmit={this.handleSubmit}
-                        handleChange={this.handleChange}
-                        photoPreview={photoPreview}
-                        newPost={newPost}
-                        handleLink={this.handleLink}
-                        addLink={addLink}
-                        addLinks={this.addLinks}
-                        clearLink={this.clearLink}
-                        clearFile={this.clearFile}/>
-                </GridListTile>
-                <GridListTile cols={1} style={styles.gridTile}>
+                <GridList cellHeight={'auto'} cols={3}>
+                    <GridListTile cols={2} style={styles.gridTile}>
+                        <NewsFeedComponent
+                            posts={posts}
+                            handleSubmit={this.handleSubmit}
+                            handleChange={this.handleChange}
+                            photoPreview={photoPreview}
+                            newPost={newPost}
+                            handleLink={this.handleLink}
+                            addLink={addLink}
+                            addLinks={this.addLinks}
+                            clearLink={this.clearLink}
+                            clearFile={this.clearFile}/>
+                    </GridListTile>
+                    <GridListTile cols={1} style={styles.gridTile}>
 
-                    <AdCard ejemplo={this.ejemplo}/>
+                        <AdCard ejemplo={this.ejemplo}/>
 
 
 
-                </GridListTile>
-            </GridList>
+                    </GridListTile>
+                </GridList>
+
+
 
 
     )
