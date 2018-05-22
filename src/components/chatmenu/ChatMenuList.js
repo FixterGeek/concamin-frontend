@@ -9,11 +9,11 @@ export const ChatMenuList = ({ list, users, onAdd }) => (
     <div>
         <List style={{ width: '100%', padding: 0 }}>
             {list.map((list, index) => {
-                return <ListItem button key={index} name={list.name}>
+                return <ListItem button key={index} name={list.username}>
                     <Avatar>
                         <ImageIcon />
                     </Avatar>
-                    <ListItemText primary={list.name} secondary={list.fecha} />
+                    <ListItemText primary={list.username} secondary={list.email} />
                 </ListItem>
             })}
 

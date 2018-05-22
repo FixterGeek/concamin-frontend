@@ -38,6 +38,7 @@ export function getOrCreateChat(id=1,id2=2){
     const query = chatsRef.where(`participants.${id}`, "==", true).where(`participants.${id2}`, "==", true)
     return query.get()
     .then(snap=>{
+        let elChat;
         if(snap.docs.length < 1){
             const chat = {participants:{}};
             chat.participants[id] = true;
@@ -48,19 +49,23 @@ export function getOrCreateChat(id=1,id2=2){
             })
             .then(doc=>{
                 console.log("nuevo", doc.data())
-                return doc;
+                elChat = doc.data();
+                return doc.data();
             })
         }else{
             snap.forEach(doc=>{
-                console.log(doc.data())
-                return doc;
+                console.log("ya existe:", doc.data())
+                elChat = doc.data();
+                return doc.data();
             });
         }
+        return elChat;
         
     })
 
     .catch(function(error) {
         console.log("Error getting document:", error);
+        return {};
     });
 }
 

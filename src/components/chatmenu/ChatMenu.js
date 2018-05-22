@@ -10,56 +10,56 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Create from '@material-ui/icons/Create';
 import Button from '@material-ui/core/Button';
 import { ChatAdd } from './ChatAdd';
-import {getOrCreateChat} from '../../services/firebase';
-import {toastr} from 'toastr';
+import {getOrCreateChat, addMessage} from '../../services/chatService';
+import toastr from 'toastr';
 
-const list = [{
-    name: 'mefit',
-    fecha: '10/10/1900'
-},
-{
-    name: 'carro',
-    fecha: '10/15/2919'
-},
-{
-    name: 'Jose',
-    fecha: '8/06/2919'
-}, {
-    name: 'mefit',
-    fecha: '10/10/1900'
-},
-{
-    name: 'carro',
-    fecha: '10/15/2919'
-},
-{
-    name: 'Jose',
-    fecha: '8/06/2919'
-},
-{
-    name: 'mefit',
-    fecha: '10/10/1900'
-},
-{
-    name: 'carro',
-    fecha: '10/15/2919'
-},
-{
-    name: 'Jose',
-    fecha: '8/06/2919'
-}, {
-    name: 'mefit',
-    fecha: '10/10/1900'
-},
-{
-    name: 'carro',
-    fecha: '10/15/2919'
-},
-{
-    name: 'Jose',
-    fecha: '8/06/2919'
-},
-]
+// const list = [{
+//     name: 'mefit',
+//     fecha: '10/10/1900'
+// },
+// {
+//     name: 'carro',
+//     fecha: '10/15/2919'
+// },
+// {
+//     name: 'Jose',
+//     fecha: '8/06/2919'
+// }, {
+//     name: 'mefit',
+//     fecha: '10/10/1900'
+// },
+// {
+//     name: 'carro',
+//     fecha: '10/15/2919'
+// },
+// {
+//     name: 'Jose',
+//     fecha: '8/06/2919'
+// },
+// {
+//     name: 'mefit',
+//     fecha: '10/10/1900'
+// },
+// {
+//     name: 'carro',
+//     fecha: '10/15/2919'
+// },
+// {
+//     name: 'Jose',
+//     fecha: '8/06/2919'
+// }, {
+//     name: 'mefit',
+//     fecha: '10/10/1900'
+// },
+// {
+//     name: 'carro',
+//     fecha: '10/15/2919'
+// },
+// {
+//     name: 'Jose',
+//     fecha: '8/06/2919'
+// },
+// ]
 
 class Chat extends Component {
     state = {
@@ -72,7 +72,7 @@ class Chat extends Component {
             name: 'mefit',
             username:'mefit',
             fecha: '10/10/1900',
-            _id:1,
+            _id:"5b036c4dd34e8b469533c096",
             email:'mefit@gmail.com'
         },
         {
@@ -95,6 +95,13 @@ class Chat extends Component {
         data: [],
         messageInput: '',
         userSelected: null,
+        activeChat:{},
+        list:[]
+    }
+
+    componentWillMount(){
+        const user = JSON.parse(localStorage.getItem('user'));
+        this.setState({list:user.following})
     }
 
     onAddChat = () => {
@@ -126,10 +133,10 @@ class Chat extends Component {
     onClickChat = (a) => {
         console.log(a)
         const mySelf = JSON.parse(localStorage.getItem('user'));
-        getOrCreateChat( mySelf._id, a._id)
+        getOrCreateChat(a._id)
         .then(chat=>{
-            console.log(chat);
-            this.setState({userSelected:a.name})
+            console.log("wat ? ", chat);
+            this.setState({userSelected:a.name, activeChat:chat})
         })
         .catch(e=>{
             console.log(e);
@@ -140,6 +147,30 @@ class Chat extends Component {
         // })
         // console.log(this.state.userSelected)
     }
+
+    addMessage = (e) => {
+        //input
+        const user = JSON.parse(localStorage.getItem('user'));
+        const {activeChat} = this.state;
+        const message = {
+            user:user._id,
+            date: new Date(),
+            body:this.state.input
+        };
+        if(e.key == 'Enter'){
+            addMessage(message, activeChat._id)
+            .then(chat=>{
+                //activeChat.messages.push(message);
+                this.setState({activeChat:chat});
+            })
+            .catch(e=>{
+                console.log(e);
+                toastr.error(e)
+            });
+          }
+
+    }
+
     onChange = (a) => {
         this.setState({
             input: a.name,
@@ -162,6 +193,7 @@ class Chat extends Component {
     }
     //END CHAT ADD
     render() {
+        const {list} = this.state;
         return (
             <div>
                 <ExpansionPanel style={{
@@ -193,6 +225,7 @@ class Chat extends Component {
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
                 <ChatAdd
+                    {...this.state.activeChat}
                     listi={this.state.users}
                     textInput={this.state.input}
                     onChange={this.onChange}
