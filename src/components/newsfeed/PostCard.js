@@ -14,7 +14,7 @@ const styles = {
         marginBottom:'2%'
     },
     avatar: {
-        backgroundColor:'blue',
+        backgroundColor:'#eaebecx',
     },
     actions:{
         display:'flex',
