@@ -9,7 +9,7 @@ import LoginPage from './components/login/LoginPage';
 import PublicProfile from './components/profile/PublicProfile';
 import Navbar from "./components/Navbar/Navbar";
 import EventsPage from "./components/events/EventsPage"
-import {DetailEvent} from "./components/events/DetailEvent";
+import DetailEvent from "./components/events/DetailEventPage";
 
 
 const Routes = () => (
