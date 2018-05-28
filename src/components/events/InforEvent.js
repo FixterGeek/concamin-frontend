@@ -20,8 +20,13 @@ const styles={
         marginTop:2,
         display:'flex',
         alignItems:'center'
+    },
+    sticky :{
+    position: "fixed",
+    top: 0,
     }
 }
+
 export const InfoEvent = ({}) => {
     return (
         <div className='about'>

@@ -28,8 +28,13 @@ export const DetailEvent =({cover=foto, posts, handleSubmit, handleChange, photo
         </Paper>
         <div style={{display:'flex',flexDirection:'rows'}}>
 
-                <InfoEvent/>
-            <div style={{margin:'30px',width:'70%'}}>
+
+            <div >
+                <InfoEvent />
+            </div>
+
+
+            <div style={{margin:'',width:'70%'}}>
                 <NewsFeedComponent
                     posts={posts}
                     handleSubmit={handleSubmit}
