@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button'
 import { Create, Close, ExpandMore } from '@material-ui/icons/';
 
 
-export const ChatAdd = ({ followerList, input, addMessage, participants, messages, onClickChat, handleInput, userSelected, listi, textInput, onChange, close, onClose, onChangeHandler, pushButton, visible, expanded }) => {
+export const ChatAdd = ({ followerList, messageInput, addMessage, participants, messages, onClickChat, userSelected, listi, textInput, onChange, close, onClose, handleInput, onChangeHandler, pushButton, visible, expanded }) => {
     console.log("desconstr", participants, messages)
 
     // let list = followerList
@@ -62,12 +62,12 @@ export const ChatAdd = ({ followerList, input, addMessage, participants, message
                             </ul>
                         </section>
                         <div style={{ width: '100%', backgroundColor: 'dimgray', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <Input value={input} onKeyPress={addMessage} style={{ height: 50, flexGrow: 2, paddingLeft: 10 }} name="messageInput" onChange={handleInput}
+                            <Input value={messageInput} onKeyPress={addMessage} style={{ height: 50, flexGrow: 2, paddingLeft: 10 }} name="messageInput" onChange={handleInput}
                                 placeholder="Escribe un mensaje.."
                             />
-                            <Button style={{ marginRight: 5 }} variant="fab" mini color="secondary" aria-label="Create" onClick={this.onAdd}>
+                            {/* <Button style={{ marginRight: 5 }} variant="fab" mini color="secondary" aria-label="Create" onClick={this.onAdd}>
                                 <Create />
-                            </Button>
+                            </Button> */}
                         </div>
                     </div>
                 </ExpansionPanelDetails>
