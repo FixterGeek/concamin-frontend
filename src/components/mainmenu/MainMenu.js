@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Drawer, Divider, List, ListItem, ListItemIcon, ListItemText, ListSubheader} from '@material-ui/core/'
-import {Clear, Store, Feedback, Group, Event, ArtTrack, ChromeReaderMode, ThumbUp, ImportantDevices, Person} from '@material-ui/icons/'
+import {Clear, Store, Feedback, Group, Event, ArtTrack, ChromeReaderMode, Favorite, ImportantDevices, Person} from '@material-ui/icons/'
 import {Link} from 'react-router-dom';
 
 
@@ -64,7 +64,7 @@ class MainMenu extends Component {
             <Link to="/benefits">
             <ListItem button>
                     <ListItemIcon>
-                        <ThumbUp />
+                        <Favorite />
                     </ListItemIcon>
                     <ListItemText primary="Beneficios" />
                 </ListItem>

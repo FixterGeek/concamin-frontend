@@ -42,6 +42,7 @@ export function getLoggedUser(){
     })
     .then(user=>{
         console.log(user);
+        localStorage.setItem('user', JSON.stringify(user))
         return user;
     });
 }

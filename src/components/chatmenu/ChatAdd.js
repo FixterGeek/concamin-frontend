@@ -14,8 +14,8 @@ import Button from '@material-ui/core/Button'
 import { Create, Close, ExpandMore } from '@material-ui/icons/';
 
 
-export const ChatAdd = ({ onClickChat, handleInput, userSelected, listi, textInput, onChange, close, onClose, onChangeHandler, pushButton, visible, expanded }) => {
-
+export const ChatAdd = ({ input, addMessage, participants, messages=[], onClickChat, handleInput, userSelected, listi, textInput, onChange, close, onClose, onChangeHandler, pushButton, visible, expanded }) => {
+    console.log("desconstr", participants, messages)
 
     let list = listi
         .filter(a => textInput.toLowerCase() === '' || a.name.toLowerCase().includes(textInput.toLowerCase()))
@@ -26,11 +26,7 @@ export const ChatAdd = ({ onClickChat, handleInput, userSelected, listi, textInp
             <ListItemText primary={a.name} />
         </ListItem>);
 
-    let msgList = [
-        { id: 1, msg: "mensaje 1", user: "Mefit" },
-        { id: 2, msg: "mensaje 2", user: "Mefit" },
-        { id: 3, msg: "mensaje 2", user: "Mefit" },
-    ]
+    let msgList = messages;
 
     if (userSelected) return (
         <div>
@@ -49,13 +45,13 @@ export const ChatAdd = ({ onClickChat, handleInput, userSelected, listi, textInp
                     }}>
                         <section style={{ height: '60vh' }}>
                             <ul>
-                                {msgList.map((message, index) => {
-                                    return <li key={index}>{message.user}: {message.msg} </li>
+                                {messages.map((m, index) => {
+                                    return <li key={index}> {m.body} </li>
                                 })}
                             </ul>
                         </section>
                         <div style={{ width: '100%', backgroundColor: 'dimgray', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <Input style={{ height: 50, flexGrow: 2, paddingLeft: 10 }} name="messageInput" onChange={handleInput}
+                            <Input value={input} onKeyPress={addMessage} style={{ height: 50, flexGrow: 2, paddingLeft: 10 }} name="messageInput" onChange={handleInput}
                                 placeholder="Escribe un mensaje.."
                             />
                             <Button style={{ marginRight: 5 }} variant="fab" mini color="secondary" aria-label="Create" onClick={this.onAdd}>
@@ -83,7 +79,7 @@ export const ChatAdd = ({ onClickChat, handleInput, userSelected, listi, textInp
                     width: '100%',
                 }}>
                     <div style={{ width: '100%', backgroundColor: 'dimgray' }}>
-                        <Input style={{ height: 50, flexGrow: 2, paddingLeft: 10, width: '100%' }}
+                        <Input  style={{ height: 50, flexGrow: 2, paddingLeft: 10, width: '100%' }}
                             value={textInput}
                             onChange={onChangeHandler}
                         />

@@ -11,16 +11,16 @@ import Navbar from "./components/Navbar/Navbar";
 
 
 const Routes = () => (
-    <Switch>
-        <Route path="/chat" component={Chat} />
-        <Route path="/" component={PostCard} />
-        <Route path="/newsfeed" component={NewsFeedPage} />
-        {/*<Route exact path="/" component={HomeContainer} />*/}
-        <Route path="/profile" component={ProfileContainer} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/users/:id" component={PublicProfile} />
-        <Route path="/navbar" component={Navbar} />
-    </Switch>
+        <Switch>
+                <Route path="/chat" component={Chat} />
+                {/* <Route path="/" component={PostCard} /> */}
+                <Route path="/newsfeed" component={NewsFeedPage} />
+                <Route path="/profile" component={ProfileContainer} />
+                <Route path="/login" component={LoginPage} />
+                <Route path="/users/:id" component={PublicProfile} />
+                <Route path="/navbar" component={Navbar} />
+                <Route exact path="/" component={HomeContainer} />
+        </Switch>
 );
 
 export default Routes;
