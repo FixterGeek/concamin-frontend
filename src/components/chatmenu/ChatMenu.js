@@ -10,7 +10,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Create from '@material-ui/icons/Create';
 import Button from '@material-ui/core/Button';
 import { ChatAdd } from './ChatAdd';
-import {getOrCreateChat, addMessage} from '../../services/chatService';
+import { getOrCreateChat, addMessage } from '../../services/chatService';
 import toastr from 'toastr';
 
 // const list = [{
@@ -70,10 +70,10 @@ class Chat extends Component {
 
         users: [{
             name: 'mefit',
-            username:'mefit',
+            username: 'mefit',
             fecha: '10/10/1900',
-            _id:"5b036c4dd34e8b469533c096",
-            email:'mefit@gmail.com'
+            _id: "5b036c4dd34e8b469533c096",
+            email: 'mefit@gmail.com'
         },
         {
             name: 'carro',
@@ -81,9 +81,9 @@ class Chat extends Component {
         },
         {
             name: 'Jose',
-            _id:2,
-            email:'jose@gmail.com',
-            username:'Jose',
+            _id: 2,
+            email: 'jose@gmail.com',
+            username: 'Jose',
             fecha: '8/06/2919'
         },
         ],
@@ -95,13 +95,14 @@ class Chat extends Component {
         data: [],
         messageInput: '',
         userSelected: null,
-        activeChat:{},
-        list:[]
+        activeChat: {},
+        followerList: []
     }
 
-    componentWillMount(){
+    componentWillMount() {
         const user = JSON.parse(localStorage.getItem('user'));
-        this.setState({list:user.following})
+        this.setState({ followerList: user.following })
+        console.log(user);
     }
 
     onAddChat = () => {
@@ -128,20 +129,22 @@ class Chat extends Component {
             input: e.target.value,
             data: []
         })
+
+        console.log(this.state.data);
+
     }
 
-    onClickChat = (a) => {
-        console.log(a)
+    onClickChat = (follower) => {
         const mySelf = JSON.parse(localStorage.getItem('user'));
-        getOrCreateChat(a._id)
-        .then(chat=>{
-            console.log("wat ? ", chat);
-            this.setState({userSelected:a.name, activeChat:chat})
-        })
-        .catch(e=>{
-            console.log(e);
-            toastr.error(e)
-        })
+        getOrCreateChat(follower._id)
+            .then(chat => {
+                console.log("wat ? ", chat);
+                this.setState({ userSelected: follower.username, activeChat: chat })
+            })
+            .catch(e => {
+                console.log(e);
+                toastr.error(e)
+            })
         // this.setState({
         //     userSelected: a.name,
         // })
@@ -151,34 +154,35 @@ class Chat extends Component {
     addMessage = (e) => {
         //input
         const user = JSON.parse(localStorage.getItem('user'));
-        const {activeChat} = this.state;
+        const { activeChat } = this.state;
         const message = {
-            user:user._id,
+            user: user._id,
             date: new Date(),
-            body:this.state.input
+            body: this.state.input
         };
-        if(e.key == 'Enter'){
+        if (e.key == 'Enter') {
             console.log('orale:', message)
             addMessage(message, activeChat._id)
-            .then(chat=>{
-                //activeChat.messages.push(message);
-                this.setState({activeChat:chat, input:''});
-            })
-            .catch(e=>{
-                console.log(e);
-                toastr.error("Inicia sesión : "  + e.statusText)
-            });
-          }
+                .then(chat => {
+                    //activeChat.messages.push(message);
+                    this.setState({ activeChat: chat, input: '' });
+                })
+                .catch(e => {
+                    console.log(e);
+                    toastr.error("Inicia sesión : " + e.statusText)
+                });
+        }
 
     }
 
-    onChange = (a) => {
+    onChange = (follower) => {
         this.setState({
-            input: a.name,
-            infoUser: a,
+            input: follower.name,
+            infoUser: follower,
             visible: false,
             visible: '',
         })
+        console.log(this.state.infoUser)
     }
 
     pushButton = () => {
@@ -190,11 +194,12 @@ class Chat extends Component {
     onClose = () => {
         this.setState({
             close: !this.state.close,
+            userSelected: null
         })
     }
     //END CHAT ADD
     render() {
-        const {list} = this.state;
+        const { followerList } = this.state;
         return (
             <div>
                 <ExpansionPanel style={{
@@ -212,7 +217,7 @@ class Chat extends Component {
                             width: '100%',
                         }}>
                             <div className="scroll" style={{ height: '60vh' }}>
-                                <ChatMenuList list={list} users={this.state.data} />
+                                <ChatMenuList followerList={followerList} users={this.state.data} />
                             </div>
                             <div style={{ width: '100%', backgroundColor: 'dimgray', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                 <Input style={{ height: 50, flexGrow: 2, paddingLeft: 10 }}
@@ -226,10 +231,10 @@ class Chat extends Component {
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
                 <ChatAdd
-                input={this.state.input}
+                    followerList={this.state.followerList}
+                    input={this.state.input}
                     addMessage={this.addMessage}
                     {...this.state.activeChat}
-                    listi={this.state.users}
                     textInput={this.state.input}
                     onChange={this.onChange}
                     close={this.state.close}

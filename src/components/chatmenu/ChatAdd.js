@@ -14,17 +14,28 @@ import Button from '@material-ui/core/Button'
 import { Create, Close, ExpandMore } from '@material-ui/icons/';
 
 
-export const ChatAdd = ({ input, addMessage, participants, messages=[], onClickChat, handleInput, userSelected, listi, textInput, onChange, close, onClose, onChangeHandler, pushButton, visible, expanded }) => {
+export const ChatAdd = ({ followerList, input, addMessage, participants, messages, onClickChat, handleInput, userSelected, listi, textInput, onChange, close, onClose, onChangeHandler, pushButton, visible, expanded }) => {
     console.log("desconstr", participants, messages)
 
-    let list = listi
-        .filter(a => textInput.toLowerCase() === '' || a.name.toLowerCase().includes(textInput.toLowerCase()))
-        .map((a, index) => <ListItem button key={index} onChange={() => onChange(a)} onClick={() => onClickChat(a)}>
-            <Avatar>
-                <ImageIcon />
-            </Avatar>
-            <ListItemText primary={a.name} />
-        </ListItem>);
+    // let list = followerList
+    //     .filter(a => textInput.toLowerCase() === '' || a.name.toLowerCase().includes(textInput.toLowerCase()))
+    //     .map((a, index) => <ListItem button key={index} onChange={() => onChange(a)} onClick={() => onClickChat(a)}>
+    //         <Avatar>
+    //             <ImageIcon />
+    //         </Avatar>
+    //         <ListItemText primary={a.name} />
+    //     </ListItem>);
+    console.log(followerList, localStorage.getItem('user'))
+    let list = followerList
+        .filter(followerList => textInput.toLowerCase() === '' || followerList.username.toLowerCase().includes(textInput.toLowerCase()))
+        .map((follower, index) => {
+            return <ListItem button key={index} onChange={() => onChange(follower)} onClick={() => onClickChat(follower)} name={follower.username}>
+                <Avatar>
+                    <img src={follower.profilePic} style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                </Avatar>
+                <ListItemText primary={follower.username} secondary={follower.email} />
+            </ListItem>
+        })
 
     let msgList = messages;
 
@@ -79,7 +90,7 @@ export const ChatAdd = ({ input, addMessage, participants, messages=[], onClickC
                     width: '100%',
                 }}>
                     <div style={{ width: '100%', backgroundColor: 'dimgray' }}>
-                        <Input  style={{ height: 50, flexGrow: 2, paddingLeft: 10, width: '100%' }}
+                        <Input style={{ height: 50, flexGrow: 2, paddingLeft: 10, width: '100%' }}
                             value={textInput}
                             onChange={onChangeHandler}
                         />
