@@ -10,12 +10,14 @@ import PublicProfile from './components/profile/PublicProfile';
 import Navbar from "./components/Navbar/Navbar";
 import EventsPage from "./components/events/EventsPage"
 import DetailEvent from "./components/events/DetailEventPage";
+import GroupsPage from "./components/groups/GroupsPage";
 
 
 const Routes = () => (
     <Switch>
         <Route path="/chat" component={Chat} />
         {/* <Route path="/" component={PostCard} /> */}
+        <Route path="/groups" component={GroupsPage}/>
         <Route path="/newsfeed" component={NewsFeedPage} />
         <Route path="/profile" component={ProfileContainer} />
         <Route path="/login" component={LoginPage} />
