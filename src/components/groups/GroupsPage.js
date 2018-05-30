@@ -6,16 +6,25 @@ import {CardCreateGroup} from "./CardCreateGroup";
 import {CreateGroup} from "./CreateGroup";
 
 export default class GroupsPage extends Component {
+    state={
+        openCreate:false,
+    }
+
+    openNewGroup=()=>{
+        let {openCreate}=this.state;
+        openCreate = !openCreate
+        this.setState({openCreate})
+    }
     render(){
         return(
-            <GridList style={{marginTop:50}}  cellHeight={'auto'} cols={3}>
+            <GridList  cellHeight={'auto'} cols={3}>
 
                 <GridListTile cols={2} style={styles.gridTile}>
-                    <CreateGroup/>
-                    <CardGroup/>
+                    <CreateGroup open={this.state.openCreate} close={this.openNewGroup}/>
+                    <CardGroup />
                 </GridListTile>
                 <GridListTile cols={1} style={styles.gridTile}>
-                    <CardCreateGroup/>
+                    <CardCreateGroup onOpen={this.openNewGroup}/>
                     <AdCard/>
 
                 </GridListTile>

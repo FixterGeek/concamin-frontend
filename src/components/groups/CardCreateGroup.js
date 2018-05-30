@@ -18,24 +18,33 @@ const styles ={
         marginBottom:10,
     },
     cardpaps:{
-        marginBottom:20,
-    }
-}
-export const CardCreateGroup =({})=>(
-    <Card style={styles.cardpaps}>
-        <CardContent style={styles.content}>
-            <div style={styles.textito}>
-                <Typography   style={styles.title} color="textSecondary" >
-                    Crea un nuevo grupo
-                </Typography>
-                <Typography component="p">
-                    Los grupos es el metodo mas facil de econtrar a miebros con los mismos intereses
-                </Typography>
-            </div>
 
-            <Button variant="outlined">
-                Nuevo grupo
-            </Button>
-        </CardContent>
-    </Card>
+            marginBottom:"2%",
+            minWidth:275,
+            width:320,
+    },
+    contentPadre:{
+        padding:"0 10px",
+        margin:'0 auto'
+    },
+}
+export const CardCreateGroup =({onOpen})=>(
+    <div style={styles.contentPadre}>
+        <Card style={styles.cardpaps}>
+            <CardContent style={styles.content}>
+                <div style={styles.textito}>
+                    <Typography   style={styles.title} color="textSecondary" >
+                        Crea un nuevo grupo
+                    </Typography>
+                    <Typography component="p">
+                        Los grupos es el metodo mas facil de econtrar a miebros con los mismos intereses
+                    </Typography>
+                </div>
+
+                <Button onClick={onOpen} variant="outlined">
+                    Nuevo grupo
+                </Button>
+            </CardContent>
+        </Card>
+    </div>
 );

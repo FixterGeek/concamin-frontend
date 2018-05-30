@@ -40,12 +40,12 @@ const styles = {
 export const CardGroup =({handleComment})=>(
     <Card>
         <div style={{display:'flex'}}>
-            <Link to={"/"}>
+            <Link to={"/groups/detallitogrupito"}>
                 <img style={styles.media} src={"https://las.leagueoflegends.com/sites/default/files/styles/wide_medium/public/upload/devdiary_gdprinciples_articleheader.jpg?itok=8zfwqH2t"}/>
             </Link>
             <CardContent>
                 <Typography style={styles.title} color="textSecondary">
-                    <Link style={{textDecoration:'none',color:'black'}} to={"/"}>Lo que los bronces podemos lograr</Link>
+                    <Link style={{textDecoration:'none',color:'black'}} to={"/groups/detallitogrupito"}>Lo que los bronces podemos lograr</Link>
                 </Typography>
                 <Typography style={styles.location} color="textSecondary">
                     Es un gran lugar para compartir información sobre los campeones, torneos y otras cosas
