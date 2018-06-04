@@ -11,21 +11,13 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Avatar from '@material-ui/core/Avatar'
 import ImageIcon from '@material-ui/icons/Image'
 import Button from '@material-ui/core/Button'
+import { Paper } from '@material-ui/core'
 import { Create, Close, ExpandMore } from '@material-ui/icons/';
 
 
 export const ChatAdd = ({ followerList, messageInput, addMessage, participants, messages, onClickChat, userSelected, listi, textInput, onChange, close, onClose, handleInput, onChangeHandler, pushButton, visible, expanded }) => {
     console.log("desconstr", participants, messages)
 
-    // let list = followerList
-    //     .filter(a => textInput.toLowerCase() === '' || a.name.toLowerCase().includes(textInput.toLowerCase()))
-    //     .map((a, index) => <ListItem button key={index} onChange={() => onChange(a)} onClick={() => onClickChat(a)}>
-    //         <Avatar>
-    //             <ImageIcon />
-    //         </Avatar>
-    //         <ListItemText primary={a.name} />
-    //     </ListItem>);
-    console.log(followerList, localStorage.getItem('user'))
     let list = followerList
         .filter(followerList => textInput.toLowerCase() === '' || followerList.username.toLowerCase().includes(textInput.toLowerCase()))
         .map((follower, index) => {
@@ -36,7 +28,7 @@ export const ChatAdd = ({ followerList, messageInput, addMessage, participants, 
                 <ListItemText primary={follower.username} secondary={follower.email} />
             </ListItem>
         })
-
+    const localUser = JSON.parse(localStorage.getItem('user'));
     let msgList = messages;
 
     if (userSelected) return (
@@ -54,12 +46,16 @@ export const ChatAdd = ({ followerList, messageInput, addMessage, participants, 
                     <div style={{
                         width: '100%',
                     }}>
-                        <section style={{ height: '60vh' }}>
-                            <ul>
-                                {messages.map((m, index) => {
-                                    return <li key={index}> {m.body} </li>
-                                })}
-                            </ul>
+                        <section style={{ height: '60vh' }} className="scroll">
+                            {messages.map((m, index) => {
+                                return (<Paper style={{ maxWidth: '290px', padding: '10px', margin: '5px 5px' }}>
+                                    <Avatar>
+                                        <img src={m.profilePic} style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                                    </Avatar>
+                                    {m.body}
+                                </Paper>)
+
+                            })}
                         </section>
                         <div style={{ width: '100%', backgroundColor: 'dimgray', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <Input value={messageInput} onKeyPress={addMessage} style={{ height: 50, flexGrow: 2, paddingLeft: 10 }} name="messageInput" onChange={handleInput}
@@ -95,7 +91,7 @@ export const ChatAdd = ({ followerList, messageInput, addMessage, participants, 
                             onChange={onChangeHandler}
                         />
                     </div>
-                    <section style={{ height: '60vh' }}>
+                    <section style={{ height: '60vh' }} className="scroll">
                         <List>{list}</List>
                     </section>
                 </div>

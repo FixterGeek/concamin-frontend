@@ -8,11 +8,12 @@ import { PostCard } from './components/newsfeed/PostCard';
 import LoginPage from './components/login/LoginPage';
 import PublicProfile from './components/profile/PublicProfile';
 import Navbar from "./components/Navbar/Navbar";
-
+import Messenger from './components/messenger/MessengerMain'
 
 const Routes = () => (
         <Switch>
                 <Route path="/chat" component={Chat} />
+
                 {/* <Route path="/" component={PostCard} /> */}
                 <Route path="/newsfeed" component={NewsFeedPage} />
                 <Route path="/profile" component={ProfileContainer} />
@@ -20,6 +21,7 @@ const Routes = () => (
                 <Route path="/users/:id" component={PublicProfile} />
                 <Route path="/navbar" component={Navbar} />
                 <Route exact path="/" component={HomeContainer} />
+                <Route path="/messenger" component={Messenger} />
         </Switch>
 );
 

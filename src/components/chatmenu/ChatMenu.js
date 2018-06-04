@@ -207,7 +207,7 @@ class Chat extends Component {
                                 <Input style={{ height: 50, flexGrow: 2, paddingLeft: 10, width: '100%' }}
                                     value={this.state.inputFollowers}
                                     onChange={this.onChangeConversations}
-                                    placeholder="Buscar una conversación.."
+                                    placeholder="Buscar una conversacion"
                                 />
                                 <Button style={{ marginRight: 5 }} variant="fab" mini color="secondary" aria-label="Create" onClick={this.onAddChat}>
                                     <Create />
