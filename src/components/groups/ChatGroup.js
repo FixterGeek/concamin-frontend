@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import {getPosts, addPost} from '../../services/postService';
 
 import {Avatar,Paper,Card,Typography,AppBar,Toolbar,IconButton,TextField,
-    CardContent} from '@material-ui/core/';
-import {MoreVert,} from '@material-ui/icons/'
+    CardContent,List,ListItem,ListItemText,Divider} from '@material-ui/core/';
+import {MoreVert,AccountCircle} from '@material-ui/icons/'
 import {NewsFeedComponent} from '../newsfeed/NewsFeedComponent'
 
 
@@ -17,7 +17,9 @@ const styles = {
     },
     papel:{
         padding:30,
-        minHeight:300
+        minHeight:300,
+        boxShadow:"none",
+
     },
     content:{
         paddingLeft:50,
@@ -45,6 +47,10 @@ const styles = {
         paddingBottom:"0px",
         paddingTop:"0px"
     },
+    listita:{
+        overflow:'auto',
+        maxHeight:'450px',
+    }
 
 
 };
@@ -69,7 +75,129 @@ class ChatGroup extends Component {
                     </Toolbar>
                 </AppBar>
                 <Paper style={styles.papel}>
-                    Gola
+                    <List component="nav" style={styles.listita}>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+                        <ListItem>
+                            <Avatar>
+                                <AccountCircle />
+                            </Avatar>
+                            <ListItemText primary="Dylan Torres" secondary="Hoy es un gran dia para ir a la escuela y disfrutar de un buen dia" />
+                        </ListItem>
+
+                    </List>
                 </Paper>
                 <CardContent style={styles.comentaritos}>
                     <div style={styles.micomentario}>
