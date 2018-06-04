@@ -41,7 +41,7 @@
 .routes-container{
   box-sizing: border-box;
   width: 100%;
-  padding-left: 240px;
+  /*padding-left: 240px;*/
 }
 @import "./components/mainmenu/mainmenu.css";
 @import "./components/loader/loader.css";

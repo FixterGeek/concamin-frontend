@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-
+import {HomeDisplay} from './HomeDisplay';
+import {About} from './About';
+import {Descript} from './Descript';
+import {Benefits} from './Benefits';
+import {Members} from './Members';
+import Footer from '../footer/Footer';
 //testing chat
 
 class HomeContainer extends Component {
@@ -10,7 +15,12 @@ class HomeContainer extends Component {
   render() {
     return (
       <div>
-        home BlisS
+        <HomeDisplay />
+        <About />
+        <Descript />
+          <Benefits />
+          <Members />
+          <Footer />
       </div>
     );
   }

@@ -1,0 +1,229 @@
+@font-face {
+    font-family: "Proxima Nova";
+    src: url('../../assets/Nova.otf');
+}
+@import url('https://fonts.googleapis.com/css?family=Bowlby+One+SC');
+
+.slide{
+
+    width:100%;
+    height:100vh;
+    color:white;
+    background-image: url('https://images.pexels.com/photos/326410/pexels-photo-326410.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-size: cover;
+    background-position: center;
+}
+.menu{
+    width:100%;
+    height:80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.menu img{
+    width:100px;
+}
+.box_men{
+    display: flex;
+    margin-right: 20px;
+}
+.line{
+    width: 2px;
+    height: 11px;
+    border: none;
+    background: white;
+    margin: auto 10px;
+}
+a{
+    color:inherit;
+}
+.cover{
+    width: 100%;
+    height:100%;
+    /*background-color: rgba(0,0,0,.5);*/
+}
+.slide h1{
+    font-size: 60px;
+    text-align: center;
+    margin-top: 170px;
+}
+.btn_explore{
+    cursor: pointer;
+    font-size: 14px;
+    width:150px;
+    height:50px;
+    color:white;
+    background-color: transparent;
+    border:1px solid white;
+    transition: all 1s ease;
+}
+.btn_explore:hover{
+    background-color: rgba(255,255,255,.5);
+
+}
+.about{
+    background-color: white !important;
+}
+.fl{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.fl div{
+    width:300px;
+    flex-grow: 1;
+    line-height:28px;
+    padding: 4%;
+
+}
+.fl div img{
+    width:80%;
+    margin-left: 10%;
+}
+.fl p{
+    color:#5d5f60;
+}
+.fl h2{
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 42px;
+    margin-bottom: 10px
+}
+.flexi{
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 250px;
+}
+.box_color{
+    width:50%;
+    background-color: #252729;
+    color:white;
+
+
+}
+.box_color p{
+    font-size: 15px;
+    width: 70%;
+    margin: 0 auto;
+}
+.box_color h3{
+    font-size: 22px;
+    width: 70%;
+    margin: 0 auto;
+    line-height: 1.625;
+}
+.box_title{
+    width:50%;
+    background-color: pink;
+    background-image: url('https://images.pexels.com/photos/907518/pexels-photo-907518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-position: center;
+    background-size: cover;
+}
+
+.box_text{
+    width:350px;
+    flex-grow: 1;
+    background-color: rgba(37, 39, 41, .05);
+}
+.box_text h3{
+    color:#343638;
+    width: 80%;
+    margin: 0 auto;
+}
+.box_text p{
+    font-size: 15px;
+    color:#5b5d5d;
+    width: 80%;
+    margin: 0 auto;
+}
+.boxi{
+    width:350px;
+    flex-grow: 1;
+}
+.fls{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.box_img{
+    background-position: center;
+    background-size: cover;
+    background-image: url('https://images.pexels.com/photos/302871/pexels-photo-302871.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+}
+.box_parrafo {
+    width:50%;
+    background-color: rgba(37, 39, 41, .05);
+
+}
+.box_parrafo h3{
+    font-size: 18px;
+    color:#343638;
+    width: 80%;
+    margin: 0 auto;
+}
+.box_parrafo p{
+    font-size: 15px;
+    color:#5b5d5d;
+    width: 80%;
+    margin: 0 auto;
+}
+.beneficios{
+    background-color: white;
+    padding: 50px 0;}
+
+.beneficios h2{
+    text-align: center;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 42px;
+    margin-bottom: 10px
+}
+.box_b{
+    border:1px solid #f4f4f1;
+    width:200px;
+    flex-grow: 1;
+    margin: 20px;
+    padding-bottom: 10px;
+}
+.box_b h3{
+    font-size: 18px;
+    color:#343638;
+    width: 80%;
+    margin: 15px auto;
+}
+.box_b p{
+    font-size: 15px;
+    color:#5b5d5d;
+    width: 80%;
+    margin: 0 auto;
+}
+.box_b img{
+    width: 100%;
+}
+.box_members{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgba(37, 39, 41, .05);
+    padding: 3% 0;
+}
+.member_img{
+    width:150px;
+    height:100px;
+    margin: 20px;
+    filter: grayscale(100%);
+    opacity: .6;
+}
+@media(max-width: 430px){
+    .box_parrafo{
+        width:100%;
+    }
+    .slide h1{
+        font-size: 40px;
+    }
+}
