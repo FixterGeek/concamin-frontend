@@ -29,6 +29,7 @@ import SearchInput from './SearchInput';
         const { anchorEl } = this.state;
         const open = Boolean(anchorEl);
 
+
         return(
             <div style={{marginLeft:'240px'}}>
                 <AppBar position="static" color="default"  >
@@ -38,7 +39,7 @@ import SearchInput from './SearchInput';
 
                         </div>
 
-
+                        
 
                         <div style={{display:'flex', justifyContent:'center', alignItems:'center', marginLeft:10}}>
                             <Typography variant="title" color="inherit">

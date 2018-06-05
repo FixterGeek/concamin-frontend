@@ -77,7 +77,7 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
             {links.length <= 0 ?
                 "": <List component="nav">
                {links.map((link, key)=>(                    
-                        <a href={link} key={key} target="_blank" style={{ textDecoration: 'none'}} >
+                        <a href={`//${link}`} key={key} target="_blank">
                         <ListItem button >
                             <ListItemIcon>
                                 <InsertLink />
