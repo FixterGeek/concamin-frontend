@@ -28,9 +28,6 @@ const Routes = () => (
         <Route path="/events/eventito" component={DetailEvent}/>
         <Route path="/events" component={EventsPage}/>
         <Route exact path="/" component={HomeContainer} />
-
-
-
     </Switch>
 );
 
