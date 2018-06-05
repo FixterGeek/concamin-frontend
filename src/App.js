@@ -9,8 +9,8 @@ class App extends Component {
   render() {
     return (
       <div className='background-app'>
-        <Navbar/>
-        <MainMenu/>
+        {/*<Navbar/>*/}
+        {/*<MainMenu/>*/}
         <div className="routes-container">
         <Routes/>
         </div>

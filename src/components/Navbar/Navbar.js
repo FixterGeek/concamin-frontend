@@ -13,7 +13,6 @@ import toastr from 'toastr';
         open:false,
         anchorEl: null,
         isLogged:false,
-
     }
 
     openMenu=()=>{
