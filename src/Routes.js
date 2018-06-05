@@ -8,6 +8,8 @@ import { PostCard } from './components/newsfeed/PostCard';
 import LoginPage from './components/login/LoginPage';
 import PublicProfile from './components/profile/PublicProfile';
 import Navbar from "./components/Navbar/Navbar";
+import EventsPage from "./components/events/EventsPage"
+import DetailEvent from "./components/events/DetailEventPage";
 
 
 const Routes = () => (
@@ -19,6 +21,8 @@ const Routes = () => (
         <Route path="/login" component={LoginPage} />
         <Route path="/users/:id" component={PublicProfile} />
         <Route path="/navbar" component={Navbar}/>
+        <Route path="/events/eventito" component={DetailEvent}/>
+        <Route path="/events" component={EventsPage}/>
         <Route exact path="/" component={HomeContainer} />
 
 

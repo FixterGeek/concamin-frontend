@@ -17,7 +17,8 @@ const styles = {
         backgroundColor:'red',
     },
     cardpadre:{
-        marginBottom:'2%'
+        marginBottom:'2%',
+        position:'relative'
     },
     micomentario:{
         display:'flex',

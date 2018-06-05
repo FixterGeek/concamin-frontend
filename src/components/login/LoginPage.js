@@ -5,6 +5,7 @@ import {LoginDisplay} from './LoginDisplay';
 import {SignupDisplay} from './SignupDisplay';
 
 
+
 class LoginPage extends Component{
 
   state = {
@@ -74,6 +75,7 @@ class LoginPage extends Component{
     <input placeholder="password" name="password" type="text"/>
     <input type="submit"/>
   </form> */}
+
   <LoginDisplay changeToSignup={this.changeToSignup} onSubmit={this.doLoggin} />
 </div>
         );

@@ -1,13 +1,19 @@
 import React,{Component} from 'react'
-import {AppBar,Toolbar,Typography,IconButton,Menu,MenuItem, Avatar} from '@material-ui/core/';
-import {AccountCircle,NotificationsNone,KeyboardArrowDown} from '@material-ui/icons/';
-import {Link} from 'react-router-dom';
+import {AppBar,Toolbar,IconButton,Menu,MenuItem, Avatar, Button,Typography} from '@material-ui/core/';
+import {NotificationsNone,KeyboardArrowDown} from '@material-ui/icons/';
+import {NavLink,Link} from 'react-router-dom';
 import SearchInput from './SearchInput';
+import {bindActionCreators}from 'redux';
+import {connect} from 'react-redux';
+import * as userActions from '../../redux/actions/userActions';
+import toastr from 'toastr';
 
  class  Navbar extends Component {
     state={
         open:false,
         anchorEl: null,
+        isLogged:false,
+
     }
 
     openMenu=()=>{
@@ -23,65 +29,93 @@ import SearchInput from './SearchInput';
          this.setState({ anchorEl: null });
      };
 
+        logOut=()=>{
+            toastr.info('Bye Bye ')
+            localStorage.removeItem("user");
+            this.props.userActions.logOut();
+            this.handleClose()
+            window.location.reload();
+        }
 
-    render(){
+     componentWillMount() {
+         let user = localStorage.getItem("user");
 
-        const { anchorEl } = this.state;
+         if (user) {
+             this.setState({isLogged:true, user})
+         }else{
+             this.setState({isLogged:false})
+         }
+     }
+
+
+
+     render(){
+
+        const { anchorEl,isLogged} = this.state;
+        const {user}=this.props;
         const open = Boolean(anchorEl);
 
+        console.log("usuario", user)
 
         return(
-            <div style={{marginLeft:'240px'}}>
-                <AppBar position="static" color="default"  >
-                    <Toolbar >
-                        <div style={{ flex:1}}>
-                            <SearchInput/>
-
-                        </div>
-
-                        
-
-                        <div style={{display:'flex', justifyContent:'center', alignItems:'center', marginLeft:10}}>
-                            <Typography variant="title" color="inherit">
-                                BrendiJS
-                            </Typography>
-
-                            <IconButton>
-                                <NotificationsNone/>
-                            </IconButton>
-
-                            <Avatar alt={"imagen"} src={"https://cdn3.iconfinder.com/data/icons/essentials-vol-1-1/512/User-2-512.png"} style={{margin:10, width:30, height:30}}/>
-
-                            <IconButton onClick={this.handleMenu}>
-                                <KeyboardArrowDown/>
-                            </IconButton>
-                            <Menu
-                                open={open}
-                                onClose={this.handleClose}
-                                anchorEl={anchorEl}
-                                anchorOrigin={{
-                                    vertical:'top',
-                                    horizontal:'right'
-                                }}
-                                transformOrigin={{
-                                    vertical:'top',
-                                    horizontal:'right'
-                                }}
-                            >
-                                <Link style={{color:'black',textDecoration:'none'}} to={"/profile"}>
-                                <MenuItem >
-                                   Perfil
-                                </MenuItem>
-                                </Link>
-                                <MenuItem >
-                                    <Link style={{color:'black',textDecoration:'none'}} to={"#"}>Cerrar sesion </Link>
-                                </MenuItem>
-                            </Menu>
-
-                        </div>
+            <div>
+                <AppBar position="fixed" color="default" style={{width:"86%"}}  >
 
 
-                    </Toolbar>
+                    { isLogged  ?
+                        <Toolbar >
+
+                            <div style={{ flex:1}}>
+                                <SearchInput/>
+
+                            </div>
+
+                            <div style={{display:'flex', justifyContent:'center', alignItems:'center', marginLeft:10}}>
+                                <IconButton>
+                                    <NotificationsNone/>
+                                </IconButton>
+
+                                <Avatar  src={user.profilePic} style={{margin:10,backgroundColor:'red'}}/>
+
+                                <IconButton onClick={this.handleMenu}>
+                                    <KeyboardArrowDown/>
+                                </IconButton>
+                                <Menu
+                                    open={open}
+                                    onClose={this.handleClose}
+                                    anchorEl={anchorEl}
+                                    anchorOrigin={{
+                                        vertical:'top',
+                                        horizontal:'right'
+                                    }}
+                                    transformOrigin={{
+                                        vertical:'top',
+                                        horizontal:'right'
+                                    }}
+                                >
+
+                                        <MenuItem >
+                                            <NavLink style={{color:'black',textDecoration:'none'}} to={"/profile"} onClick={this.handleClose} >Perfil</NavLink>
+                                        </MenuItem>
+
+                                    <MenuItem onClick={this.logOut} >
+                                        Cerrar sesion
+                                    </MenuItem>
+                                </Menu>
+
+                            </div>
+
+                        </Toolbar>
+
+                        :
+                        <Toolbar style={{display:'flex',alignItems:'center',justifyContent:'flex-end'}}>
+                            <Link to={'/login'}>
+                                <Button style={{color:'black',textDecoration:'none'}} color="inherit">Iniciar sesión</Button>
+                            </Link>
+                        </Toolbar>
+
+
+                    }
 
                 </AppBar>
             </div>
@@ -92,4 +126,20 @@ import SearchInput from './SearchInput';
 }
 
 
+function mapStateToProps(state, ownProps) {
+    let user =state.user.object;
+    return {
+        user,
+    }
+
+}
+
+function mapDispatchToProps(dispatch){
+    return{
+
+        userActions:bindActionCreators(userActions,dispatch),
+    }
+}
+
+Navbar = connect (mapStateToProps,mapDispatchToProps)(Navbar);
 export default Navbar;
