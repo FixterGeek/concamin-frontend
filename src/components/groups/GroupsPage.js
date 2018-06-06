@@ -19,11 +19,11 @@ export default class GroupsPage extends Component {
         return(
             <GridList  cellHeight={'auto'} cols={3}>
 
-                <GridListTile cols={2} style={styles.gridTile}>
+                <GridListTile cols={2} >
                     <CreateGroup open={this.state.openCreate} close={this.openNewGroup}/>
                     <CardGroup />
                 </GridListTile>
-                <GridListTile cols={1} style={styles.gridTile}>
+                <GridListTile cols={1} style={{paddingLeft:'20px'}}>
                     <CardCreateGroup onOpen={this.openNewGroup}/>
                     <AdCard/>
 
@@ -35,7 +35,5 @@ export default class GroupsPage extends Component {
 
 const styles = {
 
-    gridTile:{
-        padding:'2%'
-    }
+   
 }

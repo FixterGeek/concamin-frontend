@@ -13,7 +13,7 @@ class MainMenu extends Component {
         <div className="drawer-container">
             <Divider/>
             <List>
-               <Link to="/profile" className="menu-links">
+               <Link to="/main/profile" className="menu-links">
                <ListItem button>
                     <ListItemIcon>
                         <Person />
@@ -24,7 +24,7 @@ class MainMenu extends Component {
             </List>
             <Divider/>
             <List subheader={<ListSubheader>Comunidad</ListSubheader>}>
-            <Link to="/newsfeed">
+            <Link to="/main">
                 <ListItem button>
                     <ListItemIcon>
                         <ArtTrack />
@@ -32,7 +32,7 @@ class MainMenu extends Component {
                     <ListItemText primary="Feed" />
                 </ListItem>
                 </Link>
-                <Link to="/groups">
+                <Link to="/main/groups">
                 <ListItem button>
                     <ListItemIcon>
                         <Group />
@@ -40,7 +40,7 @@ class MainMenu extends Component {
                     <ListItemText primary="Grupos" />
                 </ListItem>
                 </Link>
-                <Link to="/events">
+                <Link to="/main/events">
                 <ListItem button>
                     <ListItemIcon>
                         <Event />
@@ -48,7 +48,7 @@ class MainMenu extends Component {
                     <ListItemText primary="Eventos" />
                 </ListItem>
                 </Link>
-                <Link to="/announcements">
+                <Link to="/main/announcements">
                 <ListItem button>
                     <ListItemIcon>
                         <ChromeReaderMode />
@@ -61,7 +61,7 @@ class MainMenu extends Component {
             <Divider/>
 
             <List subheader={<ListSubheader>Servicios</ListSubheader>}>
-            <Link to="/benefits">
+            <Link to="/main/benefits">
             <ListItem button>
                     <ListItemIcon>
                         <Favorite />
@@ -69,7 +69,7 @@ class MainMenu extends Component {
                     <ListItemText primary="Beneficios" />
                 </ListItem>
                 </Link>
-                <Link to="/communication">
+                <Link to="/main/communication">
                 <ListItem button>
                     <ListItemIcon>
                         <ImportantDevices />

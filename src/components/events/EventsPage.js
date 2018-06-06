@@ -13,13 +13,11 @@ class EventsPage extends Component {
 
             <GridList cellHeight={'auto'} cols={3}>
 
-                <GridListTile cols={2} style={styles.gridTile}>
+                <GridListTile cols={2} >
                     <CardEvent/>
                 </GridListTile>
-                <GridListTile cols={1} style={styles.gridTile}>
-
+                <GridListTile cols={1} style={{paddingLeft:'20px'}}>
                     <AdCard/>
-
                 </GridListTile>
             </GridList>
 

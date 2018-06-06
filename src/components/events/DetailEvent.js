@@ -18,7 +18,7 @@ let cover;
 let coverImage;
 export const DetailEvent =({cover=foto, posts, handleSubmit, handleChange, photoPreview, clearFile, newPost, handleLink, addLink, addLinks, clearLink})=>(
     <div className='padding-gral'>
-        <Paper style={{minHeight: "379px", paddingBottom:"10px"}}>
+        <Paper style={{minHeight: "379px"}}>
             <div ref={div=>coverImage=div} className='event-img' style={{position:"relative", backgroundImage:`url('${cover}')`}}/>
             <div style={{display:"flex", justifyContent:"center"}}>
                 <div className="data-user">
@@ -27,14 +27,12 @@ export const DetailEvent =({cover=foto, posts, handleSubmit, handleChange, photo
             </div>
         </Paper>
         <div style={{display:'flex',flexDirection:'rows'}}>
-
-
             <div >
                 <InfoEvent />
             </div>
 
 
-            <div style={{margin:'',width:'70%'}}>
+            <div style={{padding:'20px 0 0 20px',width:'100%'}}>
                 <NewsFeedComponent
                     posts={posts}
                     handleSubmit={handleSubmit}
