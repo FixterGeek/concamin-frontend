@@ -10,7 +10,7 @@ class MainPage extends Component {
       <div>
         <Navbar/>
         <MainMenu/>        
-        <div style={{padding:'85px 20px 0 320px'}}>
+        <div style={{padding:'85px 50px 0 350px'}}>
           <RoutesMain/>
         </div>
         <Chat/>

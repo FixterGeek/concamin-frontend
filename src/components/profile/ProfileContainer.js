@@ -168,7 +168,7 @@ clearLink=(key)=>{
             <div >
               <HistoryDisplay />
             </div>
-            <div style={{padding:'20px 0 0 20px',width:'100%'}}>
+            <div style={{padding:'20px 0 0 50px',width:'100%'}}>
             <NewsFeedComponent
                     posts={posts}
                     handleSubmit={this.handleSubmit}

@@ -23,7 +23,7 @@ export default class GroupsPage extends Component {
                     <CreateGroup open={this.state.openCreate} close={this.openNewGroup}/>
                     <CardGroup />
                 </GridListTile>
-                <GridListTile cols={1} style={{paddingLeft:'20px'}}>
+                <GridListTile cols={1} style={{paddingLeft:'50px'}}>
                     <CardCreateGroup onOpen={this.openNewGroup}/>
                     <AdCard/>
 

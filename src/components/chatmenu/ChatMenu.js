@@ -182,7 +182,7 @@ class Chat extends Component {
                     margin: 0,
                     position: 'fixed',
                     bottom: 0,
-                    right: 25,
+                    right: 50,
                 }}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={{ backgroundColor: 'dimgray' }}>
                         <Typography>Mensajes ({conversationList.length})</Typography>

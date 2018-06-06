@@ -125,7 +125,7 @@ class NewsFeedPage extends Component {
                     clearLink={this.clearLink}
                     clearFile={this.clearFile}/>
             </GridListTile>
-            <GridListTile cols={1} style={{paddingLeft:'20px'}}>
+            <GridListTile cols={1} style={{paddingLeft:'50px'}}>
                 <AdCard ejemplo={this.ejemplo}/>
             </GridListTile>
         </GridList>

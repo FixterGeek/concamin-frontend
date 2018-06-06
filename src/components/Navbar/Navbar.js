@@ -58,7 +58,7 @@ import toastr from 'toastr';
 
         return(
             <div>
-                <AppBar position="fixed" color="default" style={{paddingLeft:"320px",width:"100%"}}  >
+                <AppBar position="fixed" color="default" style={{paddingLeft:"330px",width:"100%"}}  >
 
                     { isLogged  ?
                         <Toolbar >
