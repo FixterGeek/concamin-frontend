@@ -11,9 +11,14 @@ const styles = {
         flex: 1,
     },
     papel:{
-        padding:30,
+
+        paddingLeft: 60,
+        paddingRight: 60,
+        paddingTop: 30,
+        paddingBottom: 20
     },
     content:{
+        paddingTop:10,
         paddingLeft:50,
         paddingRight:50,
         backgroundColor:'#eaebec'
@@ -53,7 +58,7 @@ export const CreateGroup =({open,close})=>(
         <DialogContent style={styles.content}>
             <Paper style={styles.papel}>
                 <Typography style={styles.title} color="textSecondary">
-                    Bienvenido al formulario de creacion de grupo de Concamin
+                    Bienvenido al formulario de creación de grupo de Concamin
                 </Typography>
                 <DialogContentText style={styles.note}>
                     Tenga en cuenta que las sugerencias se evalúan cada dos semanas, y las sugerencias pueden o no crearse en función de la superposición con áreas existentes o de interés

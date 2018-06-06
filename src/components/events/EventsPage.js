@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { GridList, GridListTile } from '@material-ui/core';
 import {AdCard} from "../Advertising/AdCard";
 import {CardEvent} from "./CardEvent";
+import {CreateCardEvent} from "./CreateEventCard";
 
 
 
@@ -17,7 +18,7 @@ class EventsPage extends Component {
                     <CardEvent/>
                 </GridListTile>
                 <GridListTile cols={1} style={styles.gridTile}>
-
+                    <CreateCardEvent/>
                     <AdCard/>
 
                 </GridListTile>
