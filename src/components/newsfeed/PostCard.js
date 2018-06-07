@@ -123,12 +123,19 @@ export const PostCard = ({link, file, image, body,links, handleSubmit, handleCha
         
             <CardContent style={styles.cardpadding2}>
             {links?links.map((link, key)=>(
-               <ListItem key={key}>
-                    <ListItemText inset primary={link} />
+                
+                <ListItem key={key}>                                    
+                    <ListItemIcon>
+                        <InsertLink />
+                    </ListItemIcon>
+                    <a href={`//${link}`} key={key} target="_blank">
+                        <ListItemText inset primary={link} />
+                    </a>
                     <IconButton aria-label="Add to favorites" style={styles.icon} onClick={()=>clearLink(key)}>
                         <Clear />
-                    </IconButton>
-               </ListItem>
+                    </IconButton>                                    
+                </ListItem>
+              
             )):''}
             </CardContent>
         

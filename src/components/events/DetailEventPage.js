@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
-import { GridList, GridListTile } from '@material-ui/core';
-import { NewsFeedComponent } from './NewsFeedComponent';
 import {getPosts, addPost} from '../../services/postService';
-import {AdCard} from "../Advertising/AdCard";
 import { MainLoader } from '../loader/MainLoader';
+import {DetailEvent} from "./DetailEvent";
 
 
 
-class NewsFeedPage extends Component {
-
+class DetailEventPage extends Component {
     state={
         loading:true,
         newPost:{
@@ -26,17 +23,17 @@ class NewsFeedPage extends Component {
         this.setState({loading:true})
         getPosts()
             .then(r=>{
-               this.setState({posts:r})
-               console.log(r)
-               this.setState({loading:false})
+                this.setState({posts:r})
+                console.log(r)
+                this.setState({loading:false})
             }).catch(e=>{
-                console.log(e)
-            })
+            console.log("este es tu error",e)
+        })
     }
 
     handleSubmit=(e)=>{
         e.preventDefault()
-        this.setState({loading:true})    
+        this.setState({loading:true})
         addPost(this.state.newPost)
             .then(r=>{
                 let {posts, newPost} = this.state;
@@ -44,23 +41,23 @@ class NewsFeedPage extends Component {
                 newPost.body=""
                 newPost.links=[]
                 this.clearFile()
-                this.setState({posts, newPost, loading:false, addLink:false})
-                
-            }).catch(e=>{
-                console.log(e)
-            })
+                this.setState({posts, newPost, loading:false})
 
-        
+            }).catch(e=>{
+            console.log(e)
+        })
+
+
     }
     handleChange=(e)=>{
         let {newPost} = this.state;
         let field = e.target.name;
         if(e.target.type==="file"){
             newPost[field] = e.target.files[0]
-           if(e.target.name==="image"){
-            this.handlePreview()
-            console.log('preview de foto')
-           }
+            if(e.target.name==="image"){
+                this.handlePreview()
+                console.log('preview de foto')
+            }
         }
         else{
             newPost[field] = e.target.value
@@ -87,15 +84,15 @@ class NewsFeedPage extends Component {
     ejemplo=()=>{
         console.log("Si funciono")
     }
-   
+
     handleLink=()=>{
-       this.setState({addLink:!this.state.addLink})
-       console.log('lool')
+        this.setState({addLink:!this.state.addLink})
+        console.log('lool')
     }
     addLinks=()=>{
         let {newPost} = this.state;
         newPost['links'].push(newPost.link)
-        newPost.link=""       
+        newPost.link=""
         this.setState({newPost})
     }
     clearLink=(key)=>{
@@ -106,39 +103,38 @@ class NewsFeedPage extends Component {
 
 
 
-  render() {
-    let {photoPreview, newPost, addLink, posts, loading} = this.state;
-    if(loading) return(<MainLoader/>)
-    return (
+    render() {
+        let {photoPreview, newPost, addLink, posts, loading} = this.state;
+        // if(loading) return(<MainLoader/>)
+        return (
 
-        <GridList cellHeight={'auto'} cols={3}>
-            <GridListTile cols={2} >
-                <NewsFeedComponent
-                    posts={posts}
-                    handleSubmit={this.handleSubmit}
-                    handleChange={this.handleChange}
-                    photoPreview={photoPreview}
-                    newPost={newPost}
-                    handleLink={this.handleLink}
-                    addLink={addLink}
-                    addLinks={this.addLinks}
-                    clearLink={this.clearLink}
-                    clearFile={this.clearFile}/>
-            </GridListTile>
-            <GridListTile cols={1} style={{paddingLeft:'50px'}}>
-                <AdCard ejemplo={this.ejemplo}/>
-            </GridListTile>
-        </GridList>
+            <div>
+
+                    <DetailEvent
+                        posts={posts}
+                        handleSubmit={this.handleSubmit}
+                        handleChange={this.handleChange}
+                        photoPreview={photoPreview}
+                        newPost={newPost}
+                        handleLink={this.handleLink}
+                        addLink={addLink}
+                        addLinks={this.addLinks}
+                        clearLink={this.clearLink}
+                        clearFile={this.clearFile}/>
+
+            </div>
 
 
 
 
-    )
-  }
+        )
+    }
 }
 
 const styles = {
-    
+    gridTile:{
+        padding:'2%'
+    }
 }
 
-export default NewsFeedPage
+export default DetailEventPage
