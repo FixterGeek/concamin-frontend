@@ -17,7 +17,7 @@ import { Create, Close, ExpandMore } from '@material-ui/icons/';
 
 export const ChatAdd = ({ followerList, messageInput, addMessage, participants, messages, onClickChat, userSelected, listi, textInput, onChange, close, onClose, handleInput, onChangeHandler, pushButton, visible, expanded }) => {
     console.log("desconstr", participants, messages)
-
+    const localUser = JSON.parse(localStorage.getItem('user'));
     let list = followerList
         .filter(followerList => textInput.toLowerCase() === '' || followerList.username.toLowerCase().includes(textInput.toLowerCase()))
         .map((follower, index) => {
@@ -28,7 +28,6 @@ export const ChatAdd = ({ followerList, messageInput, addMessage, participants, 
                 <ListItemText primary={follower.username} secondary={follower.email} />
             </ListItem>
         })
-    const localUser = JSON.parse(localStorage.getItem('user'));
     let msgList = messages;
 
     if (userSelected) return (
@@ -37,7 +36,7 @@ export const ChatAdd = ({ followerList, messageInput, addMessage, participants, 
                 minWidth: '320px',
                 position: 'fixed',
                 bottom: 0,
-                right: 350,
+                right: 380,
             }} defaultExpanded={true} hidden={close}>
                 <ExpansionPanelSummary expanded={true} expandIcon={<Close onClick={onClose} />} style={{ backgroundColor: 'dimgray' }}>
                     <Typography>{userSelected}</Typography>
@@ -48,13 +47,20 @@ export const ChatAdd = ({ followerList, messageInput, addMessage, participants, 
                     }}>
                         <section style={{ height: '60vh' }} className="scroll">
                             {messages.map((m, index) => {
-                                return (<Paper style={{ maxWidth: '290px', padding: '10px', margin: '5px 5px' }}>
-                                    <Avatar>
-                                        <img src={m.profilePic} style={{ maxWidth: '100%', maxHeight: '100%' }} />
-                                    </Avatar>
-                                    {m.body}
-                                </Paper>)
-
+                                if (m.user != localUser._id) {
+                                    return (
+                                        <Paper key={index} style={{ maxWidth: '290px', padding: '10px', margin: '5px 5px' }}>
+                                            <Avatar>
+                                                <img src={m.profilePic} style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                                            </Avatar>
+                                            {m.body}
+                                        </Paper>
+                                    )
+                                } else {
+                                    return (<Paper key={index} style={{ maxWidth: '290px', padding: '10px', margin: '5px 5px' }}>
+                                        {m.body}
+                                    </Paper>)
+                                }
                             })}
                         </section>
                         <div style={{ width: '100%', backgroundColor: 'dimgray', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -75,7 +81,7 @@ export const ChatAdd = ({ followerList, messageInput, addMessage, participants, 
             minWidth: '320px',
             position: 'fixed',
             bottom: 0,
-            right: 350,
+            right: 380,
         }} defaultExpanded={expanded} hidden={close}>
             <ExpansionPanelSummary expandIcon={<ExpandMore />} style={{ backgroundColor: 'dimgray' }}>
                 <Typography>Nuevo mensaje..</Typography>
