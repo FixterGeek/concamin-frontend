@@ -5,7 +5,7 @@ import './Home.css';
 export const About = () => {
 
 
-    return (<div className="about">
+    return (<div className="abouti">
         <div className="fl">
             <div style={{display:"flex", }}>
                 <div>

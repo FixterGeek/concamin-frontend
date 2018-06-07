@@ -8,6 +8,8 @@ import ProfileContainer from '../profile/ProfileContainer'
 import PublicProfile from '../profile/PublicProfile'
 import DetailEventPage from '../events/DetailEventPage'
 import EventsPage from '../events/EventsPage'
+import Anuncios from '../complements/Anuncios';
+import Beneficios from '../complements/Beneficios';
 
 class RoutesMain extends Component {
   render() {
@@ -24,6 +26,8 @@ class RoutesMain extends Component {
             {/*<Route path="/navbar" component={Navbar}/>*/}
             <Route path="/main/events/eventito" component={DetailEventPage}/>
             <Route path="/main/events" component={EventsPage}/>
+            <Route path="/main/announcements" component={Anuncios}/>
+            <Route path="/main/benefits" component={Beneficios} />
         </Switch>
     )
   }
