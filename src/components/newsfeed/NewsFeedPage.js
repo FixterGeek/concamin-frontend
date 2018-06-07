@@ -44,7 +44,7 @@ class NewsFeedPage extends Component {
                 newPost.body=""
                 newPost.links=[]
                 this.clearFile()
-                this.setState({posts, newPost, loading:false})
+                this.setState({posts, newPost, loading:false, addLink:false})
                 
             }).catch(e=>{
                 console.log(e)
@@ -108,11 +108,11 @@ class NewsFeedPage extends Component {
 
   render() {
     let {photoPreview, newPost, addLink, posts, loading} = this.state;
-   // if(loading) return(<MainLoader/>)
+    if(loading) return(<MainLoader/>)
     return (
 
         <GridList cellHeight={'auto'} cols={3}>
-            <GridListTile cols={2} style={styles.gridTile}>
+            <GridListTile cols={2} >
                 <NewsFeedComponent
                     posts={posts}
                     handleSubmit={this.handleSubmit}
@@ -125,12 +125,8 @@ class NewsFeedPage extends Component {
                     clearLink={this.clearLink}
                     clearFile={this.clearFile}/>
             </GridListTile>
-            <GridListTile cols={1} style={styles.gridTile}>
-
+            <GridListTile cols={1} style={{paddingLeft:'50px'}}>
                 <AdCard ejemplo={this.ejemplo}/>
-
-
-
             </GridListTile>
         </GridList>
 
@@ -142,9 +138,7 @@ class NewsFeedPage extends Component {
 }
 
 const styles = {
-    gridTile:{
-        padding:'2%'
-    }
+    
 }
 
 export default NewsFeedPage

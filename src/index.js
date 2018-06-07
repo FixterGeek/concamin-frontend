@@ -8,6 +8,7 @@ import {BrowserRouter} from 'react-router-dom';
 import configureStore from './redux/store/configureStore';
 import {Provider} from 'react-redux';
 import {checkIfUser} from "./redux/actions/userActions";
+import '../node_modules/font-awesome/css/font-awesome.min.css';
 
 
 export const store = configureStore();

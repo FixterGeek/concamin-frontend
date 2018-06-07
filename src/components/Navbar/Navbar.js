@@ -13,7 +13,6 @@ import toastr from 'toastr';
         open:false,
         anchorEl: null,
         isLogged:false,
-
     }
 
     openMenu=()=>{
@@ -59,8 +58,7 @@ import toastr from 'toastr';
 
         return(
             <div>
-                <AppBar position="fixed" color="default" style={{width:"86%"}}  >
-
+                <AppBar position="fixed" color="default" style={{paddingLeft:"330px",width:"100%"}}  >
 
                     { isLogged  ?
                         <Toolbar >

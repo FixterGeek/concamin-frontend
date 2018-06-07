@@ -5,6 +5,10 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import {CommentBox} from './CommentBox';
 import {Link} from 'react-router-dom'
+import moment from 'moment';
+import 'moment/locale/es'
+
+
 const styles = {
     media: {
         height: 0,
@@ -42,7 +46,7 @@ const actions=[];
 
 
 
-export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,links,file})=>(
+export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,links,file, created_at})=>(
 
 
         <Card style={styles.cardpadre}>
@@ -53,7 +57,7 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
                     </Avatar>
                 }
                 title={user.username}
-                subheader={date}
+                subheader={moment(created_at).format('LLLL')}
                 action={
                     <IconButton>
                         <MoreVert/>
@@ -62,7 +66,7 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
             />
 
 
-            <CardContent>
+            <CardContent style={{paddingTop:'0'}}>
                 <Typography component="p">
                     {body}
                 </Typography>
@@ -78,7 +82,7 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
             {links.length <= 0 ?
                 "": <List component="nav">
                {links.map((link, key)=>(                    
-                        <a href={link} key={key} target="_blank" style={{ textDecoration: 'none'}} >
+                        <a href={`//${link}`} key={key} target="_blank">
                         <ListItem button >
                             <ListItemIcon>
                                 <InsertLink />

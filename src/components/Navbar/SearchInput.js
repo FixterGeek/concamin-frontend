@@ -2,9 +2,9 @@ import React from 'react';
 import Autosuggest from 'react-autosuggest';
 import match from 'autosuggest-highlight/match';
 import parse from 'autosuggest-highlight/parse';
-import {TextField,Paper,MenuItem,InputAdornment} from '@material-ui/core/';
+import { TextField, Paper, MenuItem, InputAdornment } from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
-import {Search} from '@material-ui/icons/'
+import { Search } from '@material-ui/icons/'
 
 const suggestions = [
     { label: 'Afghanistan' },
@@ -52,7 +52,7 @@ function renderInput(inputProps) {
             fullWidth={true}
             margin="normal"
             name="seatchPerson"
-            style={{marginRight:"10px"}}
+            style={{ marginRight: "10px" }}
 
 
             InputProps={{
@@ -61,9 +61,9 @@ function renderInput(inputProps) {
                     input: classes.input,
                 },
                 disableUnderline: true,
-                startAdornment:(
+                startAdornment: (
                     <InputAdornment position={"start"}>
-                        <Search style={{color:'#ccc'}}/>
+                        <Search style={{ color: '#ccc' }} />
                     </InputAdornment>
                 ),
                 ...other,
@@ -83,13 +83,13 @@ function renderSuggestion(suggestion, { query, isHighlighted }) {
                 {parts.map((part, index) => {
                     return part.highlight ? (
                         <span key={String(index)} style={{ fontWeight: 300 }}>
-              {part.text}
-            </span>
-                    ) : (
-                        <strong key={String(index)} style={{ fontWeight: 500 }}>
                             {part.text}
-                        </strong>
-                    );
+                        </span>
+                    ) : (
+                            <strong key={String(index)} style={{ fontWeight: 500 }}>
+                                {part.text}
+                            </strong>
+                        );
                 })}
             </div>
         </MenuItem>
@@ -132,7 +132,7 @@ function getSuggestions(value) {
 const styles = theme => ({
     container: {
 
-        backgroundColor:'whitesmoke',
+        backgroundColor: 'whitesmoke',
 
     },
     suggestionsContainerOpen: {

@@ -15,9 +15,8 @@ const styles = {
     flex: {
         flex: 1,
     },
-    papel:{
-        padding:30,
-        minHeight:300,
+    papel:{        
+        
         boxShadow:"none",
 
     },
@@ -39,17 +38,20 @@ const styles = {
     micomentario:{
         display:'flex',
         alignItems:'center',
-        backgroundColor:"rgb(242,243,245)",
-        padding: "16px 24px 16px"
+        backgroundColor:"rgb(242,243,245)",        
+        height:'70px',
+        overflowY:'scroll',
+        padding:'0px'
     },
     comentaritos:{
+        width:'100%',
         backgroundColor:"rgb(242,243,245)",
-        paddingBottom:"0px",
-        paddingTop:"0px"
+        padding:'0 0 10 0',
+        height:'70px'
     },
     listita:{
-        overflow:'auto',
-        maxHeight:'450px',
+        overflowY:'auto',
+        height:'calc(100vh - 340px)',
     }
 
 
@@ -206,13 +208,13 @@ class ChatGroup extends Component {
                         </Avatar>
                         <div style={{marginLeft:"10px",width:'100%'}}>
                             <TextField
-                                id="full-width"
-                                label="BrendiJs"
+                                id="full-width"                                
+                                multiline={true}
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
                                 placeholder="Di algo!!"
-                                fullWidth
+                                style={{width:'90%'}}
                                 margin="normal"
                             />
                         </div>

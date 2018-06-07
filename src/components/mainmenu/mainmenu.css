@@ -1,6 +1,6 @@
 .drawer-container{
     /*background-color:#000;*/
-    width: 240px;
+    width: 300px;
     height: calc(100vh - 128px);
     overflow-y: scroll;
 }

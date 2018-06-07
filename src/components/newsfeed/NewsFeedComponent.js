@@ -5,7 +5,7 @@ import { CardDisplay } from './CardDisplay';
 
 
 export const NewsFeedComponent = ({posts, handleSubmit, handleChange, photoPreview, clearFile, newPost, handleLink, addLink, addLinks, clearLink}) => (
-    <div style={styles.container}> 
+    <div> 
         <PostCard 
             handleSubmit={handleSubmit} 
             handleChange={handleChange} 
@@ -23,7 +23,5 @@ export const NewsFeedComponent = ({posts, handleSubmit, handleChange, photoPrevi
 );
 
 const styles={
-    container:{
-        padding:'1% 2%'
-    }
+   
 }

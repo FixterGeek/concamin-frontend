@@ -98,7 +98,7 @@ export const ProfileDisplay = ({cancel, follow, isPublic, saveProfile, onChange,
                 </div>
 
             </Paper>
-            <HistoryDisplay />
+            
 
             <input onChange={()=>preview(cover, coverImage)} ref={input=>cover=input}  name="cover" type="file" hidden/>
             <input onChange={()=>previewAvatar(profilePic, profileImage)} ref={input=>profilePic=input} name="profilePic" type="file" hidden/>

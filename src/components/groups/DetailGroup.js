@@ -111,17 +111,18 @@ class DetailGroup extends Component {
         const cover = "https://las.leagueoflegends.com/sites/default/files/styles/wide_medium/public/upload/devdiary_gdprinciples_articleheader.jpg?itok=8zfwqH2t";
         let coverImage;
         return (
-            <div className='padding-gral'>
-                <Paper style={{minHeight: "379px", paddingBottom:"10px"}}>
-                    <div ref={div=>coverImage=div} className='event-img' style={{position:"relative", backgroundImage:`url('${cover}')`}}/>
-                    <div style={{display:"flex", justifyContent:"center"}}>
-                        <div className="data-user">
-                            <h4 className="title">Unete a Clash</h4>
-                        </div>
-                    </div>
-                </Paper>
+            <div>
+                
                 <GridList cellHeight={'auto'} cols={3}>
-                    <GridListTile cols={2}  style={styles.gridTile}>
+                    <GridListTile cols={2}>
+                        <Paper style={{minHeight: "379px", marginBottom:"20px"}}>
+                            <div ref={div=>coverImage=div} className='event-img' style={{position:"relative", backgroundImage:`url('${cover}')`}}/>
+                            <div style={{display:"flex", justifyContent:"center"}}>
+                                <div className="data-user">
+                                    <h4 className="title">Unete a Clash</h4>
+                                </div>
+                            </div>
+                        </Paper>                                           
                         <NewsFeedComponent
                             posts={posts}
                             handleSubmit={this.handleSubmit}
@@ -134,8 +135,8 @@ class DetailGroup extends Component {
                             clearLink={this.clearLink}
                             clearFile={this.clearFile}/>
                     </GridListTile>
-                    <GridListTile cols={1} style={styles.gridTile2}>
-                        <ChatGroup/>
+                    <GridListTile cols={1} style={{paddingLeft:'50px', position:'relative'}}>
+                        <ChatGroup style={{position:'fixted'}}/>
                     </GridListTile>
                 </GridList>
 

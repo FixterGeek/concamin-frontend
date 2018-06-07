@@ -5,8 +5,8 @@ import {Card, CardHeader,CardContent, Avatar,Divider,Typography,Button,Expansion
 
 const styles ={
     title:{
-            marginBottom: 16,
-            fontSize: 14,
+        marginBottom: 16,
+        fontSize: 14,
     },
     content:{
       display:'flex',
@@ -20,11 +20,11 @@ const styles ={
     cardpaps:{
 
             marginBottom:"2%",
-            minWidth:275,
-            width:320,
+            
+            width:'100%',
     },
     contentPadre:{
-        padding:"0 10px",
+        
         margin:'0 auto'
     },
 }

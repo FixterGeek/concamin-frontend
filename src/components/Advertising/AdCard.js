@@ -9,12 +9,11 @@ const styles = {
     },
     cardPublicidad:{
         marginBottom:"2%",
-        minWidth:275,
-        width:320,
+       
     },
     content:{
-        padding:"0 10px",
-       margin:'0 auto'
+        
+        margin:'0 auto'
     },
 
 };
