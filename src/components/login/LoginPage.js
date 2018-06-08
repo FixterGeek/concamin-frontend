@@ -10,10 +10,11 @@ class LoginPage extends Component{
 
   state = {
     signup:false,
-    error:null
+    error:null,
+    isLogged:false,
   }
 
-  componentWillMount(){
+  /*componentWillMount(){
     getLoggedUser()
     .then(r=>{
       this.props.history.push('/profile')
@@ -21,7 +22,16 @@ class LoginPage extends Component{
     .catch(e=>{
       
     })
-  }
+  }*/
+    componentWillMount() {
+        let user = localStorage.getItem("user");
+
+        if (user) {
+            this.setState({isLogged:true, user})
+        }else{
+            this.setState({isLogged:false})
+        }
+    }
 
     doLoggin = (e) => {
       e.preventDefault();
@@ -32,7 +42,7 @@ class LoginPage extends Component{
       login(auth)
       .then(user=>{
         toastr.info('Bienvenid@ ' + user.username)
-        this.props.history.push('/profile')
+        this.props.history.push('/main')
       })
       .catch(e=>{
         toastr.error("Hay un problema con tu usuario o contraseña " + e.statusText)

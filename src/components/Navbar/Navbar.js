@@ -51,11 +51,11 @@ import toastr from 'toastr';
      render(){
 
         const { anchorEl,isLogged} = this.state;
-        const {user}=this.props;
+        const {user,fetched}=this.props;
         const open = Boolean(anchorEl);
 
         console.log("usuario", user)
-
+         if(!fetched)return;
         return(
             <div>
                 <AppBar position="fixed" color="default" style={{paddingLeft:"330px",width:"100%"}}  >
@@ -73,7 +73,7 @@ import toastr from 'toastr';
                                     <NotificationsNone/>
                                 </IconButton>
 
-                                <Avatar  src={user.profilePic} style={{margin:10,backgroundColor:'red'}}/>
+                                <Avatar  src={user.profilePic} style={{margin:5}}/>
 
                                 <IconButton onClick={this.handleMenu}>
                                     <KeyboardArrowDown/>
@@ -128,6 +128,7 @@ function mapStateToProps(state, ownProps) {
     let user =state.user.object;
     return {
         user,
+        fetched: user!==undefined,
     }
 
 }
