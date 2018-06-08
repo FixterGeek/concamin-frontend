@@ -20,7 +20,6 @@ class EventsPage extends Component {
 
                 <GridListTile cols={1} style={styles.gridTile}>
                     <CreateCardEvent/>
-
                     <AdCard/>
                 </GridListTile>
             </GridList>
@@ -35,7 +34,7 @@ class EventsPage extends Component {
 const styles = {
 
     gridTile:{
-        padding:'2%'
+        paddingLeft:'50px'
     }
 }
 

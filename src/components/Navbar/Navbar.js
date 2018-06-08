@@ -33,7 +33,7 @@ import toastr from 'toastr';
             localStorage.removeItem("user");
             this.props.userActions.logOut();
             this.handleClose()
-            window.location.reload();
+            this.props.logOut()
         }
 
      componentWillMount() {

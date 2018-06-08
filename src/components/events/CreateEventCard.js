@@ -21,10 +21,8 @@ const styles ={
 
         marginBottom:"2%",
         minWidth:275,
-        width:320,
     },
     contentPadre:{
-        padding:"0 10px",
         margin:'0 auto'
     },
 }

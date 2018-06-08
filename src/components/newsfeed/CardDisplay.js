@@ -39,6 +39,9 @@ const styles = {
         position: "absolute",
         right: "20px",
         zIndex: 999,
+    },
+    textito:{
+        overflow:"hidden"
     }
 };
 const actions=[];
@@ -140,13 +143,13 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
                         <TextField
                             InputProps={{
                                 disableUnderline: true,
-
+                                input:styles.textito,
                             }}
                             onChange={handleComment}
-                            style={{padding:"0 10px"}}
+                            style={{padding:"0 10px",width:"96%"}}
                             id="multiline-flexible"
                             placeholder="Escribe tu humilde opinion!"
-                            fullWidth={true}
+
                             multiline
                             margin="normal"
                             name="commet"

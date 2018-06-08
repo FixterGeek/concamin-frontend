@@ -6,8 +6,8 @@ import {Link} from 'react-router-dom'
 const styles = {
     media: {
 
-        width:"250px",
-        height:"250px",
+        width:"150px",
+        height:"150px",
         //paddingTop: '56.25%', // 16:9
     },
     avatar: {
@@ -24,10 +24,10 @@ const styles = {
     },
     title:{
         marginBottom: 16,
-        fontSize: 20,
+        fontSize: 16,
     },
     location:{
-        fontSize: 18,
+        fontSize: 14,
     },
     miembros:{
         marginBottom:10,
