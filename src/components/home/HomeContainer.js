@@ -3,7 +3,7 @@ import {HomeDisplay} from './HomeDisplay';
 import {About} from './About';
 import {Descript} from './Descript';
 import {Benefits} from './Benefits';
-import {Members} from './Members';
+import Members from './Members';
 import Footer from '../footer/Footer';
 //testing chat
 

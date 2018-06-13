@@ -26,6 +26,7 @@ class Beneficios extends Component {
                     <p><FontAwesome name="adjust"/>  Comunicate de forma rápida</p>
                     <p><FontAwesome name="adjust"/>  Enterate de los eventos nacionales y/o internacionales del sector industrial </p>
                     <p><FontAwesome name="adjust"/>  Crea grupos de trabajo y comunicate de forma interna y privada</p>
+
                 </div>
             </div>
         );

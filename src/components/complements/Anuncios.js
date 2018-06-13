@@ -25,7 +25,7 @@ class Anuncios extends Component {
                     <p><FontAwesome name="adjust"/>  Muestra tus anuncios a más personas en más lugares</p>
                     <p><FontAwesome name="adjust"/>  Genera confianza en tus clientes</p>
                     <br/>
-                    <p>¿Estás interesado en anunciarte? Envía un mail a publicidad@concamin.com y recibe más información</p>
+                    <p>¿Estás interesado en anunciarte? Envía un mail a <a href="mailto:publicidad@concamin.com"><span style={{color:"#648943", fontWeight:"800"}}>publicidad@concamin.com</span></a> y recibe más información.</p>
                 </div>
             </div>
         );

@@ -85,7 +85,7 @@ class MainMenu extends Component {
         </div>
         <div>
         <Divider/>
-        <Link to="/support">
+        <Link to="/main/support">
         <ListItem button>
                     <ListItemIcon>
                         <Feedback />
