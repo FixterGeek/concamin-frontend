@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import {AppBar,Toolbar,IconButton,Menu,MenuItem, Avatar, Button,Typography} from '@material-ui/core/';
-import {NotificationsNone,KeyboardArrowDown} from '@material-ui/icons/';
+import {NotificationsNone,KeyboardArrowDown,AccountCircle} from '@material-ui/icons/';
 import {NavLink,Link} from 'react-router-dom';
 import SearchInput from './SearchInput';
 import {bindActionCreators}from 'redux';
@@ -45,6 +45,9 @@ import toastr from 'toastr';
              this.setState({isLogged:false})
          }
      }
+     componentDidMount(){
+            this.props.userActions.checkIfUser();
+     }
 
 
 
@@ -73,7 +76,13 @@ import toastr from 'toastr';
                                     <NotificationsNone/>
                                 </IconButton>
 
-                                <Avatar  src={user.profilePic} style={{margin:5}}/>
+                                { user.profilePic ?
+                                    <Avatar  src={user.profilePic} style={{margin:5}}/>
+                                    :
+                                    <Avatar style={{margin:5}}>
+                                        <AccountCircle/>
+                                    </Avatar>
+                                }
 
                                 <IconButton onClick={this.handleMenu}>
                                     <KeyboardArrowDown/>

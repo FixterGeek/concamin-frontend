@@ -43,7 +43,6 @@ export const checkIfUser=()=>(dispatch, getState)=>{
         //dispatch the functions
         dispatch(getUser()).then(r=>{
             console.log(getState())
-import {Chec}
         });
 
     }

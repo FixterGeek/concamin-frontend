@@ -65,7 +65,11 @@ export const CardGroup =({handleComment})=>(
                     <Avatar   alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
                     <Avatar alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
                     <Avatar alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-                    <Avatar alt="Numero de miemrbos" style={styles.avatarMiembros} >+146</Avatar>
+                    <Avatar alt="Numero de miemrbos" style={styles.avatarMiembros} >
+                       <span style={{fontSize:13}}>
+                           +1446
+                       </span>
+                    </Avatar>
                 </div>
                 <Button variant="outlined">
                     Unete
