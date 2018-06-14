@@ -73,6 +73,7 @@ export const CreateEvent =({open,close,handleChange,photoPreview,clearFile})=>(
                     label="Fecha/hora"
                     onChange={handleChange}
                     type="datetime-local"
+                    defaultValue={moment(date).format("YYYY-MM-DD[T]HH:mm")}
                     InputLabelProps={{
                         shrink: true,
                     }}
@@ -87,7 +88,7 @@ export const CreateEvent =({open,close,handleChange,photoPreview,clearFile})=>(
                     Cancel
                 </Button>
                 <Button  color="primary">
-                    Subscribe
+                    Crear
                 </Button>
             </DialogActions>
 

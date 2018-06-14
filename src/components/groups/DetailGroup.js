@@ -112,7 +112,7 @@ class DetailGroup extends Component {
         let coverImage;
         return (
             <div>
-                
+
                 <GridList cellHeight={'auto'} cols={3}>
                     <GridListTile cols={2}>
                         <Paper style={{minHeight: "379px", marginBottom:"20px"}}>
@@ -136,7 +136,10 @@ class DetailGroup extends Component {
                             clearFile={this.clearFile}/>
                     </GridListTile>
                     <GridListTile cols={1} style={{paddingLeft:'50px', position:'relative'}}>
-                        <ChatGroup style={{position:'fixted'}}/>
+
+                                        <ChatGroup />
+
+
                     </GridListTile>
                 </GridList>
 

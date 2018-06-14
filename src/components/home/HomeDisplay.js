@@ -19,7 +19,9 @@ export const HomeDisplay = () => {
                 </div>
             </div>
             <div style={{textAlign:"center"}}>
-                <h1>Confederación de <br/>Cámaras Industriales</h1>
+                <h1 className="titulo">CONCAMIN<br/></h1>
+                <p className="sign">Confederación de Cámaras Industriales</p>
+
                 <br/>
                 <button className="btn_explore">Explorar</button>
             </div>

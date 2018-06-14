@@ -5,7 +5,6 @@ import {CardEvent} from "./CardEvent";
 import {CreateCardEvent} from "./CreateEventCard";
 import {CreateEvent} from "./CreateEvent";
 
-
 class EventsPage extends Component {
     state={
         loading:true,
@@ -49,6 +48,10 @@ class EventsPage extends Component {
         document.getElementById('image').value = '';
         console.log("Borrare")
     }
+    close=()=>{
+        this.clearFile()
+        this.setState({openCreate:false})
+    }
     render() {
         let {photoPreview} = this.state;
         return (
@@ -58,7 +61,7 @@ class EventsPage extends Component {
                 <GridListTile cols={2} >
                     <CreateEvent
                         open={this.state.openCreate}
-                        close={this.openNewEvent}
+                        close={this.close}
                         handleChange={this.handleChange}
                         photoPreview={photoPreview}
                         todayDate={this.state.todayDate}

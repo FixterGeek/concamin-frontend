@@ -17,7 +17,7 @@ class LoginPage extends Component{
   /*componentWillMount(){
     getLoggedUser()
     .then(r=>{
-      this.props.history.push('/profile')
+      this.props.history.push('/main/profile')
     })
     .catch(e=>{
       
@@ -42,7 +42,8 @@ class LoginPage extends Component{
       login(auth)
       .then(user=>{
         toastr.info('Bienvenid@ ' + user.username)
-        this.props.history.push('/main')
+
+        this.props.history.push('/main/profile')
       })
       .catch(e=>{
         toastr.error("Hay un problema con tu usuario o contraseña " + e.statusText)
@@ -63,7 +64,7 @@ class LoginPage extends Component{
       signup(newUser)
       .then(user=>{
         console.log(user);
-        this.props.history.push('/profile')
+        this.props.history.push('/main/profile')
       })
       .catch(e=>{
         console.log(e);

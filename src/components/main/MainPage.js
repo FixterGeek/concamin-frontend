@@ -13,7 +13,7 @@ class MainPage extends Component {
       <div>
         <Navbar logOut={this.logOut}/>
         <MainMenu/>        
-        <div style={{padding:'85px 50px 0 350px'}}>
+        <div style={{padding:'85px 30px 0 320px'}}>
           <RoutesMain/>
         </div>
         <Chat/>

@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "Proxima Nova";
+    src: url('../../assets/Nova.otf');
+}
+.MuiTypography-body1-136{
+    font-family: "Proxima Nova" !important;
+
+
+}
+.MuiTypography-headline-132{
+    font-family: "Proxima Nova" !important;
+    font-weight: 700 !important;
+}
+.MuiCardContent-root-162:last-child{
+    padding-bottom: 3px !important;
+}

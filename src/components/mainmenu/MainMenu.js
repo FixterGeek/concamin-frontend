@@ -2,14 +2,18 @@ import React, { Component } from 'react'
 import {Drawer, Divider, List, ListItem, ListItemIcon, ListItemText, ListSubheader} from '@material-ui/core/'
 import {Clear, Store, Feedback, Group, Event, ArtTrack, ChromeReaderMode, Favorite, ImportantDevices, Person} from '@material-ui/icons/'
 import {Link} from 'react-router-dom';
-
+import logo from '../../assets/logo_blanco.png';
 
 
 class MainMenu extends Component {
   render() {
     return (
+        <div className="men">
         <Drawer open={true} variant="permanent" >
-        <div className="logo-container">CONCAMIN</div>
+            <Link to="/main">
+
+                <div style={{textAlign:"center"}}><img className="logo" src={logo} alt=""/></div>
+            </Link>
         <div className="drawer-container">
             <Divider/>
             <List>
@@ -81,7 +85,7 @@ class MainMenu extends Component {
         </div>
         <div>
         <Divider/>
-        <Link to="/support">
+        <Link to="/main/support">
         <ListItem button>
                     <ListItemIcon>
                         <Feedback />
@@ -91,7 +95,7 @@ class MainMenu extends Component {
                 </Link>
         </div>
        
-      </Drawer>
+      </Drawer></div>
     )
   }
 }

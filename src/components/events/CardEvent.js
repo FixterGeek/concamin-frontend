@@ -53,7 +53,7 @@ const styles = {
 export const CardEvent =({handleComment})=>(
     <Card>
         <div style={{display:'flex'}}>
-            <Link to={"/events/eventito"}>
+            <Link to={"/main/events/eventito"}>
                 <img style={styles.media} src={"https://thegamersports.mundodeportivo.com/wp-content/uploads/2018/05/clash.png"}/>
             </Link>
             <CardContent>
@@ -61,7 +61,7 @@ export const CardEvent =({handleComment})=>(
                     30/marzo/2018
                 </Typography>
                 <Typography style={styles.title} color="textSecondary">
-                    <Link style={{textDecoration:'none',color:'black'}} to={"/events/eventito"}>Unete a clash con tu Equipo prediseñado de Lol</Link>
+                    <Link style={{textDecoration:'none',color:'black'}} to={"/main/events/eventito"}>Unete a clash con tu Equipo prediseñado de Lol</Link>
                 </Typography>
                 <div style={{display:'flex',justifyContent:'flex-start'}}>
                     <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
