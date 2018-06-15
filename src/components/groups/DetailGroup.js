@@ -135,11 +135,8 @@ class DetailGroup extends Component {
                             clearLink={this.clearLink}
                             clearFile={this.clearFile}/>
                     </GridListTile>
-                    <GridListTile cols={1} style={{paddingLeft:'50px', position:'relative'}}>
-
-                                        <ChatGroup />
-
-
+                    <GridListTile cols={1} style={{paddingLeft:'50px', position:'fixed', right:5, width:"27%"}}>
+                        <ChatGroup />
                     </GridListTile>
                 </GridList>
 
