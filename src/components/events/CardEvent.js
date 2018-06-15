@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CardHeader,CardContent, Avatar,Divider,Typography,ExpansionPanel,ExpansionPanelSummary,TextField} from '@material-ui/core/';
-import {LocationOn} from '@material-ui/icons/';
+import {LocationOn,AccountCircle} from '@material-ui/icons/';
 import {CommentBox} from '../newsfeed/CommentBox'
 import {Link} from 'react-router-dom'
 const styles = {
@@ -50,7 +50,7 @@ const styles = {
         width:30,
     }
 };
-export const CardEvent =({handleComment})=>(
+export const CardEvent =({handleComment,user})=>(
     <Card>
         <div style={{display:'flex'}}>
             <Link to={"/main/events/eventito"}>
@@ -88,8 +88,8 @@ export const CardEvent =({handleComment})=>(
 
         <CardContent style={styles.comentaritos}>
             <div style={styles.micomentario}>
-                <Avatar arial-label={"Recipe"} style={styles.myavatar}>
-                    B
+                <Avatar arial-label={"Recipe"} style={styles.avatar} src={user ? user.profilePic: null}>
+                    {!user?<AccountCircle/>:null}
                 </Avatar>
                 <div style={{marginLeft:"10px", backgroundColor:'white',width:'100%',borderRadius:'5px'}}>
                     <TextField

@@ -37,8 +37,8 @@ const styles = {
 
     }
 };
-export const CardGroup =({handleComment})=>(
-    <Card>
+export const CardGroup =({handleComment,})=>(
+    <Card style={{marginBottom:15}}>
         <div style={{display:'flex'}}>
             <Link to={"/main/groups/detallitogrupito"}>
                 <img style={styles.media} src={"https://las.leagueoflegends.com/sites/default/files/styles/wide_medium/public/upload/devdiary_gdprinciples_articleheader.jpg?itok=8zfwqH2t"}/>

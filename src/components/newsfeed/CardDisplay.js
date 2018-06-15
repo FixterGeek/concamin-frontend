@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CardHeader,CardMedia,CardContent, Avatar,IconButton,Typography,Badge,TextField,ListItemText,ListItem,List,ListItemIcon} from '@material-ui/core/';
-import {MoreVert,PictureAsPdf,ThumbUp,InsertLink} from '@material-ui/icons/';
+import {MoreVert,PictureAsPdf,ThumbUp,InsertLink,AccountCircle} from '@material-ui/icons/';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import {CommentBox} from './CommentBox';
@@ -49,7 +49,7 @@ const actions=[];
 
 
 
-export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,links,file, created_at})=>(
+export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,links,file, created_at,myUser})=>(
 
 
         <Card style={styles.cardpadre}>
@@ -136,8 +136,8 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
 
             <CardContent style={styles.comentaritos}>
                 <div style={styles.micomentario}>
-                    <Avatar arial-label={"Recipe"} style={styles.avatar}>
-                        B
+                    <Avatar arial-label={"Recipe"} style={styles.avatar} src={myUser ? myUser.profilePic: null}>
+                        {!myUser?<AccountCircle/>:null}
                     </Avatar>
                     <div style={{marginLeft:"10px", backgroundColor:'white',width:'100%',borderRadius:'5px'}}>
                         <TextField

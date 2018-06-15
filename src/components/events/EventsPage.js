@@ -4,6 +4,7 @@ import {AdCard} from "../Advertising/AdCard";
 import {CardEvent} from "./CardEvent";
 import {CreateCardEvent} from "./CreateEventCard";
 import {CreateEvent} from "./CreateEvent";
+import {getPosts} from "../../services/postService";
 
 class EventsPage extends Component {
     state={
@@ -13,7 +14,12 @@ class EventsPage extends Component {
             image:"",
         },
         openCreate:false,
-
+        user:{}
+    }
+    componentWillMount(){
+        const user = JSON.parse(localStorage.getItem("user"));
+        console.log("aqui esta",user)
+        this.setState({user:user})
     }
     openNewEvent=()=>{
         let {openCreate}=this.state;
@@ -53,7 +59,7 @@ class EventsPage extends Component {
         this.setState({openCreate:false})
     }
     render() {
-        let {photoPreview} = this.state;
+        let {photoPreview,user} = this.state;
         return (
 
             <GridList cellHeight={'auto'} cols={3}>
@@ -68,7 +74,7 @@ class EventsPage extends Component {
                         clearFile={this.clearFile}
                     />
 
-                    <CardEvent  />
+                    <CardEvent user={user} />
                 </GridListTile>
 
                 <GridListTile cols={1} style={styles.gridTile}>
