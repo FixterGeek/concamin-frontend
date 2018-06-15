@@ -12,7 +12,6 @@ let date = new Date()
 
 export const CreateEvent =({open,close,handleChange,photoPreview,clearFile})=>(
     <div>
-        <Button onClick={this.handleClickOpen}>Open form dialog</Button>
         <Dialog
             open={open}
             aria-labelledby="form-dialog-title"
