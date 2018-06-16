@@ -10,10 +10,10 @@ export const About = () => {
             <div style={{display:"flex", }}>
                 <div>
             <h2>Bienvenidos a CONCAMIN-RED</h2>
-                    <p>DONDE LOS NEGOCIOS PROSPERAN</p>
+                    <p>DONDE LA COMUNICACIÓN EMERGE</p>
                     <br/>
                 <p>Es una red de espacios digitales de trabajo donde las
-                    personas y las camarás crecen juntos. Transformamos la comunicación
+                    personas y las camarás crecen juntas. Transformamos la comunicación
                     tanto interna como externa para ofrecer a todos los interesados en CONCAMIN,
                     una ventana para acercarse y volverse parte del ecosistema industrial en México,
                     fomentando la creatividad, el enfoque y las conexiones.

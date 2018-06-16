@@ -5,6 +5,7 @@
 .anuncios{
     font-family: "Proxima Nova";
     background-color: white;
+    padding-bottom: 30px;
 
 }
 .img_anuncio{
@@ -37,5 +38,9 @@
 }
 .box_anuncios span{
     color:#818181;
+}
+.box_anuncios p{
+    line-height:130% ;
+
 }
 

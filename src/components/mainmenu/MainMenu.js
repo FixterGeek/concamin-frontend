@@ -64,38 +64,38 @@ class MainMenu extends Component {
 
                     <Divider/>
 
-                    <List subheader={<ListSubheader>Servicios</ListSubheader>}>
-                    <Link to="/main/benefits">
-                    <ListItem button>
-                        <ListItemIcon>
-                            <Favorite />
-                        </ListItemIcon>
-                        <ListItemText primary="Beneficios" />
-                    </ListItem>
-                    </Link>
-                    <Link to="/main/communication">
-                    <ListItem button>
-                        <ListItemIcon>
-                            <ImportantDevices />
-                        </ListItemIcon>
-                        <ListItemText primary="Comunicación" />
-                    </ListItem>
-                    </Link>
-                    </List>
-                    </div>
-                    <div>
-                    <Divider/>
-                    <Link to="/support">
-                    <ListItem button>
-                        <ListItemIcon>
-                            <Feedback />
-                        </ListItemIcon>
-                        <ListItemText primary="Soporte" />
-                    </ListItem>
-                    </Link>
-                </div>
-      </Drawer>
-    </div>
+            <List subheader={<ListSubheader>Servicios</ListSubheader>}>
+            <Link to="/main/benefits">
+            <ListItem button>
+                    <ListItemIcon>
+                        <Favorite />
+                    </ListItemIcon>
+                    <ListItemText primary="Beneficios" />
+                </ListItem>
+                </Link>
+                <Link to="/main/communication">
+                <ListItem button>
+                    <ListItemIcon>
+                        <ImportantDevices />
+                    </ListItemIcon>
+                    <ListItemText primary="Comunicación" />
+                </ListItem>
+                </Link>
+            </List>
+        </div>
+        <div>
+        <Divider/>
+        <Link to="/main/support">
+        <ListItem button>
+                    <ListItemIcon>
+                        <Feedback />
+                    </ListItemIcon>
+                    <ListItemText primary="Soporte" />
+                </ListItem>
+                </Link>
+        </div>
+       
+      </Drawer></div>
     )
   }
 }
