@@ -17,6 +17,7 @@ class DetailEventPage extends Component {
         photoPreview:'',
         addLink:false,
         posts:[],
+        user:{}
     }
 
     componentWillMount(){
@@ -29,6 +30,9 @@ class DetailEventPage extends Component {
             }).catch(e=>{
             console.log("este es tu error",e)
         })
+        const user = JSON.parse(localStorage.getItem("user"));
+        console.log("aqui esta",user)
+        this.setState({user:user})
     }
 
     handleSubmit=(e)=>{
@@ -104,13 +108,14 @@ class DetailEventPage extends Component {
 
 
     render() {
-        let {photoPreview, newPost, addLink, posts, loading} = this.state;
+        let {photoPreview, newPost, addLink, posts, loading,user} = this.state;
         // if(loading) return(<MainLoader/>)
         return (
 
             <div>
 
                     <DetailEvent
+                        user={user}
                         posts={posts}
                         handleSubmit={this.handleSubmit}
                         handleChange={this.handleChange}

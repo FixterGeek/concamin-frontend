@@ -16,7 +16,7 @@ const styles = {
 const foto = "https://thegamersports.mundodeportivo.com/wp-content/uploads/2018/05/clash.png";
 let cover;
 let coverImage;
-export const DetailEvent =({cover=foto, posts, handleSubmit, handleChange, photoPreview, clearFile, newPost, handleLink, addLink, addLinks, clearLink})=>(
+export const DetailEvent =({user,cover=foto, posts, handleSubmit, handleChange, photoPreview, clearFile, newPost, handleLink, addLink, addLinks, clearLink})=>(
     <div className='padding-gral'>
         <Paper style={{minHeight: "379px"}}>
             <div ref={div=>coverImage=div} className='event-img' style={{position:"relative", backgroundImage:`url('${cover}')`}}/>
@@ -34,6 +34,7 @@ export const DetailEvent =({cover=foto, posts, handleSubmit, handleChange, photo
 
             <div style={{padding:'20px 0 0 50px',width:'100%'}}>
                 <NewsFeedComponent
+                    user={user}
                     posts={posts}
                     handleSubmit={handleSubmit}
                     handleChange={handleChange}
