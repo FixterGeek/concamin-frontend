@@ -2,6 +2,7 @@
     font-family: "Proxima Nova";
     src: url('../../assets/Nova.otf');
 }
+
 .drawer-container{
     /*background-color:#000;*/
     width: 300px;
@@ -26,6 +27,9 @@ a{
     background-color: #252729 !important;
     font-family: "Proxima Nova" !important;
 
+}
+.MuiDrawer-paper-92{
+    overflow: hidden
 }
 .logo{
     margin-top: 5px;

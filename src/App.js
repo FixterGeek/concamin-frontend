@@ -4,6 +4,18 @@ import Routes from './Routes';
 import MainMenu from './components/mainmenu/MainMenu';
 import Navbar from './components/Navbar/Navbar';
 
+import { withStyles } from '@material-ui/core/styles';
+
+// const styles = {
+//   root: {
+//     backgroundColor: 'red',
+//   },
+// };
+
+
+
+
+
 
 class App extends Component {
   render() {
@@ -19,4 +31,5 @@ class App extends Component {
   }
 }
 
+//App = withStyles(styles)(App);
 export default App;
