@@ -5,11 +5,19 @@ import {Link} from 'react-router-dom';
 import logo from '../../assets/logo_blanco.png';
 
 
+const styles = {
+    root:{
+        background:'red'
+    }
+  };
+
+
 class MainMenu extends Component {
-  render() {
+  render() {      
     return (
         <div className="men">
-        <Drawer open={true} variant="permanent" >
+        <Drawer open={true} variant="permanent" 
+        style={styles.root}>
                 <Link to="/main">
 
                     <div style={{textAlign:"center"}}><img className="logo" src={logo} alt=""/></div>

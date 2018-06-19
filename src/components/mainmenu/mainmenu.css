@@ -3,16 +3,34 @@
     src: url('../../assets/Nova.otf');
 }
 
-.drawer-container{
+.men .MuiPaper-root-1{
+    height: 100vh;
+    width: 240px !important;
+    background-color: #252729 !important;
+    color:#767676 !important;
+    font-family: "Proxima Nova" !important;
+}
+.men .drawer-container{
     /*background-color:#000;*/
-    width: 300px;
+    font-family: "Proxima Nova" !important;
+    width: 240px;
     height: calc(100vh - 128px);
     overflow-y: scroll;
+    color:#767676 !important;
 }
 .drawer-container::-webkit-scrollbar{
     display: none;
 }
-
+.men .MuiTypography-subheading-251{
+    font-family: "Proxima Nova" !important;
+    color:#767676 !important;
+}
+.men .MuiListItemIcon-root-237{
+    color:#767676 !important;
+}
+.men .MuiListSubheader-sticky-272{
+    color:#767676 !important;
+}
 .logo-container{
     display: flex;
     justify-content: center;
@@ -22,7 +40,7 @@
 a{
     text-decoration: none;
 }
-.MuiDrawer-paperAnchorDockedLeft-97{
+.men .MuiDrawer-paperAnchorDockedLeft-97{
     width: 240px !important;
     background-color: #252729 !important;
     font-family: "Proxima Nova" !important;
