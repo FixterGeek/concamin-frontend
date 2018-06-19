@@ -1,0 +1,31 @@
+.footer{
+    background-color: white !important;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.data_footer{
+    width:80%;
+    margin: 0 auto;
+}
+.line_footer{
+    height:1px;
+    border: none;
+    width:250px;
+    background: #dbdbdb;
+    margin-left: 0;
+}
+.media span{
+    font-size: 25px;
+    margin: 0 10px;
+}
+.copy{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width:80%;
+    margin: 0 auto;
+}
+.ff p{
+    margin: auto 10px;
+}

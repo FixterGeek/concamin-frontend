@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {Button} from '@material-ui/core/';
 import Routes from './Routes';
+import MainMenu from './components/mainmenu/MainMenu';
+import Navbar from './components/Navbar/Navbar';
 
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className='background-app'>
+        {/*<Navbar/>*/}
+        {/*<MainMenu/>*/}
+        <div className="routes-container">
         <Routes/>
+        </div>
       </div>
     );
   }

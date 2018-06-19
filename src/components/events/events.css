@@ -1,0 +1,70 @@
+@font-face {
+    font-family: "Proxima Nova";
+    src: url('../../assets/Nova.otf');
+}
+.event-img{
+    width:100%;
+    min-height:315px;
+    background-position: center;
+    background-size: cover;
+    background-image: url('https://scontent.fmex5-1.fna.fbcdn.net/v/t1.0-9/2010_454774161284644_1744676599_n.jpg?_nc_cat=0&oh=90d420f2bf195d58f538591c7ae3d167&oe=5B8CD067');
+}
+.data-user{
+    margin: 0 30px;
+    font-family: "Proxima Nova";
+
+}
+.data-user h4{
+    font-size: 18px;
+    font-weight: bolder;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+.data-user p{
+    font-size: 16px;
+    margin: 2px 0;
+
+}
+.data-user input{
+    border: none;
+    font-size: 18px;
+    width:200px;
+    padding: 2%;
+}
+.number{
+    color:#dac229;
+    font-size: 24px;
+
+}
+
+.about{
+    width:400px;
+    flex-grow: 1;
+    font-family: "Proxima Nova";
+    margin: 20px 0;
+}
+.about h5{
+    color:#808080;
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.degree{
+    display: flex;
+    flex-wrap: wrap;
+    color:#818181;
+    align-items: center;
+    margin: 10px 0;
+}
+.degree .name{
+    margin: 3px 0;
+
+}
+.degree .date{
+    margin: 3px 0;
+    font-size: 12px;
+}
+.box_job{
+    width:200px;
+    flex-grow: 1;
+}
