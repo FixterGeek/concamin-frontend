@@ -5,12 +5,26 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import logo from '../../assets/aniver.png';
+import {Link} from 'react-router-dom';
 
 export const LoginDisplay = ({onSubmit, changeToSignup}) => {
 
 
     return (
         <div className='login'>
+
+            <div className="menu" style={{color:"white"}}>
+                <img src={logo} alt=""/>
+                <div className="box_men">
+                    <hr className="line"/>
+                    <Link to="/login">
+                        <span>Login</span>
+                    </Link>
+                </div>
+            </div>
+
+            <div className="login_box">
         <form onSubmit={onSubmit}>
              <Paper style={{width:"300px", padding:"2%", heigth:"auto"}}>
                     <div className="circle_login">
@@ -44,6 +58,7 @@ export const LoginDisplay = ({onSubmit, changeToSignup}) => {
                 <p>¿Aún no tienes cuenta? registrate <a href="#!" onClick={changeToSignup}>aquí</a></p>
              </Paper>
              </form>
+            </div>
         </div>
     )
 }

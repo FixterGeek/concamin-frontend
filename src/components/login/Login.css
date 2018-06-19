@@ -1,13 +1,18 @@
 .login{
     width:100%;
     height:100vh;
-    background-image: url('https://images.pexels.com/photos/935871/pexels-photo-935871.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-size: cover;
+    background-position: center;
+    background-image: url('https://images.pexels.com/photos/316902/pexels-photo-316902.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+
+}
+.login_box{
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     font-family: "Proxima Nova";
-
+    margin-top: 100px;
 }
 .card_login{
     background-color: white;

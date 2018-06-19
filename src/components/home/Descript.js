@@ -6,7 +6,7 @@ export const Descript = () => {
 
 
     return (
-        <div className="about">
+        <div className="abouti">
             <div className="fls">
                 <div className="flexi boxi">
                     <div className="box_color" style={{display:"flex", alignItems:"center"}}>
