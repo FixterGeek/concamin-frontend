@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './ChatMenu.css'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import Input from '@material-ui/core/Input';
@@ -9,10 +9,8 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Avatar from '@material-ui/core/Avatar'
-import ImageIcon from '@material-ui/icons/Image'
-import Button from '@material-ui/core/Button'
 import { Paper } from '@material-ui/core'
-import { Create, Close, ExpandMore } from '@material-ui/icons/';
+import { Close, ExpandMore } from '@material-ui/icons/';
 
 
 export const ChatAdd = ({ followerList, messageInput, addMessage, participants, messages, onClickChat, userSelected, listi, textInput, onChange, close, onClose, handleInput, onChangeHandler, pushButton, visible, expanded }) => {
@@ -23,12 +21,11 @@ export const ChatAdd = ({ followerList, messageInput, addMessage, participants, 
         .map((follower, index) => {
             return <ListItem button key={index} onChange={() => onChange(follower)} onClick={() => onClickChat(follower)} name={follower.username}>
                 <Avatar>
-                    <img src={follower.profilePic} style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                    <img src={follower.profilePic} style={{ maxWidth: '100%', maxHeight: '100%' }} alt="profile" />
                 </Avatar>
                 <ListItemText primary={follower.username} secondary={follower.email} />
             </ListItem>
         })
-    let msgList = messages;
 
     if (userSelected) return (
         <div>
@@ -47,11 +44,11 @@ export const ChatAdd = ({ followerList, messageInput, addMessage, participants, 
                     }}>
                         <section style={{ height: '60vh' }} className="scroll">
                             {messages.map((m, index) => {
-                                if (m.user != localUser._id) {
+                                if (m.user !== localUser._id) {
                                     return (
                                         <Paper key={index} style={{ maxWidth: '290px', padding: '10px', margin: '5px 5px' }}>
                                             <Avatar>
-                                                <img src={m.profilePic} style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                                                <img src={m.profilePic} alt="profile" style={{ maxWidth: '100%', maxHeight: '100%' }} />
                                             </Avatar>
                                             {m.body}
                                         </Paper>

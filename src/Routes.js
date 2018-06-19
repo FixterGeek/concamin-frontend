@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import MainPage from "./components/main/MainPage";
 import LoginPage from './components/login/LoginPage';
 import HomeContainer from './components/home/HomeContainer';
-import ChatContainer from './components/chatmenu/ChatMenu'
+import MessengerMain from './components/messenger/MessengerMain'
 
 
 const Routes = () => (
@@ -11,6 +11,7 @@ const Routes = () => (
         <Route path="/login" component={LoginPage} />
         <Route exact path="/" component={HomeContainer} />
         <Route path="/main" component={MainPage} />
+        <Route path="/messenger" component={MessengerMain} />
     </Switch>
 );
 

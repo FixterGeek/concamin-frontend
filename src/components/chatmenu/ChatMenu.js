@@ -134,7 +134,7 @@ class Chat extends Component {
             date: new Date(),
             body: this.state.messageInput
         };
-        if (e.key == 'Enter') {
+        if (e.key === 'Enter') {
             console.log('orale:', message)
             addMessage(message, activeChat._id)
                 .then(chat => {
@@ -154,9 +154,7 @@ class Chat extends Component {
             input: follower.name,
             infoUser: follower,
             visible: false,
-            visible: '',
         })
-        console.log(this.state.infoUser)
     }
 
     pushButton = () => {
@@ -174,7 +172,6 @@ class Chat extends Component {
     }
     //END CHAT ADD
     render() {
-        const { followerList } = this.state;
         return (
             <div>
                 <ExpansionPanel style={{
