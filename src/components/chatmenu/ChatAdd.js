@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './ChatMenu.css'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import Input from '@material-ui/core/Input';
@@ -9,35 +9,23 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Avatar from '@material-ui/core/Avatar'
-import ImageIcon from '@material-ui/icons/Image'
-import Button from '@material-ui/core/Button'
-import { Create, Close, ExpandMore } from '@material-ui/icons/';
+import { Paper } from '@material-ui/core'
+import { Close, ExpandMore } from '@material-ui/icons/';
 
 
 export const ChatAdd = ({ followerList, messageInput, addMessage, participants, messages, onClickChat, userSelected, listi, textInput, onChange, close, onClose, handleInput, onChangeHandler, pushButton, visible, expanded }) => {
     console.log("desconstr", participants, messages)
-
-    // let list = followerList
-    //     .filter(a => textInput.toLowerCase() === '' || a.name.toLowerCase().includes(textInput.toLowerCase()))
-    //     .map((a, index) => <ListItem button key={index} onChange={() => onChange(a)} onClick={() => onClickChat(a)}>
-    //         <Avatar>
-    //             <ImageIcon />
-    //         </Avatar>
-    //         <ListItemText primary={a.name} />
-    //     </ListItem>);
-    console.log(followerList, localStorage.getItem('user'))
+    const localUser = JSON.parse(localStorage.getItem('user'));
     let list = followerList
         .filter(followerList => textInput.toLowerCase() === '' || followerList.username.toLowerCase().includes(textInput.toLowerCase()))
         .map((follower, index) => {
             return <ListItem button key={index} onChange={() => onChange(follower)} onClick={() => onClickChat(follower)} name={follower.username}>
                 <Avatar>
-                    <img src={follower.profilePic} style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                    <img src={follower.profilePic} style={{ maxWidth: '100%', maxHeight: '100%' }} alt="profile" />
                 </Avatar>
                 <ListItemText primary={follower.username} secondary={follower.email} />
             </ListItem>
         })
-
-    let msgList = messages;
 
     if (userSelected) return (
         <div>
@@ -45,7 +33,7 @@ export const ChatAdd = ({ followerList, messageInput, addMessage, participants, 
                 minWidth: '320px',
                 position: 'fixed',
                 bottom: 0,
-                right: 350,
+                right: 380,
             }} defaultExpanded={true} hidden={close}>
                 <ExpansionPanelSummary expanded={true} expandIcon={<Close onClick={onClose} />} style={{ backgroundColor: 'dimgray' }}>
                     <Typography>{userSelected}</Typography>
@@ -54,12 +42,23 @@ export const ChatAdd = ({ followerList, messageInput, addMessage, participants, 
                     <div style={{
                         width: '100%',
                     }}>
-                        <section style={{ height: '60vh' }}>
-                            <ul>
-                                {messages.map((m, index) => {
-                                    return <li key={index}> {m.body} </li>
-                                })}
-                            </ul>
+                        <section style={{ height: '60vh' }} className="scroll">
+                            {messages.map((m, index) => {
+                                if (m.user !== localUser._id) {
+                                    return (
+                                        <Paper key={index} style={{ maxWidth: '290px', padding: '10px', margin: '5px 5px' }}>
+                                            <Avatar>
+                                                <img src={m.profilePic} alt="profile" style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                                            </Avatar>
+                                            {m.body}
+                                        </Paper>
+                                    )
+                                } else {
+                                    return (<Paper key={index} style={{ maxWidth: '290px', padding: '10px', margin: '5px 5px' }}>
+                                        {m.body}
+                                    </Paper>)
+                                }
+                            })}
                         </section>
                         <div style={{ width: '100%', backgroundColor: 'dimgray', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <Input value={messageInput} onKeyPress={addMessage} style={{ height: 50, flexGrow: 2, paddingLeft: 10 }} name="messageInput" onChange={handleInput}
@@ -79,7 +78,7 @@ export const ChatAdd = ({ followerList, messageInput, addMessage, participants, 
             minWidth: '320px',
             position: 'fixed',
             bottom: 0,
-            right: 350,
+            right: 380,
         }} defaultExpanded={expanded} hidden={close}>
             <ExpansionPanelSummary expandIcon={<ExpandMore />} style={{ backgroundColor: 'dimgray' }}>
                 <Typography>Nuevo mensaje..</Typography>
@@ -95,7 +94,7 @@ export const ChatAdd = ({ followerList, messageInput, addMessage, participants, 
                             onChange={onChangeHandler}
                         />
                     </div>
-                    <section style={{ height: '60vh' }}>
+                    <section style={{ height: '60vh' }} className="scroll">
                         <List>{list}</List>
                     </section>
                 </div>

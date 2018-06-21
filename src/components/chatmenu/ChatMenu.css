@@ -1,3 +1,11 @@
 .scroll {
     overflow-y: scroll;
 }
+
+.me {
+    float: right;
+}
+
+.you {
+    float: left;
+}
