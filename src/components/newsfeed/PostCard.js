@@ -1,7 +1,6 @@
 import React from 'react';
 import {TextField, Card, CardHeader, Avatar,Input, CardContent,InputAdornment, Collapse, Typography, CardMedia, CardActions, IconButton, Button, Paper, List, ListItem, ListItemText, ListItemIcon} from '@material-ui/core/'
-import {InsertPhoto, PictureAsPdf, InsertLink, Clear, AddCircle} from '@material-ui/icons/';
-
+import {InsertPhoto, PictureAsPdf, InsertLink, Clear, AddCircle, AccountCircle} from '@material-ui/icons/';
 
 
 const styles = {
@@ -54,7 +53,7 @@ const styles = {
   }
 
 
-export const PostCard = ({link, file, image, body,links, handleSubmit, handleChange, photoPreview, previewFile, clearFile, handleLink, addLink, addLinks, clearLink}) => (
+export const PostCard = ({user,link, file, image, body,links, handleSubmit, handleChange, photoPreview, previewFile, clearFile, handleLink, addLink, addLinks, clearLink}) => (
     
     <form onSubmit={handleSubmit}>
         <Card style={styles.card}>
@@ -73,11 +72,12 @@ export const PostCard = ({link, file, image, body,links, handleSubmit, handleCha
                     multiline
                     margin="normal"
                     />}
-                 avatar={
-                    <Avatar aria-label="Recipe" style={styles.avatar}>
-                        O
-                 </Avatar>}/>
-
+                avatar={
+                    <Avatar arial-label={"Recipe"} style={styles.avatar} src={user ? user.profilePic: null}>
+                        {!user?<AccountCircle/>:null}
+                    </Avatar>
+                }
+            />
             {photoPreview?
             <CardMedia style={styles.media} image={photoPreview}>
                 <IconButton aria-label="Add to favorites" style={styles.icon} onClick={clearFile}>

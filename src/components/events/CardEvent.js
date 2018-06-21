@@ -1,18 +1,18 @@
 import React from 'react';
 import {Card, CardHeader,CardContent, Avatar,Divider,Typography,ExpansionPanel,ExpansionPanelSummary,TextField} from '@material-ui/core/';
-import {LocationOn} from '@material-ui/icons/';
+import {LocationOn,AccountCircle} from '@material-ui/icons/';
 import {CommentBox} from '../newsfeed/CommentBox'
 import {Link} from 'react-router-dom'
 const styles = {
     media: {
 
-        width:"300px",
-        height:"300px",
+        width:"170px",
+        height:"170px",
         //paddingTop: '56.25%', // 16:9
     },
     avatar: {
-        backgroundColor:'red',
-        marginRight:"25px"
+        marginRight:"25px",
+        margin: 5,
     },
     cardpadre:{
         marginBottom:'2%'
@@ -34,27 +34,34 @@ const styles = {
         zIndex: 999,
     },
     title:{
-        marginBottom: 16,
-        fontSize: 20,
+        fontSize: 15,
     },
     location:{
-        marginTop:"50px",
-        fontSize: 18,
+        marginTop:"12px",
+        fontSize: 14,
+    },
+    fechita:{
+        marginTop:"5px",
+        fontSize: 14,
+    },
+    myavatar:{
+        margin: 5,
+        height:30,
+        width:30,
     }
 };
-export const CardEvent =({handleComment})=>(
+export const CardEvent =({handleComment,user})=>(
     <Card>
         <div style={{display:'flex'}}>
-            <Link to={"/events/eventito"}>
+            <Link to={"/main/events/eventito"}>
                 <img style={styles.media} src={"https://thegamersports.mundodeportivo.com/wp-content/uploads/2018/05/clash.png"}/>
             </Link>
             <CardContent>
-                <CardHeader
-                    subheader={"23 de mayo "}
-                />
-
+                <Typography style={styles.fechita} color="textSecondary">
+                    30/marzo/2018
+                </Typography>
                 <Typography style={styles.title} color="textSecondary">
-                    <Link style={{textDecoration:'none',color:'black'}} to={"/events/eventito"}>Unete a clash con tu Equipo prediseñado de Lol</Link>
+                    <Link style={{textDecoration:'none',color:'black'}} to={"/main/events/eventito"}>Unete a clash con tu Equipo prediseñado de Lol</Link>
                 </Typography>
                 <div style={{display:'flex',justifyContent:'flex-start'}}>
                     <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
@@ -72,31 +79,26 @@ export const CardEvent =({handleComment})=>(
 
 
         <ExpansionPanel style={{margin:'0',boxShadow:"none" }}>
-
             <ExpansionPanelSummary >
-                <div style={styles.expansiones}>
-
                     <Typography arial-label={"Recipe"}> Comentarios</Typography>
-                </div>
             </ExpansionPanelSummary>
-
             <CommentBox />
         </ExpansionPanel>
 
 
         <CardContent style={styles.comentaritos}>
             <div style={styles.micomentario}>
-                <Avatar arial-label={"Recipe"} style={styles.avatar}>
-                    B
+                <Avatar arial-label={"Recipe"} style={styles.avatar} src={user ? user.profilePic: null}>
+                    {!user?<AccountCircle/>:null}
                 </Avatar>
                 <div style={{marginLeft:"10px", backgroundColor:'white',width:'100%',borderRadius:'5px'}}>
                     <TextField
                         InputProps={{
                             disableUnderline: true,
-
                         }}
+
                         onChange={handleComment}
-                        style={{padding:"0 10px"}}
+                        style={{padding:"0 10px",width:"96%"}}
                         id="multiline-flexible"
                         placeholder="Escribe tu humilde opinion!"
                         fullWidth={true}

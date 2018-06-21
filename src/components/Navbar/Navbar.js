@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import {AppBar,Toolbar,IconButton,Menu,MenuItem, Avatar, Button,Typography} from '@material-ui/core/';
-import {NotificationsNone,KeyboardArrowDown} from '@material-ui/icons/';
+import {NotificationsNone,KeyboardArrowDown,AccountCircle} from '@material-ui/icons/';
 import {NavLink,Link} from 'react-router-dom';
 import SearchInput from './SearchInput';
 import {bindActionCreators}from 'redux';
@@ -33,7 +33,7 @@ import toastr from 'toastr';
             localStorage.removeItem("user");
             this.props.userActions.logOut();
             this.handleClose()
-            window.location.reload();
+            this.props.logOut()
         }
 
      componentWillMount() {
@@ -45,17 +45,20 @@ import toastr from 'toastr';
              this.setState({isLogged:false})
          }
      }
+     componentDidMount(){
+            this.props.userActions.checkIfUser();
+     }
 
 
 
      render(){
 
         const { anchorEl,isLogged} = this.state;
-        const {user}=this.props;
+        const {user,fetched}=this.props;
         const open = Boolean(anchorEl);
 
         console.log("usuario", user)
-
+         if(!fetched)return;
         return(
             <div>
                 <AppBar position="fixed" color="default" style={{paddingLeft:"330px",width:"100%"}}  >
@@ -73,7 +76,13 @@ import toastr from 'toastr';
                                     <NotificationsNone/>
                                 </IconButton>
 
-                                <Avatar  src={user.profilePic} style={{margin:10,backgroundColor:'red'}}/>
+                                { user.profilePic ?
+                                    <Avatar  src={user.profilePic} style={{margin:5}}/>
+                                    :
+                                    <Avatar style={{margin:5}}>
+                                        <AccountCircle/>
+                                    </Avatar>
+                                }
 
                                 <IconButton onClick={this.handleMenu}>
                                     <KeyboardArrowDown/>
@@ -128,6 +137,7 @@ function mapStateToProps(state, ownProps) {
     let user =state.user.object;
     return {
         user,
+        fetched: user!==undefined,
     }
 
 }

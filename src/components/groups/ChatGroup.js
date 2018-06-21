@@ -62,7 +62,7 @@ class ChatGroup extends Component {
 
 
     render() {
-
+        let {user}=this.props
         return (
             <Card >
                 <AppBar  color="default"  style={styles.appBar}>
@@ -203,8 +203,8 @@ class ChatGroup extends Component {
                 </Paper>
                 <CardContent style={styles.comentaritos}>
                     <div style={styles.micomentario}>
-                        <Avatar arial-label={"Recipe"} style={styles.avatar}>
-                            B
+                        <Avatar arial-label={"Recipe"} style={styles.avatar} src={user ? user.profilePic: null}>
+                            {!user?<AccountCircle/>:null}
                         </Avatar>
                         <div style={{marginLeft:"10px",width:'100%'}}>
                             <TextField

@@ -8,6 +8,7 @@ import {CreateGroup} from "./CreateGroup";
 export default class GroupsPage extends Component {
     state={
         openCreate:false,
+
     }
 
     openNewGroup=()=>{
@@ -15,13 +16,20 @@ export default class GroupsPage extends Component {
         openCreate = !openCreate
         this.setState({openCreate})
     }
+
     render(){
+        let {user}=this.state
         return(
             <GridList  cellHeight={'auto'} cols={3}>
 
                 <GridListTile cols={2} >
                     <CreateGroup open={this.state.openCreate} close={this.openNewGroup}/>
                     <CardGroup />
+                    <CardGroup />
+                    <CardGroup />
+                    <CardGroup />
+                    <CardGroup />
+
                 </GridListTile>
                 <GridListTile cols={1} style={{paddingLeft:'50px'}}>
                     <CardCreateGroup onOpen={this.openNewGroup}/>

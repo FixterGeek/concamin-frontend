@@ -6,8 +6,8 @@ import {Link} from 'react-router-dom'
 const styles = {
     media: {
 
-        width:"250px",
-        height:"250px",
+        width:"150px",
+        height:"150px",
         //paddingTop: '56.25%', // 16:9
     },
     avatar: {
@@ -24,10 +24,10 @@ const styles = {
     },
     title:{
         marginBottom: 16,
-        fontSize: 20,
+        fontSize: 16,
     },
     location:{
-        fontSize: 18,
+        fontSize: 14,
     },
     miembros:{
         marginBottom:10,
@@ -37,15 +37,15 @@ const styles = {
 
     }
 };
-export const CardGroup =({handleComment})=>(
-    <Card>
+export const CardGroup =({handleComment,})=>(
+    <Card style={{marginBottom:15}}>
         <div style={{display:'flex'}}>
-            <Link to={"/groups/detallitogrupito"}>
+            <Link to={"/main/groups/detallitogrupito"}>
                 <img style={styles.media} src={"https://las.leagueoflegends.com/sites/default/files/styles/wide_medium/public/upload/devdiary_gdprinciples_articleheader.jpg?itok=8zfwqH2t"}/>
             </Link>
             <CardContent>
                 <Typography style={styles.title} color="textSecondary">
-                    <Link style={{textDecoration:'none',color:'black'}} to={"/groups/detallitogrupito"}>Lo que los bronces podemos lograr</Link>
+                    <Link style={{textDecoration:'none',color:'black'}} to={"/main/groups/detallitogrupito"}>Lo que los bronces podemos lograr</Link>
                 </Typography>
                 <Typography style={styles.location} color="textSecondary">
                     Es un gran lugar para compartir información sobre los campeones, torneos y otras cosas
@@ -65,7 +65,11 @@ export const CardGroup =({handleComment})=>(
                     <Avatar   alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
                     <Avatar alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
                     <Avatar alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-                    <Avatar alt="Numero de miemrbos" style={styles.avatarMiembros} >+146</Avatar>
+                    <Avatar alt="Numero de miemrbos" style={styles.avatarMiembros} >
+                       <span style={{fontSize:13}}>
+                           +1446
+                       </span>
+                    </Avatar>
                 </div>
                 <Button variant="outlined">
                     Unete
