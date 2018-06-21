@@ -76,9 +76,17 @@ class Chat extends Component {
         followerList: []
     }
 
+    verifyUser() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user.following) {
+            this.componentWillMount();
+        }
+    }
     componentWillMount() {
         const user = JSON.parse(localStorage.getItem('user'));
-        this.setState({ followerList: user.following })
+        if (user.following) {
+            this.setState({ followerList: user.following })
+        }
         console.log(user);
     }
 
