@@ -7,7 +7,7 @@ import { getOrCreateChat, addMessage } from '../../services/chatService';
 import ImageIcon from '@material-ui/icons/Image'
 import { AddChat } from './AddChat'
 import { animateScroll } from "react-scroll"
-
+import './Messenger.css';
 import toastr from 'toastr';
 
 const drawerWidth = 300;
@@ -230,34 +230,11 @@ class PermanentDrawer extends React.Component {
                     paper: classes.drawerPaper,
                 }}
                 anchor={anchor}
+                style={{ position: 'relative' }}
             >
                 <h2 align="center">Conversaciones: </h2>
                 <Divider />
-                {conversationList.length > 0 ?
-                    <div style={{ height: '70vh', overFlowY: 'scroll' }}>
-                        <List style={{ width: '300px' }}>{conversationList
-                            .filter(listItem => this.state.conversationsInput.toLowerCase() === '' || listItem.username.toLowerCase().includes(this.state.conversationsInput.toLowerCase()))
-                            .map((item, index) => {
-                                return <ListItem button key={index} name={item.username} onChange={() => this.onChange(item)} onClick={() => this.onClickChat(item)} >
-                                    {item.profilePic ?
-                                        <Avatar src={item.profilePic} />
-                                        :
-                                        <Avatar>
-                                            <ImageIcon />
-                                        </Avatar>
-                                    }
-                                    <ListItemText primary={item.username} secondary={item.email} />
-                                </ListItem>
-                            })}
-                        </List>
-                        <div className={classes.toolbar} />
-                    </div> :
-                    <div style={{ height: '60vh', overFlowY: 'scroll' }}>
-                        <h2> No hay conversaciones </h2>
-                    </div>
-                }
-
-                <div style={{ width: '300px', margin: 0, position: 'fixed', bottom: 0, left: 0, }}>
+                <div style={{ width: '300px' }} >
                     <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <Input style={{ height: 50, flexGrow: 2, paddingLeft: 10, width: '100%', backgroundColor: 'white' }}
                             value={this.state.conversationsInput}
@@ -277,6 +254,28 @@ class PermanentDrawer extends React.Component {
                         />
                     </div>
                 </div>
+                {conversationList.length > 0 ?
+                    <div className="overflow">
+                        <List style={{ width: '300px' }}>{conversationList
+                            .filter(listItem => this.state.conversationsInput.toLowerCase() === '' || listItem.username.toLowerCase().includes(this.state.conversationsInput.toLowerCase()))
+                            .map((item, index) => {
+                                return <ListItem button key={index} name={item.username} onChange={() => this.onChange(item)} onClick={() => this.onClickChat(item)} >
+                                    {item.profilePic ?
+                                        <Avatar src={item.profilePic} />
+                                        :
+                                        <Avatar>
+                                            <ImageIcon />
+                                        </Avatar>
+                                    }
+                                    <ListItemText primary={item.username} secondary={item.email} />
+                                </ListItem>
+                            })}
+                        </List>
+                    </div> :
+                    <div style={{ overFlowY: 'scroll' }}>
+                        <h2> No hay conversaciones </h2>
+                    </div>
+                }
             </Drawer>
         );
 
@@ -305,7 +304,6 @@ class PermanentDrawer extends React.Component {
                     </AppBar>
                     {before}
                     <main className={classes.content} style={{ backgroundColor: '#eee' }}>
-                        <div className={classes.toolbar} />
                         {
                             this.state.activeChat.messages ?
                                 <div>
