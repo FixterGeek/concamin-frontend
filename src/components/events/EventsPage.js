@@ -4,7 +4,7 @@ import {AdCard} from "../Advertising/AdCard";
 import {CardEvent} from "./CardEvent";
 import {CreateCardEvent} from "./CreateEventCard";
 import {CreateEvent} from "./CreateEvent";
-import {getPosts} from "../../services/postService";
+import {getPosts,get} from "../../services/postService";
 
 class EventsPage extends Component {
     state={

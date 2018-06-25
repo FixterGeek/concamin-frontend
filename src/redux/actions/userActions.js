@@ -44,6 +44,7 @@ export const checkIfUser=()=>(dispatch, getState)=>{
         dispatch(getUser()).then(r=>{
             console.log(getState())
         });
-
+    }else{
+        localStorage.removeItem("user");
     }
 };

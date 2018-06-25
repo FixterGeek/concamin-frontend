@@ -33,17 +33,7 @@ class ProfileContainer extends Component {
     this.setState({user});
   };
 
-  componentWillMount(){
-    getLoggedUser()
-    .then(user=>{
-      this.setState({user});
-      //toastr.success('Tu perfil se ha actualizado');
-    })
-    .catch(e=>{
-      this.props.history.push('/login')
-      console.log(e)
-    })
-  }
+
 
   saveProfile = (cover, profilePic) => {
     //const {user} = this.state;
@@ -87,7 +77,6 @@ componentWillMount(){
             console.log(e)
         })
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log("aqui esta",user)
     this.setState({user:user})
 }
 
