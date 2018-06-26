@@ -29,7 +29,7 @@ import toastr from 'toastr';
      };
 
         logOut=()=>{
-            toastr.info('Bye Bye ')
+            toastr.info('¡Vuelve pronto!')
             localStorage.removeItem("user");
             this.props.userActions.logOut();
             this.handleClose()

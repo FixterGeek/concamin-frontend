@@ -11,6 +11,8 @@ import {checkIfUser} from "./redux/actions/userActions";
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 
 
+
+
 export const store = configureStore();
 store.dispatch(checkIfUser());
 const WithRouter=()=>(

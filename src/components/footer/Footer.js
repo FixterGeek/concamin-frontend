@@ -34,14 +34,16 @@ class Footer extends Component {
                     </div>
                 </div>
             </div>
-            <div className="copy">
-                <p>® CONCAMIN 2018</p>
-                <div className="ff" style={{display:"flex"}}>
-                    <p>Politicas de Privacidad</p>
-                    <br/>
-                    <p>Términos y condiciones</p>
+                <div style={{backgroundColor:"#252729"}}>
+                    <div className="copy">
+                        <p>® CONCAMIN 2018</p>
+                        <div className="ff" style={{display:"flex"}}>
+                            <p>Politicas de Privacidad</p>
+                            <br/>
+                            <p>Términos y condiciones</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
             </div>
         );
     }

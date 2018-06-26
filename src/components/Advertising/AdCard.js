@@ -56,7 +56,7 @@ export const AdCard = ({ejemplo})=>(
                         Bicicletas Bara
                     </Typography>
                     <Typography component="p">
-                        Compra y diviertete con una bicileta bien chingona podras hacer ejercicio ve... de verdad
+                        Compra y diviertete con una bicicleta bien chingona podras hacer ejercicio ve... de verdad
                     </Typography>
                 </CardContent>
             </Card>
