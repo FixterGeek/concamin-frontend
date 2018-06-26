@@ -13,9 +13,14 @@ const styles = {
 
     },
     papel:{
-        padding:30,
+
+        paddingLeft: 60,
+        paddingRight: 60,
+        paddingTop: 30,
+        paddingBottom: 20
     },
     content:{
+        paddingTop:10,
         paddingLeft:50,
         paddingRight:50,
         backgroundColor:'#eaebec',

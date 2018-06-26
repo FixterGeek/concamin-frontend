@@ -19,6 +19,7 @@ class DetailGroup extends Component {
         photoPreview:'',
         addLink:false,
         posts:[],
+        user:{}
     }
 
     componentWillMount(){
@@ -31,6 +32,9 @@ class DetailGroup extends Component {
             }).catch(e=>{
             console.log("este es tu error",e)
         })
+            const user = JSON.parse(localStorage.getItem("user"));
+            console.log("aqui esta",user)
+            this.setState({user:user})
     }
 
     handleSubmit=(e)=>{
@@ -106,13 +110,13 @@ class DetailGroup extends Component {
 
 
     render() {
-        let {photoPreview, newPost, addLink, posts, loading} = this.state;
+        let {photoPreview, newPost, addLink, posts, loading,user} = this.state;
         // if(loading) return(<MainLoader/>)
         const cover = "https://las.leagueoflegends.com/sites/default/files/styles/wide_medium/public/upload/devdiary_gdprinciples_articleheader.jpg?itok=8zfwqH2t";
         let coverImage;
         return (
             <div>
-                
+
                 <GridList cellHeight={'auto'} cols={3}>
                     <GridListTile cols={2}>
                         <Paper style={{minHeight: "379px", marginBottom:"20px"}}>
@@ -124,6 +128,7 @@ class DetailGroup extends Component {
                             </div>
                         </Paper>                                           
                         <NewsFeedComponent
+                            user={user}
                             posts={posts}
                             handleSubmit={this.handleSubmit}
                             handleChange={this.handleChange}
@@ -135,8 +140,8 @@ class DetailGroup extends Component {
                             clearLink={this.clearLink}
                             clearFile={this.clearFile}/>
                     </GridListTile>
-                    <GridListTile cols={1} style={{paddingLeft:'50px', position:'relative'}}>
-                        <ChatGroup style={{position:'fixted'}}/>
+                    <GridListTile cols={1} style={{paddingLeft:'50px', position:'fixed', right:5, width:"27%"}}>
+                        <ChatGroup user={user}/>
                     </GridListTile>
                 </GridList>
 

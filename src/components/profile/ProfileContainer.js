@@ -86,6 +86,9 @@ componentWillMount(){
         }).catch(e=>{
             console.log(e)
         })
+    const user = JSON.parse(localStorage.getItem("user"));
+    console.log("aqui esta",user)
+    this.setState({user:user})
 }
 
 handleSubmit=(e)=>{
@@ -107,7 +110,7 @@ handleSubmit=(e)=>{
     
 }
 handleChange=(e)=>{
-    let {newPost} = this.state;
+    let {newPost,user} = this.state;
     let field = e.target.name;
     if(e.target.type==="file"){
         newPost[field] = e.target.files[0]
@@ -121,6 +124,7 @@ handleChange=(e)=>{
     }
     this.setState({newPost})
     console.log(newPost)
+    console.log("usuario",user)
 }
 handlePreview=()=>{
     let reader = new FileReader();
@@ -162,6 +166,7 @@ clearLink=(key)=>{
     const {user, editing, photoPreview, newPost, addLink, posts, loading} = this.state;    
     return (
       <div>
+
         <ProfileDisplay cancel={this.cancel} onChange={this.onChange} changeEditing={this.changeEditing} editing={editing} {...user} saveProfile={this.saveProfile} />
         
         <div style={{display:'flex',flexDirection:'rows'}}>
@@ -169,7 +174,9 @@ clearLink=(key)=>{
               <HistoryDisplay />
             </div>
             <div style={{padding:'20px 0 0 50px',width:'100%'}}>
+
             <NewsFeedComponent
+                    user={user}
                     posts={posts}
                     handleSubmit={this.handleSubmit}
                     handleChange={this.handleChange}

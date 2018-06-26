@@ -4,6 +4,7 @@ import { NewsFeedComponent } from './NewsFeedComponent';
 import {getPosts, addPost} from '../../services/postService';
 import {AdCard} from "../Advertising/AdCard";
 import { MainLoader } from '../loader/MainLoader';
+import {getLoggedUser} from "../../services/userService";
 
 
 
@@ -17,6 +18,7 @@ class NewsFeedPage extends Component {
             image:"",
             file:""
         },
+        user:{},
         photoPreview:'',
         addLink:false,
         posts:[],
@@ -32,6 +34,9 @@ class NewsFeedPage extends Component {
             }).catch(e=>{
                 console.log(e)
             })
+        const user = JSON.parse(localStorage.getItem("user"));
+        console.log("aqui esta",user)
+        this.setState({user:user})
     }
 
     handleSubmit=(e)=>{
@@ -67,6 +72,7 @@ class NewsFeedPage extends Component {
         }
         this.setState({newPost})
         console.log(newPost)
+
     }
     handlePreview=()=>{
         let reader = new FileReader();
@@ -84,9 +90,7 @@ class NewsFeedPage extends Component {
         document.getElementById('image').value = '';
         document.getElementById('file').value = '';
     }
-    ejemplo=()=>{
-        console.log("Si funciono")
-    }
+
    
     handleLink=()=>{
        this.setState({addLink:!this.state.addLink})
@@ -107,13 +111,14 @@ class NewsFeedPage extends Component {
 
 
   render() {
-    let {photoPreview, newPost, addLink, posts, loading} = this.state;
+    let {photoPreview, newPost, addLink, posts, loading,user} = this.state;
     if(loading) return(<MainLoader/>)
     return (
 
         <GridList cellHeight={'auto'} cols={3}>
             <GridListTile cols={2} >
                 <NewsFeedComponent
+                    user={user}
                     posts={posts}
                     handleSubmit={this.handleSubmit}
                     handleChange={this.handleChange}

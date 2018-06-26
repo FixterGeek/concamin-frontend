@@ -5,64 +5,72 @@ import {Link} from 'react-router-dom';
 import logo from '../../assets/logo_blanco.png';
 
 
+const styles = {
+    root:{
+        background:'red'
+    }
+  };
+
+
 class MainMenu extends Component {
-  render() {
+  render() {      
     return (
         <div className="men">
-        <Drawer open={true} variant="permanent" >
-            <Link to="/main">
+        <Drawer open={true} variant="permanent" 
+        style={styles.root}>
+                <Link to="/main">
 
-                <div style={{textAlign:"center"}}><img className="logo" src={logo} alt=""/></div>
-            </Link>
-        <div className="drawer-container">
-            <Divider/>
-            <List>
-               <Link to="/main/profile" className="menu-links">
-               <ListItem button>
-                    <ListItemIcon>
-                        <Person />
-                    </ListItemIcon>
-                    <ListItemText primary="Perfil" />
-                </ListItem>
-                </Link>               
-            </List>
-            <Divider/>
-            <List subheader={<ListSubheader>Comunidad</ListSubheader>}>
-            <Link to="/main">
-                <ListItem button>
-                    <ListItemIcon>
-                        <ArtTrack />
-                    </ListItemIcon>
-                    <ListItemText primary="Feed" />
-                </ListItem>
-                </Link>
-                <Link to="/main/groups">
-                <ListItem button>
-                    <ListItemIcon>
-                        <Group />
-                    </ListItemIcon>
-                    <ListItemText primary="Grupos" />
-                </ListItem>
-                </Link>
-                <Link to="/main/events">
-                <ListItem button>
-                    <ListItemIcon>
-                        <Event />
-                    </ListItemIcon>
-                    <ListItemText primary="Eventos" />
-                </ListItem>
-                </Link>
-                <Link to="/main/announcements">
-                <ListItem button>
-                    <ListItemIcon>
-                        <ChromeReaderMode />
-                    </ListItemIcon>
-                    <ListItemText primary="Anuncios" />
-                </ListItem>
-                </Link>
-            </List> 
+                    <div style={{textAlign:"center"}}><img className="logo" src={logo} alt=""/></div>
+                    </Link>
+                    <div className="drawer-container">
+                    <Divider/>
+                    <List>
+                    <Link to="/main/profile" className="menu-links">
+                    <ListItem button>
+                        <ListItemIcon>
+                            <Person />
+                        </ListItemIcon>
+                        <ListItemText primary="Perfil" />
+                    </ListItem>
+                    </Link>               
+                    </List>
+                    <Divider/>
+                    <List subheader={<ListSubheader>Comunidad</ListSubheader>}>
+                    <Link to="/main">
+                    <ListItem button>
+                        <ListItemIcon>
+                            <ArtTrack />
+                        </ListItemIcon>
+                        <ListItemText primary="Feed" />
+                    </ListItem>
+                    </Link>
+                    <Link to="/main/groups">
+                    <ListItem button>
+                        <ListItemIcon>
+                            <Group />
+                        </ListItemIcon>
+                        <ListItemText primary="Grupos" />
+                    </ListItem>
+                    </Link>
+                    <Link to="/main/events">
+                    <ListItem button>
+                        <ListItemIcon>
+                            <Event />
+                        </ListItemIcon>
+                        <ListItemText primary="Eventos" />
+                    </ListItem>
+                    </Link>
+                    <Link to="/main/announcements">
+                    <ListItem button>
+                        <ListItemIcon>
+                            <ChromeReaderMode />
+                        </ListItemIcon>
+                        <ListItemText primary="Anuncios" />
+                    </ListItem>
+                    </Link>
+                    </List> 
 
-            <Divider/>
+                    <Divider/>
 
             <List subheader={<ListSubheader>Servicios</ListSubheader>}>
             <Link to="/main/benefits">

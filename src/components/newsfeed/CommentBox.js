@@ -11,9 +11,12 @@ const styles = {
     },
     avatar: {
         backgroundColor:'red',
+        width:30,
+        height:30,
     },
     comentaritos:{
-        backgroundColor:"rgb(242,243,245)"
+        backgroundColor:"rgb(242,243,245)",
+
     },
 
     divisioncita:{
@@ -21,6 +24,9 @@ const styles = {
         border:'solid 1px white',
         height:"0px",
     },
+    textito:{
+        fontSize:13,
+    }
 
 };
 
@@ -32,13 +38,14 @@ export  const CommentBox = ({handleComment,elId})=>(
 
             <CardContent  style={styles.comentaritos}>
                 <CardHeader
+
                     avatar={
                         <Avatar arial-label={"Recipe"} style={styles.avatar}>
                             H
                         </Avatar>
                     }
-                    title={"Hector Bliss"}
-                    subheader={"mayo 19, 2018"}
+                    title={<span style={styles.textito}>Hector Bliss</span>}
+                    subheader={<span style={styles.textito}> 19, 2018</span>}
                     action={
                         <IconButton>
                             <MoreHoriz/>
@@ -46,7 +53,7 @@ export  const CommentBox = ({handleComment,elId})=>(
                     }
                 />
                 <CardContent>
-                    <Typography component="p">
+                    <Typography component="p" style={styles.textito}>
                         La neta yo no usaria a oriana, su historia esta muy chafa...
                     </Typography>
                 </CardContent>

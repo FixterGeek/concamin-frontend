@@ -227,14 +227,18 @@ a{
     opacity: .6;
 }
 .item{
-
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     background-color: rgba(37, 39, 41, .05);
+    min-height: 470px;
+}
+.owl-carousel{
+    background-color: white;
 }
 .owl-carousel .owl-item img{
-    max-width:100px;
+    max-width:90px;
     max-height: 120px;
     margin: 20px;
     filter: grayscale(100%);
