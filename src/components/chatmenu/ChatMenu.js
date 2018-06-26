@@ -181,7 +181,7 @@ class Chat extends Component {
     //END CHAT ADD
     render() {
         return (
-            <div>
+            <div className="chat">
                 <ExpansionPanel style={{
                     minWidth: '320px',
                     margin: 0,

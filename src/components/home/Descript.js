@@ -43,7 +43,7 @@ export const Descript = () => {
                         <div>
                             <h3>Actividades</h3>
                             <br/>
-                            <p>Enterate de las actividades relacionadas con el ecosistema indsutrials</p>
+                            <p>Enterate de las actividades relacionadas con el ecosistema industrial.</p>
                         </div>
                     </div>
                     <div className="box_parrafo" style={{display:"flex", alignItems:"center"}}>
@@ -56,12 +56,12 @@ export const Descript = () => {
                     </div>
 
                 </div>
-                <div className="box_img boxi">
+                <div className="box_img boxi tres">
 
                 </div>
             </div>
             <div className="fls">
-                <div className="box_img boxi">
+                <div className="box_img boxi uno">
 
                 </div>
                 <div className="flexi boxi">
@@ -69,7 +69,7 @@ export const Descript = () => {
                         <div>
                             <h3>Grupos</h3>
                             <br/>
-                            <p>Gestiona y crea grupos privados o públicos y atrae usuarios que comparten tus intereses</p>
+                            <p>Gestiona y crea grupos privados o públicos y atrae usuarios que comparten tus intereses.</p>
                         </div>
                     </div>
                     <div className="box_parrafo" style={{display:"flex", alignItems:"center"}}>
@@ -90,23 +90,19 @@ export const Descript = () => {
                         <div>
                             <h3>Negocios</h3>
                             <br/>
-                            <p>Equipos de artistas, diseñadores e ingenieros personalizan
-                                cada espacio, dándole prioridad a la luz natural, la comodidad
-                                y la inspiración.</p>
+                            <p>Crea alianzas y conexiones por medio de la plataforma, fortalece tus negociaciones y amplia tu mercado.</p>
                         </div>
                     </div>
                     <div className="box_parrafo" style={{display:"flex", alignItems:"center"}}>
                         <div>
                             <h3>Publicidad</h3>
                             <br/>
-                            <p>Equipos de artistas, diseñadores e ingenieros personalizan
-                                cada espacio, dándole prioridad a la luz natural, la comodidad
-                                y la inspiración.</p>
+                            <p>¿Se aproxima tu evento?¿Quieres promocionar tus productos? Contrata un plan publicitario.</p>
                         </div>
                     </div>
 
                 </div>
-                <div className="box_img boxi">
+                <div className="box_img boxi dos">
 
                 </div>
             </div>

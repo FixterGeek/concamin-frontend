@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
-import Chat from '../chatmenu/ChatMenu'
 import DetailGroup from '../groups/DetailGroup'
 import GroupsPage from '../groups/GroupsPage'
 import NewsFeedPage from '../newsfeed/NewsFeedPage'
@@ -20,7 +19,6 @@ class RoutesMain extends Component {
       <Switch>
 
         <Route exact path="/main" component={NewsFeedPage} />
-        <Route path="/main/chat" component={Chat} />
         <Route path="/main/groups/detallitogrupito" component={DetailGroup} />
         <Route path="/main/groups" component={GroupsPage} />
         <Route path="/main/profile" component={ProfileContainer} />

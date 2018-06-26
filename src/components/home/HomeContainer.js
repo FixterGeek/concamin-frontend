@@ -10,7 +10,9 @@ import Footer from '../footer/Footer';
 class HomeContainer extends Component {
 
   //testing chats
-
+    componentDidMount () {
+        window.scroll(0, 0)
+    }
 
   render() {
     return (
