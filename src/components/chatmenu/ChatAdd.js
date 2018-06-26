@@ -13,7 +13,8 @@ import { Paper } from '@material-ui/core'
 import { Close, ExpandMore } from '@material-ui/icons/';
 
 
-export const ChatAdd = ({ followerList, messageInput, addMessage, participants, messages, onClickChat, userSelected, listi, textInput, onChange, close, onClose, handleInput, onChangeHandler, pushButton, visible, expanded }) => {
+
+export const ChatAdd = ({ scrollToBottom, followerList, messageInput, addMessage, participants, messages, onClickChat, userSelected, listi, textInput, onChange, close, onClose, handleInput, onChangeHandler, pushButton, visible, expanded }) => {
     console.log("desconstr", participants, messages)
     const localUser = JSON.parse(localStorage.getItem('user'));
     let list = followerList
@@ -42,23 +43,24 @@ export const ChatAdd = ({ followerList, messageInput, addMessage, participants, 
                     <div style={{
                         width: '100%',
                     }}>
-                        <section style={{ height: '60vh' }} className="scroll">
-                            {messages.map((m, index) => {
-                                if (m.user !== localUser._id) {
-                                    return (
-                                        <Paper key={index} style={{ maxWidth: '290px', padding: '10px', margin: '5px 5px' }}>
-                                            <Avatar>
-                                                <img src={m.profilePic} alt="profile" style={{ maxWidth: '100%', maxHeight: '100%' }} />
-                                            </Avatar>
+                        <section style={{ height: '60vh' }} className="scroll" id="chatWindow">
+                            {
+                                messages.map((m, index) => {
+                                    if (m.user == localUser._id) {
+                                        return (
+                                            <Paper key={index} style={{ maxWidth: '290px', padding: '10px', margin: '5px 5px' }}>
+                                                <Avatar>
+                                                    <img src={m.profilePic} alt="profile" style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                                                </Avatar>
+                                                {m.body}
+                                            </Paper>
+                                        )
+                                    } else {
+                                        return (<Paper key={index} style={{ maxWidth: '290px', padding: '10px', margin: '5px 5px' }}>
                                             {m.body}
-                                        </Paper>
-                                    )
-                                } else {
-                                    return (<Paper key={index} style={{ maxWidth: '290px', padding: '10px', margin: '5px 5px' }}>
-                                        {m.body}
-                                    </Paper>)
-                                }
-                            })}
+                                        </Paper>)
+                                    }
+                                })}
                         </section>
                         <div style={{ width: '100%', backgroundColor: 'dimgray', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <Input value={messageInput} onKeyPress={addMessage} style={{ height: 50, flexGrow: 2, paddingLeft: 10 }} name="messageInput" onChange={handleInput}
