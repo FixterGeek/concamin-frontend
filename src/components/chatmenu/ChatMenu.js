@@ -11,7 +11,8 @@ import Create from '@material-ui/icons/Create';
 import Button from '@material-ui/core/Button';
 import { ChatAdd } from './ChatAdd';
 import { getOrCreateChat, addMessage } from '../../services/chatService';
-import toastr from 'toastr';
+import toastr from 'toastr'
+import { animateScroll } from "react-scroll"
 
 const conversationList = [
     {
@@ -140,7 +141,8 @@ class Chat extends Component {
         const message = {
             user: user._id,
             date: new Date(),
-            body: this.state.messageInput
+            body: this.state.messageInput,
+            profilePic: user.profilePic,
         };
         if (e.key === 'Enter') {
             console.log('orale:', message)
@@ -148,6 +150,9 @@ class Chat extends Component {
                 .then(chat => {
                     //activeChat.messages.push(message);
                     this.setState({ activeChat: chat, messageInput: '' });
+                    animateScroll.scrollToBottom({
+                        containerId: "chatWindow"
+                    })
                 })
                 .catch(e => {
                     console.log(e);
@@ -176,6 +181,12 @@ class Chat extends Component {
             close: !this.state.close,
             userSelected: null,
             input: ''
+        })
+    }
+
+    scrollToBottom = () => {
+        animateScroll.scrollToBottom({
+            containerId: "chatWindow"
         })
     }
     //END CHAT ADD
@@ -238,6 +249,7 @@ class Chat extends Component {
                     userSelected={this.state.userSelected}
                     onClickChat={this.onClickChat}
                     handleInput={this.handleInput}
+                    scrollToBottom={this.scrollToBottom}
                 />
             </div>
         )
