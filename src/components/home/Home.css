@@ -224,7 +224,7 @@ a{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: rgba(37, 39, 41, .05);
+
     padding: 3% 0;
 }
 .member_img{
@@ -239,7 +239,6 @@ a{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-color: rgba(37, 39, 41, .05);
     min-height: 470px;
 }
 .owl-carousel{
@@ -253,10 +252,17 @@ a{
     opacity: .6;
 }
 @media(max-width: 430px){
-    .box_parrafo{
+    .boxi{
         width:100%;
     }
     .slide h1{
         font-size: 40px;
     }
+    .dos, .tres{
+        height:200px;
+    }
+    .fl div{
+        padding: 0;
+    }
+
 }

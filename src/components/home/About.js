@@ -7,7 +7,7 @@ export const About = () => {
 
     return (<div className="abouti">
         <div className="fl">
-            <div style={{display:"flex", }}>
+            <div style={{display:"flex" }}>
                 <div>
             <h2>Bienvenidos a CONCAMIN-RED</h2>
                     <p>DONDE LA COMUNICACIÓN EMERGE</p>
