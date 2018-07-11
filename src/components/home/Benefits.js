@@ -1,6 +1,7 @@
 import React from 'react';
 import './Home.css';
-
+import img from '../../assets/image8.jpg';
+import img2 from '../../assets/image9.jpg';
 
 export const Benefits = () => {
 
@@ -16,13 +17,13 @@ export const Benefits = () => {
                     </p>
                 </div>
                 <div className="box_b">
-                    <img src="https://images.pexels.com/photos/136413/pexels-photo-136413.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
+                    <img src={img} alt=""/>
                     <h3>Explora</h3>
                     <p>Conoce la trayectoria de cada una de las Cámaras, Asociaciones e instituciones destacadas del ámbito industrial en México
                     </p>
                 </div>
                 <div className="box_b">
-                    <img src="https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
+                    <img src={img2} alt=""/>
                     <h3>Interactua</h3>
                     <p>Contacta instituciones y/o personas para generar proyectos y efectuar negociaciones.
                     </p>

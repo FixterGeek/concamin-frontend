@@ -2,6 +2,7 @@ import React from 'react';
 import './Profile.css';
 import School from '@material-ui/icons/School';
 
+
 export const DegreeDisplay = () => {
     return (
         <div className='degree'>

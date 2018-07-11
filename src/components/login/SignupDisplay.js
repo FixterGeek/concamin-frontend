@@ -5,16 +5,31 @@ import {AccountCircle, Email, Security} from '@material-ui/icons';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import logo from '../../assets/aniver.png';
+import {Link} from 'react-router-dom';
 
 
 export const SignupDisplay = ({error, onSubmit, changeToSignup}) => {
 
 
     return (
-        <div className='login'>
+        <div className="login">
+
+            <div className="menu" style={{color:"white", position:"fixed"}}>
+                <Link to="/">
+                    <img src={logo} alt=""/>
+                </Link>
+                <div className="box_men">
+                    <hr className="line"/>
+                    <Link to="/login">
+                        <span>Login</span>
+                    </Link>
+                </div>
+            </div><div className='login_box'>
         <form  onSubmit={onSubmit}>
-             <Paper style={{width:"300px", padding:"2%", heigth:"auto"}}>
+             <Paper style={{width:"300px", padding:"4%", heigth:"auto"}}>
                     <div className="circle_login">
+                        <img src={logo} alt=""/>
 
                     </div>
                  <h3>Crea tu cuenta</h3>
@@ -70,14 +85,15 @@ export const SignupDisplay = ({error, onSubmit, changeToSignup}) => {
                      <br/>
 
                  </div>
-                 <Button type={"submit"} variant="raised" color="primary" >
-                 Log In
-                </Button>
 
-                <p>¿Ya tienes cuenta? Ingresa <a href="#!" onClick={changeToSignup}>aquí</a></p>
+                 <button className="btn_login" type={"submit"} >
+                        Login
+                 </button>
+
+                <p>¿Ya tienes cuenta? Ingresa <a href="#!" onClick={changeToSignup}><strong style={{textDecoration:"underline", color:"#648943"}}>aquí</strong></a></p>
 
              </Paper>
              </form>
-        </div>
+        </div></div>
     )
 }

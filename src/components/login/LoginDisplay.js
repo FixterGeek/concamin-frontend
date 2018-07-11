@@ -14,8 +14,10 @@ export const LoginDisplay = ({onSubmit, changeToSignup}) => {
     return (
         <div className='login'>
 
-            <div className="menu" style={{color:"white"}}>
-                <img src={logo} alt=""/>
+            <div className="menu" style={{color:"white", position:"fixed"}}>
+                <Link to="/">
+                    <img src={logo} alt=""/>
+                </Link>
                 <div className="box_men">
                     <hr className="line"/>
                     <Link to="/login">
@@ -26,9 +28,9 @@ export const LoginDisplay = ({onSubmit, changeToSignup}) => {
 
             <div className="login_box">
         <form onSubmit={onSubmit}>
-             <Paper style={{width:"300px", padding:"2%", heigth:"auto"}}>
+             <Paper style={{width:"300px", padding:" 4% 2%", heigth:"auto"}}>
                     <div className="circle_login">
-
+                        <img src={logo} alt=""/>
                     </div>
                  <h3>Bienvenido</h3>
                  <div style={{marginLeft:"30px", color:"#808080 !important"}}>
@@ -51,11 +53,11 @@ export const LoginDisplay = ({onSubmit, changeToSignup}) => {
                      <br/>
 
                  </div>
-                 <Button type={"submit"} variant="raised" color="primary" >
-                 Log In
-                </Button>
+                 <button className="btn_login" type={"submit"} >
+                     Login
+                 </button>
 
-                <p>¿Aún no tienes cuenta? registrate <a href="#!" onClick={changeToSignup}>aquí</a></p>
+                <p>¿Aún no tienes cuenta? registrate <a href="#!" onClick={changeToSignup}><strong style={{textDecoration:"underline", color:"#648943"}}>aquí</strong></a></p>
              </Paper>
              </form>
             </div>
