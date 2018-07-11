@@ -6,7 +6,7 @@ import Avatar from '@material-ui/core/Avatar'
 import ImageIcon from '@material-ui/icons/Image'
 
 export const ChatMenuList = ({ conversationList, users, textInput, onClickChat }) => (
-    <div>
+    <div className="chat">
         <List style={{ width: '100%', padding: 0 }}>
             {conversationList
                 .filter(listItem => textInput.toLowerCase() === '' || listItem.username.toLowerCase().includes(textInput.toLowerCase()))

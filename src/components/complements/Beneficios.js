@@ -7,7 +7,9 @@ class Beneficios extends Component {
 
     //testing chats
 
-
+    componentDidMount () {
+        window.scroll(0, 0)
+    }
     render() {
         return (
             <div className="anuncios">

@@ -11,7 +11,8 @@ import Create from '@material-ui/icons/Create';
 import Button from '@material-ui/core/Button';
 import { ChatAdd } from './ChatAdd';
 import { getOrCreateChat, addMessage } from '../../services/chatService';
-import toastr from 'toastr';
+import toastr from 'toastr'
+import { animateScroll } from "react-scroll"
 
 const conversationList = [
     {
@@ -76,9 +77,17 @@ class Chat extends Component {
         followerList: []
     }
 
+    verifyUser() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user.following) {
+            this.componentWillMount();
+        }
+    }
     componentWillMount() {
         const user = JSON.parse(localStorage.getItem('user'));
-        this.setState({ followerList: user.following })
+        if (user.following) {
+            this.setState({ followerList: user.following })
+        }
         console.log(user);
     }
 
@@ -132,14 +141,18 @@ class Chat extends Component {
         const message = {
             user: user._id,
             date: new Date(),
-            body: this.state.messageInput
+            body: this.state.messageInput,
+            profilePic: user.profilePic,
         };
-        if (e.key == 'Enter') {
+        if (e.key === 'Enter') {
             console.log('orale:', message)
             addMessage(message, activeChat._id)
                 .then(chat => {
                     //activeChat.messages.push(message);
                     this.setState({ activeChat: chat, messageInput: '' });
+                    animateScroll.scrollToBottom({
+                        containerId: "chatWindow"
+                    })
                 })
                 .catch(e => {
                     console.log(e);
@@ -154,9 +167,7 @@ class Chat extends Component {
             input: follower.name,
             infoUser: follower,
             visible: false,
-            visible: '',
         })
-        console.log(this.state.infoUser)
     }
 
     pushButton = () => {
@@ -172,11 +183,16 @@ class Chat extends Component {
             input: ''
         })
     }
+
+    scrollToBottom = () => {
+        animateScroll.scrollToBottom({
+            containerId: "chatWindow"
+        })
+    }
     //END CHAT ADD
     render() {
-        const { followerList } = this.state;
         return (
-            <div>
+            <div className="chat">
                 <ExpansionPanel style={{
                     minWidth: '320px',
                     margin: 0,
@@ -207,7 +223,7 @@ class Chat extends Component {
                                 <Input style={{ height: 50, flexGrow: 2, paddingLeft: 10, width: '100%' }}
                                     value={this.state.inputFollowers}
                                     onChange={this.onChangeConversations}
-                                    placeholder="Buscar una conversación.."
+                                    placeholder="Buscar una conversacion"
                                 />
                                 <Button style={{ marginRight: 5 }} variant="fab" mini color="secondary" aria-label="Create" onClick={this.onAddChat}>
                                     <Create />
@@ -233,6 +249,7 @@ class Chat extends Component {
                     userSelected={this.state.userSelected}
                     onClickChat={this.onClickChat}
                     handleInput={this.handleInput}
+                    scrollToBottom={this.scrollToBottom}
                 />
             </div>
         )
