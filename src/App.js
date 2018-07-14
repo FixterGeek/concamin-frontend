@@ -14,13 +14,10 @@ import { withStyles } from '@material-ui/core/styles';
 
 
 
-
-
-
 class App extends Component {
   render() {
     return (
-      <div className='background-app'>
+      <div className='background-app'>      
         {/*<Navbar/>*/}
         {/*<MainMenu/>*/}
         <div className="routes-container">
