@@ -34,15 +34,10 @@ class ProfileContainer extends Component {
   };
 
   componentWillMount(){
-    getLoggedUser()
-    .then(user=>{
-      this.setState({user});
-      //toastr.success('Tu perfil se ha actualizado');
-    })
-    .catch(e=>{
-      this.props.history.push('/login')
-      console.log(e)
-    })
+    let user = localStorage.getItem('user');
+    if (!user) return this.props.history.push('/login');
+    user = JSON.parse(user);
+    this.setState({user})
   }
 
   saveProfile = (cover, profilePic) => {
@@ -75,21 +70,6 @@ class ProfileContainer extends Component {
     window.location.reload();
   }
 
-  /* posts functions */ 
-componentWillMount(){
-    this.setState({loading:true})
-    getPosts()
-        .then(r=>{
-           this.setState({posts:r})
-           console.log(r)
-           this.setState({loading:false})
-        }).catch(e=>{
-            console.log(e)
-        })
-    const user = JSON.parse(localStorage.getItem("user"));
-    console.log("aqui esta",user)
-    this.setState({user:user})
-}
 
 handleSubmit=(e)=>{
     e.preventDefault()
@@ -163,7 +143,8 @@ clearLink=(key)=>{
 }
 
   render() {
-    const {user, editing, photoPreview, newPost, addLink, posts, loading} = this.state;    
+    const {user, editing, photoPreview, newPost, addLink, loading} = this.state;  
+    const {posts} = user;  
     return (
       <div>
 

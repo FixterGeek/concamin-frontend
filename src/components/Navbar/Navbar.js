@@ -7,6 +7,7 @@ import {bindActionCreators}from 'redux';
 import {connect} from 'react-redux';
 import * as userActions from '../../redux/actions/userActions';
 import toastr from 'toastr';
+import {withRouter} from 'react-router-dom';
 
  class  Navbar extends Component {
     state={
@@ -28,12 +29,14 @@ import toastr from 'toastr';
          this.setState({ anchorEl: null });
      };
 
-        logOut=()=>{
-            toastr.info('Bye Bye ')
+    logOut=()=>{
+            //toastr.info('Bye Bye ')
             localStorage.removeItem("user");
-            this.props.userActions.logOut();
+            //this.props.userActions.logOut();
             this.handleClose()
-            this.props.logOut()
+            //this.props.logOut()
+            this.setState({isLogged:false})
+            this.props.history.push('/login')
         }
 
      componentWillMount() {
@@ -150,4 +153,4 @@ function mapDispatchToProps(dispatch){
 }
 
 Navbar = connect (mapStateToProps,mapDispatchToProps)(Navbar);
-export default Navbar;
+export default withRouter(Navbar);

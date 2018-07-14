@@ -4,7 +4,7 @@ import { CardDisplay } from './CardDisplay';
 
 
 
-export const NewsFeedComponent = ({user,posts, handleSubmit, handleChange, photoPreview, clearFile, newPost, handleLink, addLink, addLinks, clearLink}) => (
+export const NewsFeedComponent = ({user,posts=[], handleSubmit, handleChange, photoPreview, clearFile, newPost, handleLink, addLink, addLinks, clearLink}) => (
     <div> 
         <PostCard 
             handleSubmit={handleSubmit} 
