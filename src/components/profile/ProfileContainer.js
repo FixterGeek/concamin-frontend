@@ -5,7 +5,7 @@ import {updateUser, getLoggedUser} from '../../services/userService';
 import {getPosts, addPost} from '../../services/postService';
 import toastr from 'toastr';
 import {HistoryDisplay} from './HistoryDisplay';
-import {NewsFeedComponent} from '../newsfeed/NewsFeedComponent'
+import NFContainer from '../newsfeed/NFContainer'
 
 
 class ProfileContainer extends Component {
@@ -156,18 +156,7 @@ clearLink=(key)=>{
             </div>
             <div style={{padding:'20px 0 0 50px',width:'100%'}}>
 
-            <NewsFeedComponent
-                    user={user}
-                    posts={posts}
-                    handleSubmit={this.handleSubmit}
-                    handleChange={this.handleChange}
-                    photoPreview={photoPreview}
-                    newPost={newPost}
-                    handleLink={this.handleLink}
-                    addLink={addLink}
-                    addLinks={this.addLinks}
-                    clearLink={this.clearLink}
-                    clearFile={this.clearFile}/>
+              <NFContainer own={false}/>
             </div>
         </div>
 

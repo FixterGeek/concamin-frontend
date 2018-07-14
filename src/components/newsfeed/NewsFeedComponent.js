@@ -4,9 +4,9 @@ import { CardDisplay } from './CardDisplay';
 
 
 
-export const NewsFeedComponent = ({user,posts=[], handleSubmit, handleChange, photoPreview, clearFile, newPost, handleLink, addLink, addLinks, clearLink}) => (
+export const NewsFeedComponent = ({user={},posts=[], handleSubmit, handleChange, photoPreview, clearFile, newPost, handleLink, addLink, addLinks, clearLink}) => (
     <div> 
-        <PostCard 
+        {/* <PostCard 
             handleSubmit={handleSubmit} 
             handleChange={handleChange} 
             photoPreview={photoPreview} 
@@ -16,7 +16,7 @@ export const NewsFeedComponent = ({user,posts=[], handleSubmit, handleChange, ph
             clearLink={clearLink}
             addLinks={addLinks}
             handleLink={handleLink}
-            addLink={addLink}/>
+            addLink={addLink}/> */}
         {posts.map((post, key)=>(
             <CardDisplay {...post} key={key} myUser={user}/>
         ))}
