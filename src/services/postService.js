@@ -34,13 +34,13 @@ export function addPost(post){
     .then(res=>{
         if(!res.ok){
             console.log(res);
-            return Promise.reject(res)
+            return Promise.reject(res.json())
         }
         return res.json();
     })
     .then(post=>{
         return post;
-    });
+    })
 }
 
 export function getPosts(skip=0, tipo="PERSONAL", group, event){

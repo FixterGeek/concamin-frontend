@@ -1,19 +1,28 @@
 import React, {Component} from 'react';
 import {NewsFeedComponent} from './NewsFeedComponent';
 import PropTypes from 'prop-types'
-import {getOwnPosts, getPosts} from '../../services/postService';
+import {getOwnPosts, getPosts, addPost} from '../../services/postService';
 import toastr from 'toastr';
-import { Divider } from '../../../node_modules/@material-ui/core';
+import {PostCard} from './PostCard';
+//import { Divider } from '../../../node_modules/@material-ui/core';
 
 
 class NFContainer extends Component{
 
     state = {
         posts:[],
-        newPost:{},
+        loading:true,
+        newPost:{
+            links:[],
+            body:"",
+            image:"",
+            file:""
+        },
         user: {},
         skip : 0,
-        ask:()=>{}
+        ask:()=>{},
+        photoPreview:'',
+        addLink:false,
     }
 
     componentWillMount(){
@@ -30,7 +39,7 @@ class NFContainer extends Component{
             return;
         }
     }
-
+//read
     getAll = (skip=0) => {
         getPosts(skip)
         .then(posts=>{
@@ -70,12 +79,97 @@ class NFContainer extends Component{
         skip += 10;
         this.state.ask(skip)
     }
+//write
+
+handleSubmit=(e)=>{
+    e.preventDefault()
+    this.setState({loading:true})  
+    const {newPost} = this.state; 
+    newPost.tipo = this.props.tipo; 
+    addPost(newPost)
+         .then(post=>{
+            let {posts} = this.state;
+            posts.unshift(post)
+            newPost.body=""
+            newPost.links=[]
+            this.clearFile()
+            this.setState({posts, newPost, loading:false, addLink:false})
+            toastr.success('Se ha publicado tu post')
+         }).catch(e=>{
+            toastr.error('No se pudo publicar, posiblemente tu archivo es muy pesado' + e)
+            console.log(e)
+        })
+
+    
+}
+handleChange=(e)=>{
+    let {newPost} = this.state;
+    let field = e.target.name;
+    if(e.target.type==="file"){
+        newPost[field] = e.target.files[0]
+       if(e.target.name==="image"){
+        this.handlePreview()
+        console.log('preview de foto')
+       }
+    }
+    else{
+        newPost[field] = e.target.value
+    }
+    this.setState({newPost})
+    console.log(newPost)
+
+}
+handlePreview=()=>{
+    let reader = new FileReader();
+    reader.readAsDataURL(this.state.newPost.image)
+    reader.onload = () => {
+        this.setState({photoPreview:reader.result})
+    }
+}
+
+clearFile=()=>{
+    let {newPost} = this.state;
+    newPost.image = ''
+    newPost.file = ''
+    this.setState({photoPreview:'', newPost})
+    document.getElementById('image').value = '';
+    document.getElementById('file').value = '';
+}
+
+
+handleLink=()=>{
+   this.setState({addLink:!this.state.addLink})
+   console.log('lool')
+}
+addLinks=()=>{
+    let {newPost} = this.state;
+    newPost['links'].push(newPost.link)
+    newPost.link=""       
+    this.setState({newPost})
+}
+clearLink=(key)=>{
+    let {newPost} = this.state;
+    newPost.links.splice(key, 1)
+    this.setState({newPost})
+}
+
 
     render(){
-        const { posts, user } = this.state;
+        const { posts, user, newPost, photoPreview,addLink } = this.state;
         return(
             <div>
-            
+            <PostCard 
+                handleSubmit={this.handleSubmit} 
+                handleChange={this.handleChange} 
+                photoPreview={photoPreview} 
+                clearFile={this.clearFile}
+                user={user}
+                {...newPost} 
+                clearLink={this.clearLink}
+                addLinks={this.addLinks}
+                handleLink={this.handleLink}
+                addLink={addLink}
+            />
             <NewsFeedComponent
                 user={user}
                 posts={posts}
