@@ -1,9 +1,12 @@
 //const baseUrl = 'http://localhost:3000/auth/';
 const baseUrl = 'https://concamin.herokuapp.com/auth/';
+//const baseUrl = 'http://localhost:3000/auth/';
 
 export function getPublicUser(id){
     return fetch(baseUrl + 'users/' + id, {
-        credentials:'include'
+        headers:{
+            'Authorization': retrieveToken()
+        }
     })
     .then(res=>{
         if(!res.ok) return Promise.reject(res);
@@ -22,7 +25,10 @@ export function updateUser(user){
     return fetch(baseUrl + 'profile', {
         method:'post',
         body:form,
-        credentials:'include'
+        headers:{
+            "Authorization": retrieveToken(),
+            //"Content-Type" : "application/json"
+        }
 
     })
     .then(res=>{
@@ -35,7 +41,12 @@ export function updateUser(user){
 }
 
 export function getLoggedUser(){
-    return fetch(baseUrl + 'logged',{credentials:'include'})
+    //return fetch(baseUrl + 'logged',{credentials:'include'})
+    return fetch(baseUrl + 'logged',{
+        headers:{
+            'Authorization': retrieveToken()
+        }
+    })
     .then(res=>{
         if(!res.ok) return Promise.reject(res);
         return res.json();
@@ -54,16 +65,16 @@ export function login(auth){
             "Content-Type":"application/json"
         },
         body:JSON.stringify(auth),
-        credentials:'include'
+        //credentials:'include'
     })
     .then(res=>{
         if(!res.ok) return Promise.reject(res);
         return res.json();
     })
-    .then(user=>{
-        console.log(user);
-        localStorage.setItem('user', JSON.stringify(user))
-        return user;
+    .then(data=>{
+        console.log(data);
+        saveUser(data);
+        return data.user;
     });
 }
 
@@ -81,12 +92,21 @@ export function signup(user){
         if(!res.ok) return Promise.reject(res);
         return res.json();
     })
-    .then(user=>{
-        console.log(user);
-        return user;
+    .then(data=>{
+        //console.log(data.user);
+        saveUser(data);
+        return data.user;
     });
 }
 
+export const saveUser = (data)=>{
+    localStorage.setItem('token', data.access_token);
+    localStorage.setItem('user', JSON.stringify(data.user));
+}
+
+export const retrieveToken = ()=>{
+    return localStorage.getItem('token');
+}
 
 
 

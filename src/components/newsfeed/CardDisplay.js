@@ -49,10 +49,11 @@ const actions=[];
 
 
 
-export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,links,file, created_at,myUser})=>(
+export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,links,file, created_at,myUser})=>{
 
+    //if(!user.username) user.username = "Unknown";
 
-        <Card style={styles.cardpadre}>
+        return (<Card style={styles.cardpadre}>
             <CardHeader
                 avatar={
                     <Avatar arial-label={"Recipe"} style={styles.avatar} src={user.profilePic || null} >
@@ -161,5 +162,5 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
             </CardContent>
 
 
-        </Card>
-);
+        </Card>)
+};

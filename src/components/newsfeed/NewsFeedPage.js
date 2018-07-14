@@ -36,7 +36,7 @@ class NewsFeedPage extends Component {
             })
         const user = JSON.parse(localStorage.getItem("user"));
         console.log("aqui esta",user)
-        this.setState({user:user})
+        this.setState({user})
     }
 
     handleSubmit=(e)=>{

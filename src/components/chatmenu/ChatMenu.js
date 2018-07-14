@@ -13,6 +13,7 @@ import { ChatAdd } from './ChatAdd';
 import { getOrCreateChat, addMessage } from '../../services/chatService';
 import toastr from 'toastr'
 import { animateScroll } from "react-scroll"
+import {withRouter} from 'react-router-dom';
 
 const conversationList = [
     {
@@ -85,6 +86,7 @@ class Chat extends Component {
     }
     componentWillMount() {
         const user = JSON.parse(localStorage.getItem('user'));
+        if(!user) return;
         if (user.following) {
             this.setState({ followerList: user.following })
         }

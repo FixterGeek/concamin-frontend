@@ -25,9 +25,9 @@ class LoginPage extends Component{
   }*/
     componentWillMount() {
         let user = localStorage.getItem("user");
-
         if (user) {
-            this.setState({isLogged:true, user})
+            //this.setState({isLogged:true, user})
+            this.props.history.push('/main/profile')
         }else{
             this.setState({isLogged:false})
         }
@@ -35,14 +35,15 @@ class LoginPage extends Component{
 
     doLoggin = (e) => {
       e.preventDefault();
+      //console.log(e.target.email);
       const auth = {
         email: e.target.email.value,
         password: e.target.password.value
       }
       login(auth)
       .then(user=>{
+        console.log(user)
         toastr.info('Bienvenid@ ' + user.username)
-
         this.props.history.push('/main/profile')
       })
       .catch(e=>{
