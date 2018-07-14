@@ -2,6 +2,21 @@ import {retrieveToken} from './userService';
 const baseUrl = 'https://concamin.herokuapp.com/posts/';
 //const baseUrl = 'http://localhost:3000/posts/';
 
+export function getOwnPosts(skip=0){
+    return fetch(baseUrl + `own/?skip=${skip}`,{
+        headers:{
+            "Authorization": retrieveToken()
+        }
+    })
+    .then(res=>{
+        if(!res.ok) return Promise.reject(res)
+        return res.json();
+    })
+    .then(posts=>{
+        return posts;
+    })
+    .catch(e=>console.log(e));
+}
 
 export function addPost(post){
     const form = new FormData();
@@ -19,18 +34,18 @@ export function addPost(post){
     .then(res=>{
         if(!res.ok){
             console.log(res);
-            return Promise.reject(res)
+            return Promise.reject(res.json())
         }
         return res.json();
     })
     .then(post=>{
         return post;
-    });
+    })
 }
 
-export function getPosts(){
+export function getPosts(skip=0, tipo="PERSONAL", group, event){
     const token = retrieveToken()
-    return fetch(baseUrl, {
+    return fetch(baseUrl + `?skip=${skip}&tipo=${tipo}&group=${group}&event=${event}`, {
         headers:{
             "Authorization": token
         }

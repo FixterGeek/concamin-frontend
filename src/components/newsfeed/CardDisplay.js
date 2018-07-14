@@ -86,7 +86,7 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
             {links.length <= 0 ?
                 "": <List component="nav">
                {links.map((link, key)=>(                    
-                        <a href={`//${link}`} key={key} target="_blank">
+                        <a href={link.split('.')[0].includes('http') ? link : `//${link}`} key={key} target="_blank">
                         <ListItem button >
                             <ListItemIcon>
                                 <InsertLink />
@@ -100,12 +100,12 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
 
             {file ?
                 <List>
-                    <a href={"/#"} target="_blank" style={{ textDecoration: 'none'}} >
+                    <a href={file} target="_blank" style={{ textDecoration: 'none'}} >
                     <ListItem>
                         <ListItemIcon>
                             <PictureAsPdf />
                         </ListItemIcon>
-                        <ListItemText inset primary={file.name} />
+                        <ListItemText inset primary="Archivo.pdf" />
                     </ListItem>
                     </a>
                 </List>:""}
