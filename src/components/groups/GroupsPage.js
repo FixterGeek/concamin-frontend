@@ -13,7 +13,8 @@ export default class GroupsPage extends Component {
         newItem:{subject:'Crecimiento profesional'},
         photoPreview:'',
         groups:[],
-        user:{}
+        user:{},
+        invites:[]
     }
 
     componentWillMount(){
@@ -96,6 +97,15 @@ export default class GroupsPage extends Component {
         .catch(e=>{
             toastr.error('No se pudieron cargar tus grupos')
         })
+    };
+
+    onChangeInvites = (e) => {
+        const invites = e.target.value;
+        this.setState({invites});
+    };
+
+    sendInvite = () => {
+
     };
 
     render(){
