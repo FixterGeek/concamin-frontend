@@ -1,8 +1,8 @@
 import React from 'react';
 import {Card, CardHeader,CardContent, Avatar,Divider,Typography,Button,ExpansionPanelSummary,TextField} from '@material-ui/core/';
 import {LocationOn} from '@material-ui/icons/';
-
-import {Link} from 'react-router-dom'
+import AddModal from '../modals/AddModal';
+import {Link} from 'react-router-dom';
 
 
 const img = "https://las.leagueoflegends.com/sites/default/files/styles/wide_medium/public/upload/devdiary_gdprinciples_articleheader.jpg?itok=8zfwqH2t"
@@ -42,9 +42,10 @@ export const CardGroup =({_id, user, owner={}, members, name, description, subje
                        </span>
                 </Avatar>}
                 </div>
-                {user._id == owner._id && <Button variant="outlined">
-                    Invitar
-                </Button>}
+                {user._id == owner._id &&
+                <AddModal />
+
+                }
             </div>
 
         </CardContent>
