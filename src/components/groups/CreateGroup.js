@@ -93,7 +93,7 @@ export const CreateGroup =({addItem, subject, onChange,open,close, photoPreview,
             </Paper>
 
         </DialogContent></div>
-        <DialogActions style={{backgroundColor:'#eaebec',padding:'8px 4px', margin:0}}>
+        <DialogActions style={{backgroundColor:'#eaebec',padding:'40px 4px', margin:0}}>
             <Button onClick={close} variant="outlined" color="primary">
                 Cancel
             </Button>
@@ -117,8 +117,9 @@ const styles = {
 
         paddingLeft: 60,
         paddingRight: 60,
-        paddingTop: 30,
-        paddingBottom: 20
+        paddingTop: 50,
+        paddingBottom: 20,
+
     },
     content:{
         paddingTop:10,
@@ -126,6 +127,7 @@ const styles = {
         paddingRight:50,
         backgroundColor:'#eaebec',
         width:"50%",
+        height:"70vh",
         margin:"0 auto"
     },
     title: {
