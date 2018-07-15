@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 
 const img = "https://las.leagueoflegends.com/sites/default/files/styles/wide_medium/public/upload/devdiary_gdprinciples_articleheader.jpg?itok=8zfwqH2t"
 
-export const CardGroup =({user, owner={}, members, name, description, subject,cover,revision})=>(
+export const CardGroup =({_id, user, owner={}, members, name, description, subject,cover,revision})=>(
     <Card style={{marginBottom:15}}>
         <div style={{display:'flex'}}>
             <Link to={"/main/groups/detallitogrupito"}>
@@ -15,7 +15,7 @@ export const CardGroup =({user, owner={}, members, name, description, subject,co
             </Link>
             <CardContent>
                 <Typography style={styles.title} color="textSecondary">
-                    <Link style={{textDecoration:'none',color:'black'}} to={"/main/groups/detallitogrupito"}>{name}</Link>
+                    <Link style={{textDecoration:'none',color:'black'}} to={"/main/groups/" + _id}>{name}</Link>
                 </Typography>
                 <Typography style={styles.location} color="textSecondary">
                     {description}

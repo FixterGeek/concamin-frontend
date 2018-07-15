@@ -33,13 +33,36 @@ class NFContainer extends Component{
             this.setState({ask:this.getOwn})
             return;
         }
-        if(this.props.tipo === "PERSONAL"){
+        else if(this.props.tipo === "PERSONAL"){
             this.getAll();
             this.setState({ask:this.getAll})
             return;
         }
+        else if(this.props.tipo === "GROUP"){
+            this.getGroupPosts();
+            this.setState({ask:this.getGroupPosts});
+            return;
+
+        }
     }
 //read
+    getGroupPosts = (skip=0) => {
+        const groupId = this.props.groupId;
+        getPosts(skip, "GROUP", groupId)
+        .then(posts=>{
+            if(posts.length < 1) {
+                this.refs.mas.innerHTML="¡Ya no hay mas posts!";
+                this.refs.mas.disabled=true;
+            }
+            const newArray = [...this.state.posts, ...posts];
+            this.setState({posts:newArray, skip})
+        })
+        .catch(err=>{
+            console.log(err);
+            toastr.error('No se pudieron cargar tus posts');
+        })
+    }
+
     getAll = (skip=0) => {
         getPosts(skip)
         .then(posts=>{
@@ -85,7 +108,10 @@ handleSubmit=(e)=>{
     e.preventDefault()
     this.setState({loading:true})  
     const {newPost} = this.state; 
-    newPost.tipo = this.props.tipo; 
+    if(this.props.tipo === "GROUP" ){
+        newPost.tipo = "GROUP";
+        newPost.group = this.props.groupId;
+    }
     addPost(newPost)
          .then(post=>{
             let {posts} = this.state;

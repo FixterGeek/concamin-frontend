@@ -19,14 +19,14 @@ class RoutesMain extends Component {
       <Switch>
 
         <Route exact path="/main" component={NewsFeedPage} />
-        <Route path="/main/groups/detallitogrupito" component={DetailGroup} />
+        <Route path="/main/groups/:id" component={DetailGroup} />
         <Route path="/main/groups" component={GroupsPage} />
         <Route path="/main/profile" component={ProfileContainer} />
         <Route path="/main/messenger" component={MessengerMain} />
         <Route path="/main/users/:id" component={PublicProfile} />
 
         {/*<Route path="/navbar" component={Navbar}/>*/}
-        <Route path="/main/events/eventito" component={DetailEventPage} />
+        <Route path="/main/events/:id" component={DetailEventPage} />
         <Route path="/main/events" component={EventsPage} />
         <Route path="/main/announcements" component={Anuncios} />
         <Route path="/main/benefits" component={Beneficios} />

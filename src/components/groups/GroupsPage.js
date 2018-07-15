@@ -90,7 +90,7 @@ export default class GroupsPage extends Component {
         console.log('perro')
         getOwnItems()
         .then(groups=>{
-            toastr.success('listo')
+            //toastr.success('listo')
             console.log(groups)
             this.setState({groups})
         })
