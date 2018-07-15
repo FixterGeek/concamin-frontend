@@ -1,7 +1,7 @@
 import React from 'react';
 import {TextField, Card, CardHeader, Avatar,Input, CardContent,InputAdornment, Collapse, Typography, CardMedia, CardActions, IconButton, Button, Paper, List, ListItem, ListItemText, ListItemIcon} from '@material-ui/core/'
 import {InsertPhoto, PictureAsPdf, InsertLink, Clear, AddCircle, AccountCircle} from '@material-ui/icons/';
-
+import PicDefault from '../../assets/default-avatar.png'
 
 const styles = {
     media: {
@@ -73,8 +73,8 @@ export const PostCard = ({user,link, file, image, body,links, handleSubmit, hand
                     margin="normal"
                     />}
                 avatar={
-                    <Avatar arial-label={"Recipe"} style={styles.avatar} src={user ? user.profilePic: null}>
-                        {!user?<AccountCircle/>:null}
+                    <Avatar arial-label={"Recipe"} style={styles.avatar} src={user.profilePic ? user.profilePic : null}>
+                        {!user.profilePic&&<AccountCircle/>}
                     </Avatar>
                 }
             />

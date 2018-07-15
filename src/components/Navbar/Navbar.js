@@ -9,8 +9,13 @@ import * as userActions from '../../redux/actions/userActions';
 import toastr from 'toastr';
 import {withRouter} from 'react-router-dom';
 
+//badge
+import NotificationBadge from 'react-notification-badge';
+import {Effect} from 'react-notification-badge';
+
  class  Navbar extends Component {
     state={
+        news:{newsNumber:7},
         open:false,
         anchorEl: null,
         isLogged:false,
@@ -30,11 +35,8 @@ import {withRouter} from 'react-router-dom';
      };
 
     logOut=()=>{
-            //toastr.info('Bye Bye ')
-            localStorage.removeItem("user");
-            //this.props.userActions.logOut();
+            this.props.userActions.logOut();
             this.handleClose()
-            //this.props.logOut()
             this.setState({isLogged:false})
             this.props.history.push('/login')
         }
@@ -56,8 +58,9 @@ import {withRouter} from 'react-router-dom';
 
      render(){
 
-        const { anchorEl,isLogged} = this.state;
+        const { anchorEl,isLogged, news} = this.state;
         const {user,fetched}=this.props;
+        const {newsNumber} = news;
         const open = Boolean(anchorEl);
 
         console.log("usuario", user)
@@ -76,7 +79,10 @@ import {withRouter} from 'react-router-dom';
 
                             <div style={{display:'flex', justifyContent:'center', alignItems:'center', marginLeft:10}}>
                                 <IconButton>
+                                    <div>
+                                    <NotificationBadge style={{background:'lightblue'}} count={newsNumber} effect={Effect.SCALE}/>
                                     <NotificationsNone/>
+                                    </div>
                                 </IconButton>
 
                                 { user.profilePic ?
