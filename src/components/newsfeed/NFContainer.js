@@ -196,7 +196,8 @@ removePost = (id) => {
     .then(post=>{
         swal({
             icon: "success",
-            title: "Se borró",
+            title: "¡Listo!",
+            text: 'Tu post se ha borrado',
             button: true
         });
         let {posts} = this.state;
