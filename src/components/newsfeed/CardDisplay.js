@@ -56,9 +56,11 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
         return (<Card style={styles.cardpadre}>
             <CardHeader
                 avatar={
+                    <Link to={`/main/users/${user._id}`}>
                     <Avatar arial-label={"Recipe"} style={styles.avatar} src={user.profilePic || null} >
                         {user.profilePic ? null : user.username.charAt(0)}
                     </Avatar>
+                    </Link>
                 }
                 title={user.username}
                 subheader={moment(created_at).format('LLLL')}

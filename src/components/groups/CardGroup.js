@@ -1,8 +1,59 @@
 import React from 'react';
 import {Card, CardHeader,CardContent, Avatar,Divider,Typography,Button,ExpansionPanelSummary,TextField} from '@material-ui/core/';
 import {LocationOn} from '@material-ui/icons/';
+import AddModal from '../modals/AddModal';
+import {Link} from 'react-router-dom';
 
-import {Link} from 'react-router-dom'
+
+const img = "https://las.leagueoflegends.com/sites/default/files/styles/wide_medium/public/upload/devdiary_gdprinciples_articleheader.jpg?itok=8zfwqH2t"
+
+export const CardGroup =({user, owner={}, members, name, description, subject,cover,revision})=>(
+    <Card style={{marginBottom:15}}>
+        <div style={{display:'flex'}}>
+            <Link to={"/main/groups/detallitogrupito"}>
+                <img style={styles.media} src={cover || img}/>
+            </Link>
+            <CardContent>
+                <Typography style={styles.title} color="textSecondary">
+                    <Link style={{textDecoration:'none',color:'black'}} to={"/main/groups/detallitogrupito"}>{name}</Link>
+                </Typography>
+                <Typography style={styles.location} color="textSecondary">
+                    {description}
+                </Typography>
+
+
+            </CardContent>
+        </div>
+        <Divider/>
+        <CardContent>
+            <Typography style={styles.miembros} color="textSecondary">
+               {members.length}
+            </Typography>
+            <div style={{display:'flex', justifyContent:"space-between"}}>
+                <div style={{display:'flex',justifyContent:'flex-start'}}>
+                {members.slice(0,5).map(m=>{
+                    return(
+                        <Avatar key={m._id}  alt="Remy Sharp" src={m.profilePic} style={styles.avatar} />
+                    )
+                })}
+                {members.length > 5 && <Avatar>
+                       <span style={{fontSize:13}}>
+                           +{members.length}
+                       </span>
+                </Avatar>}
+                </div>
+                {user._id == owner._id &&
+                <AddModal />
+
+                }
+            </div>
+
+        </CardContent>
+
+
+    </Card>
+)
+
 const styles = {
     media: {
 
@@ -37,47 +88,3 @@ const styles = {
 
     }
 };
-export const CardGroup =({handleComment,})=>(
-    <Card style={{marginBottom:15}}>
-        <div style={{display:'flex'}}>
-            <Link to={"/main/groups/detallitogrupito"}>
-                <img style={styles.media} src={"https://las.leagueoflegends.com/sites/default/files/styles/wide_medium/public/upload/devdiary_gdprinciples_articleheader.jpg?itok=8zfwqH2t"}/>
-            </Link>
-            <CardContent>
-                <Typography style={styles.title} color="textSecondary">
-                    <Link style={{textDecoration:'none',color:'black'}} to={"/main/groups/detallitogrupito"}>Lo que los bronces podemos lograr</Link>
-                </Typography>
-                <Typography style={styles.location} color="textSecondary">
-                    Es un gran lugar para compartir información sobre los campeones, torneos y otras cosas
-                </Typography>
-
-
-            </CardContent>
-        </div>
-        <Divider/>
-        <CardContent>
-            <Typography style={styles.miembros} color="textSecondary">
-               150 Miembros
-            </Typography>
-            <div style={{display:'flex', justifyContent:"space-between"}}>
-                <div style={{display:'flex',justifyContent:'flex-start'}}>
-                    <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-                    <Avatar   alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-                    <Avatar alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-                    <Avatar alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-                    <Avatar alt="Numero de miemrbos" style={styles.avatarMiembros} >
-                       <span style={{fontSize:13}}>
-                           +1446
-                       </span>
-                    </Avatar>
-                </div>
-                <Button variant="outlined">
-                    Unete
-                </Button>
-            </div>
-
-        </CardContent>
-
-
-    </Card>
-)

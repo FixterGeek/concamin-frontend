@@ -156,7 +156,7 @@ clearLink=(key)=>{
             </div>
             <div style={{padding:'20px 0 0 50px',width:'100%'}}>
 
-              <NFContainer own={false}/>
+              <NFContainer own={true}/>
             </div>
         </div>
 

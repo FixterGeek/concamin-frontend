@@ -5,6 +5,11 @@ import Navbar from '../Navbar/Navbar';
 import Chat from '../chatmenu/ChatMenu'
 
 class MainPage extends Component {
+
+  componentWillMount(){
+    if(!localStorage.getItem('user')) this.props.history.push('/login');
+  }
+
     logOut=()=>{
         this.props.history.push('/');
     };
