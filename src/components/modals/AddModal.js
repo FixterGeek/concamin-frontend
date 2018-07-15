@@ -6,12 +6,26 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import {sendInvites} from '../../services/groupsService';
+import swal from 'sweetalert';
+import toastr from 'toastr';
+import PropTypes from 'prop-types';
 
 
 class AddModal extends Component{
 
     state = {
         open: false,
+        emails:[]
+    };
+
+    onChange = (e) => {
+        const value = e.target.value;
+        let emails = value.split(',');
+        emails = emails.filter(e=>e.includes('@'))
+        emails = emails.map(e=>e.replace(' ', ''))
+        console.log(emails)
+        this.setState({emails});
     };
 
     handleClickOpen = () => {
@@ -22,8 +36,24 @@ class AddModal extends Component{
         this.setState({ open: false });
     };
 
-    render(){
+    sendInvite = () => {
+        const groupId = this.props.groupId;
+        const {emails} = this.state //array
+        const invite = {groupId,emails}
+        sendInvites(invite)
+        .then(r=>{
+            swal({
+                title: "¡Genial!",
+                text: "Tus invitaciones se han enviado",
+                icon: "success",
+                button:true
+            })
+        })
+        .catch(e=>toastr.error('no se puediron enviar, intenta más tarde.'))
+    };
 
+    render(){
+        const {_id, name} = this.props;
         return(
             <div>
                 <Button onClick={this.handleClickOpen}>Invitar</Button>
@@ -32,13 +62,16 @@ class AddModal extends Component{
                     onClose={this.handleClose}
                     aria-labelledby="form-dialog-title"
                 >
-                    <DialogTitle id="form-dialog-title">Invitar</DialogTitle>
+                    <DialogTitle id="form-dialog-title">Invitar al grupo {name}</DialogTitle>
                     <DialogContent>
-                        <DialogContentText>
-                            Para agregar usuarios a este grupo, agrega su dirección e-mail aquí y enviaremos una invitación.
+                        <DialogContentText
+                            
+                        >
+                            Para agregar usuarios a este grupo, agrega las direcciónes de e-mail separadas por coma aquí y enviaremos una invitación.
 
                         </DialogContentText>
                         <TextField
+                            onChange={this.onChange}
                             autoFocus
                             margin="dense"
                             id="name"
@@ -51,7 +84,7 @@ class AddModal extends Component{
                         <Button onClick={this.handleClose} color="primary">
                             Cancel
                         </Button>
-                        <Button onClick={this.handleClose} color="primary">
+                        <Button onClick={()=>{this.handleClose();this.sendInvite(_id)}} color="primary">
                             Enviar
                         </Button>
                     </DialogActions>
@@ -59,6 +92,11 @@ class AddModal extends Component{
             </div>
         );
     }
+}
+
+AddModal.propTypes = {
+    groupId: PropTypes.string.isRequired,
+    name: PropTypes.string
 }
 
 export default AddModal;

@@ -10,13 +10,10 @@ class MainPage extends Component {
     if(!localStorage.getItem('user')) this.props.history.push('/login');
   }
 
-    logOut=()=>{
-        this.props.history.push('/');
-    };
   render() {
     return (
       <div>
-        <Navbar logOut={this.logOut}/>
+        <Navbar/>
         <MainMenu/>        
         <div style={{padding:'85px 30px 0 280px'}}>
           <RoutesMain/>

@@ -43,7 +43,7 @@ export const CardGroup =({_id, user, owner={}, members, name, description, subje
                 </Avatar>}
                 </div>
                 {user._id == owner._id &&
-                <AddModal />
+                <AddModal name={name} groupId={_id} />
 
                 }
             </div>

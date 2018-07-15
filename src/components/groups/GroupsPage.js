@@ -4,7 +4,7 @@ import {AdCard} from "../Advertising/AdCard";
 import {CardGroup} from "./CardGroup";
 import {CardCreateGroup} from "./CardCreateGroup";
 import {CreateGroup} from "./CreateGroup";
-import {addItem, getOwnItems} from '../../services/groupsService'
+import {addItem, getOwnItems, sendInvites} from '../../services/groupsService'
 import toastr from 'toastr';
 import swal from 'sweetalert';
 
@@ -104,10 +104,6 @@ export default class GroupsPage extends Component {
     onChangeInvites = (e) => {
         const invites = e.target.value;
         this.setState({invites});
-    };
-
-    sendInvite = () => {
-
     };
 
     render(){

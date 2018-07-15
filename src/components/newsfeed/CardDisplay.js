@@ -6,7 +6,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import {CommentBox} from './CommentBox';
 import {Link} from 'react-router-dom'
 import moment from 'moment';
-import 'moment/locale/es'
+import 'moment/locale/es';
+import PicDefault from '../../assets/default-avatar.png'
 
 
 const styles = {
@@ -143,8 +144,8 @@ export const CardDisplay =  ({_id, removePost, Ilove,handleComment,user, love, i
 
             <CardContent style={styles.comentaritos}>
                 <div style={styles.micomentario}>
-                    <Avatar arial-label={"Recipe"} style={styles.avatar} src={myUser ? myUser.profilePic: null}>
-                        {!myUser?<AccountCircle/>:null}
+                    <Avatar arial-label={"Recipe"} style={styles.avatar} src={myUser.profilePic ? myUser.profilePic: null}>
+                        {!myUser.profilePic &&<AccountCircle/>}
                     </Avatar>
                     <div style={{marginLeft:"10px", backgroundColor:'white',width:'100%',borderRadius:'5px'}}>
                         <TextField
