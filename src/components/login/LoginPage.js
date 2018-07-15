@@ -24,12 +24,16 @@ class LoginPage extends Component{
     })
   }*/
     componentWillMount() {
+                  
         let user = localStorage.getItem("user");
         if (user) {
             //this.setState({isLogged:true, user})
             this.props.history.push('/main/profile')
         }else{
             this.setState({isLogged:false})
+            if(this.props.location.search!=""){
+              this.setState({signup:true})
+            }
         }
     }
 
@@ -65,6 +69,10 @@ class LoginPage extends Component{
       signup(newUser)
       .then(user=>{
         console.log(user);
+        if(this.props.location.search!=""){
+          const token = this.props.location.search.split('=')[1].split('/')[4]
+          this.props.history.push(`/main/groups/accept/${token}`)  
+        }        
         this.props.history.push('/main/profile')
       })
       .catch(e=>{

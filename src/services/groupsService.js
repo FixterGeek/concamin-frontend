@@ -8,6 +8,24 @@ invite = {
 }
 */ 
 
+export function acceptInvite(token, userId){
+    return fetch(baseUrl+ `invite/accept/${token}`,{
+        method:'post',
+        body:JSON.stringify({userId}),
+        headers:{
+            "Authorization": retrieveToken(),
+            "Content-Type":"application/json"
+        }
+    })
+    .then(res=>{
+        if(!res.ok) return Promise.reject(res.json())
+        return res.json();
+    })
+    .then(data=>{
+        return data.group;
+    })
+}
+
 export function sendInvites(invite){
     return fetch(baseUrl + `invite/`,{
         method:'post',

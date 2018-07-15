@@ -82,10 +82,11 @@ export function signup(user){
     return fetch(baseUrl + 'signup',{
         method:'post',
         headers:{
-            "Content-Type":"application/json"
+            "Content-Type":"application/json",
+            "Authorization":retrieveToken()
         },
         body:JSON.stringify(user),
-        credentials:'include'
+        //credentials:'include'
     })
     .then(res=>{
         console.log(res)
