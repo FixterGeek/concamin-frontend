@@ -58,15 +58,12 @@ export function getPosts(skip=0, tipo="PERSONAL", group, event){
         return res.json();
     })
     .then(posts=>{
-        if(posts.message){
-            localStorage.removeItem('user');
-        }
+        // if(posts.message){
+        //     localStorage.removeItem('user');
+        // }
         console.log(posts)
         return posts;
     })
-    .catch(err=>{
-        console.log("ERRORRRR ", err)
-    });
 }
 
 export function getSinglePost(id){
