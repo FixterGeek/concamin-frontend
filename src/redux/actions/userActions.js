@@ -12,6 +12,7 @@ export function logOutSuccess(){
 
 export const logOut=()=>(dispatch)=>{
     dispatch(logOutSuccess());
+    localStorage.removeItem("user");
 
 };
 
@@ -25,25 +26,18 @@ export function getUserSuccess(user){
 }
 
 export const getUser=()=>(dispatch, getState)=>{
-    return getLoggedUser()
-        .then(r=>{
-            dispatch(getUserSuccess(r))
-            console.log(r)
-        }).catch(e=>
-            console.log(e)
-        )
+    const user = JSON.parse(localStorage.getItem('user'));
+            dispatch(getUserSuccess(user))
+
 };
 
 //if there ar user
 export const checkIfUser=()=>(dispatch, getState)=>{
-    console.log(getState())
     const user = JSON.parse(localStorage.getItem('user'));
     console.log(user)
     if(user){
         //dispatch the functions
-        dispatch(getUser()).then(r=>{
-            console.log(getState())
-        });
+        dispatch(getUser())
 
     }
 };

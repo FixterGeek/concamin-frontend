@@ -35,11 +35,8 @@ import {Effect} from 'react-notification-badge';
      };
 
     logOut=()=>{
-            //toastr.info('Bye Bye ')
-            localStorage.removeItem("user");
-            //this.props.userActions.logOut();
+            this.props.userActions.logOut();
             this.handleClose()
-            //this.props.logOut()
             this.setState({isLogged:false})
             this.props.history.push('/login')
         }
