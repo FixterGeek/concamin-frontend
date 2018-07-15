@@ -2,6 +2,24 @@ import {retrieveToken} from './userService';
 const baseUrl = 'https://concamin.herokuapp.com/groups/';
 //const baseUrl = 'http://localhost:3000/groups/';
 
+export function sendInvites(invite){
+    return fetch(baseUrl + `invite/`,{
+        method:'post',
+        body: JSON.stringify(invite),
+        headers:{
+            "Authorization": retrieveToken(),
+            "Content-Type":"application/json"
+        }
+    })
+    .then(res=>{
+        if(!res.ok) return Promise.reject(res.json())
+        return res.json();
+    })
+    .then(items=>{
+        return items;
+    })
+}
+
 export function getOwnItems(skip=0){
     return fetch(baseUrl + `own/?skip=${skip}`,{
         headers:{
