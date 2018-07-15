@@ -49,15 +49,18 @@ const actions=[];
 
 
 
-export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,links,file, created_at,myUser})=>(
+export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,links,file, created_at,myUser})=>{
 
+    //if(!user.username) user.username = "Unknown";
 
-        <Card style={styles.cardpadre}>
+        return (<Card style={styles.cardpadre}>
             <CardHeader
                 avatar={
+                    <Link to={`/main/users/${user._id}`}>
                     <Avatar arial-label={"Recipe"} style={styles.avatar} src={user.profilePic || null} >
                         {user.profilePic ? null : user.username.charAt(0)}
                     </Avatar>
+                    </Link>
                 }
                 title={user.username}
                 subheader={moment(created_at).format('LLLL')}
@@ -85,7 +88,7 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
             {links.length <= 0 ?
                 "": <List component="nav">
                {links.map((link, key)=>(                    
-                        <a href={`//${link}`} key={key} target="_blank">
+                        <a href={link.split('.')[0].includes('http') ? link : `//${link}`} key={key} target="_blank">
                         <ListItem button >
                             <ListItemIcon>
                                 <InsertLink />
@@ -99,12 +102,12 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
 
             {file ?
                 <List>
-                    <a href={"/#"} target="_blank" style={{ textDecoration: 'none'}} >
+                    <a href={file} target="_blank" style={{ textDecoration: 'none'}} >
                     <ListItem>
                         <ListItemIcon>
                             <PictureAsPdf />
                         </ListItemIcon>
-                        <ListItemText inset primary={file.name} />
+                        <ListItemText inset primary="Archivo.pdf" />
                     </ListItem>
                     </a>
                 </List>:""}
@@ -161,5 +164,5 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
             </CardContent>
 
 
-        </Card>
-);
+        </Card>)
+};

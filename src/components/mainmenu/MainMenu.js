@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Drawer, Divider, List, ListItem, ListItemIcon, ListItemText, ListSubheader} from '@material-ui/core/'
-import {Clear, Store, Feedback, Group, Event, ArtTrack, ChromeReaderMode, Favorite, ImportantDevices, Person} from '@material-ui/icons/'
+import {Clear, Store, Feedback, Group, Event, ArtTrack, ChromeReaderMode, Favorite, ImportantDevices, Person, Message} from '@material-ui/icons/'
 import {Link} from 'react-router-dom';
 import logo from '../../assets/logo_blanco.png';
 
@@ -34,6 +34,16 @@ class MainMenu extends Component {
                     </ListItem>
                     </Link>               
                     </List>
+                        <List>
+                            <Link to="/messenger" className="menu-links">
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <Message />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Chat" />
+                                </ListItem>
+                            </Link>
+                        </List>
                     <Divider/>
                     <List subheader={<ListSubheader>Comunidad</ListSubheader>}>
                     <Link to="/main">

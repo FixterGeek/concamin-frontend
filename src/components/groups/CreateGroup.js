@@ -1,55 +1,36 @@
 import React from 'react'
-import {Button,Typography,Dialog,AppBar,Toolbar,IconButton,Slide,DialogContent,DialogContentText,TextField,DialogActions,
- FormLabel, FormGroup, FormControlLabel,Checkbox,Paper } from '@material-ui/core/';
+import {
+    Button,
+    Typography,
+    Dialog,
+    AppBar,
+    Toolbar,
+    IconButton,
+    Slide,
+    DialogContent,
+    DialogContentText,
+    TextField,
+    DialogActions,
+    FormLabel, 
+    Paper,
+    Select,
+    MenuItem
+ } from '@material-ui/core/';
 import {Close} from '@material-ui/icons/'
 
-const styles = {
-    appBar: {
-        position: 'relative',
-        backgroundColor:"white"
-    },
-    flex: {
-        flex: 1,
 
-    },
-    papel:{
-
-        paddingLeft: 60,
-        paddingRight: 60,
-        paddingTop: 30,
-        paddingBottom: 20
-    },
-    content:{
-        paddingTop:10,
-        paddingLeft:50,
-        paddingRight:50,
-        backgroundColor:'#eaebec',
-        width:"50%",
-        margin:"0 auto"
-    },
-    title: {
-        marginBottom: 16,
-        fontSize: 30,
-        display:'flex',
-        justifyContent:'center'
-    },
-    note:{
-        color:'black',
-        fontweight:'bold'
-    }
-
-};
 function Transition(props) {
     return <Slide direction="up" {...props} />;
 }
 
-export const CreateGroup =({open,close})=>(
+export const CreateGroup =({addItem, subject, onChange,open,close, photoPreview, handleChange, clearFile})=>(
     <Dialog
         style={{backgroundColor:"#eaebec"}}
         fullScreen
         open={open}
         TransitionComponent={Transition}
     >
+
 
         <AppBar  color="default"  style={styles.appBar}  >
             <Toolbar>
@@ -70,6 +51,7 @@ export const CreateGroup =({open,close})=>(
                     Tenga en cuenta que las sugerencias se evalúan cada dos semanas, y pueden o no crearse en función de la superposición con áreas existentes o de interés.
                     Gracias.
                 </DialogContentText>
+                
                 <TextField
                     id="multiline-flexible"
                     label="1. ¿Cuál es el nombre del grupo que deseas crear?"
@@ -77,39 +59,19 @@ export const CreateGroup =({open,close})=>(
                     rowsMax="4"
                     margin="normal"
                     fullWidth
+                    name="name"
+                    onChange={onChange}
                 />
                 <br/>
                 <br/>
                 <FormLabel component="legend"> 2. ¿Cuál es la temática principal del grupo?</FormLabel>
-                <FormGroup>
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-
-                                value="gilad"
-                            />
-                        }
-                        label="Crecimiento profesional"
-                    />
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-
-                                value="jason"
-                            />
-                        }
-                        label="Intereses sociales y personales"
-                    />
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-
-                                value="antoine"
-                            />
-                        }
-                        label="Trabajo y colaboración"
-                    />
-                </FormGroup>
+                <br/>
+                <Select value={subject} onChange={onChange} name="subject">
+                    <MenuItem value={'Crecimiento profesional'}  >Crecimiento profesional</MenuItem>
+                    <MenuItem value={"Intereses sociales y personales"}  >Intereses sociales y personales</MenuItem>
+                    <MenuItem value={"Trabajo y colaboración"}  >Trabajo y colaboración</MenuItem>
+                    <MenuItem value={"Otros"}  >Otros</MenuItem>
+                </Select>
                 <TextField
                     id="multiline-flexible"
                     label="3. Escribe una breve descripción"
@@ -117,54 +79,66 @@ export const CreateGroup =({open,close})=>(
                     rowsMax="4"
                     margin="normal"
                     fullWidth
+                    name="description"
+                    onChange={onChange}
                 />
                 <br/>
                 <br/>
-                <FormLabel component="legend"> 4. Cuéntanos sobre ti</FormLabel>
-
-                <TextField
-                    id="multiline-flexible"
-                    label="Nombre"
-                    multiline
-                    rowsMax="4"
-                    margin="normal"
-                    fullWidth
-                />
-                <TextField
-                    id="multiline-flexible"
-                    label="Compañia"
-                    multiline
-                    rowsMax="4"
-                    margin="normal"
-                    fullWidth
-                />
-                <TextField
-                    id="multiline-flexible"
-                    label="Dirección"
-                    multiline
-                    rowsMax="4"
-                    margin="normal"
-                    fullWidth
-                />
-                <TextField
-                    id="multiline-flexible"
-                    label="E-mail"
-                    multiline
-                    rowsMax="4"
-                    margin="normal"
-                    fullWidth
-                />
+                <input id="cover" name="cover" onChange={handleChange} type="file" accept="image/*" />
+                <img width="100%" src={photoPreview} />
+                <button onClick={clearFile} >quitar</button>
+          
+                
 
             </Paper>
 
         </DialogContent></div>
-        <DialogActions style={{backgroundColor:'#eaebec',padding:'8px 4px', margin:0}}>
+        <DialogActions style={{backgroundColor:'#eaebec',padding:'40px 4px', margin:0}}>
             <Button onClick={close} variant="outlined" color="primary">
                 Cancel
             </Button>
-            <Button  variant="outlined"  color="primary">
+            <Button onClick={addItem} variant="outlined"  color="primary">
                 Crear
             </Button>
         </DialogActions>
     </Dialog>
 );
+
+const styles = {
+    appBar: {
+        position: 'relative',
+        backgroundColor:"white"
+    },
+    flex: {
+        flex: 1,
+
+    },
+    papel:{
+
+        paddingLeft: 60,
+        paddingRight: 60,
+        paddingTop: 50,
+        paddingBottom: 20,
+
+    },
+    content:{
+        paddingTop:10,
+        paddingLeft:50,
+        paddingRight:50,
+        backgroundColor:'#eaebec',
+        width:"50%",
+        height:"70vh",
+        margin:"0 auto"
+    },
+    title: {
+        marginBottom: 16,
+        fontSize: 30,
+        display:'flex',
+        justifyContent:'center'
+    },
+    note:{
+        color:'black',
+        fontweight:'bold'
+    }
+
+};

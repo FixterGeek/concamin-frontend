@@ -67,7 +67,7 @@ export const PostCard = ({user,link, file, image, body,links, handleSubmit, hand
                     name="body"
                     onChange={handleChange}
                     id="multiline-flexible"
-                    label="Qué estás pensando bro?"
+                    label="¡Compartenos tu logro del día!"
                     fullWidth={true}
                     multiline
                     margin="normal"
@@ -143,7 +143,7 @@ export const PostCard = ({user,link, file, image, body,links, handleSubmit, hand
             <CardActions style={styles.actions}>
                 <div>
                     <IconButton aria-label="Add to favorites" onClick={clicki} color={photoPreview?"primary":"default"} disabled={file?true:false}>
-                        <input id='image' ref={input=>profilePic=input} type="file" hidden onChange={handleChange} name="image"/>
+                        <input accept="image/*" id='image' ref={input=>profilePic=input} type="file" hidden onChange={handleChange} name="image"/>
                         <InsertPhoto />
                     </IconButton>
                     <IconButton aria-label="Add to favorites" onClick={clickFile} color={file?"primary":"default"} disabled={photoPreview?true:false}>

@@ -1,3 +1,7 @@
+@font-face {
+    font-family: "Proxima Nova";
+    src: url('../../assets/Nova.otf');
+}
 .scroll {
     overflow-y: scroll;
 }
@@ -8,4 +12,40 @@
 
 .you {
     float: left;
+}
+.MuiAppBar-colorPrimary-15{
+    background-color: #252729 !important;
+    color:white !important;
+}
+.MuiTypography-colorInherit-65{
+    font-size: 30px !important;
+    font-family: "Proxima Nova"  !important;
+
+}
+.MuiInput-input-93{
+    font-family: "Proxima Nova"  !important;
+
+}
+.MuiButton-fab-109{
+    padding: none !important;
+}
+.MuiButton-raisedSecondary-106{
+    background-color: #5d754a !important;
+}
+.MuiButton-mini-110{
+    width:45px !important;
+}
+.MuiInput-underline-89:after{
+    border-bottom:2px solid #5d754a !important;
+}
+.MuiTypography-subheading-53{
+    font-family: "Proxima Nova"  !important;
+    font-weight: 800 !important;
+}
+.MuiTypography-body1-55{
+    font-family: "Proxima Nova"  !important;
+}
+.font{
+    font-family: "Proxima Nova";
+
 }

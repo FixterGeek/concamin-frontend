@@ -1,13 +1,13 @@
 import React from 'react';
 import './Home.css';
-
+import image from '../../assets/image4.JPG';
 
 export const About = () => {
 
 
     return (<div className="abouti">
         <div className="fl">
-            <div style={{display:"flex", }}>
+            <div style={{display:"flex" }}>
                 <div>
             <h2>Bienvenidos a CONCAMIN-RED</h2>
                     <p>DONDE LA COMUNICACIÓN EMERGE</p>
@@ -24,7 +24,7 @@ export const About = () => {
                 </p></div>
             </div>
             <div>
-                <img src="https://images.pexels.com/photos/257770/pexels-photo-257770.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
+                <img src={image} alt=""/>
             </div>
         </div></div>
     )

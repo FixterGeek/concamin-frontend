@@ -9,6 +9,7 @@ import { AddChat } from './AddChat'
 import { animateScroll } from "react-scroll"
 import './Messenger.css';
 import toastr from 'toastr';
+import logo from '../../assets/aniver.png'
 
 const drawerWidth = 300;
 
@@ -232,7 +233,9 @@ class PermanentDrawer extends React.Component {
                 anchor={anchor}
                 style={{ position: 'relative' }}
             >
-                <h2 align="center">Conversaciones: </h2>
+                <div style={{width:"100px", margin:"0 auto"}}>
+                    <img style={{width:"100%"}} src={logo} alt=""/>
+                </div>
                 <Divider />
                 <div style={{ width: '300px' }} >
                     <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -307,16 +310,23 @@ class PermanentDrawer extends React.Component {
                         {
                             this.state.activeChat.messages ?
                                 <div>
-                                    <div id="chatWindow" style={{ overflowY: 'scroll', width: '100%', height: '72vh', borderRadius: '10px', backgroundColor: 'white', marginBottom: '10px' }}>
+                                    componentDidMount () {
+                                    window.scroll(0, 0)
+                                }
+                                    <div id="chatWindow" style={{ overflowY: 'scroll', width: '100%', maxHeight: '80vh', borderRadius: '10px', backgroundColor: 'white', marginBottom: '10px' }}>
                                         {this.state.activeChat.messages.map((m, index) => {
                                             if (m.user == localUser._id) {
                                                 return (
-                                                    <Paper key={index} style={{ maxWidth: '60vh', padding: '10px', margin: '5px 5px' }}>
-                                                        <Avatar>
+                                                    <Paper key={index} style={{maxWidth: '60vh', padding: '10px', margin: '5px 5px', display:"flex", fontFamily:"Proxima Nova"}}>
+                                                        <Avatar style={{margin:"0 5px"}}>
                                                             <img src={m.profilePic} alt="profile" style={{ maxWidth: '100%', maxHeight: '100%' }} />
                                                         </Avatar>
+                                                        <div style={{display:"flex", alignItems:"center"}}>
                                                         {m.body}
+                                                        </div>
                                                     </Paper>
+
+
                                                 )
                                             } else {
                                                 return (

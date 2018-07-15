@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { GridList, GridListTile } from '@material-ui/core';
-import { NewsFeedComponent } from './NewsFeedComponent';
+import  NFContainer from './NFContainer';
 import {getPosts, addPost} from '../../services/postService';
 import {AdCard} from "../Advertising/AdCard";
 import { MainLoader } from '../loader/MainLoader';
@@ -36,7 +36,7 @@ class NewsFeedPage extends Component {
             })
         const user = JSON.parse(localStorage.getItem("user"));
         console.log("aqui esta",user)
-        this.setState({user:user})
+        this.setState({user})
     }
 
     handleSubmit=(e)=>{
@@ -117,18 +117,7 @@ class NewsFeedPage extends Component {
 
         <GridList cellHeight={'auto'} cols={3}>
             <GridListTile cols={2} >
-                <NewsFeedComponent
-                    user={user}
-                    posts={posts}
-                    handleSubmit={this.handleSubmit}
-                    handleChange={this.handleChange}
-                    photoPreview={photoPreview}
-                    newPost={newPost}
-                    handleLink={this.handleLink}
-                    addLink={addLink}
-                    addLinks={this.addLinks}
-                    clearLink={this.clearLink}
-                    clearFile={this.clearFile}/>
+                <NFContainer />
             </GridListTile>
             <GridListTile cols={1} style={{paddingLeft:'50px'}}>
                 <AdCard ejemplo={this.ejemplo}/>

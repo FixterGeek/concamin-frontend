@@ -11,7 +11,9 @@ import Create from '@material-ui/icons/Create';
 import Button from '@material-ui/core/Button';
 import { ChatAdd } from './ChatAdd';
 import { getOrCreateChat, addMessage } from '../../services/chatService';
-import toastr from 'toastr';
+import toastr from 'toastr'
+import { animateScroll } from "react-scroll"
+import {withRouter} from 'react-router-dom';
 
 const conversationList = [
     {
@@ -84,6 +86,7 @@ class Chat extends Component {
     }
     componentWillMount() {
         const user = JSON.parse(localStorage.getItem('user'));
+        if(!user) return;
         if (user.following) {
             this.setState({ followerList: user.following })
         }
@@ -140,7 +143,8 @@ class Chat extends Component {
         const message = {
             user: user._id,
             date: new Date(),
-            body: this.state.messageInput
+            body: this.state.messageInput,
+            profilePic: user.profilePic,
         };
         if (e.key === 'Enter') {
             console.log('orale:', message)
@@ -148,6 +152,9 @@ class Chat extends Component {
                 .then(chat => {
                     //activeChat.messages.push(message);
                     this.setState({ activeChat: chat, messageInput: '' });
+                    animateScroll.scrollToBottom({
+                        containerId: "chatWindow"
+                    })
                 })
                 .catch(e => {
                     console.log(e);
@@ -178,10 +185,16 @@ class Chat extends Component {
             input: ''
         })
     }
+
+    scrollToBottom = () => {
+        animateScroll.scrollToBottom({
+            containerId: "chatWindow"
+        })
+    }
     //END CHAT ADD
     render() {
         return (
-            <div>
+            <div className="chat">
                 <ExpansionPanel style={{
                     minWidth: '320px',
                     margin: 0,
@@ -238,6 +251,7 @@ class Chat extends Component {
                     userSelected={this.state.userSelected}
                     onClickChat={this.onClickChat}
                     handleInput={this.handleInput}
+                    scrollToBottom={this.scrollToBottom}
                 />
             </div>
         )

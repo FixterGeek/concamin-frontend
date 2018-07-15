@@ -68,3 +68,30 @@
     width:200px;
     flex-grow: 1;
 }
+.bx{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.bx .MuiSvgIcon-root-62{
+    margin-bottom: -25px !important;
+    color:#808080 !important;
+}
+
+.form_degree{
+   color: #818181;
+    font-family: "Proxima Nova";
+    padding: 5%;
+    width:300px;
+
+}
+.form_degree input{
+    border: none;
+    border-bottom: .5px solid #818181;
+    margin: 10px 0;
+}
+.MuiTypography-title-133, .MuiInput-root-46{
+    color: #818181 !important;
+
+}

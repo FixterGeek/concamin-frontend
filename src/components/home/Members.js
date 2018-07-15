@@ -124,8 +124,8 @@ class Members extends React.Component {
 
             <div className="beneficios">
                 <h2>Miembros</h2>
-                <div style={{width:"80%", margin:"0 auto", backgroundColor:"rgba(37, 39, 41, .05)", heigth:"400px"}}>
-                    <OwlCarousel ref="car" options={options} style={{heigth:"300px"}} >
+                <div className="box_members">
+                    <OwlCarousel ref="car" options={options} style={{heigth:"300px", backgroundColor:"rgba(37, 39, 41, .05)"}} >
                         <div className="item">
                             <img src={uno} alt="The Last of us"/>
                             <img src={dos} alt="The Last of us"/>

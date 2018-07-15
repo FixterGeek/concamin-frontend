@@ -1,5 +1,22 @@
+import {retrieveToken} from './userService';
 const baseUrl = 'https://concamin.herokuapp.com/posts/';
 //const baseUrl = 'http://localhost:3000/posts/';
+
+export function getOwnPosts(skip=0){
+    return fetch(baseUrl + `own/?skip=${skip}`,{
+        headers:{
+            "Authorization": retrieveToken()
+        }
+    })
+    .then(res=>{
+        if(!res.ok) return Promise.reject(res)
+        return res.json();
+    })
+    .then(posts=>{
+        return posts;
+    })
+    .catch(e=>console.log(e));
+}
 
 export function addPost(post){
     const form = new FormData();
@@ -9,22 +26,30 @@ export function addPost(post){
     return fetch(baseUrl, {
         method:'post',
         body:form,
-        credentials:'include'
+        //credentials:'include',
+        headers:{
+            "Authorization": retrieveToken()
+        }
     })
     .then(res=>{
         if(!res.ok){
             console.log(res);
-            return Promise.reject(res)
+            return Promise.reject(res.json())
         }
         return res.json();
     })
     .then(post=>{
         return post;
-    });
+    })
 }
 
-export function getPosts(){
-    return fetch(baseUrl, {credentials:'include'})
+export function getPosts(skip=0, tipo="PERSONAL", group, event){
+    const token = retrieveToken()
+    return fetch(baseUrl + `?skip=${skip}&tipo=${tipo}&group=${group}&event=${event}`, {
+        headers:{
+            "Authorization": token
+        }
+    })
     .then(res=>{
         if(!res.ok){
             console.log(res);
@@ -33,12 +58,23 @@ export function getPosts(){
         return res.json();
     })
     .then(posts=>{
+        if(posts.message){
+            localStorage.removeItem('user');
+        }
+        console.log(posts)
         return posts;
+    })
+    .catch(err=>{
+        console.log("ERRORRRR ", err)
     });
 }
 
 export function getSinglePost(id){
-    return fetch(baseUrl + id,{credentials:'include'})
+    return fetch(baseUrl + id,{
+        headers:{
+            "Authorization": retrieveToken()
+        }
+    })
     .then(res=>{
         if(!res.ok){
             console.log(res);
@@ -59,7 +95,9 @@ export function updatePost(post){
     return fetch(baseUrl + post._id, {
         method:'patch',
         body:form,
-        credentials:'include'
+        headers:{
+            "Authorization": retrieveToken()
+        }
     })
     .then(res=>{
         if(!res.ok){
@@ -77,9 +115,10 @@ export function deletePost(id){
     return fetch(baseUrl + id, {
         method:'delete',
         headers:{
-            "Content-Type":"application/json"
+            "Content-Type":"application/json",
+            "Authorization": retrieveToken()
         },
-        credentials:'include'
+        //credentials:'include'
 
     })
     .then(res=>{

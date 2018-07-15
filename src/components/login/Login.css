@@ -3,7 +3,9 @@
     height:100vh;
     background-size: cover;
     background-position: center;
-    background-image: url('https://images.pexels.com/photos/316902/pexels-photo-316902.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-image: url('../../assets/image10.jpg');
+    /*filter: grayscale(50%);*/
+
 
 }
 .login_box{
@@ -12,23 +14,53 @@
     justify-content: center;
     text-align: center;
     font-family: "Proxima Nova";
-    margin-top: 100px;
+    height:100vh;
+
 }
 .card_login{
     background-color: white;
     width:300px;
     height:auto;
-    padding: 2%;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
+
+}
+.circle_login img{
+    width:80px;
+    filter: grayscale(90%);
+    opacity: .5;
 }
 .circle_login{
     width:120px;
     height:120px;
     border-radius:60px;
-    background-color: #252729;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:1px solid #eaebec;
+
     margin: 0 auto;
+
 }
 .MuiInput-input-147{
     width:200px !important;
 
+}
+
+.btn_login{
+    background-color: #252729;
+    color:white;
+    border: none;
+    height:40px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    min-width: 88px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    min-height: 36px;
+    box-sizing: border-box;
+    line-height: 1.4em;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    border-radius: 2px;
+    text-transform: uppercase;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
 }
