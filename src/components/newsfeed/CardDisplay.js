@@ -49,10 +49,10 @@ const actions=[];
 
 
 
-export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,links,file, created_at,myUser})=>{
+export const CardDisplay =  ({_id, removePost, Ilove,handleComment,user, love, image, body, date,links,file, created_at,myUser})=>{
 
     //if(!user.username) user.username = "Unknown";
-
+        console.log(myUser._id)
         return (<Card style={styles.cardpadre}>
             <CardHeader
                 avatar={
@@ -63,11 +63,15 @@ export const CardDisplay =  ({Ilove,handleComment,user, love, image, body, date,
                     </Link>
                 }
                 title={user.username}
-                subheader={moment(created_at).format('LLLL')}
+                subheader={moment(created_at).fromNow()}
                 action={
-                    <IconButton>
-                        <MoreVert/>
-                    </IconButton>
+                    <div>
+                    { myUser._id == user._id &&
+                        <IconButton>
+                            <MoreVert onClick={()=>removePost(_id)} /> 
+                        </IconButton>
+                    }
+                    </div>
                 }
             />
 

@@ -6,6 +6,7 @@ import {CardCreateGroup} from "./CardCreateGroup";
 import {CreateGroup} from "./CreateGroup";
 import {addItem, getOwnItems} from '../../services/groupsService'
 import toastr from 'toastr';
+import swal from 'sweetalert';
 
 export default class GroupsPage extends Component {
     state={
@@ -76,7 +77,8 @@ export default class GroupsPage extends Component {
         const {newItem} = this.state;
         addItem(newItem)
         .then(group=>{
-            toastr.success('Se creo tu grupo');
+            //toastr.success('Se creo tu grupo');
+            swal("Perfecto!", "Se ha creado tu nuevo grupo", "success");
             const {groups} = this.state;
             groups.unshift(group);
             this.setState({groups});
@@ -128,6 +130,7 @@ export default class GroupsPage extends Component {
                     {groups.map(g=>{
                         return (
                             <CardGroup
+                                key={g._id}
                                 user={user}
                                 {...g}
                               />)

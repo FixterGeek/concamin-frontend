@@ -97,7 +97,7 @@ export const CreateGroup =({addItem, subject, onChange,open,close, photoPreview,
             <Button onClick={close} variant="outlined" color="primary">
                 Cancel
             </Button>
-            <Button onClick={addItem} variant="outlined"  color="primary">
+            <Button onClick={(e)=>{close();addItem(e)}} variant="outlined"  color="primary">
                 Crear
             </Button>
         </DialogActions>

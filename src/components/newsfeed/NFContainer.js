@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {NewsFeedComponent} from './NewsFeedComponent';
 import PropTypes from 'prop-types'
-import {getOwnPosts, getPosts, addPost} from '../../services/postService';
+import {getOwnPosts, getPosts, addPost, deletePost} from '../../services/postService';
 import toastr from 'toastr';
 import {PostCard} from './PostCard';
 //import { Divider } from '../../../node_modules/@material-ui/core';
+import swal from 'sweetalert';
 
 
 class NFContainer extends Component{
@@ -179,6 +180,41 @@ clearLink=(key)=>{
     this.setState({newPost})
 }
 
+removePost = (id) => {
+    swal({
+        title: `Se eliminará el post: ${id}`,
+        buttons:true,
+        icon:"error",
+        dangerMode:true
+    })
+    .then(willDelete=>{
+        if(willDelete){
+            return deletePost(id);
+        }
+        return Promise.reject('cancel');
+    })
+    .then(post=>{
+        swal({
+            icon: "success",
+            title: "Se borró",
+            button: true
+        });
+        let {posts} = this.state;
+        posts = posts.filter(p=>p._id!==id);
+        this.setState({posts});
+    })
+    .catch(e=>{
+        if(e==="cancel")return;
+        swal({
+            icon: "warning",
+            text: e,
+            title: "No se pudo borrar"
+        });
+        setTimeout(()=>swal.close(),2000);
+        return;
+    })
+};
+
 
     render(){
         const { posts, user, newPost, photoPreview,addLink } = this.state;
@@ -197,6 +233,7 @@ clearLink=(key)=>{
                 addLink={addLink}
             />
             <NewsFeedComponent
+                removePost={this.removePost}
                 user={user}
                 posts={posts}
             />
