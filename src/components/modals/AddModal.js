@@ -23,6 +23,7 @@ class AddModal extends Component{
         const value = e.target.value;
         let emails = value.split(',');
         emails = emails.filter(e=>e.includes('@'))
+        emails = emails.map(e=>e.replace(' ', ''))
         console.log(emails)
         this.setState({emails});
     };
@@ -52,7 +53,7 @@ class AddModal extends Component{
     };
 
     render(){
-
+        const {_id, name} = this.props;
         return(
             <div>
                 <Button onClick={this.handleClickOpen}>Invitar</Button>
@@ -61,7 +62,7 @@ class AddModal extends Component{
                     onClose={this.handleClose}
                     aria-labelledby="form-dialog-title"
                 >
-                    <DialogTitle id="form-dialog-title">Invitar al grupo {this.props.name}</DialogTitle>
+                    <DialogTitle id="form-dialog-title">Invitar al grupo {name}</DialogTitle>
                     <DialogContent>
                         <DialogContentText
                             
@@ -83,7 +84,7 @@ class AddModal extends Component{
                         <Button onClick={this.handleClose} color="primary">
                             Cancel
                         </Button>
-                        <Button onClick={this.sendInvite} color="primary">
+                        <Button onClick={()=>{this.handleClose();this.sendInvite(_id)}} color="primary">
                             Enviar
                         </Button>
                     </DialogActions>

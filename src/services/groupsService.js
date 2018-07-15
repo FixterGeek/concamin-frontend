@@ -1,6 +1,12 @@
 import {retrieveToken} from './userService';
 const baseUrl = 'https://concamin.herokuapp.com/groups/';
 //const baseUrl = 'http://localhost:3000/groups/';
+/*
+invite = {
+	"emails":["bliss@ironhack.com", "os@fixter.org", "pollo@lol.com", "mijo@iron.pariente"],
+	"groupId": "5b4aa148d0666a0014fdc20b"
+}
+*/ 
 
 export function sendInvites(invite){
     return fetch(baseUrl + `invite/`,{
