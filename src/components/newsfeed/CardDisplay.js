@@ -50,8 +50,8 @@ const actions=[];
 
 
 
-export const CardDisplay =  ({_id, removePost, Ilove,handleComment,user, love, image, body, date,links,file, created_at,myUser})=>{
-
+export const CardDisplay =  ({_id, removePost, Ilove,handleComment,user={}, love, image, body, date,links,file, created_at,myUser})=>{
+    user = user || {username:''};
     //if(!user.username) user.username = "Unknown";
         console.log(myUser._id)
         return (<Card style={styles.cardpadre}>

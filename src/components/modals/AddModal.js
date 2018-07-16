@@ -24,7 +24,7 @@ class AddModal extends Component{
         let emails = value.split(',');
         emails = emails.filter(e=>e.includes('@'))
         emails = emails.map(e=>e.replace(' ', ''))
-        console.log(emails)
+        //console.log(emails)
         this.setState({emails});
     };
 
