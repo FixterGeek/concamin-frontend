@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {NewsFeedComponent} from './NewsFeedComponent';
 import PropTypes from 'prop-types'
 import {getOwnPosts, getPosts, addPost, deletePost} from '../../services/postService';
+import {getPostComments, addComment, deleteComment, editComment} from '../../services/commentService';
 import toastr from 'toastr';
 import {PostCard} from './PostCard';
 //import { Divider } from '../../../node_modules/@material-ui/core';
@@ -178,6 +179,16 @@ clearLink=(key)=>{
     let {newPost} = this.state;
     newPost.links.splice(key, 1)
     this.setState({newPost})
+}
+//Comment functions
+
+getComments=(id, skip=0)=>{
+    getPostComments(id, skip)
+        .then(r=>{
+
+        }).catch(e=>{
+
+    })
 }
 
 removePost = (id) => {
