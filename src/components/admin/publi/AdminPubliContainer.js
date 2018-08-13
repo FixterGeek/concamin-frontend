@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../Admin.css';
-import AdminPubliDisplay from './FormPubli';
+import { AdminPubliDisplay } from './FormPubli';
 import { Link } from 'react-router-dom';
 import './Publi.css'
 import Imagen from '../../../assets/aniver.png'
@@ -20,9 +20,18 @@ const announces = [
 
 
 class AdminPubliContainer extends Component {
+    state = {
+        checked: false,
+    }
     componentWillMount() {
         if (!localStorage.getItem('user')) this.props.history.push('/login');
     }
+
+    handleSwitch = (e) => {
+        //Cambiará es estado del switch.
+    }
+
+
     render() {
         return (
             <div>

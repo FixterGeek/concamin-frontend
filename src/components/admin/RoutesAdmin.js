@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import IntroDisplay from './IntroDisplay';
 import AdminPubliContainer from './publi/AdminPubliContainer';
-import {FormPubli} from './publi/FormPubli';
+import FormPubli from './publi/FormPubli';
 import AdminUsers from './AdminUsers';
 import AdminGroups from './AdminGroups';
 import AdminEvents from './AdminEvents';

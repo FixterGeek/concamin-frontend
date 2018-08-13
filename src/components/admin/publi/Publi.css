@@ -28,8 +28,26 @@
     flex: 1 1 auto;
 }
 
+.img-preview {
+    width: 300px;
+    box-flex: 1;
+    flex: 1 1 auto;
+}
+
 .button-container {
-    border-top: 2px solid lightgray;
+    border-top: 1px solid lightgray;
     display: flex;
     flex-grow: 0;
+}
+
+.file-button {
+    border-radius: 3px;
+    border: 1px solid dimgray;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.file-button :hover {
+    background: black;
 }
