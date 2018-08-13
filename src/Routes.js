@@ -4,7 +4,7 @@ import MainPage from "./components/main/MainPage";
 import LoginPage from './components/login/LoginPage';
 import HomeContainer from './components/home/HomeContainer';
 import MessengerMain from './components/messenger/MessengerMain'
-
+import AdminContainer from './components/admin/AdminContainer';
 
 const Routes = () => (
     <Switch>
@@ -12,6 +12,7 @@ const Routes = () => (
         <Route exact path="/" component={HomeContainer} />
         <Route path="/main" component={MainPage} />
         <Route path="/messenger" component={MessengerMain} />
+        <Route path="/admin" component={AdminContainer} />
     </Switch>
 );
 
