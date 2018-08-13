@@ -186,10 +186,20 @@ clearLink=(key)=>{
 getComments=(id, skip=0)=>{
     getPostComments(id, skip)
         .then(r=>{
-
+            console.log(r)
         }).catch(e=>{
-
+            console.log(e)
+            toastr.error('No hubo comentarios, intenta más tarde')
     })
+}
+newComment=(comment)=>{
+        addComment(comment)
+            .then(r=>{
+                console.log('newcomment', r)
+            }).catch(e=>{
+                console.log(e)
+                toastr.error('No se pudo crear, intenta más tarde')
+        })
 }
 
 removePost = (id) => {
