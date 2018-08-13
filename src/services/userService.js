@@ -32,10 +32,12 @@ export function updateUser(user){
 
     })
     .then(res=>{
+        console.log(res)
         if(!res.ok) return Promise.reject(res);
         return res.json();
     })
     .then(user=>{
+        saveUser(user)
         return user;
     });
 }
@@ -85,7 +87,7 @@ export function signup(user){
             "Content-Type":"application/json"
         },
         body:JSON.stringify(user),
-        credentials:'include'
+        //credentials:'include'
     })
     .then(res=>{
         console.log(res)
