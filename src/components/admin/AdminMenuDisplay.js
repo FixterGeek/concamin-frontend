@@ -38,7 +38,7 @@ class AdminMenuDisplay extends Component {
                         <Divider/>
                         <List subheader={<ListSubheader>Panel</ListSubheader>}>
                         <List>
-                            <Link to="/" className="menu-links">
+                            <Link to="/admin/users" className="menu-links">
                                 <ListItem button>
                                     <ListItemIcon>
                                         <Person />
@@ -48,7 +48,7 @@ class AdminMenuDisplay extends Component {
                             </Link>
                         </List>
 
-                            <Link to="/main/groups">
+                            <Link to="/admin/groups">
                                 <ListItem button>
                                     <ListItemIcon>
                                         <Group />
@@ -56,7 +56,7 @@ class AdminMenuDisplay extends Component {
                                     <ListItemText primary="Grupos" />
                                 </ListItem>
                             </Link>
-                            <Link to="/main/events">
+                            <Link to="/admin/events">
                                 <ListItem button>
                                     <ListItemIcon>
                                         <Event />
