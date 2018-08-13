@@ -32,10 +32,12 @@ export function updateUser(user){
 
     })
     .then(res=>{
+        console.log(res)
         if(!res.ok) return Promise.reject(res);
         return res.json();
     })
     .then(user=>{
+        saveUser(user)
         return user;
     });
 }

@@ -68,6 +68,7 @@ class NFContainer extends Component{
     getAll = (skip=0) => {
         getPosts(skip)
         .then(posts=>{
+            console.log(posts)
             if(posts.length < 1) {
                 this.refs.mas.innerHTML="¡Ya no hay mas posts!";
                 this.refs.mas.disabled=true;
@@ -144,7 +145,7 @@ handleChange=(e)=>{
         newPost[field] = e.target.value
     }
     this.setState({newPost})
-    console.log(newPost)
+    //console.log(newPost)
 
 }
 handlePreview=()=>{
@@ -230,6 +231,7 @@ removePost = (id) => {
 
     render(){
         const { posts, user, newPost, photoPreview,addLink } = this.state;
+        console.log(posts)
         return(
             <div>
             <PostCard 
