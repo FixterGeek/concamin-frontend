@@ -2,7 +2,6 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid black;
 }
 
 .card {
@@ -30,6 +29,7 @@
 }
 
 .button-container {
+    border-top: 2px solid lightgray;
     display: flex;
     flex-grow: 0;
 }
