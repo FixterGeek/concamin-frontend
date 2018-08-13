@@ -78,7 +78,7 @@ class AdminMenuDisplay extends Component {
                     </div>
                     <div>
                         <Divider/>
-                        <Link to="/main/support">
+                        <Link to="/admin/support">
                             <ListItem button>
                                 <ListItemIcon>
                                     <Feedback />

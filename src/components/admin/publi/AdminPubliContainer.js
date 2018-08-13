@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import './Publi.css'
 import Imagen from '../../../assets/aniver.png'
 import { PubliCard } from './PubliCard'
+import Button from '@material-ui/core/Button';
+
 
 const announces = [
     {
@@ -27,9 +29,13 @@ class AdminPubliContainer extends Component {
         return (
             <div>
                 <PubliCard announces={announces} />
-                <Link to="/admin/publi/create">
-                    <button>Agregar anuncio</button>
-                </Link>
+                <div style={{position:"absolute", right:"30px", bottom:"30px"}}>
+                    <Link to="/admin/publi/create">
+                        <Button variant="raised" color="primary" type="submit">
+                            Agregar anuncio
+                        </Button>
+                    </Link>
+                </div>
             </div>
         )
     }

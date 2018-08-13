@@ -82,9 +82,14 @@ a{
 }
 
 /*CardEvent*/
+.eventos{
+    font-family: "Proxima Nova";
+}
 .fl_admin{
     display: flex;
     flex-wrap: wrap;
+
+
 }
 
 .card_admin{
@@ -94,9 +99,12 @@ a{
     display: flex;
     flex-wrap: wrap;
     font-family: "Proxima Nova";
+    margin: 10px;
 }
 .card_info{
     width:60%;
+    box-sizing: border-box;
+    padding: 2%;
 
 }
 .card_image{
@@ -104,5 +112,17 @@ a{
     height:100%;
     background-size: cover;
     background-position: center;
+}
+.card_info p{
+    margin: 4px 0;
+}
+.card_info h3{
+    margin-bottom: 4px;
+}
+.eventos select{
+    width:120px;
+    height:30px;
+    margin-left: 5px;
+    border:1px solid rgba(0, 0, 0, 0.12) ;
 }
 

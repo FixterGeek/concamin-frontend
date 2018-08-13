@@ -13,10 +13,24 @@ class AdminEvents extends Component {
     render() {
 
         return (
-            <div className="">
-                <h2>Eventos</h2>
+            <div className="eventos">
+                <div className="" style={{display:"flex", flexWrap:"wrap", alignItems:"center", justifyContent:"space-between", padding:"0 10px" }}>
+                    <h2>Eventos</h2>
+                    <div style={{marginRight:"90px"}}>
+                        <label htmlFor="">Filtrar por:</label>
+                        <select placeholder="Status">
+                            <option value="" disable>Todos</option>
+                            <option value="">Activos</option>
+                            <option value="">Pendientes</option>
+                        </select>
+                    </div>
+                </div>
                 <div className="fl_admin">
                     <AdminEventCard />
+                    <AdminEventCard />
+                    <AdminEventCard />
+                    <AdminEventCard />
+
                 </div>
             </div>
         );

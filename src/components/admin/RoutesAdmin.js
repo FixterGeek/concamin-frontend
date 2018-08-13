@@ -6,6 +6,7 @@ import {FormPubli} from './publi/FormPubli';
 import AdminUsers from './AdminUsers';
 import AdminGroups from './AdminGroups';
 import AdminEvents from './AdminEvents';
+import AdminSupport from './AdminSupport';
 
 class RoutesMain extends Component {
     render() {
@@ -15,6 +16,7 @@ class RoutesMain extends Component {
                 <Route path="/admin/users" component={AdminUsers}/>
                 <Route path="/admin/groups" component={AdminGroups}/>
                 <Route path="/admin/events" component={AdminEvents}/>
+                <Route path="/admin/support" component={AdminSupport}/>
                 <Route exact path="/admin/publi" component={AdminPubliContainer} />
                 <Route path="/admin/publi/create" component={FormPubli} />
             </Switch>
