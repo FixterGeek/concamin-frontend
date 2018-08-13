@@ -2,6 +2,64 @@
 const baseUrl = 'https://concamin.herokuapp.com/auth/';
 //const baseUrl = 'http://localhost:3000/auth/';
 
+
+
+
+
+export function deleteSkill(skill){
+    return fetch(baseUrl + 'skills/' + skill._id, {
+        method:'DELETE',
+        headers:{
+            'Authorization': retrieveToken(),
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res=>{
+        if(!res.ok) return Promise.reject(res);
+        return res.json();
+    })
+    .then(skill=>{
+        return skill;
+    });
+}
+
+export function getSkills(user){
+    return fetch(baseUrl + 'skills/' + user._id, {
+        headers:{
+            'Authorization': retrieveToken()
+        }
+    })
+    .then(res=>{
+        if(!res.ok) return Promise.reject(res);
+        return res.json();
+    })
+    .then(skills=>{
+        return skills;
+    });
+}
+
+export function saveSkill(skill){
+    console.log(skill)
+    return fetch(baseUrl + 'skills/', {
+        method:'post',
+        body: JSON.stringify(skill),
+        headers:{
+            'Authorization': retrieveToken(),
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res=>{
+        if(!res.ok) return Promise.reject(res);
+        return res.json();
+    })
+    .then(skill=>{
+        return skill;
+    });
+}
+
+
+
+
 export function getPublicUser(id){
     return fetch(baseUrl + 'users/' + id, {
         headers:{
@@ -37,7 +95,7 @@ export function updateUser(user){
         return res.json();
     })
     .then(user=>{
-        saveUser(user)
+        localStorage.setItem('user', JSON.stringify(user))
         return user;
     });
 }
@@ -61,6 +119,7 @@ export function getLoggedUser(){
 }
 
 export function login(auth){
+    console.log(auth)
     return fetch(baseUrl + 'login',{
         method:'post',
         headers:{

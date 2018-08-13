@@ -22,7 +22,28 @@ function Transition(props) {
 class ModalDegree extends Component{
     state = {
         open: false,
+        skill:{
+            from:Date.month,
+            to: Date.month,
+            title:'',
+            university:''
+        }
     };
+
+    onChange = (e) => {
+        const {skill} = this.state
+        const field = e.target.name
+        const value = e.target.value
+        skill[field] = value
+        this.setState({skill})
+    }
+
+    addSkill = () => {
+        const {skill} = this.state
+        console.log(skill)
+        this.props.addSkill(skill)
+        this.handleClose()
+    }
 
     handleClickOpen = () => {
         this.setState({ open: true });
@@ -32,7 +53,8 @@ class ModalDegree extends Component{
         this.setState({ open: false });
     };
     render(){
-
+        const {skill} = this.state
+        const {title, university, from, to} = skill
         return(
             <div className="dialog">
                 <AddCircle onClick={this.handleClickOpen}/>
@@ -51,6 +73,9 @@ class ModalDegree extends Component{
                         <FormControl >
                         <InputLabel htmlFor="input-with-icon-adornment">Título</InputLabel>
                         <Input
+                            value={title}
+                            name="title"
+                            onChange={this.onChange}
                             id="input-with-icon-adornment"
                             startAdornment={
                                 <InputAdornment position="start">
@@ -64,6 +89,9 @@ class ModalDegree extends Component{
 
                             <InputLabel htmlFor="input-with-icon-adornment">Universidad</InputLabel>
                             <Input
+                                value={university}
+                                name="university"
+                                onChange={this.onChange}
                                 id="input-with-icon-adornment"
                                 startAdornment={
                                     <InputAdornment position="start">
@@ -76,8 +104,30 @@ class ModalDegree extends Component{
                         <br/>
                         <FormControl >
 
-                        <InputLabel htmlFor="input-with-icon-adornment">Año</InputLabel>
+                        <InputLabel htmlFor="input-with-icon-adornment">Desde</InputLabel>
                             <Input
+                                onChange={this.onChange}
+                                value={from}
+                                type="month"
+                                name="from"
+                                id="input-with-icon-adornment"
+                                startAdornment={
+                                    <InputAdornment position="start">
+                                        <AvTimer />
+                                    </InputAdornment>
+                                }
+                            />
+                        </FormControl>
+                        <br/>
+                        <br/>
+                        <FormControl >
+
+                        <InputLabel htmlFor="input-with-icon-adornment">Hasta</InputLabel>
+                            <Input
+                                onChange={this.onChange}
+                                value={to}
+                                type="month"
+                                name="to"
                                 id="input-with-icon-adornment"
                                 startAdornment={
                                     <InputAdornment position="start">
@@ -94,7 +144,7 @@ class ModalDegree extends Component{
                         <Button onClick={this.handleClose} color="primary">
                             Cancelar
                         </Button>
-                        <Button onClick={this.handleClose} color="primary">
+                        <Button onClick={this.addSkill} color="primary">
                             Guardar
                         </Button>
                     </DialogActions>
