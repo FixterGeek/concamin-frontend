@@ -7,10 +7,11 @@ export function addComment(comment){
 
     return fetch(baseUrl, {
         method:'post',
-        body:comment,
+        body:JSON.stringify(comment),
         //credentials:'include',
         headers:{
-            "Authorization": retrieveToken()
+            "Authorization": retrieveToken(),
+            "Content-Type": "application/json"
         }
     })
         .then(res=>{
@@ -51,6 +52,19 @@ export function editComment(comment){
 }
 
 
-export function deleteComment(comment){
-
+export function deleteComment(cId){
+    return fetch(baseUrl+cId, {
+        method:'DELETE',
+        headers:{
+            'Authorization': retrieveToken()
+        }
+    }).then(res=>{
+        if(!res.ok){
+            console.log(res)
+            return Promise.reject(res.json())
+        }
+        return res.json()
+    }).then(item=>{
+        return item
+    })
 }

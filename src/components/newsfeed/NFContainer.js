@@ -20,8 +20,10 @@ class NFContainer extends Component{
             image:"",
             file:""
         },
+        newComment:{},
         user: {},
         skip : 0,
+        
         ask:()=>{},
         photoPreview:'',
         addLink:false,
@@ -184,22 +186,65 @@ clearLink=(key)=>{
 //Comment functions
 
 getComments=(id, skip=0)=>{
+    let {posts} = this.state;
+    let post = posts.find(post=>post._id===id)
+    if(post.postComments)return
     getPostComments(id, skip)
         .then(r=>{
-            console.log(r)
+            posts = posts.map(p=>{
+                if(p._id===id) p['postComments'] = r
+                return p
+            })
+            this.setState({posts})
+            console.log(posts)
         }).catch(e=>{
             console.log(e)
             toastr.error('No hubo comentarios, intenta más tarde')
     })
 }
-newComment=(comment)=>{
-        addComment(comment)
+newComment=(event, postId)=>{
+    let {newComment, posts} = this.state
+    if(event.key == 'Enter' && newComment['body'].length>=5){
+        newComment['post'] = postId
+        console.log(newComment)
+        addComment(newComment)
             .then(r=>{
+                toastr.success('Comentario añadido con éxito')
                 console.log('newcomment', r)
+                posts = posts.map(p=>{
+                    if(p._id===postId) {
+                        if(!p.postComments)p['postComments'] = []
+                        p['postComments'] = [...p.postComments, r]
+                    }
+                    return p
+                })
+                this.setState({newComment:{body:''}})
             }).catch(e=>{
-                console.log(e)
-                toastr.error('No se pudo crear, intenta más tarde')
+            console.log(e)
+            toastr.error('No se pudo crear, intenta más tarde')
         })
+    }
+
+}
+handleComment=(e)=>{
+        let {newComment} = this.state
+        newComment['body'] = e.target.value
+        this.setState({newComment})
+}
+
+removeComment=(commentId, postId)=>{
+    let {posts} = this.state
+    deleteComment(commentId)
+        .then(r=>{
+            toastr.success('Borrado con éxito')
+            posts = posts.map(p=>{
+               if(p._id===postId) p.postComments=p.postComments.filter(c=>c._id!==commentId)
+                return p
+            })
+            this.setState({posts})
+        }).catch(e=>{
+            toastr.error('No pudo borrarse, intenta más tarde')
+    })
 }
 
 removePost = (id) => {
@@ -240,7 +285,7 @@ removePost = (id) => {
 
 
     render(){
-        const { posts, user, newPost, photoPreview,addLink } = this.state;
+        const { posts, user, newPost, photoPreview,addLink, newComment } = this.state;
         console.log(posts)
         return(
             <div>
@@ -260,6 +305,12 @@ removePost = (id) => {
                 removePost={this.removePost}
                 user={user}
                 posts={posts}
+                getComments={this.getComments}
+                newComment={this.newComment}
+                handleComment={this.handleComment}
+                comment={newComment}
+                removeComment={this.removeComment}
+
             />
             <button ref="mas" style={{marginBottom:100}} onClick={this.askForMore} >Cargar más</button>  
             </div>

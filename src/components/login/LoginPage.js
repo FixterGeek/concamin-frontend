@@ -38,6 +38,7 @@ class LoginPage extends Component{
     }
 
     doLoggin = (e) => {
+      console.log('puto login')
       e.preventDefault();
       //console.log(e.target.email);
       const auth = {
