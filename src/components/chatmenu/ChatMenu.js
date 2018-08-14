@@ -13,30 +13,10 @@ import { ChatAdd } from './ChatAdd';
 import { getOrCreateChat, addMessage } from '../../services/chatService';
 import toastr from 'toastr'
 import { animateScroll } from "react-scroll"
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const conversationList = [
-    {
-        name: 'Mefit',
-        username: 'MefitHp',
-        fecha: '',
-        _id: "5b032b165353a30014c5e5bd",
-        email: 'mefit@gmail.com'
-    }
-    , {
-        name: 'Froggy',
-        username: 'Froggy Rocket',
-        fecha: '10/10/2018',
-        _id: "5b0191489378750014dd6b09",
-        email: 'froggy@fixter.org'
-    },
-    {
-        name: 'Oswaldino ',
-        username: 'Oswal24k',
-        fecha: '10/10/2018',
-        _id: "5b0246676c645a0014f9fa9d",
-        email: 'oswaldo@fixter.org'
-    }
+
 ]
 
 class Chat extends Component {
@@ -86,7 +66,7 @@ class Chat extends Component {
     }
     componentWillMount() {
         const user = JSON.parse(localStorage.getItem('user'));
-        if(!user) return;
+        if (!user) return;
         if (user.following) {
             this.setState({ followerList: user.following })
         }
