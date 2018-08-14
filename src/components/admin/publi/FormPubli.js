@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import './Publi.css'
-
+import {Link} from 'react-router-dom';
 
 
 class FormPubli extends Component {
@@ -72,6 +72,7 @@ class FormPubli extends Component {
                         />
                         <br />
                         <br />
+
                         <label htmlFor="">Selecciona la imagen del anuncio</label>
                         <input
                             style={{ display: "none" }}
@@ -80,23 +81,26 @@ class FormPubli extends Component {
                             multiple
                             type="file"
                         />
+                        <label className="file-button inp" style={{margin:"0 0 0 20px"}}>
+                            <input accept="image/*" onChange={this.getFile} ref={inp => this.input = inp} type="file" hidden />
+                        Upload
+                        </label>
                         <div>
                             <p>Preview</p>
                             <div ref={div => this.preview = div} className="card-img">
 
                             </div>
                         </div>
-                        <label className="file-button">
-                            <input accept="image/*" onChange={this.getFile} ref={inp => this.input = inp} type="file" hidden />
-                            Upload
-                        </label>
+
                         <br />
                         <div className="btns_actions">
-                            <Button onClick={this.handleClose} color="primary">
-                                Disagree
-                            </Button>
+                            <Link to="/admin/publi">
+                                <Button color="primary">
+                                    Cancelar
+                                </Button>
+                            </Link>
                             <Button onClick={this.handleClose} color="primary" autoFocus>
-                                Agree
+                                Guardar
                             </Button>
                         </div>
                     </form>

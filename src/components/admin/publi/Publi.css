@@ -1,3 +1,6 @@
+.form_publi{
+    font-family: "Proxima Nova";
+}
 .card-container {
     width: 100%;
     display: flex;
@@ -50,4 +53,9 @@
 
 .file-button :hover {
     background: black;
+}
+.inp{
+
+    margin-left: 5px;
+    border:1px solid rgba(0, 0, 0, 0.12) ;
 }

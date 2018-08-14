@@ -111,7 +111,7 @@ import {Effect} from 'react-notification-badge';
                                 >
 
                                         <MenuItem >
-                                            <NavLink style={{color:'black',textDecoration:'none'}} to={"/profile"} onClick={this.handleClose} >Perfil</NavLink>
+                                            <NavLink style={{color:'black',textDecoration:'none'}} to={"/main/profile"} onClick={this.handleClose} >Perfil</NavLink>
                                         </MenuItem>
 
                                     <MenuItem onClick={this.logOut} >

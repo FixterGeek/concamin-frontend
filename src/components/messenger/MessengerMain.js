@@ -10,6 +10,7 @@ import { animateScroll } from "react-scroll"
 import './Messenger.css';
 import toastr from 'toastr';
 import logo from '../../assets/aniver.png'
+import {Link} from 'react-router-dom';
 
 const drawerWidth = 300;
 
@@ -234,7 +235,9 @@ class PermanentDrawer extends React.Component {
                 style={{ position: 'relative' }}
             >
                 <div style={{width:"100px", margin:"0 auto"}}>
-                    <img style={{width:"100%"}} src={logo} alt=""/>
+                    <Link to="/main">
+                        <img style={{width:"100%"}} src={logo} alt=""/>
+                    </Link>
                 </div>
                 <Divider />
                 <div style={{ width: '300px' }} >
@@ -301,7 +304,7 @@ class PermanentDrawer extends React.Component {
                     >
                         <Toolbar>
                             <Typography variant="title" color="inherit" noWrap>
-                                Messenger.
+                                Mensajes
                             </Typography>
                         </Toolbar>
                     </AppBar>
