@@ -75,6 +75,11 @@ export class HistoryDisplay extends Component{
         saveSkill(skill)
         .then(skill=>{
             toastr.info("Perfil actualizado")
+            const sks = skills.map(s=>{
+                if(s.title === skill.title) return skill
+                return s
+            })
+            this.setState({skills:sks})
         })
         .catch(e=>{
             toastr.error("no se pudo agregar", e)
@@ -140,15 +145,20 @@ export class HistoryDisplay extends Component{
                 />
                 </div>
                 {skills.map((s, i)=>{
-                    return <DegreeDisplay removeSkill={()=>this.removeSkill(s)} key={i} {...s} />
+                    if(s.tipo === "EDU") return <DegreeDisplay removeSkill={()=>this.removeSkill(s)} key={i} {...s} />
                 })}
                 
 
                 <Divider />
-                <div className="bx"><h5>Experiencia</h5> <ModalExperience /> </div>
-                <JobDisplay />
-                <JobDisplay />
-                <JobDisplay />
+                <div className="bx"><h5>Experiencia</h5> 
+                <ModalExperience 
+                    addSkill={this.addSkill}
+                />
+                 </div>
+                
+                {skills.map((s, i)=>{
+                    if(s.tipo === "PRO") return <JobDisplay removeSkill={()=>this.removeSkill(s)} key={i} {...s} />
+                })}
 
             </Paper>
         </div>

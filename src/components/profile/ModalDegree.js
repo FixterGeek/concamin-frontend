@@ -26,7 +26,8 @@ class ModalDegree extends Component{
             from:Date.month,
             to: Date.month,
             title:'',
-            university:''
+            university:'',
+            tipo:'EDU'
         }
     };
 
