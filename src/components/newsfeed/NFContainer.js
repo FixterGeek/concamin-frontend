@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {NewsFeedComponent} from './NewsFeedComponent';
 import PropTypes from 'prop-types'
-import {getOwnPosts, getPosts, addPost, deletePost} from '../../services/postService';
+import {getOwnPosts, getPosts, addPost, deletePost, likePost} from '../../services/postService';
 import {getPostComments, addComment, deleteComment, editComment} from '../../services/commentService';
 import toastr from 'toastr';
 import {PostCard} from './PostCard';
@@ -23,7 +23,7 @@ class NFContainer extends Component{
         newComment:{},
         user: {},
         skip : 0,
-        
+
         ask:()=>{},
         photoPreview:'',
         addLink:false,
@@ -247,6 +247,22 @@ removeComment=(commentId, postId)=>{
     })
 }
 
+//like posts
+likePosts=(postId)=>{
+    let obj = {
+        _id:postId,
+        user:JSON.parse(localStorage.getItem('user'))._id
+    }
+    console.log(obj)
+    likePost(obj)
+        .then(r=>{
+            console.log(r, 'likeado', 'color:green')
+        }).catch(e=>{
+            console.log('errrrrr', "color:red")
+    })
+}
+
+
 removePost = (id) => {
     swal({
         title: `Se eliminará el post: ${id}`,
@@ -310,6 +326,7 @@ removePost = (id) => {
                 handleComment={this.handleComment}
                 comment={newComment}
                 removeComment={this.removeComment}
+                likePosts={this.likePosts}
 
             />
             <button ref="mas" style={{marginBottom:100}} onClick={this.askForMore} >Cargar más</button>  

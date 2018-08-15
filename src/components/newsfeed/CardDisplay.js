@@ -51,7 +51,7 @@ const actions=[];
 
 
 
-export const CardDisplay =  ({_id, removePost, Ilove,user={}, love, image, body, date,links,file, created_at,myUser, postComments=[], getComments, newComment, handleComment, comment, removeComment})=>{
+export const CardDisplay =  ({_id, removePost,user={}, love, image, body, date,links,file, created_at,myUser, postComments=[], getComments, newComment, handleComment, comment, removeComment, likePosts})=>{
     user = user || {username:''};
 
     //if(!user.username) user.username = "Unknown";
@@ -122,7 +122,7 @@ export const CardDisplay =  ({_id, removePost, Ilove,user={}, love, image, body,
 
 
             <div style={styles.botoncito}>
-                {<IconButton aria-label="Add to favorites" style={styles.buttonIcon} onClick={Ilove}>
+                {<IconButton aria-label="Add to favorites" style={styles.buttonIcon} onClick={()=>likePosts(_id)}>
                     {love >=1 ?
                         <Badge badgeContent={love} color="primary">
                             <ThumbUp />
@@ -169,7 +169,7 @@ export const CardDisplay =  ({_id, removePost, Ilove,user={}, love, image, body,
 
                             multiline
                             margin="normal"
-                            name="commet"
+                            name="comment"
                         />
                     </div>
                 </div>

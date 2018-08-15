@@ -130,6 +130,23 @@ export function deletePost(id){
     });
 }
 
+export function likePost(obj){
+    return fetch(baseUrl+'like', {
+        method:'PATCH',
+        headers:{
+            "Content-Type":"application/json",
+            "Authorization": retrieveToken()
+        },
+    }).then(res=>{
+        if(!res.ok){
+            return Promise.reject(res)
+        }
+        return res.json();
+    }).then(item=>{
+        return item
+    })
+}
+
 
 
 /* Formato del post
