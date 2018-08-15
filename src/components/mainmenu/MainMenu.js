@@ -5,19 +5,20 @@ import {Link} from 'react-router-dom';
 import logo from '../../assets/logo_blanco.png';
 
 
-const styles = {
-    root:{
-        background:'red'
-    }
-  };
+
+
 
 
 class MainMenu extends Component {
-  render() {      
+
+
+
+  render() {
+
     return (
         <div className="men">
-        <Drawer open={true} variant="permanent" 
-        style={styles.root}>
+        <Drawer open={true} variant="permanent"
+        >
                 <Link to="/main">
 
                     <div style={{textAlign:"center"}}><img className="logo" src={logo} alt=""/></div>
@@ -32,10 +33,10 @@ class MainMenu extends Component {
                         </ListItemIcon>
                         <ListItemText primary="Perfil" />
                     </ListItem>
-                    </Link>               
+                    </Link>
                     </List>
                         <List>
-                            <Link to="/messenger" className="menu-links">
+                            <Link to="/messenger" className="menu-links" target="blank">
                                 <ListItem button>
                                     <ListItemIcon>
                                         <Message />
@@ -78,7 +79,7 @@ class MainMenu extends Component {
                         <ListItemText primary="Anuncios" />
                     </ListItem>
                     </Link>
-                    </List> 
+                    </List>
 
                     <Divider/>
 
@@ -112,11 +113,11 @@ class MainMenu extends Component {
                 </ListItem>
                 </Link>
         </div>
-       
+
       </Drawer></div>
     )
   }
 }
-export default MainMenu
+export default MainMenu;
 
 

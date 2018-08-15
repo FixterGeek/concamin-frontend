@@ -1,6 +1,7 @@
 import React from 'react';
-import {Card, CardHeader,CardContent,Divider,Avatar,IconButton,Typography} from '@material-ui/core/';
-import {MoreHoriz} from '@material-ui/icons/';
+import {Card, CardHeader,CardContent,Divider,Avatar,IconButton,Typography, Menu, MenuItem} from '@material-ui/core/';
+import {MoreHoriz, Delete, Close} from '@material-ui/icons/';
+import moment from 'moment'
 
 
 
@@ -10,12 +11,13 @@ const styles = {
         display: 'flex',
     },
     avatar: {
-        backgroundColor:'red',
+        backgroundColor:'#252729',
         width:30,
         height:30,
     },
     comentaritos:{
-        backgroundColor:"rgb(242,243,245)",
+        backgroundColor:'#f2f3f5',
+        padding:10,
 
     },
 
@@ -31,39 +33,39 @@ const styles = {
 };
 
 
-export  const CommentBox = ({handleComment,elId})=>(
-    <div>
+export  const CommentBox = ({_id, body, user, created_at, removeComment, myUser, postId})=>(
 
-        <Card >
 
+        <Card style={{padding:'0', width:'100%', marginBottom:'5px'}}>
             <CardContent  style={styles.comentaritos}>
                 <CardHeader
-
+                    style={{padding:'0'}}
                     avatar={
                         <Avatar arial-label={"Recipe"} style={styles.avatar}>
-                            H
+                            {user.profilePic ? null : user.username.charAt(0)}
                         </Avatar>
                     }
-                    title={<span style={styles.textito}>Hector Bliss</span>}
-                    subheader={<span style={styles.textito}> 19, 2018</span>}
+                    title={<span style={styles.textito}>{user?user.username:''}</span>}
+                    subheader={<span style={styles.textito}> {moment(created_at).fromNow()}</span>}
                     action={
-                        <IconButton>
-                            <MoreHoriz/>
-                        </IconButton>
+                        <span>
+                            {myUser._id===user._id?
+                            <IconButton>
+                                <Close onClick={()=>removeComment(_id, postId)}/>
+                            </IconButton>:''}
+                        </span>
+
                     }
                 />
-                <CardContent>
+                <CardContent style={{padding:'0'}}>
                     <Typography component="p" style={styles.textito}>
-                        La neta yo no usaria a oriana, su historia esta muy chafa...
+                        {body}
                     </Typography>
                 </CardContent>
 
             </CardContent>
-            <Divider
-                light={true}
-                     style={styles.divisioncita}/>
+
 
 
         </Card>
-    </div>
 );

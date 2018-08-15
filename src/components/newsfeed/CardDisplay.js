@@ -3,6 +3,7 @@ import {Card, CardHeader,CardMedia,CardContent, Avatar,IconButton,Typography,Bad
 import {MoreVert,PictureAsPdf,ThumbUp,InsertLink,AccountCircle} from '@material-ui/icons/';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import {CommentBox} from './CommentBox';
 import {Link} from 'react-router-dom'
 import moment from 'moment';
@@ -19,7 +20,7 @@ const styles = {
         display: 'flex',
     },
     avatar: {
-        backgroundColor:'red',
+        backgroundColor:'#252729',
     },
     cardpadre:{
         marginBottom:'2%',
@@ -50,10 +51,12 @@ const actions=[];
 
 
 
-export const CardDisplay =  ({_id, removePost, Ilove,handleComment,user={}, love, image, body, date,links,file, created_at,myUser})=>{
+export const CardDisplay =  ({_id, removePost, Ilove,user={}, love, image, body, date,links,file, created_at,myUser, postComments=[], getComments, newComment, handleComment, comment, removeComment})=>{
     user = user || {username:''};
+
     //if(!user.username) user.username = "Unknown";
-        console.log(myUser._id)
+    console.log(postComments)
+
         return (<Card style={styles.cardpadre}>
             <CardHeader
                 avatar={
@@ -131,14 +134,18 @@ export const CardDisplay =  ({_id, removePost, Ilove,handleComment,user={}, love
             </div>
             <ExpansionPanel style={{margin:'0',boxShadow:"none" }}>
 
-                    <ExpansionPanelSummary >
-                        <div style={styles.expansiones}>
+                <ExpansionPanelSummary onClick={()=>getComments(_id)}>
+                    <Typography arial-label={"Recipe"}> Comentarios</Typography>
 
-                            <Typography arial-label={"Recipe"}> Comentarios</Typography>
-                        </div>
-                    </ExpansionPanelSummary>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails style={{display:'block'}}>
 
-                    <CommentBox handleComment={handleComment} />
+                        {postComments.length===0?
+                            <Typography arial-label={"Recipe"}> No hay Comentarios</Typography>
+                            :postComments.map((c, key)=>(
+                                <CommentBox key={key} {...c} removeComment={removeComment} myUser={myUser} postId={_id}/>
+                            ))}
+                </ExpansionPanelDetails>
             </ExpansionPanel>
 
 
@@ -153,8 +160,10 @@ export const CardDisplay =  ({_id, removePost, Ilove,handleComment,user={}, love
                                 disableUnderline: true,
                                 input:styles.textito,
                             }}
+                            value={comment?comment.body:''}
                             onChange={handleComment}
-                            style={{padding:"0 10px",width:"96%"}}
+                            onKeyPress={(event)=>newComment(event,_id)}
+                            style={{padding:"5px",width:"96%", margin:0}}
                             id="multiline-flexible"
                             placeholder="Escribe tu humilde opinion!"
 
@@ -164,8 +173,6 @@ export const CardDisplay =  ({_id, removePost, Ilove,handleComment,user={}, love
                         />
                     </div>
                 </div>
-
-
             </CardContent>
 
 

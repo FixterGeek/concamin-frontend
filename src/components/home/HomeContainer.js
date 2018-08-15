@@ -6,6 +6,7 @@ import {Benefits} from './Benefits';
 import Members from './Members';
 import Footer from '../footer/Footer';
 //testing chat
+import Button from '@material-ui/core/Button';
 
 class HomeContainer extends Component {
 
