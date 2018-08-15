@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import './Publi.css'
 import {Link} from 'react-router-dom';
+import {addAdvertisement} from '../../../services/advertisementService'
 
 
 class FormPubli extends Component {
@@ -11,6 +12,26 @@ class FormPubli extends Component {
     preview;
     state = {
         files: [],
+        newItem:{}
+    }
+
+    handleText=(e)=>{
+        let {newItem} = this.state
+        let field = e.target.name
+        newItem[field] = e.target.value
+        this.setState({newItem})
+    }
+
+    saveAnuncio=()=>{
+        let {newItem, files} = this.state
+        newItem['image'] = files[0]
+        addAdvertisement(newItem)
+            .then(r=>{
+                console.log(this.props)
+                this.props.history.push('/admin/publi')
+            }).catch(e=>{
+                console.log(e)
+        })
     }
 
     getFile = (e) => {
@@ -42,19 +63,21 @@ class FormPubli extends Component {
                     <h3>Crea un anuncio</h3>
                     <form action="">
                         <TextField
-                            id="anunciante"
-                            label="Anunciante"
+                           onChange={this.handleText}
+                            id="link"
+                            label="Link del anuncio"
+                            name={"link"}
+                            placeholder="www.miwebsite.com"
 
-                            placeholder="Nombre o Giro"
-                            helperText="Máx. 20 carácteres"
                             fullWidth
                             margin="normal"
                         />
                         <br />
                         <TextField
+                            onChange={this.handleText}
                             id="nombre"
                             label="Nombre del anuncio"
-
+                            name={'title'}
                             placeholder="Ejemplo"
                             helperText="Máx. 20 carácteres"
                             fullWidth
@@ -62,9 +85,10 @@ class FormPubli extends Component {
                         />
                         <br />
                         <TextField
+                            onChange={this.handleText}
                             id="descript"
                             label="Descripción"
-
+                            name={'body'}
                             placeholder="Breve descripción"
                             helperText="Máx. 150 carácteres"
                             fullWidth
@@ -78,7 +102,7 @@ class FormPubli extends Component {
                             style={{ display: "none" }}
                             accept="image/*"
                             id="flat-button-file"
-                            multiple
+                            name={"image"}
                             type="file"
                         />
                         <label className="file-button inp" style={{margin:"0 0 0 20px"}}>
@@ -99,7 +123,7 @@ class FormPubli extends Component {
                                     Cancelar
                                 </Button>
                             </Link>
-                            <Button onClick={this.handleClose} color="primary" autoFocus>
+                            <Button onClick={this.saveAnuncio} color="primary" autoFocus>
                                 Guardar
                             </Button>
                         </div>

@@ -1,6 +1,7 @@
 import {retrieveToken} from './userService';
-const baseUrl = 'https://concamin.herokuapp.com/posts/';
+//const baseUrl = 'https://concamin.herokuapp.com/posts/';
 //const baseUrl = 'http://localhost:3000/posts/';
+const baseUrl = 'https://murmuring-beach-52120.herokuapp.com/auth/'
 
 export function getOwnPosts(skip=0){
     return fetch(baseUrl + `own/?skip=${skip}`,{
@@ -137,6 +138,7 @@ export function likePost(obj){
             "Content-Type":"application/json",
             "Authorization": retrieveToken()
         },
+        body:JSON.stringify(obj)
     }).then(res=>{
         if(!res.ok){
             return Promise.reject(res)

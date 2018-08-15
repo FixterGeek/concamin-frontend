@@ -6,12 +6,14 @@ import {getPostComments, addComment, deleteComment, editComment} from '../../ser
 import toastr from 'toastr';
 import {PostCard} from './PostCard';
 //import { Divider } from '../../../node_modules/@material-ui/core';
+import {getAdvertisements} from '../../services/advertisementService'
 import swal from 'sweetalert';
 
 
 class NFContainer extends Component{
 
     state = {
+        announces:[],
         posts:[],
         loading:true,
         newPost:{
@@ -31,6 +33,7 @@ class NFContainer extends Component{
 
     componentWillMount(){
         const user = JSON.parse(localStorage.getItem('user'));
+
         this.setState({user});
         if(this.props.own){
             this.getOwn();
@@ -62,7 +65,7 @@ class NFContainer extends Component{
             this.setState({posts:newArray, skip})
         })
         .catch(err=>{
-            console.log(err);
+
             toastr.error('No se pudieron cargar tus posts');
         })
     }
@@ -70,7 +73,7 @@ class NFContainer extends Component{
     getAll = (skip=0) => {
         getPosts(skip)
         .then(posts=>{
-            console.log(posts)
+
             if(posts.length < 1) {
                 this.refs.mas.innerHTML="¡Ya no hay mas posts!";
                 this.refs.mas.disabled=true;
@@ -79,7 +82,7 @@ class NFContainer extends Component{
             this.setState({posts:newArray, skip})
         })
         .catch(err=>{
-            console.log(err);
+
             toastr.error('No se pudieron cargar tus posts');
         })
     };
@@ -95,7 +98,7 @@ class NFContainer extends Component{
             this.setState({posts:newArray, skip})
         })
         .catch(err=>{
-            console.log(err);
+
             toastr.error('No se pudieron cargar tus posts');
         })
     }
@@ -128,7 +131,7 @@ handleSubmit=(e)=>{
             toastr.success('Se ha publicado tu post')
          }).catch(e=>{
             toastr.error('No se pudo publicar, posiblemente tu archivo es muy pesado' + e)
-            console.log(e)
+
         })
 
     
@@ -140,14 +143,14 @@ handleChange=(e)=>{
         newPost[field] = e.target.files[0]
        if(e.target.name==="image"){
         this.handlePreview()
-        console.log('preview de foto')
+
        }
     }
     else{
         newPost[field] = e.target.value
     }
     this.setState({newPost})
-    //console.log(newPost)
+    //
 
 }
 handlePreview=()=>{
@@ -170,7 +173,7 @@ clearFile=()=>{
 
 handleLink=()=>{
    this.setState({addLink:!this.state.addLink})
-   console.log('lool')
+
 }
 addLinks=()=>{
     let {newPost} = this.state;
@@ -196,21 +199,27 @@ getComments=(id, skip=0)=>{
                 return p
             })
             this.setState({posts})
-            console.log(posts)
+
         }).catch(e=>{
-            console.log(e)
+
             toastr.error('No hubo comentarios, intenta más tarde')
     })
 }
+
+
 newComment=(event, postId)=>{
     let {newComment, posts} = this.state
+
+
+
     if(event.key == 'Enter' && newComment['body'].length>=5){
+        this.getComments(postId)
         newComment['post'] = postId
-        console.log(newComment)
+
         addComment(newComment)
             .then(r=>{
                 toastr.success('Comentario añadido con éxito')
-                console.log('newcomment', r)
+
                 posts = posts.map(p=>{
                     if(p._id===postId) {
                         if(!p.postComments)p['postComments'] = []
@@ -220,13 +229,16 @@ newComment=(event, postId)=>{
                 })
                 this.setState({newComment:{body:''}})
             }).catch(e=>{
-            console.log(e)
+
             toastr.error('No se pudo crear, intenta más tarde')
         })
+    }else if(event.key == 'Enter' && newComment['body'].length<=5){
+        toastr.error('Escribe más de 5 caracteres para comentar!')
     }
 
 }
 handleComment=(e)=>{
+
         let {newComment} = this.state
         newComment['body'] = e.target.value
         this.setState({newComment})
@@ -253,12 +265,19 @@ likePosts=(postId)=>{
         _id:postId,
         user:JSON.parse(localStorage.getItem('user'))._id
     }
-    console.log(obj)
+
     likePost(obj)
         .then(r=>{
-            console.log(r, 'likeado', 'color:green')
+
+            let {posts} = this.state
+            posts = posts.map(p=>{
+                if(p._id===r._id) p.likes=[...r.likes]
+                return p
+            })
+
+            this.setState({posts})
         }).catch(e=>{
-            console.log('errrrrr', "color:red")
+
     })
 }
 
@@ -301,8 +320,8 @@ removePost = (id) => {
 
 
     render(){
-        const { posts, user, newPost, photoPreview,addLink, newComment } = this.state;
-        console.log(posts)
+        const { posts, user, newPost, photoPreview,addLink, newComment, announces } = this.state;
+
         return(
             <div>
             <PostCard 
