@@ -51,11 +51,23 @@
 }
 .degree{
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
     color:#818181;
     align-items: center;
     margin: 10px 0;
 }
+
+.degree:hover .delete-skill{
+    display: inherit;
+}
+
+.degree .delete-skill{
+    display: none;
+}
+
+
+
 .degree .name{
     margin: 3px 0;
 
