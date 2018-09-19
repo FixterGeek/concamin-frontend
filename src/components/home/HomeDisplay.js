@@ -2,10 +2,9 @@ import React from 'react';
 import './Home.css';
 import logo from '../../assets/aniver.png';
 import {Link} from 'react-router-dom';
+import FontAwesome from 'react-fontawesome';
 
 export const HomeDisplay = () => {
-
-
     return (
         <div className="slide">
             <div className="cover">
@@ -21,9 +20,10 @@ export const HomeDisplay = () => {
             <div style={{textAlign:"center"}}>
                 <h1 className="titulo">CONCAMIN<br/></h1>
                 <p className="sign">Confederación de Cámaras Industriales</p>
-
                 <br/>
-                <button className="btn_explore">Explorar</button>
+                <a href="#about">
+                    <FontAwesome className="icono" name="angle-down" size="3x"/>
+                </a>
             </div>
             </div>
         </div>

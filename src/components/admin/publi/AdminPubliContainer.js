@@ -29,9 +29,9 @@ class AdminPubliContainer extends Component {
         if (!localStorage.getItem('user')) this.props.history.push('/login');
     }
 
-    handleSwitch = (e) => {
+ /*   handleSwitch = (e) => {
         //Cambiará es estado del switch.
-    }
+    }*/
 
 
     render() {

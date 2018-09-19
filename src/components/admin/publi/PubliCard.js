@@ -3,7 +3,7 @@ import './Publi.css'
 import { Button, Switch } from '@material-ui/core'
 import { Edit, Delete } from '@material-ui/icons'
 
-export const PubliCard = ({ announces }) => (
+export const PubliCard = ({ announces, onChange }) => (
 
     <div className="card-container">
         {announces.map((item, key) => (
@@ -13,7 +13,7 @@ export const PubliCard = ({ announces }) => (
                 </div>
                 <h2 style={{ textAlign: 'center' }}>{item.title}</h2>
                 <div className="button-container">
-                    <Switch color="primary" />
+                    <Switch color="primary" onChange/>
                     <Button ariant="fab" color="primary" aria-label="Editar">
                         <Edit />
                     </Button>
@@ -22,8 +22,8 @@ export const PubliCard = ({ announces }) => (
                     </Button>
                 </div>
             </div>
-        )
-        )
+            )
+            )
         }
     </div>
 );

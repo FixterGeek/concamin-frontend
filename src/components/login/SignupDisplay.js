@@ -26,6 +26,7 @@ export const SignupDisplay = ({error, onSubmit, changeToSignup}) => {
                     </Link>
                 </div>
             </div><div className='login_box'>
+
         <form  onSubmit={onSubmit}>
              <Paper style={{width:"300px", padding:"4%", heigth:"auto"}}>
                     <div className="circle_login">
@@ -87,13 +88,14 @@ export const SignupDisplay = ({error, onSubmit, changeToSignup}) => {
                  </div>
 
                  <button className="btn_login" type={"submit"} >
-                        Login
+                        Registrarme
                  </button>
 
                 <p>¿Ya tienes cuenta? Ingresa <a href="#!" onClick={changeToSignup}><strong style={{textDecoration:"underline", color:"#648943"}}>aquí</strong></a></p>
 
              </Paper>
              </form>
-        </div></div>
+        </div>
+        </div>
     )
 }
