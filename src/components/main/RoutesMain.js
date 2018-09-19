@@ -12,6 +12,7 @@ import Beneficios from '../complements/Beneficios';
 import Comunicacion from '../complements/Comunicacion';
 import Support from '../complements/Support';
 import MessengerMain from '../messenger/MessengerMain'
+import AcceptGroupInvite from '../groups/AcceptGroupInvite'
 
 class RoutesMain extends Component {
   render() {
@@ -19,6 +20,7 @@ class RoutesMain extends Component {
       <Switch>
 
         <Route exact path="/main" component={NewsFeedPage} />
+        <Route path="/main/groups/accept/:token" component={AcceptGroupInvite} />
         <Route path="/main/groups/:id" component={DetailGroup} />
         <Route path="/main/groups" component={GroupsPage} />
         <Route path="/main/profile" component={ProfileContainer} />

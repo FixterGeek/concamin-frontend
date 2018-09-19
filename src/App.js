@@ -13,14 +13,13 @@ const theme = createMuiTheme({
 
 });
 
-
-
-
 class App extends Component {
   render() {
     return (
+
       <div className='background-app'>
           <MuiThemeProvider theme={theme}>
+
 
 
         {/*<Navbar/>*/}

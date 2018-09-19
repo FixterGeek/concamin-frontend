@@ -1,13 +1,17 @@
 import React from 'react';
 import {Card, CardHeader,CardMedia,CardContent, Avatar,IconButton,Typography,Badge,TextField,ListItemText,ListItem,List,ListItemIcon} from '@material-ui/core/';
-import {MoreVert,PictureAsPdf,ThumbUp,InsertLink,AccountCircle} from '@material-ui/icons/';
+import {MoreVert,PictureAsPdf,ThumbUp,InsertLink,AccountCircle, Star} from '@material-ui/icons/';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import {CommentBox} from './CommentBox';
 import {Link} from 'react-router-dom'
 import moment from 'moment';
 import 'moment/locale/es';
 import PicDefault from '../../assets/default-avatar.png'
+
+
+
 
 
 const styles = {
@@ -19,7 +23,7 @@ const styles = {
         display: 'flex',
     },
     avatar: {
-        backgroundColor:'red',
+        backgroundColor:'#252729',
     },
     cardpadre:{
         marginBottom:'2%',
@@ -50,10 +54,12 @@ const actions=[];
 
 
 
-export const CardDisplay =  ({_id, removePost, Ilove,handleComment,user={}, love, image, body, date,links,file, created_at,myUser})=>{
+export const CardDisplay =  ({_id, likes, removePost,user={}, love, image, body, date,links,file, created_at,myUser, postComments=[], getComments, newComment, handleComment, comment, removeComment, likePosts})=>{
     user = user || {username:''};
+
     //if(!user.username) user.username = "Unknown";
-        console.log(myUser._id)
+    console.log(postComments)
+
         return (<Card style={styles.cardpadre}>
             <CardHeader
                 avatar={
@@ -119,26 +125,30 @@ export const CardDisplay =  ({_id, removePost, Ilove,handleComment,user={}, love
 
 
             <div style={styles.botoncito}>
-                {<IconButton aria-label="Add to favorites" style={styles.buttonIcon} onClick={Ilove}>
-                    {love >=1 ?
-                        <Badge badgeContent={love} color="primary">
-                            <ThumbUp />
-                        </Badge>:
-                        <ThumbUp />
-                    }
+                {<IconButton aria-label="Add to favorites" style={styles.buttonIcon} onClick={()=>likePosts(_id)}>
+
+                    <Badge badgeContent={likes.length}  color="primary" >
+                        {likes.includes(myUser._id)?<Star color='secondary'/>:<Star style={{color:'#eaebec'}} />}
+                    </Badge>
+
+
 
                 </IconButton>}
             </div>
             <ExpansionPanel style={{margin:'0',boxShadow:"none" }}>
 
-                    <ExpansionPanelSummary >
-                        <div style={styles.expansiones}>
+                <ExpansionPanelSummary onClick={()=>getComments(_id)}>
+                    <Typography arial-label={"Recipe"}> Comentarios</Typography>
 
-                            <Typography arial-label={"Recipe"}> Comentarios</Typography>
-                        </div>
-                    </ExpansionPanelSummary>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails style={{display:'block'}}>
 
-                    <CommentBox handleComment={handleComment} />
+                        {postComments.length===0?
+                            <Typography arial-label={"Recipe"}> No hay Comentarios</Typography>
+                            :postComments.map((c, key)=>(
+                                <CommentBox key={key} {...c} removeComment={removeComment} myUser={myUser} postId={_id}/>
+                            ))}
+                </ExpansionPanelDetails>
             </ExpansionPanel>
 
 
@@ -148,24 +158,26 @@ export const CardDisplay =  ({_id, removePost, Ilove,handleComment,user={}, love
                         {!myUser.profilePic &&<AccountCircle/>}
                     </Avatar>
                     <div style={{marginLeft:"10px", backgroundColor:'white',width:'100%',borderRadius:'5px'}}>
+
                         <TextField
                             InputProps={{
                                 disableUnderline: true,
                                 input:styles.textito,
                             }}
+                            value={comment?comment.body:''}
                             onChange={handleComment}
-                            style={{padding:"0 10px",width:"96%"}}
+                            onKeyPress={(event)=>newComment(event,_id)}
+                            style={{padding:"5px",width:"96%", margin:0}}
                             id="multiline-flexible"
                             placeholder="Escribe tu humilde opinion!"
 
                             multiline
                             margin="normal"
-                            name="commet"
+                            name="comment"
                         />
+
                     </div>
                 </div>
-
-
             </CardContent>
 
 

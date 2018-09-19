@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import {NewsFeedComponent} from './NewsFeedComponent';
 import PropTypes from 'prop-types'
-import {getOwnPosts, getPosts, addPost, deletePost} from '../../services/postService';
+import {getOwnPosts, getPosts, addPost, deletePost, likePost} from '../../services/postService';
+import {getPostComments, addComment, deleteComment, editComment} from '../../services/commentService';
 import toastr from 'toastr';
 import {PostCard} from './PostCard';
 //import { Divider } from '../../../node_modules/@material-ui/core';
+import {getAdvertisements} from '../../services/advertisementService'
 import swal from 'sweetalert';
 
 
 class NFContainer extends Component{
 
     state = {
+        announces:[],
         posts:[],
         loading:true,
         newPost:{
@@ -19,8 +22,10 @@ class NFContainer extends Component{
             image:"",
             file:""
         },
+        newComment:{},
         user: {},
         skip : 0,
+
         ask:()=>{},
         photoPreview:'',
         addLink:false,
@@ -28,6 +33,7 @@ class NFContainer extends Component{
 
     componentWillMount(){
         const user = JSON.parse(localStorage.getItem('user'));
+
         this.setState({user});
         if(this.props.own){
             this.getOwn();
@@ -59,7 +65,7 @@ class NFContainer extends Component{
             this.setState({posts:newArray, skip})
         })
         .catch(err=>{
-            console.log(err);
+
             toastr.error('No se pudieron cargar tus posts');
         })
     }
@@ -67,7 +73,7 @@ class NFContainer extends Component{
     getAll = (skip=0) => {
         getPosts(skip)
         .then(posts=>{
-            console.log(posts)
+
             if(posts.length < 1) {
                 this.refs.mas.innerHTML="¡Ya no hay mas posts!";
                 this.refs.mas.disabled=true;
@@ -76,7 +82,7 @@ class NFContainer extends Component{
             this.setState({posts:newArray, skip})
         })
         .catch(err=>{
-            console.log(err);
+
             toastr.error('No se pudieron cargar tus posts');
         })
     };
@@ -92,7 +98,7 @@ class NFContainer extends Component{
             this.setState({posts:newArray, skip})
         })
         .catch(err=>{
-            console.log(err);
+
             toastr.error('No se pudieron cargar tus posts');
         })
     }
@@ -125,7 +131,7 @@ handleSubmit=(e)=>{
             toastr.success('Se ha publicado tu post')
          }).catch(e=>{
             toastr.error('No se pudo publicar, posiblemente tu archivo es muy pesado' + e)
-            console.log(e)
+
         })
 
     
@@ -137,14 +143,14 @@ handleChange=(e)=>{
         newPost[field] = e.target.files[0]
        if(e.target.name==="image"){
         this.handlePreview()
-        console.log('preview de foto')
+
        }
     }
     else{
         newPost[field] = e.target.value
     }
     this.setState({newPost})
-    //console.log(newPost)
+    //
 
 }
 handlePreview=()=>{
@@ -167,7 +173,7 @@ clearFile=()=>{
 
 handleLink=()=>{
    this.setState({addLink:!this.state.addLink})
-   console.log('lool')
+
 }
 addLinks=()=>{
     let {newPost} = this.state;
@@ -180,6 +186,101 @@ clearLink=(key)=>{
     newPost.links.splice(key, 1)
     this.setState({newPost})
 }
+//Comment functions
+
+getComments=(id, skip=0)=>{
+    let {posts} = this.state;
+    let post = posts.find(post=>post._id===id)
+    if(post.postComments)return
+    getPostComments(id, skip)
+        .then(r=>{
+            posts = posts.map(p=>{
+                if(p._id===id) p['postComments'] = r
+                return p
+            })
+            this.setState({posts})
+
+        }).catch(e=>{
+
+            toastr.error('No hubo comentarios, intenta más tarde')
+    })
+}
+
+
+newComment=(event, postId)=>{
+    let {newComment, posts} = this.state
+
+
+
+    if(event.key == 'Enter' && newComment['body'].length>=5){
+        this.getComments(postId)
+        newComment['post'] = postId
+
+        addComment(newComment)
+            .then(r=>{
+                toastr.success('Comentario añadido con éxito')
+
+                posts = posts.map(p=>{
+                    if(p._id===postId) {
+                        if(!p.postComments)p['postComments'] = []
+                        p['postComments'] = [...p.postComments, r]
+                    }
+                    return p
+                })
+                this.setState({newComment:{body:''}})
+            }).catch(e=>{
+
+            toastr.error('No se pudo crear, intenta más tarde')
+        })
+    }else if(event.key == 'Enter' && newComment['body'].length<=5){
+        toastr.error('Escribe más de 5 caracteres para comentar!')
+    }
+
+}
+handleComment=(e)=>{
+
+        let {newComment} = this.state
+        newComment['body'] = e.target.value
+        this.setState({newComment})
+}
+
+removeComment=(commentId, postId)=>{
+    let {posts} = this.state
+    deleteComment(commentId)
+        .then(r=>{
+            toastr.success('Borrado con éxito')
+            posts = posts.map(p=>{
+               if(p._id===postId) p.postComments=p.postComments.filter(c=>c._id!==commentId)
+                return p
+            })
+            this.setState({posts})
+        }).catch(e=>{
+            toastr.error('No pudo borrarse, intenta más tarde')
+    })
+}
+
+//like posts
+likePosts=(postId)=>{
+    let obj = {
+        _id:postId,
+        user:JSON.parse(localStorage.getItem('user'))._id
+    }
+
+    likePost(obj)
+        .then(r=>{
+
+            let {posts} = this.state
+            posts = posts.map(p=>{
+                if(p._id===r._id) p.likes=[...r.likes]
+                return p
+            })
+
+            this.setState({posts})
+        }).catch(e=>{
+
+    })
+}
+
 
 removePost = (id) => {
     swal({
@@ -219,8 +320,8 @@ removePost = (id) => {
 
 
     render(){
-        const { posts, user, newPost, photoPreview,addLink } = this.state;
-        console.log(posts)
+        const { posts, user, newPost, photoPreview,addLink, newComment, announces } = this.state;
+
         return(
             <div>
             <PostCard 
@@ -239,6 +340,13 @@ removePost = (id) => {
                 removePost={this.removePost}
                 user={user}
                 posts={posts}
+                getComments={this.getComments}
+                newComment={this.newComment}
+                handleComment={this.handleComment}
+                comment={newComment}
+                removeComment={this.removeComment}
+                likePosts={this.likePosts}
+
             />
             <button ref="mas" style={{marginBottom:100}} onClick={this.askForMore} >Cargar más</button>  
             </div>

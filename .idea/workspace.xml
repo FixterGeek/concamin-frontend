@@ -2,13 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed561b59-baa4-4c0d-8576-d82f43a319b2" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.vs/slnx.sqlite" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/groups/AcceptGroupInvite.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/services/advertisementService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/services/commentService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.firebaserc" afterPath="$PROJECT_DIR$/.firebaserc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/firebase.json" afterPath="$PROJECT_DIR$/firebase.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Advertising/AdCard.js" afterPath="$PROJECT_DIR$/src/components/Advertising/AdCard.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/admin/publi/AdminPubliContainer.js" afterPath="$PROJECT_DIR$/src/components/admin/publi/AdminPubliContainer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/admin/publi/FormPubli.js" afterPath="$PROJECT_DIR$/src/components/admin/publi/FormPubli.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/admin/publi/PubliCard.js" afterPath="$PROJECT_DIR$/src/components/admin/publi/PubliCard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/home/About.js" afterPath="$PROJECT_DIR$/src/components/home/About.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/home/Home.css" afterPath="$PROJECT_DIR$/src/components/home/Home.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/home/HomeDisplay.js" afterPath="$PROJECT_DIR$/src/components/home/HomeDisplay.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/login/SignupDisplay.js" afterPath="$PROJECT_DIR$/src/components/login/SignupDisplay.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/login/LoginPage.js" afterPath="$PROJECT_DIR$/src/components/login/LoginPage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/RoutesMain.js" afterPath="$PROJECT_DIR$/src/components/main/RoutesMain.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/newsfeed/CardDisplay.js" afterPath="$PROJECT_DIR$/src/components/newsfeed/CardDisplay.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/newsfeed/CommentBox.js" afterPath="$PROJECT_DIR$/src/components/newsfeed/CommentBox.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/newsfeed/NFContainer.js" afterPath="$PROJECT_DIR$/src/components/newsfeed/NFContainer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/newsfeed/NewsFeedComponent.js" afterPath="$PROJECT_DIR$/src/components/newsfeed/NewsFeedComponent.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/newsfeed/NewsFeedPage.js" afterPath="$PROJECT_DIR$/src/components/newsfeed/NewsFeedPage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/profile/DegreeDisplay.js" afterPath="$PROJECT_DIR$/src/components/profile/DegreeDisplay.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/profile/HistoryDisplay.js" afterPath="$PROJECT_DIR$/src/components/profile/HistoryDisplay.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/profile/JobDisplay.js" afterPath="$PROJECT_DIR$/src/components/profile/JobDisplay.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/profile/ModalDegree.js" afterPath="$PROJECT_DIR$/src/components/profile/ModalDegree.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/profile/ModalExperience.js" afterPath="$PROJECT_DIR$/src/components/profile/ModalExperience.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/profile/Profile.css" afterPath="$PROJECT_DIR$/src/components/profile/Profile.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/profile/ProfileContainer.js" afterPath="$PROJECT_DIR$/src/components/profile/ProfileContainer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/profile/ProfileDisplay.js" afterPath="$PROJECT_DIR$/src/components/profile/ProfileDisplay.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/services/chatService.js" afterPath="$PROJECT_DIR$/src/services/chatService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/services/groupsService.js" afterPath="$PROJECT_DIR$/src/services/groupsService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/services/postService.js" afterPath="$PROJECT_DIR$/src/services/postService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/services/userService.js" afterPath="$PROJECT_DIR$/src/services/userService.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,11 +51,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PubliCard.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PubliCard.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/admin/publi/PubliCard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="25" column="12" lean-forward="false" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+            <state relative-caret-position="266">
+              <caret line="15" column="50" lean-forward="false" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -50,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginPage.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoginPage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/login/LoginPage.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-494">
-              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -133,35 +158,17 @@
       <file leaf-file-name="AdminPubliContainer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/admin/publi/AdminPubliContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="33" column="7" lean-forward="false" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+            <state relative-caret-position="551">
+              <caret line="36" column="7" lean-forward="false" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
-                <marker date="1535409523000" expanded="true" signature="748:1229" ph="{...}" />
+                <marker date="1537316235000" expanded="true" signature="2012:2393" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="CSS File" />
-        <option value="AMD JavaScript File" />
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>chat</find>
-      <find>mess</find>
-      <find>messeng</find>
-      <find>aniver</find>
-      <find>logo</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -195,12 +202,12 @@
         <option value="$PROJECT_DIR$/src/components/mainmenu/MainMenu.js" />
         <option value="$PROJECT_DIR$/src/components/admin/publi/FormPubli.js" />
         <option value="$PROJECT_DIR$/src/components/admin/publi/AdminPubliContainer.js" />
-        <option value="$PROJECT_DIR$/src/components/admin/publi/PubliCard.js" />
         <option value="$PROJECT_DIR$/src/components/home/About.js" />
         <option value="$PROJECT_DIR$/src/components/home/Home.css" />
         <option value="$PROJECT_DIR$/src/components/home/HomeDisplay.js" />
         <option value="$PROJECT_DIR$/src/components/login/SignupDisplay.js" />
         <option value="$PROJECT_DIR$/src/components/login/LoginPage.js" />
+        <option value="$PROJECT_DIR$/src/components/admin/publi/PubliCard.js" />
       </list>
     </option>
   </component>
@@ -693,12 +700,12 @@
       <workItem from="1534179877822" duration="732000" />
       <workItem from="1534180816852" duration="17001000" />
       <workItem from="1535409000034" duration="1159000" />
-      <workItem from="1537313308875" duration="1885000" />
+      <workItem from="1537313308875" duration="2108000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32914000" />
+    <option name="totallyTimeSpent" value="33137000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="40" y="23" width="1240" height="777" extended-state="6" />
@@ -995,7 +1002,7 @@
         <state relative-caret-position="152">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1013,7 +1020,7 @@
         <state relative-caret-position="304">
           <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1031,28 +1038,18 @@
         <state relative-caret-position="1729">
           <caret line="96" column="44" lean-forward="false" selection-start-line="96" selection-start-column="44" selection-end-line="96" selection-end-column="44" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/admin/publi/AdminPubliContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="33" column="7" lean-forward="false" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+        <state relative-caret-position="551">
+          <caret line="36" column="7" lean-forward="false" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
-            <marker date="1535409523000" expanded="true" signature="748:1229" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/admin/publi/PubliCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="12" lean-forward="false" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <marker date="1537316235000" expanded="true" signature="2012:2393" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1126,9 +1123,19 @@
     <entry file="file://$PROJECT_DIR$/src/components/login/LoginPage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-494">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/admin/publi/PubliCard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="15" column="50" lean-forward="false" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>

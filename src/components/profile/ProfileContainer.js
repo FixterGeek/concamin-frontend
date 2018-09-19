@@ -11,7 +11,7 @@ import NFContainer from '../newsfeed/NFContainer'
 class ProfileContainer extends Component {
 
   state = {
-    user:{},
+    user:null,
     editing:false,
     loading:true,
     newPost:{
@@ -145,6 +145,7 @@ clearLink=(key)=>{
   render() {
     const {user, editing, photoPreview, newPost, addLink, loading} = this.state;  
     const {posts} = user;  
+    if(!user) return <div>Loading...</div>
     return (
       <div>
 

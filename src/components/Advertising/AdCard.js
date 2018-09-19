@@ -18,7 +18,7 @@ const styles = {
     },
 
 };
-export const AdCard = ({ejemplo})=>(
+export const AdCard = ({announces=[]})=>(
     <div className="polli" style={styles.content}>
         <Card>
         <CardContent>
@@ -27,40 +27,25 @@ export const AdCard = ({ejemplo})=>(
             </Typography>
         </CardContent>
         </Card>
-        <Link style={{color:'black',textDecoration:'none',fontWeight:'bold'}} to={"#"}>
-            <Card style={styles.cardPublicidad} >
+        {announces.map((a, key)=>(
+            <a href={`//${a.link}`} key={key} style={{color:'black',textDecoration:'none',fontWeight:'bold'}} target={'_blank'}>
+                <Card style={styles.cardPublicidad} >
 
-                <CardMedia
-                    style={styles.media}
-                    image={"http://www.tiritas.es/wp-content/uploads/2016/02/espacios-naturales-bicicleta-en-familia-tiritas.png"}
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="headline" component="h2">
-                        Bicicletas Bara
-                    </Typography>
-                    <Typography component="p">
-                        Compra y diviertete con una bicileta bien chingona podras hacer ejercicio ve... de verdad
-                    </Typography>
-                </CardContent>
-            </Card>
-        </Link>
-        <Link style={{color:'black',textDecoration:'none',fontWeight:'bold'}} to={"#"}>
-            <Card style={styles.cardPublicidad} >
-
-                <CardMedia
-                    style={styles.media}
-                    image={"http://www.tiritas.es/wp-content/uploads/2016/02/espacios-naturales-bicicleta-en-familia-tiritas.png"}
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="headline" component="h2">
-                        Bicicletas Bara
-                    </Typography>
-                    <Typography component="p">
-                        Compra y diviertete con una bicileta bien chingona podras hacer ejercicio ve... de verdad
-                    </Typography>
-                </CardContent>
-            </Card>
-        </Link>
+                    <CardMedia
+                        style={styles.media}
+                        image={a.image}
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="headline" component="h2">
+                            {a.title}
+                        </Typography>
+                        <Typography component="p">
+                            {a.body}
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </a>
+        ))}
 
 
 
