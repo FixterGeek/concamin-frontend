@@ -2,6 +2,8 @@ import React from 'react';
 import './events.css';
 import {Paper,Divider,Typography,GridList,Avatar} from '@material-ui/core/';
 import {AccessTime,LocationOn} from '@material-ui/icons/';
+import moment from 'moment'
+import 'moment/locale/es'
 
 
 const styles={
@@ -27,44 +29,31 @@ const styles={
     }
 }
 
-export const InfoEvent = ({}) => {
+export const InfoEvent = ({title, location, description, participants=[], owner, cover, startDate}) => {
     return (
         <div className='about'>
             <Paper elevation={4} style={{padding:" 2% 6%"}}>
-                <h5>Clash of League</h5>
+                <h5>{title}</h5>
                 <div style={{display:'flex',flexDirection:"column"}}>
                     <Typography style={styles.detallitos} color="textSecondary">
-                        <AccessTime/> 10:30Am - 12:00pm
+                    {moment(startDate).format('LLL')}
+                        <br/>
+                        <AccessTime/> {moment(startDate).fromNow()}
                     </Typography>
                     <Typography style={styles.detallitos} color="textSecondary">
-                        <LocationOn/> Fixter House HGO.
+                        <LocationOn/> {location}
                     </Typography>
 
                 </div>
 
                 <Divider />
                 <h5>Acerca de</h5>
-                <p>  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Asperiores deserunt dignissimos mollitia neque placeat,
-                    quam quis reprehenderit? A accusamus, assumenda dignissimos,
-                    doloremque earum eum, hic libero nesciunt odit quo unde.      </p>
+                <p>  {description}      </p>
                 <Divider />
-                <h5>Miembros</h5>
+                <h5>Asistentes</h5>
                 <div>
                     <GridList cellHeight={160} className={styles.gridList} cols={3}>
-                        <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-                        <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-                        <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-                        <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-
-                        <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-                        <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-                        <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-                        <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-
-                        <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-                        <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
-                        <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
+                        {participants.map((p,i)=><Avatar key={i} src={p.profilePic} />)}
                         <Avatar  alt="Remy Sharp" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7d/Kayn_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414184150" style={styles.avatar} />
 
                     </GridList>
@@ -73,4 +62,4 @@ export const InfoEvent = ({}) => {
             </Paper>
         </div>
     )
-}
+} 

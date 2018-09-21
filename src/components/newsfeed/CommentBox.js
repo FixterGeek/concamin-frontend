@@ -33,7 +33,7 @@ const styles = {
 };
 
 
-export  const CommentBox = ({_id, body, user, created_at, removeComment, myUser, postId})=>(
+export  const CommentBox = ({_id, body, user=null, created_at, removeComment, myUser, postId})=>(
 
 
         <Card style={{padding:'0', width:'100%', marginBottom:'5px'}}>
@@ -42,14 +42,14 @@ export  const CommentBox = ({_id, body, user, created_at, removeComment, myUser,
                     style={{padding:'0'}}
                     avatar={
                         <Avatar arial-label={"Recipe"} style={styles.avatar}>
-                            {user.profilePic ? null : user.username.charAt(0)}
+                            {!user ? null : user.username.charAt(0)}
                         </Avatar>
                     }
                     title={<span style={styles.textito}>{user?user.username:''}</span>}
                     subheader={<span style={styles.textito}> {moment(created_at).fromNow()}</span>}
                     action={
                         <span>
-                            {myUser._id===user._id?
+                            {myUser && myUser._id===user._id?
                             <IconButton>
                                 <Close onClick={()=>removeComment(_id, postId)}/>
                             </IconButton>:''}

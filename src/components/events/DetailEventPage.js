@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import {getPosts, addPost} from '../../services/postService';
+import {getSingleItem} from '../../services/eventService';
 import { MainLoader } from '../loader/MainLoader';
 import {DetailEvent} from "./DetailEvent";
+import toastr from 'toastr';
 
 
 
@@ -17,19 +19,23 @@ class DetailEventPage extends Component {
         photoPreview:'',
         addLink:false,
         posts:[],
-        user:{}
+        user:{},
+        event:{}
     }
 
     componentWillMount(){
         this.setState({loading:true})
-        getPosts()
-            .then(r=>{
-                this.setState({posts:r})
-                console.log(r)
-                this.setState({loading:false})
-            }).catch(e=>{
-            console.log("este es tu error",e)
-        })
+        const id = this.props.match.params.id
+        if(id) this.getEvent(id)
+        // change this
+        // getPosts()
+        //     .then(r=>{
+        //         this.setState({posts:r})
+        //         console.log(r)
+        //         this.setState({loading:false})
+        //     }).catch(e=>{
+        //     console.log("este es tu error",e)
+        // })
         const user = JSON.parse(localStorage.getItem("user"));
         console.log("aqui esta",user)
         this.setState({user:user})
@@ -105,16 +111,28 @@ class DetailEventPage extends Component {
         this.setState({newPost})
     }
 
+    getEvent = (id) => {
+        getSingleItem(id)
+        .then(event=>{
+            console.log(event)
+            this.setState({event, posts:event.posts})
+        })
+        .catch(e=>{
+            console.log(e)
+            toastr.error('No se pudo cargar el evento')
+        })
+    }
 
 
     render() {
-        let {photoPreview, newPost, addLink, posts, loading,user} = this.state;
+        let {photoPreview, newPost, addLink, posts,user} = this.state;
+        const {event} = this.state
         // if(loading) return(<MainLoader/>)
         return (
 
             <div>
-
                     <DetailEvent
+                        event={event}
                         user={user}
                         posts={posts}
                         handleSubmit={this.handleSubmit}

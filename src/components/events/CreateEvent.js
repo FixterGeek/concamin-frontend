@@ -10,7 +10,7 @@ function clicki(){
 }
 let date = new Date()
 
-export const CreateEvent =({open,close,handleChange,photoPreview,clearFile})=>(
+export const CreateEvent =({createEvent,open,close,handleChange,photoPreview,clearFile})=>(
     <div>
         <Dialog
             open={open}
@@ -33,7 +33,7 @@ export const CreateEvent =({open,close,handleChange,photoPreview,clearFile})=>(
                         :''}
 
                         <Button onClick={clicki}  color="primary" style={styles.margencito}>
-                            <input id='image' ref={input=>eventPic=input} type="file" hidden onChange={handleChange} name="image"/>
+                            <input id='image' ref={input=>eventPic=input} type="file" hidden onChange={handleChange} name="cover"/>
                             {photoPreview?"Cambiar":"Imagen"}
                             <InsertPhoto/>
                         </Button>
@@ -43,7 +43,7 @@ export const CreateEvent =({open,close,handleChange,photoPreview,clearFile})=>(
 
                 <TextField
                     margin="dense"
-                    name="name"
+                    name="title"
                     label="Nombre del evento"
                     placeholder="Agrega un nombre conciso y claro"
                     type="text"
@@ -68,8 +68,32 @@ export const CreateEvent =({open,close,handleChange,photoPreview,clearFile})=>(
                     style={styles.margencito}
                 />
                 <TextField
-                    name="date"
-                    label="Fecha/hora"
+                    margin="dense"
+                    name="description"
+                    label="Descripción"
+                    placeholder="¿Qué sucederá en tu evento?"
+                    type="text"
+                    fullWidth
+                    onChange={handleChange}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    style={styles.margencito}
+                />
+                <TextField
+                    name="startDate"
+                    label="Fecha/hora de inicio"
+                    onChange={handleChange}
+                    type="datetime-local"
+                    defaultValue={moment(date).format("YYYY-MM-DD[T]HH:mm")}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    style={styles.margencito}
+                />
+                <TextField
+                    name="endDate"
+                    label="Fecha/hora de finalización"
                     onChange={handleChange}
                     type="datetime-local"
                     defaultValue={moment(date).format("YYYY-MM-DD[T]HH:mm")}
@@ -86,7 +110,7 @@ export const CreateEvent =({open,close,handleChange,photoPreview,clearFile})=>(
                 <Button  color="primary" onClick={close}>
                     Cancel
                 </Button>
-                <Button  color="primary">
+                <Button onClick={createEvent} color="primary">
                     Crear
                 </Button>
             </DialogActions>

@@ -13,22 +13,22 @@ const styles = {
     },
 
 };
-const foto = "https://thegamersports.mundodeportivo.com/wp-content/uploads/2018/05/clash.png";
+const foto = "http://www.getfbcovers.com/covers/makes_you_happy_facebook_cover_1437649901.jpg"
 let cover;
 let coverImage;
-export const DetailEvent =({user,cover=foto, posts, handleSubmit, handleChange, photoPreview, clearFile, newPost, handleLink, addLink, addLinks, clearLink})=>(
+export const DetailEvent =({title,event , user,cover=foto, posts, handleSubmit, handleChange, photoPreview, clearFile, newPost, handleLink, addLink, addLinks, clearLink})=>(
     <div className='padding-gral'>
         <Paper style={{minHeight: "379px"}}>
-            <div ref={div=>coverImage=div} className='event-img' style={{position:"relative", backgroundImage:`url('${cover}')`}}/>
+            <div ref={div=>coverImage=div} className='event-img' style={{position:"relative", backgroundImage:`url('${event.cover || cover}')`}}/>
             <div style={{display:"flex", justifyContent:"center"}}>
                 <div className="data-user">
-                    <h4 className="title">Unete a Clash</h4>
+                    <h4 className="title">{title}</h4>
                 </div>
             </div>
         </Paper>
         <div style={{display:'flex',flexDirection:'rows'}}>
             <div >
-                <InfoEvent />
+                <InfoEvent {...event}  />
             </div>
 
 

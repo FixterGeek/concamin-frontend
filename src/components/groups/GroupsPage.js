@@ -107,7 +107,7 @@ export default class GroupsPage extends Component {
     };
 
     render(){
-        let {user, groups, photoPreview, newItem}=this.state
+        let {user, groups=[], photoPreview, newItem}=this.state
         if(groups.length > 0 ) console.log(user._id == groups[0].owner._id)
         return(
             <GridList  cellHeight={'auto'} cols={3}>
@@ -131,6 +131,7 @@ export default class GroupsPage extends Component {
                                 {...g}
                               />)
                     })}
+                    {!groups.length && <h2>Aún no te haz unido a ningun grupo</h2>}
 
                 </GridListTile>
                 <GridListTile cols={1} style={{paddingLeft:'50px'}}>

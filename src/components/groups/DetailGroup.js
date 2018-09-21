@@ -8,6 +8,8 @@ import ChatGroup from "./ChatGroup";
 import toastr from 'toastr';
 import NFContainer from '../newsfeed/NFContainer';
 import swal from 'sweetalert';
+import AddModal from '../modals/AddModal';
+
 import "./groups.css"
 
 
@@ -111,7 +113,7 @@ class DetailGroup extends Component {
                                     {user._id == owner._id && 
                                     <div>
                                     <Button variant="contained" color="secondary" onClick={this.eliminar}  >Eliminar</Button>
-                                    <Button variant="outlined" color="primary" onClick={()=>{}}  >Invitar</Button>
+                                    <AddModal name={group.name} groupId={groupId} />
                                     <Button variant="outlined" disabled >Solicitar Cambio</Button>
                             
                                     </div>

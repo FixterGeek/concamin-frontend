@@ -1,9 +1,9 @@
 import {retrieveToken} from './userService';
-//const baseUrl = 'https://concamin.herokuapp.com/posts/';
-const baseUrl = "https://murmuring-beach-52120.herokuapp.com/posts/"
-//const baseUrl = 'http://localhost:3000/posts/';
+const baseUrl = 'https://murmuring-beach-52120.herokuapp.com/events/';
+//const baseUrl = 'http://localhost:3000/groups/';
 
-export function getOwnPosts(skip=0){
+
+export function getOwnItems(skip=0){
     return fetch(baseUrl + `own/?skip=${skip}`,{
         headers:{
             "Authorization": retrieveToken()
@@ -13,16 +13,17 @@ export function getOwnPosts(skip=0){
         if(!res.ok) return Promise.reject(res)
         return res.json();
     })
-    .then(posts=>{
-        return posts;
+    .then(items=>{
+        return items;
     })
     .catch(e=>console.log(e));
 }
 
-export function addPost(post){
+//add Event
+export function addItem(item){
     const form = new FormData();
-    for(let key in post){
-        form.append(key, post[key]);
+    for(let key in item){
+        form.append(key, item[key]);
     }
     return fetch(baseUrl, {
         method:'post',
@@ -35,18 +36,21 @@ export function addPost(post){
     .then(res=>{
         if(!res.ok){
             console.log(res);
-            return Promise.reject(res.json())
+            return res.text().then(text=>{ 
+                const ob = JSON.parse(text)
+                throw ob.message
+            })
+            
         }
         return res.json();
     })
-    .then(post=>{
-        return post;
-    })
+    .then(item=>item)
 }
 
-export function getPosts(skip=0, tipo="PERSONAL", group, event){
+//traer eventos (todos)
+export function getItems(skip=0){
     const token = retrieveToken()
-    return fetch(baseUrl + `?skip=${skip}&tipo=${tipo}&group=${group}&event=${event}`, {
+    return fetch(baseUrl + `?skip=${skip}`, {
         headers:{
             "Authorization": token
         }
@@ -54,20 +58,17 @@ export function getPosts(skip=0, tipo="PERSONAL", group, event){
     .then(res=>{
         if(!res.ok){
             console.log(res);
-            return Promise.reject(res)
+            return res.text().then(text=>{ 
+                const ob = JSON.parse(text)
+                throw ob.message
+            })
+            
         }
         return res.json();
     })
-    .then(posts=>{
-        // if(posts.message){
-        //     localStorage.removeItem('user');
-        // }
-        console.log(posts)
-        return posts;
-    })
 }
 
-export function getSinglePost(id){
+export function getSingleItem(id){
     return fetch(baseUrl + id,{
         headers:{
             "Authorization": retrieveToken()
@@ -76,22 +77,26 @@ export function getSinglePost(id){
     .then(res=>{
         if(!res.ok){
             console.log(res);
-            return Promise.reject(res)
+            return res.text().then(text=>{ 
+                const ob = JSON.parse(text)
+                throw ob.message
+            })
+            
         }
         return res.json();
     })
-    .then(post=>{
-        return post;
+    .then(item=>{
+        return item;
     });
 }
 
-export function updatePost(post){
+export function updateItem(item){
     const form = new FormData();
-    for(let key in post){
-        form.append(key, post[key]);
+    for(let key in item){
+        form.append(key, item[key]);
     }
-    return fetch(baseUrl + post._id, {
-        method:'patch',
+    return fetch(baseUrl + item._id, {
+        method:'PATCH',
         body:form,
         headers:{
             "Authorization": retrieveToken()
@@ -104,14 +109,16 @@ export function updatePost(post){
         }
         return res.json();
     })
-    .then(post=>{
-        return post;
+    .then(item=>{
+        return item;
     });
 }
 
-export function deletePost(id){
+
+//borrar evento
+export function deleteItem(id){
     return fetch(baseUrl + id, {
-        method:'delete',
+        method:'DELETE',
         headers:{
             "Content-Type":"application/json",
             "Authorization": retrieveToken()
@@ -122,13 +129,40 @@ export function deletePost(id){
     .then(res=>{
         if(!res.ok){
             console.log(res);
-            return Promise.reject(res)
+            return res.text().then(text=>{ 
+                const ob = JSON.parse(text)
+                throw ob.message
+            })
+            
         }
         return res.json();
     })
-    .then(posts=>{
-        return posts;
-    });
+    .then(item=>item);
+}
+
+//asistir al evento
+export const doAssist = (eventId) => {
+    return fetch(baseUrl + eventId + '/assist', {
+        method:'POST',
+        headers:{
+            "Content-Type":"application/json",
+            "Authorization": retrieveToken()
+        },
+        //credentials:'include'
+
+    })
+    .then(res=>{
+        if(!res.ok){
+            console.log(res);
+            return res.text().then(text=>{ 
+                const ob = JSON.parse(text)
+                throw ob.message
+            })
+            
+        }
+        return res.json();
+    })
+    .then(item=>item);
 }
 
 

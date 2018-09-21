@@ -1,5 +1,5 @@
 import {retrieveToken} from './userService';
-const baseUrl = 'https://concamin.herokuapp.com/groups/';
+const baseUrl = 'https://murmuring-beach-52120.herokuapp.com/groups/';
 //const baseUrl = 'http://localhost:3000/groups/';
 /*
 invite = {
