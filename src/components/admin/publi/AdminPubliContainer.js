@@ -31,11 +31,8 @@ class AdminPubliContainer extends Component {
         })
     }
 
- /*   handleSwitch = (e) => {
+   handleSwitch = (e) => {
         //Cambiará es estado del switch.
-<<<<<<< HEAD
-    }*/
-=======
     }
     deleteItem=(id)=>{
         let {announces} = this.state
@@ -61,7 +58,6 @@ class AdminPubliContainer extends Component {
                 toastr.error('Ocurrió un problema, intenta más tarde')
         })
     }
->>>>>>> c3018d0b3fa3d9462da194a2059bc637e1a836c5
 
 
     render() {

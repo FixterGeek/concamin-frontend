@@ -1,7 +1,6 @@
 import {retrieveToken} from './userService';
 const baseUrl = 'https://murmuring-beach-52120.herokuapp.com/groups/';
 //const baseUrl = 'http://localhost:3000/groups/';
-const baseUrl = 'https://murmuring-beach-52120.herokuapp.com/auth/'
 /*
 invite = {
 	"emails":["bliss@ironhack.com", "os@fixter.org", "pollo@lol.com", "mijo@iron.pariente"],
