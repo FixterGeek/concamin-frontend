@@ -1,4 +1,5 @@
-const baseUrl = 'https://concamin.herokuapp.com/chats/';
+//const baseUrl = 'https://concamin.herokuapp.com/chats/';
+const baseUrl = 'https://murmuring-beach-52120.herokuapp.com/auth/'
 //const baseUrl = 'http://localhost:3000/chats/';
 
 export function addMessage(message, id){

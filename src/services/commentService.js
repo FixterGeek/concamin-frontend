@@ -1,7 +1,8 @@
 import {retrieveToken} from "./userService";
 
-const baseUrl = 'http://localhost:3000/comments/';
+//const baseUrl = 'http://localhost:3000/comments/';
 //const baseUrl = 'https://concamin.herokuapp.com/comments/';
+const baseUrl = 'https://murmuring-beach-52120.herokuapp.com/auth/'
 
 export function addComment(comment){
 

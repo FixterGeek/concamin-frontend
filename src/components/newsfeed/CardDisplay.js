@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CardHeader,CardMedia,CardContent, Avatar,IconButton,Typography,Badge,TextField,ListItemText,ListItem,List,ListItemIcon} from '@material-ui/core/';
-import {MoreVert,PictureAsPdf,ThumbUp,InsertLink,AccountCircle} from '@material-ui/icons/';
+import {MoreVert,PictureAsPdf,ThumbUp,InsertLink,AccountCircle, Star} from '@material-ui/icons/';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -9,6 +9,9 @@ import {Link} from 'react-router-dom'
 import moment from 'moment';
 import 'moment/locale/es';
 import PicDefault from '../../assets/default-avatar.png'
+
+
+
 
 
 const styles = {
@@ -51,7 +54,7 @@ const actions=[];
 
 
 
-export const CardDisplay =  ({_id, removePost, Ilove,user={}, love, image, body, date,links,file, created_at,myUser, postComments=[], getComments, newComment, handleComment, comment, removeComment})=>{
+export const CardDisplay =  ({_id, likes, removePost,user={}, love, image, body, date,links,file, created_at,myUser, postComments=[], getComments, newComment, handleComment, comment, removeComment, likePosts})=>{
     user = user || {username:''};
 
     //if(!user.username) user.username = "Unknown";
@@ -122,13 +125,13 @@ export const CardDisplay =  ({_id, removePost, Ilove,user={}, love, image, body,
 
 
             <div style={styles.botoncito}>
-                {<IconButton aria-label="Add to favorites" style={styles.buttonIcon} onClick={Ilove}>
-                    {love >=1 ?
-                        <Badge badgeContent={love} color="primary">
-                            <ThumbUp />
-                        </Badge>:
-                        <ThumbUp />
-                    }
+                {<IconButton aria-label="Add to favorites" style={styles.buttonIcon} onClick={()=>likePosts(_id)}>
+
+                    <Badge badgeContent={likes.length}  color="primary" >
+                        {likes.includes(myUser._id)?<Star color='secondary'/>:<Star style={{color:'#eaebec'}} />}
+                    </Badge>
+
+
 
                 </IconButton>}
             </div>
@@ -155,6 +158,7 @@ export const CardDisplay =  ({_id, removePost, Ilove,user={}, love, image, body,
                         {!myUser.profilePic &&<AccountCircle/>}
                     </Avatar>
                     <div style={{marginLeft:"10px", backgroundColor:'white',width:'100%',borderRadius:'5px'}}>
+
                         <TextField
                             InputProps={{
                                 disableUnderline: true,
@@ -169,8 +173,9 @@ export const CardDisplay =  ({_id, removePost, Ilove,user={}, love, image, body,
 
                             multiline
                             margin="normal"
-                            name="commet"
+                            name="comment"
                         />
+
                     </div>
                 </div>
             </CardContent>

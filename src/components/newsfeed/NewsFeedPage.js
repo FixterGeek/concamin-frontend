@@ -5,12 +5,15 @@ import {getPosts, addPost} from '../../services/postService';
 import {AdCard} from "../Advertising/AdCard";
 import { MainLoader } from '../loader/MainLoader';
 import {getLoggedUser} from "../../services/userService";
+import {getAdvertisements} from '../../services/advertisementService'
+import toastr from "toastr";
 
 
 
 class NewsFeedPage extends Component {
 
     state={
+        announces:[],
         loading:true,
         newPost:{
             links:[],
@@ -25,7 +28,9 @@ class NewsFeedPage extends Component {
     }
 
     componentWillMount(){
+
         this.setState({loading:true})
+        this.getRandomAdvertisements()
         getPosts()
             .then(r=>{
                this.setState({posts:r})
@@ -57,6 +62,18 @@ class NewsFeedPage extends Component {
 
         
     }
+
+    getRandomAdvertisements=()=>{
+        getAdvertisements()
+            .then(r=>{
+                console.log(r)
+                this.setState({announces:r})
+            }).catch(e=>{
+            console.log(e)
+            toastr.error(e)
+        })
+    }
+
     handleChange=(e)=>{
         let {newPost} = this.state;
         let field = e.target.name;
@@ -111,7 +128,7 @@ class NewsFeedPage extends Component {
 
 
   render() {
-    let {photoPreview, newPost, addLink, posts, loading,user} = this.state;
+    let {photoPreview, newPost, addLink, posts, loading,user, announces} = this.state;
     if(loading) return(<MainLoader/>)
     return (
 
@@ -120,7 +137,7 @@ class NewsFeedPage extends Component {
                 <NFContainer />
             </GridListTile>
             <GridListTile cols={1} style={{paddingLeft:'50px'}}>
-                <AdCard ejemplo={this.ejemplo}/>
+                <AdCard announces={announces}/>
             </GridListTile>
         </GridList>
 

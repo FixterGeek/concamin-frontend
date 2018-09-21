@@ -4,12 +4,28 @@
 }
 @import url('https://fonts.googleapis.com/css?family=Bowlby+One+SC');
 
+@keyframes move{
+    0%{
+        margin-top: 0px;
+    }
+    50%{
+        margin-top:50px;
+    }
+    100%{
+        margin-top: 0px;
+    }
+}
 .sign{
     font-size: 35px;
     font-family: "Proxima Nova";
     font-weight: 800;
     text-transform: uppercase;
 
+}
+.icono{
+    animation: move;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
 }
 .slide{
 
